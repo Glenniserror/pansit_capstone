@@ -31,26 +31,14 @@
             Mathematics at Bubog National High School
         </p>
 
-    <div class="hero-actions">
-    <!-- Student Login -->
-    <a href="{{ route('student.login') }}" class="btn student">
-        <i class="fa-solid fa-user-graduate"></i>
-        Student Login
-    </a>
-
-    <!-- Teacher Login -->
-    <a href="{{ route('teacher.login') }}" class="btn teacher">
-        <i class="fa-solid fa-chalkboard-user"></i>
-        Teacher Login
-    </a>
-
-    <!-- Admin Login -->
-    <a href="{{ route('admin.login') }}" class="btn admin">
-        <i class="fa-solid fa-chart-line"></i>
-        Admin Login
-    </a>
-</div>
-
+        <div class="hero-actions">
+            <a href="/login" class="btn student">
+            <i class="fa-solid fa-user-graduate"></i> Student Login
+            </a>
+        
+            <a class="btn teacher"><i class="fa-solid fa-chalkboard-user"></i> Teacher Login</a>
+            <a class="btn admin"><i class="fa-solid fa-chart-line"></i> Admin Login</a>
+        </div>
     </div>
 </section>
 
