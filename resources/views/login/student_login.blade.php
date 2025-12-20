@@ -18,7 +18,7 @@
         <div class="form-side">
             <div class="form-content">
                 <div class="icon-header">
-                    <img src="{{ asset('image/student.png') }}" alt="Grad Cap">
+                    <img src="{{ asset('C:\xampp\htdocs\pansit_capstone\public\image\student.png') }}" alt="Grad Cap">
                 </div>
                 <h1>Student Portal</h1>
                 <p id="sub-text">Sign in to your account</p>
@@ -74,7 +74,7 @@
         <!-- IMAGE SIDE -->
         <div class="image-side" id="image-side">
             <div class="logo-wrapper">
-                <img src="{{ asset('image/logo-removebg-preview.png') }}" 
+                <img src="{{ asset('C:\xampp\htdocs\pansit_capstone\public\image\logo-removebg-preview.png') }}" 
                      alt="School Logo" 
                      class="school-logo">
             </div>

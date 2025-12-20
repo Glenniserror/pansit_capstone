@@ -13,14 +13,21 @@
     <a href="{{ url('/') }}" class="back-home">← Back to Home</a>
 
     <div class="portal-card" id="portal-card">
+
         <!-- FORM SIDE -->
         <div class="form-side">
             <div class="form-content">
                 <div class="icon-header">
-                    <img src="{{ asset('image/teacher.png') }}" alt="Teacher Icon">
+                    <img src="{{ asset('C:\xampp\htdocs\pansit_capstone\public\image\teacher.png') }}" alt="Grad Cap">
                 </div>
-                <h1>Teacher Portal</h1>
+                <h1>Student Portal</h1>
                 <p id="sub-text">Sign in to your account</p>
+
+                <!-- TAB SWITCHER -->
+                <div class="tab-switcher">
+                    <button id="login-tab" type="button" class="active">Login</button>
+                    <button id="signup-tab" type="button">Sign Up</button>
+                </div>
 
                 <!-- LOGIN FORM -->
                 <div id="login-form-container">
@@ -67,7 +74,7 @@
         <!-- IMAGE SIDE -->
         <div class="image-side" id="image-side">
             <div class="logo-wrapper">
-                <img src="{{ asset('image/logo-removebg-preview.png') }}" 
+                <img src="{{ asset('C:\xampp\htdocs\pansit_capstone\public\image\logo-removebg-preview.png') }}" 
                      alt="School Logo" 
                      class="school-logo">
             </div>

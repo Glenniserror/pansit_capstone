@@ -1,38 +1,26 @@
-// Elements
-const adminLoginForm = document.getElementById('login-form-container');
-const adminSignupForm = document.getElementById('signup-form-container');
-const adminLoginTab = document.getElementById('login-tab');
-const adminSignupTab = document.getElementById('signup-tab');
-const adminSubText = document.getElementById('sub-text');
-const adminPortalCard = document.getElementById('portal-card');
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form-container');
+    const signupForm = document.getElementById('signup-form-container');
+    const loginTab = document.getElementById('login-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const subText = document.getElementById('sub-text');
+    const portalCard = document.getElementById('portal-card');
 
-// Show Sign Up form
-function showSignUp() {
-    adminLoginTab.classList.remove('active');
-    adminSignupTab.classList.add('active');
+    loginTab.addEventListener('click', () => {
+        loginTab.classList.add('active');
+        signupTab.classList.remove('active');
+        loginForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+        subText.innerText = "Sign in to your account?";
+        portalCard.style.flexDirection = "row";
+    });
 
-    adminLoginForm.classList.add('hidden');
-    adminSignupForm.classList.remove('hidden');
-
-    adminSubText.innerText = "Create your admin account";
-
-    // Slide animation
-    adminPortalCard.style.flexDirection = "row-reverse";
-}
-
-// Show Login form
-function showLogin() {
-    adminSignupTab.classList.remove('active');
-    adminLoginTab.classList.add('active');
-
-    adminSignupForm.classList.add('hidden');
-    adminLoginForm.classList.remove('hidden');
-
-    adminSubText.innerText = "Sign in to your account";
-
-    adminPortalCard.style.flexDirection = "row";
-}
-
-// Event listeners
-adminLoginTab.addEventListener('click', showLogin);
-adminSignupTab.addEventListener('click', showSignUp);
+    signupTab.addEventListener('click', () => {
+        signupTab.classList.add('active');
+        loginTab.classList.remove('active');
+        signupForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        subText.innerText = "Create your student account";
+        portalCard.style.flexDirection = "row-reverse";
+    });
+});

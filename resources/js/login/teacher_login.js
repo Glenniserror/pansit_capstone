@@ -1,38 +1,26 @@
-// Elements
-const teacherLoginForm = document.getElementById('login-form-container');
-const teacherSignupForm = document.getElementById('signup-form-container');
-const teacherLoginTab = document.getElementById('login-tab');
-const teacherSignupTab = document.getElementById('signup-tab');
-const teacherSubText = document.getElementById('sub-text');
-const teacherPortalCard = document.getElementById('portal-card');
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form-container');
+    const signupForm = document.getElementById('signup-form-container');
+    const loginTab = document.getElementById('login-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const subText = document.getElementById('sub-text');
+    const portalCard = document.getElementById('portal-card');
 
-// Show Sign Up form
-function showSignUp() {
-    teacherLoginTab.classList.remove('active');
-    teacherSignupTab.classList.add('active');
+    loginTab.addEventListener('click', () => {
+        loginTab.classList.add('active');
+        signupTab.classList.remove('active');
+        loginForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+        subText.innerText = "Sign in to your account?";
+        portalCard.style.flexDirection = "row";
+    });
 
-    teacherLoginForm.classList.add('hidden');
-    teacherSignupForm.classList.remove('hidden');
-
-    teacherSubText.innerText = "Create your teacher account";
-
-    // Slide animation
-    teacherPortalCard.style.flexDirection = "row-reverse";
-}
-
-// Show Login form
-function showLogin() {
-    teacherSignupTab.classList.remove('active');
-    teacherLoginTab.classList.add('active');
-
-    teacherSignupForm.classList.add('hidden');
-    teacherLoginForm.classList.remove('hidden');
-
-    teacherSubText.innerText = "Sign in to your account";
-
-    teacherPortalCard.style.flexDirection = "row";
-}
-
-// Event listeners
-teacherLoginTab.addEventListener('click', showLogin);
-teacherSignupTab.addEventListener('click', showSignUp);
+    signupTab.addEventListener('click', () => {
+        signupTab.classList.add('active');
+        loginTab.classList.remove('active');
+        signupForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        subText.innerText = "Create your student account";
+        portalCard.style.flexDirection = "row-reverse";
+    });
+});
