@@ -33,3 +33,4 @@ function showLogin() {
     // Revert Slide Animation
     portalCard.style.flexDirection = "row";
 }
+
