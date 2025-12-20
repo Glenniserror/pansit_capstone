@@ -4,61 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Portal | Bubog NHS</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/student_login.css', 'resources/js/student_login.js'])
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="main-container">
-        <a href="#" class="back-home">← Back to Home</a>
+        <a href="{{ url('/') }}" class="back-home">← Back to Home</a>
 
         <div class="portal-card" id="portal-card">
             
+            <!-- FORM SIDE -->
             <div class="form-side">
                 <div class="form-content">
                     <div class="icon-header">
                         <img src="{{ asset('image/student.png') }}" alt="Grad Cap">
                     </div>
                     <h1>Student Portal</h1>
-                    <p id="sub-text">Sign in to your account?</p>
+                    <p id="sub-text">Sign in to your account</p>
 
+                    <!-- TAB SWITCHER -->
                     <div class="tab-switcher">
-                        <button id="login-tab" class="active" onclick="showLogin()">Login</button>
-                        <button id="signup-tab" onclick="showSignUp()">Sign Up</button>
+                        <button id="login-tab" type="button" class="active">Login</button>
+                        <button id="signup-tab" type="button">Sign Up</button>
                     </div>
 
+                    <!-- LOGIN FORM -->
                     <div id="login-form-container" class="form-fade">
-                        <form id="login-form">
+                        <form id="login-form" method="POST" action="{{ route('student.login') }}">
+                            @csrf
                             <div class="input-group">
                                 <label>Email</label>
-                                <input type="email" placeholder="Enter your email" required>
+                                <input type="email" name="email" placeholder="Enter your email" required>
                             </div>
                             <div class="input-group">
                                 <label>Password</label>
-                                <input type="password" placeholder="Enter your password" required>
+                                <input type="password" name="password" placeholder="Enter your password" required>
                             </div>
                             <button type="submit" class="btn-sign">Sign In</button>
                         </form>
                     </div>
 
+                    <!-- SIGNUP FORM -->
                     <div id="signup-form-container" class="form-fade hidden">
-                        <form id="signup-form">
+                        <form id="signup-form" method="POST" action="{{ route('student.register') }}">
+                            @csrf
                             <div class="input-group">
                                 <label>Username</label>
-                                <input type="text" placeholder="Enter your Username">
+                                <input type="text" name="name" placeholder="Enter your Username" required>
                             </div>
                             <div class="input-group">
                                 <label>Email</label>
-                                <input type="email" placeholder="Enter your Email">
+                                <input type="email" name="email" placeholder="Enter your Email" required>
                             </div>
                             <div class="input-group">
                                 <label>Password</label>
-                                <input type="password" placeholder="Enter your Password">
+                                <input type="password" name="password" placeholder="Enter your Password" required>
                             </div>
                             <div class="input-group">
-                                <label>Confirm password</label>
-                                <input type="password" placeholder="Confirm your Password">
+                                <label>Confirm Password</label>
+                                <input type="password" name="password_confirmation" placeholder="Confirm your Password" required>
                             </div>
                             <button type="submit" class="btn-sign">Create Account</button>
                         </form>
@@ -66,17 +71,17 @@
                 </div>
             </div>
 
+            <!-- IMAGE SIDE -->
             <div class="image-side" id="image-side">
                 <div class="logo-wrapper">
                     <img src="{{ asset('image/logo-removebg-preview.png') }}" 
-                        alt="School Logo" 
-                        class="school-logo">
+                         alt="School Logo" 
+                         class="school-logo">
                 </div>
             </div>
 
         </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
