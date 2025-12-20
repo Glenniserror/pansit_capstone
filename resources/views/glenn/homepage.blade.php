@@ -22,7 +22,7 @@
     <div class="hero-gradient"></div>
 
     <div class="hero-content">
-        <h1>MATHsaLOVE</h1>
+        <h1>MATHtalinaw</h1>
         <h2>Math Learning Assistant</h2>
 
         <p>
