@@ -16,6 +16,8 @@
 </head>
 <body>
 
+    <a href="/login" class="btn student"></a>
+
 <!-- ================= HERO ================= -->
 <section class="hero">
     <div class="hero-blur"></div>
