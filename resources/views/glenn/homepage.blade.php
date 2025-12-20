@@ -36,7 +36,11 @@
             <i class="fa-solid fa-user-graduate"></i> Student Login
             </a>
 
-            <a class="btn teacher"><i class="fa-solid fa-chalkboard-user"></i> Teacher Login</a>
+        <div class="hero-actions">
+            <a href="/login" class="btn teacher">
+            <i class="fa-solid fa-user-graduate"></i> Student Login
+            </a>
+
             <a class="btn admin"><i class="fa-solid fa-chart-line"></i> Admin Login</a>
         </div>
     </div>

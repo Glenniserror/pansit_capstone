@@ -17,7 +17,7 @@ Route::post('/login', [StudentAuthController::class, 'login'])->name('student.lo
 Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
 
 
-// Teacher login page
+// Student login page
 Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
 
 // Handle login POST
