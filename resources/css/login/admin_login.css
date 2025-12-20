@@ -1,4 +1,3 @@
-/* ================= GLOBAL RESET ================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(180deg, #F4511E 0%, #FFCCBC 100%);
+    background: linear-gradient(180deg, #1E88E5 0%, #80DEEA 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -35,10 +34,11 @@ body {
     background: white;
     border-radius: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Initial state */
     min-height: 600px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.15);
     overflow: hidden;
+    /* This handles the smooth sliding of the layout */
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -49,6 +49,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 50px;
+    background: white;
+    transition: 0.5s ease-in-out;
 }
 
 .form-content {
@@ -59,7 +61,7 @@ body {
 
 .icon-header img {
     width: 60px;
-    background: #E64A19;
+    background: #0D47A1;
     border-radius: 50%;
     padding: 12px;
     margin-bottom: 15px;
@@ -67,6 +69,33 @@ body {
 
 h1 { font-size: 28px; font-weight: 700; color: #333; }
 #sub-text { color: #888; margin-bottom: 25px; font-size: 14px; }
+
+/* TAB SWITCHER */
+.tab-switcher {
+    background: #F1F3F4;
+    border-radius: 12px;
+    display: flex;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
+.tab-switcher button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: #888;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.tab-switcher button.active {
+    background: white;
+    color: #1E88E5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
 /* INPUTS */
 .input-group { text-align: left; margin-bottom: 15px; }
@@ -84,13 +113,13 @@ input {
 input:focus {
     outline: none;
     background: #fff;
-    border-color: #F4511E;
+    border-color: #1E88E5;
 }
 
 .btn-sign {
     width: 100%;
     padding: 15px;
-    background: #F4511E;
+    background: #1E88E5;
     color: white;
     border: none;
     border-radius: 10px;
@@ -101,15 +130,16 @@ input:focus {
     transition: 0.3s;
 }
 
-.btn-sign:hover { background: #BF360C; transform: translateY(-2px); }
+.btn-sign:hover { background: #1565C0; transform: translateY(-2px); }
 
 /* IMAGE SIDE */
 .image-side {
     flex: 1;
-    background: linear-gradient(135deg, #F4511E 0%, #FFEBEE 100%);
+    background: linear-gradient(135deg, #1E88E5 0%, #E3F2FD 100%);
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.6s ease-in-out;
 }
 
 .school-logo {
@@ -123,4 +153,17 @@ input:focus {
     50% { transform: translateY(-15px); }
 }
 
-.hidden { display: none; }
+/* ANIMATIONS FOR SWITCHING */
+.form-fade {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HIDE ELEMENT */
+.hidden {
+    display: none;
+}
