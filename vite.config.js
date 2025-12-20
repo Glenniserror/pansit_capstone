@@ -13,6 +13,9 @@ export default defineConfig({
     /********************student login ***********************/
                 'resources/js/student_login.css',
                 'resources/js/student_login.js',
+    /********************teacher login ***********************/
+                'resources/js/teacher_login.css',
+                'resources/js/teacher_login.js',
             ],
             refresh: true,
         }),
