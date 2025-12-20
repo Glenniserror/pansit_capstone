@@ -10,6 +10,9 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/homepage.css',
                 'resources/js/homepage.js',
+    /********************student login ***********************/
+                'resources/js/student_login.css',
+                'resources/js/student_login.js',
             ],
             refresh: true,
         }),

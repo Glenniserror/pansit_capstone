@@ -6,6 +6,7 @@
     <title>Student Portal | Bubog NHS</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    @vite(['resources/css/student_login.css', 'resources/js/student_login.js'])
 </head>
 <body>
 
