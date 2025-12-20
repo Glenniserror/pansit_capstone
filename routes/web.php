@@ -15,3 +15,13 @@ Route::post('/login', [StudentAuthController::class, 'login'])->name('student.lo
 
 // Handle signup POST
 Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
+
+
+// Teacher login page
+Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
+
+// Handle login POST
+Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
+
+// Handle signup POST
+Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register');
