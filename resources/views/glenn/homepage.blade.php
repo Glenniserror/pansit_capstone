@@ -16,7 +16,6 @@
 </head>
 <body>
 
-    <a href="/login" class="btn student"></a>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
@@ -33,7 +32,10 @@
         </p>
 
         <div class="hero-actions">
-            <a class="btn student"><i class="fa-solid fa-user-graduate"></i> Student Login</a>
+            <a href="/login" class="btn student">
+            <i class="fa-solid fa-user-graduate"></i> Student Login
+            </a>
+
             <a class="btn teacher"><i class="fa-solid fa-chalkboard-user"></i> Teacher Login</a>
             <a class="btn admin"><i class="fa-solid fa-chart-line"></i> Admin Login</a>
         </div>
