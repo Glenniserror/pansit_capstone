@@ -38,7 +38,7 @@
 
         <div class="hero-actions">
             <a href="/login" class="btn teacher">
-            <i class="fa-solid fa-user-graduate"></i> Student Login
+            <i class="fa-solid fa-user-graduate"></i> Teacher Login
             </a>
 
             <a class="btn admin"><i class="fa-solid fa-chart-line"></i> Admin Login</a>
