@@ -167,7 +167,7 @@ body {
 }
 
 .features h3 {
-    font-size: 1.7rem;
+    font-size: 2rem; /* Adjusted to match .topics h2 for consistency */
     font-weight: 800;
     color: #1f2937;
 }
