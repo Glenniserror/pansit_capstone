@@ -1,4 +1,7 @@
 // ================= SCROLL REVEAL SCRIPT =================
+// Save this as a separate file named 'script.js' and link it in your HTML like this:
+// <script src="script.js" defer></script>
+
 document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal');
     const observerOptions = {
@@ -11,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add('show');
-                }, index * 100); // Staggered reveal
+                }, index * 100); // Staggered reveal for professional effect
                 observer.unobserve(entry.target);
             }
         });
