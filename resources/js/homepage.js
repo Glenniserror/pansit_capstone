@@ -1,23 +1,21 @@
-// ================= SCROLL REVEAL =================
-const revealElements = document.querySelectorAll('.reveal');
+// ================= SCROLL REVEAL SCRIPT =================
+document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal');
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                observer.unobserve(entry.target); // animate once
+                setTimeout(() => {
+                    entry.target.classList.add('show');
+                }, index * 100); // Staggered reveal
+                observer.unobserve(entry.target);
             }
         });
-    },
-    { threshold: 0.15 }
-);
+    }, observerOptions);
 
-revealElements.forEach(el => observer.observe(el));
-entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-        entry.target.style.transitionDelay = `${index * 0.12}s`;
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-    }
+    revealElements.forEach(el => observer.observe(el));
 });
