@@ -44,9 +44,9 @@ body {
     inset: 0;
     background: linear-gradient(
         135deg,
-        rgba(15, 23, 42, 0.7) 0%,
-        rgba(30, 58, 138, 0.6) 50%,
-        rgba(14, 165, 233, 0.5) 100%
+        rgba(0, 70, 160, 0.6) 0%,    /* bawasan opacity */
+        rgba(0, 120, 185, 0.5) 50%,  /* bawasan opacity */
+        rgba(0, 175, 165, 0.4) 100%  /* bawasan opacity */
     );
     z-index: 2;
     backdrop-filter: blur(1px); /* Subtle glassmorphism effect */
