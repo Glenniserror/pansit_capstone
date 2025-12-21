@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginTab.classList.remove('active');
         signupForm.classList.remove('hidden');
         loginForm.classList.add('hidden');
-        subText.innerText = "Create your student account";
+        subText.innerText = "Create your admin account";
         portalCard.style.flexDirection = "row-reverse";
     });
 });

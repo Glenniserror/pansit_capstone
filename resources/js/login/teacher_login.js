@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         signupTab.classList.remove('active');
         loginForm.classList.remove('hidden');
         signupForm.classList.add('hidden');
-        subText.innerText = "Sign in to your account?";
+        subText.innerText = "Sign in to your account";
         portalCard.style.flexDirection = "row";
     });
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginTab.classList.remove('active');
         signupForm.classList.remove('hidden');
         loginForm.classList.add('hidden');
-        subText.innerText = "Create your student account";
+        subText.innerText = "Create your teacher account";
         portalCard.style.flexDirection = "row-reverse";
     });
 });
