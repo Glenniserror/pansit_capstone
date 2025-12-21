@@ -246,10 +246,10 @@ body {
     gap: 40px;
 }
 
-/* Premium feature cards */
+/* Premium feature cards - Reduced border-radius and ensured uniform size */
 .feature-card {
     background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    border-radius: 20px;
+    border-radius: 12px; /* Reduced from 20px for less curve */
     padding: 40px 35px;
     border: 2px solid #e6f0fb;
     text-align: left;
@@ -257,6 +257,10 @@ body {
     position: relative;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    min-height: 280px; /* Added min-height to ensure uniform box sizes */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .feature-card:hover {
@@ -323,6 +327,7 @@ body {
     -webkit-text-fill-color: transparent;
     color: transparent;
 }
+
 .feature-card h4 {
     font-size: 1.2rem;
     font-weight: 800;
@@ -334,6 +339,7 @@ body {
     font-size: 0.95rem;
     color: #94a3b8;
     line-height: 1.7;
+    flex-grow: 1; /* Ensures text takes up available space for uniform height */
 }
 
 /* Glow effect on hover */
@@ -341,7 +347,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 20px;
+    border-radius: 12px; /* Matched to new border-radius */
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), transparent);
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -349,6 +355,57 @@ body {
 
 .feature-card:hover::after {
     opacity: 1;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .features {
+        padding: 70px 8%;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .feature-card {
+        padding: 35px 25px;
+        min-height: 250px; /* Adjusted for mobile */
+    }
+
+    .feature-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .features {
+        padding: 50px 5%;
+    }
+
+    .feature-card {
+        padding: 30px 20px;
+        min-height: 220px; /* Adjusted for smaller screens */
+    }
+
+    .feature-card h4 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
+    }
 }
 
 /* ================= RESPONSIVE ================= */
