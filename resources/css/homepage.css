@@ -13,7 +13,7 @@ body {
 /* ================= HERO ================= */
 .hero {
     position: relative;
-    height: 520px;
+    height: 600px;
     background: url('C:\xampp\htdocs\pansit_capstone\public\image\pexels-photo-6344238.jpeg') center/cover no-repeat;
     display: flex;
     justify-content: center;
