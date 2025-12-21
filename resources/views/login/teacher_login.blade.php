@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Portal | Bubog NHS</title>
-    @vite(['resources/css/teacher_login.css', 'resources/js/teacher_login.js'])
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    @vite([
+    'resources/css/login/teacher_login.css',
+    'resources/js/login/teacher_login.js'
+])
 </head>
 <body>
 
