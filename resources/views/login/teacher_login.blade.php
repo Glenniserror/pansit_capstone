@@ -27,7 +27,7 @@
 
                 <!-- ICON HEADER -->
                 <div class="icon-header">
-                    <img src="{{ asset('image/student.png') }}" alt="Teacher Icon">
+                    <img src="{{ asset('image/teacher.jpg') }}" alt="Teacher Icon">
                 </div>
 
                 <h1>Teacher Portal</h1>
