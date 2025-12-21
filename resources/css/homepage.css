@@ -280,14 +280,49 @@ body {
     transform: scale(1.2) rotate(10deg);
 }
 
-/* Icon colors with gradients */
-.feature-card:nth-child(1) i { background: linear-gradient(135deg, #2563eb, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.feature-card:nth-child(2) i { background: linear-gradient(135deg, #14b8a6, #0f766e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.feature-card:nth-child(3) i { background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.feature-card:nth-child(4) i { background: linear-gradient(135deg, #22c55e, #16a34a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.feature-card:nth-child(5) i { background: linear-gradient(135deg, #2563eb, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.feature-card:nth-child(6) i { background: linear-gradient(135deg, #14b8a6, #0f766e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
+/* Icon colors with gradients - Fixed for better compatibility */
+.feature-card:nth-child(1) i {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback for unsupported browsers */
+}
+.feature-card:nth-child(2) i {
+    background: linear-gradient(135deg, #14b8a6, #0f766e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.feature-card:nth-child(3) i {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.feature-card:nth-child(4) i {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.feature-card:nth-child(5) i {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.feature-card:nth-child(6) i {
+    background: linear-gradient(135deg, #14b8a6, #0f766e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
 .feature-card h4 {
     font-size: 1.2rem;
     font-weight: 800;
