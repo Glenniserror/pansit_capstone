@@ -23,7 +23,7 @@
                 <div class="icon-header">
                     <img src="{{ asset('public/image/admin.png') }}" alt="Grad Cap">
                 </div>
-                <h1>admin Portal</h1>
+                <h1>Admin Portal</h1>
                 <p id="sub-text">Sign in to your account</p>
 
                 <!-- TAB SWITCHER -->
@@ -78,8 +78,8 @@
         <div class="image-side" id="image-side">
             <div class="logo-wrapper">
                 <img src="{{ asset('C:\xampp\htdocs\pansit_capstone\public\image\admin.png') }}" 
-                     alt="School Logo" 
-                     class="school-logo">
+                     alt="Admin Logo" 
+                     class="admin-logo">
             </div>
         </div>
 

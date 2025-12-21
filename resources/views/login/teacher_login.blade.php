@@ -78,8 +78,8 @@
         <div class="image-side" id="image-side">
             <div class="logo-wrapper">
                 <img src="{{ asset('C:\xampp\htdocs\pansit_capstone\public\image\teacher.png') }}"
-                     alt="School Logo" 
-                     class="school-logo">
+                     alt="Teacher Logo" 
+                     class="teacher-logo">
             </div>
         </div>
 
