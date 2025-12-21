@@ -240,7 +240,7 @@ body {
 .feature-card:nth-child(5) i { color: #2563eb; }
 .feature-card:nth-child(6) i { color: #14b8a6; }
 
-/* TEXT */
+/* TEXT - Keep original styles */
 .feature-card h4 {
     font-size: 1.05rem;
     font-weight: 700;
