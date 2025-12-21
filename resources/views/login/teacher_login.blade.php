@@ -10,8 +10,8 @@
 
     <!-- VITE -->
     @vite([
-        'resources/css/login/teacher_login.css',
-        'resources/js/login/teacher_login.js'
+        'resources/css/login/student_login.css',
+        'resources/js/login/student_login.js'
     ])
 </head>
 <body>
@@ -27,7 +27,7 @@
 
                 <!-- ICON HEADER -->
                 <div class="icon-header">
-                    <img src="{{ asset('image/teacher.png') }}" alt="Teacher Icon">
+                    <img src="{{ asset('image/student.png') }}" alt="Teacher Icon">
                 </div>
 
                 <h1>Teacher Portal</h1>
@@ -95,7 +95,7 @@
             <div class="logo-wrapper">
                 <img
                     src="{{ asset('image/logo-removebg-preview.png') }}"
-                    alt="School Logo"
+                    alt="Teacher Logo"
                     class="teacher-logo"
                 >
             </div>

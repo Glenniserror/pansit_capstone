@@ -27,7 +27,7 @@
 
                 <!-- ICON HEADER -->
                 <div class="icon-header">
-                    <img src="{{ asset('image/admin.png') }}" alt="Admin Icon">
+                    <img src="{{ asset('/image/admin.jpg') }}" alt="Admin Icon">
                 </div>
 
                 <h1>Admin Portal</h1>
