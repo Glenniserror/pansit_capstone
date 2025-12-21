@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Portal | Bubog NHS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="C:\xampp\htdocs\pansit_capstone\public\image\logo-removebg-preview.png" rel="stylesheet">
     @vite([
     'resources/css/login/admin_login.css',
     'resources/js/login/admin_login.js'
@@ -77,7 +77,7 @@
         <!-- IMAGE SIDE -->
         <div class="image-side" id="image-side">
             <div class="logo-wrapper">
-                <img src="{{ asset('public/image/logo-removebg-preview.png') }}" 
+                <img src="{{ asset('C:\xampp\htdocs\pansit_capstone\public\image\admin.png') }}" 
                      alt="School Logo" 
                      class="school-logo">
             </div>
