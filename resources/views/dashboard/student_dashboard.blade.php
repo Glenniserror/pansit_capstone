@@ -5,12 +5,12 @@
     <title>Math Learning Assistant</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
+    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- VITE -->
+    <!-- Vite -->
     @vite([
         'resources/css/dashboard/student_dashboard.css',
         'resources/js/dashboard/student_dashboard.js'
@@ -26,16 +26,12 @@
     </div>
 
     <form method="POST" action="{{ route('logout') }}">
-    @csrf
-    <button type="submit" class="logout-btn">
-        Logout
-    </button>
-</form>
-
-    
+        @csrf
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
 </header>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main class="container">
 
     <!-- WELCOME -->
@@ -68,6 +64,7 @@
     <!-- MODULES -->
     <section class="modules">
         <h2>Learning Modules</h2>
+        <p class="subtitle">Track your progress across all topics</p>
 
         <div class="module">
             <div class="module-header">
@@ -105,29 +102,27 @@
 
     <!-- ACTIONS -->
     <section class="actions">
-        <div class="action-card blue">
+        <div class="action-card">
             <h3>AI Chatbot</h3>
             <p>Get instant help with your math questions</p>
-            <button>Start Chat</button>
+            <button class="btn-blue">Start Chat</button>
         </div>
 
-        <div class="action-card green">
+        <div class="action-card">
             <h3>Offline Materials</h3>
             <p>Download assessments to practice offline</p>
-            <button>View Downloads</button>
+            <button class="btn-green">View Downloads</button>
         </div>
 
-        <div class="action-card purple">
+        <div class="action-card">
             <h3>Summative Test</h3>
             <p>Test your knowledge with interactive exams</p>
-            <button>Start Test</button>
+            <button class="btn-blue">Start Test</button>
         </div>
     </section>
 
 </main>
 
-<!-- JS -->
-<script src="{{ asset('js/dashboard.js') }}"></script>
 <script>
     feather.replace();
 </script>
