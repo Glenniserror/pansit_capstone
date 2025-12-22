@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Learning Assistant - Dashboard</title>
-    @vite('resources/css/app.css')  <!-- Link to the compiled CSS -->
+    @vite('resources/css/app.css')  <!-- Compiled CSS -->
+    @vite('resources/js/app.js')    <!-- Compiled JS for animations -->
 </head>
 <body>
+    <!-- The rest of the HTML remains unchanged -->
     <div class="dashboard-container">
         <!-- Header -->
         <header class="header">

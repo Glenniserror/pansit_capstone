@@ -1,48 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Feather Icons
-    if (typeof feather !== 'undefined') {
-        feather.replace();
-    }
+// resources/js/app.js
 
-    // Animate elements on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+// Animate progress bars on load
+function animateProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    progressBars.forEach((bar, index) => {
+        const targetWidth = bar.style.width; // Get the target width from inline style
+        bar.style.width = '0%'; // Start from 0
+        setTimeout(() => {
+            bar.style.transition = 'width 1.5s ease-out';
+            bar.style.width = targetWidth;
+        }, index * 200); // Stagger animations
+    });
+}
 
+// Fade-in animation for cards
+function fadeInCards() {
+    const cards = document.querySelectorAll('.stat-card, .module-item, .action-card');
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                const element = entry.target;
-                const animationType = element.dataset.animate;
-                element.style.animation = `${animationType} 0.8s ease-out forwards`;
-                observer.unobserve(element);
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100); // Staggered delay
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    // Observe elements with data-animate
-    document.querySelectorAll('[data-animate]').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Animate progress bars
-    const progressBars = document.querySelectorAll('.progress-bar span');
-    progressBars.forEach(bar => {
-        const width = bar.dataset.width;
-        setTimeout(() => {
-            bar.style.width = `${width}%`;
-        }, 500); // Delay for staggered effect
-    });
-
-    // Add hover effects for cards
-    const cards = document.querySelectorAll('.card, .module, .action-card');
     cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-5px) scale(1.02)';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        observer.observe(card);
+    });
+}
+
+// Add hover effects (enhance existing CSS)
+function addHoverEffects() {
+    const buttons = document.querySelectorAll('.primary-btn, .secondary-btn, .view-topics-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            btn.style.transform = 'scale(1.05)';
         });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'scale(1)';
         });
     });
+}
+
+// Initialize animations on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    animateProgressBars();
+    fadeInCards();
+    addHoverEffects();
 });
