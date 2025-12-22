@@ -273,3 +273,106 @@ body {
     border-radius: var(--border-radius);
     padding: 32px;
     text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.action-card:hover {
+    box-shadow: var(--shadow-deep);
+    transform: translateY(-5px);
+}
+
+.action-icon {
+    margin-bottom: 20px;
+}
+
+.action-icon i {
+    width: 56px;
+    height: 56px;
+    color: var(--primary-color);
+}
+
+.action-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.action-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background: var(--text-primary);
+    color: white;
+    box-shadow: var(--shadow-hover);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .topbar {
+        padding: 15px 20px;
+    }
+    .welcome-title {
+        font-size: 28px;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+    .module-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
