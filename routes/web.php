@@ -1,10 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\StudentAuthController;
 use App\Http\Controllers\Auth\TeacherAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
 
 /*-----------Homepage-----------*/
 
@@ -57,3 +58,6 @@ Route::post('/logout', function () {
     return redirect('/'); // 👉 homepage
 })->name('logout');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
