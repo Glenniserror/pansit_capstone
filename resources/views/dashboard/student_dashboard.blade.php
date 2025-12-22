@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-   
+    <
      @vite([
         'resources/css/dashboard/student_dashboard.css',
         'resources/js/dashboard/student_dashboard.js'
