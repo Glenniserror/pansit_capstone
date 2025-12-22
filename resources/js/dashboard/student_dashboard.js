@@ -1,4 +1,4 @@
-// resources/js/app.js
+// resources/js/student_dashboard.js
 
 // Animate progress bars on load
 function animateProgressBars() {
