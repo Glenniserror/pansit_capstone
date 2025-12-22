@@ -13,12 +13,8 @@ use App\Http\Controllers\Auth\AdminAuthController;
 Route::get('/', function () {
     return view('glenn.homepage');
 });
+/*-----------Login-----------*/
 
-/*
-|--------------------------------------------------------------------------
-| Student Routes
-|--------------------------------------------------------------------------
-*/
 Route::prefix('student')->group(function () {
     // Login page
     Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
@@ -28,11 +24,6 @@ Route::prefix('student')->group(function () {
     Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Teacher Routes
-|--------------------------------------------------------------------------
-*/
 Route::prefix('teacher')->group(function () {
     // Login page
     Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
@@ -42,11 +33,6 @@ Route::prefix('teacher')->group(function () {
     Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Admin Routes
-|--------------------------------------------------------------------------
-*/
 Route::prefix('admin')->group(function () {
     // Login page
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
@@ -55,3 +41,9 @@ Route::prefix('admin')->group(function () {
     // Handle signup POST
     Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
 });
+
+/*-----------Dashboard-----------*/
+
+Route::get('/student/dashboard', function () {
+    return view('student.dashboard');
+})->name('student.dashboard');
