@@ -43,9 +43,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
 });
 
-Route::get('/student/login', function() {
-    return view('auth.student_login');
-})->name('student.login');
 
 Route::post('/student/login', [StudentAuthController::class, 'login'])
     ->name('student.login.submit');
