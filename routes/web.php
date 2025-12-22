@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\StudentAuthController;
 use App\Http\Controllers\Auth\TeacherAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\StudentDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,14 +45,12 @@ Route::prefix('admin')->group(function () {
 
 /*-----------Dashboard-----------*/
 
-/* LOGIN */
-Route::view('/student/login', 'login.student_login')->name('student.login');
-
-/* LOGIN SUBMIT */
+// Student login submit
 Route::post('/student/login', [StudentAuthController::class, 'login'])
     ->name('student.login.submit');
 
-/* STUDENT DASHBOARD */
-Route::get('/student/dashboard', function () {
-    return view('dashboard.student_dashboard');
-})->middleware('auth')->name('student.dashboard');
+// Student dashboard
+Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('student.dashboard');
+
