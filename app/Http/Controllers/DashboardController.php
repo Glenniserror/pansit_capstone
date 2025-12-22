@@ -32,6 +32,6 @@ class DashboardController extends Controller
             ],
         ];
 
-        return view('dashboard', $data);
+        return view('dashboard.student_dashboard', $data);
     }
 }
