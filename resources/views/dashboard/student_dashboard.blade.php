@@ -62,30 +62,55 @@
                 <h2 class="section-title">Learning Modules</h2>
                 <p class="section-subtitle">Track your progress across all topics</p>
 
-                <div class="module-list">
-    @if(isset($modules) && is_array($modules))
-        @foreach($modules as $module)
-            <div class="module-item">
-                <div class="module-info">
-                    <div class="module-title-row">
-                        @if(isset($module['completed']) && $module['completed'])
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        @else
-                            <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        @endif
-                        <span class="module-name">{{ $module['name'] ?? 'Unknown Module' }}</span>
+                <div class="dashboard-wrapper">
+    <div class="stats-row" style="display: flex; gap: 20px; margin-bottom: 30px;">
+        <div class="stat-item">
+            <h4>Overall Progress</h4>
+            <p><strong>{{ $overallProgress ?? 0 }}%</strong></p>
+            <small>Across all modules</small>
+        </div>
+        <div class="stat-item">
+            <h4>Quizzes Completed</h4>
+            <p><strong>{{ $quizzesCompleted ?? 0 }}</strong></p>
+            <small>Keep going!</small>
+        </div>
+        <div class="stat-item">
+            <h4>Current Streak</h4>
+            <p><strong>{{ $currentStreak ?? 0 }}</strong></p>
+            <small>Personal best!</small>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="module-list">
+        @if(isset($modules) && count($modules) > 0)
+            @foreach($modules as $module)
+                <div class="module-item" style="border: 1px solid #eee; padding: 15px; margin-bottom: 10px; border-radius: 8px;">
+                    <div class="module-info">
+                        <div class="module-title-row" style="display: flex; align-items: center; gap: 10px;">
+                            @if(isset($module['completed']) && $module['completed'])
+                                <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            @else
+                                <svg class="clock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            @endif
+                            <span class="module-name" style="font-weight: bold;">{{ $module['name'] ?? 'Unknown Module' }}</span>
+                        </div>
+                        <span class="percentage {{ (isset($module['completed']) && $module['completed']) ? 'green-text' : 'blue-text' }}">
+                            {{ $module['progress'] ?? 0 }} %
+                        </span>
                     </div>
-                    <span class="percentage {{ (isset($module['completed']) && $module['completed']) ? 'green-text' : 'blue-text' }}">{{ $module['progress'] ?? 0 }} %</span>
+
+                    <div class="progress-bar-bg" style="background: #e0e0e0; height: 10px; border-radius: 5px; margin: 10px 0;">
+                        <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; height: 100%; border-radius: 5px; background-color: {{ (isset($module['completed']) && $module['completed']) ? '#2ecc71' : '#3498db' }}; transition: width 0.3s;"></div>
+                    </div>
+                    <button class="view-topics-btn">View Topics</button>
                 </div>
-                <div class="progress-bar-bg">
-                    <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background-color: {{ (isset($module['completed']) && $module['completed']) ? '#2ecc71' : '#3498db' }};"></div>
-                </div>
-                <button class="view-topics-btn">View Topics</button>
-            </div>
-        @endforeach
-    @else
-        <p>No modules available.</p>
-    @endif
+            @endforeach
+        @else
+            <p>No modules available.</p>
+        @endif
+    </div>
 </div>
             </section>
 
