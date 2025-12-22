@@ -43,13 +43,13 @@ Route::prefix('admin')->group(function () {
     Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
 });
 
-/*-----------Dashboard-----------*/
+Route::get('/student/login', function() {
+    return view('auth.student_login');
+})->name('student.login');
 
-// Student login submit
 Route::post('/student/login', [StudentAuthController::class, 'login'])
     ->name('student.login.submit');
 
-// Student dashboard
 Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])
     ->middleware('auth')
     ->name('student.dashboard');

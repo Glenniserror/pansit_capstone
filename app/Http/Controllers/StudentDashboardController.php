@@ -6,6 +6,6 @@ class StudentDashboardController extends Controller
 {
     public function index()
     {
-        return view('student.dashboard'); // <- dashboard blade
+        return view('student.dashboard');
     }
 }
