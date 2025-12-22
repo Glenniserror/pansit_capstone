@@ -6,11 +6,8 @@ use App\Http\Controllers\Auth\TeacherAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\StudentDashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| Homepage
-|--------------------------------------------------------------------------
-*/
+/*-----------Homepage-----------*/
+
 Route::get('/', function () {
     return view('glenn.homepage');
 });
