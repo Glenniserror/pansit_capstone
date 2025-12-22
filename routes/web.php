@@ -44,6 +44,14 @@ Route::prefix('admin')->group(function () {
 
 /*-----------Dashboard-----------*/
 
+/* LOGIN */
+Route::view('/student/login', 'login.student_login')->name('student.login');
+
+/* LOGIN SUBMIT */
+Route::post('/student/login', [StudentAuthController::class, 'login'])
+    ->name('student.login.submit');
+
+/* STUDENT DASHBOARD */
 Route::get('/student/dashboard', function () {
-    return view('student.dashboard');
-})->name('student.dashboard');
+    return view('dashboard.student_dashboard');
+})->middleware('auth')->name('student.dashboard');
