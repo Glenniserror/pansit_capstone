@@ -43,6 +43,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
 });
 
+/*-----------Student_dashboard-----------*/
 
 Route::post('/student/login', [StudentAuthController::class, 'login'])
     ->name('student.login.submit');
@@ -50,4 +51,12 @@ Route::post('/student/login', [StudentAuthController::class, 'login'])
 Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])
     ->middleware('auth')
     ->name('student.dashboard');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+
+    return redirect('/'); // 👉 homepage
+})->name('logout');
 
