@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Learning Assistant - Dashboard</title>
-    @vite('resources/css/student_dashboard.css')  <!-- Compiled CSS -->
-    @vite('resources/js/student_dashboard.js')    <!-- Compiled JS for animations -->
+    @vite('resources/css/dashboard/student_dashboard.css')  <!-- Compiled CSS -->
+    @vite('resources/js/dashboard/student_dashboard.js')    <!-- Compiled JS for animations -->
 </head>
 <body>
     <!-- The rest of the HTML remains unchanged -->
