@@ -62,9 +62,9 @@
                     {{-- Gagamit tayo ng PHP array para siguradong may 3 modules na makikita --}}
                     @php
                         $displayModules = isset($modules) && count($modules) > 0 ? $modules : [
-                            ['name' => 'Introduction to Algebra', 'progress' => 0, 'completed' => false],
-                            ['name' => 'Linear Equations', 'progress' => 0, 'completed' => false],
-                            ['name' => 'Geometry Basics', 'progress' => 0, 'completed' => false]
+                            ['name' => 'Sequences and Series', 'progress' => 0, 'completed' => false],
+                            ['name' => 'Polynomial and Polynomial Equations', 'progress' => 0, 'completed' => false],
+                            ['name' => 'Advanced Equations and Functions', 'progress' => 0, 'completed' => false]
                         ];
                     @endphp
 
