@@ -63,30 +63,30 @@
                 <p class="section-subtitle">Track your progress across all topics</p>
 
                 <div class="module-list">
-                    @if(isset($modules) && is_array($modules))
-                        @foreach($modules as $module)
-                            <div class="module-item">
-                                <div class="module-info">
-                                    <div class="module-title-row">
-                                        @if(isset($module['completed']) && $module['completed'])
-                                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                        @else
-                                            <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                        @endif
-                                        <span class="module-name">{{ $module['name'] ?? 'Unknown Module' }}</span>
-                                    </div>
-                                    <span class="percentage {{ (isset($module['completed']) && $module['completed']) ? 'green-text' : 'blue-text' }}">{{ $module['progress'] ?? 0 }} %</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background-color: {{ (isset($module['completed']) && $module['completed']) ? '#2ecc71' : '#3498db' }};"></div>
-                                </div>
-                                <button class="view-topics-btn">View Topics</button>
-                            </div>
-                        @endforeach
-                    @else
-                        <p>No modules available.</p>
-                    @endif
+    @if(isset($modules) && is_array($modules))
+        @foreach($modules as $module)
+            <div class="module-item">
+                <div class="module-info">
+                    <div class="module-title-row">
+                        @if(isset($module['completed']) && $module['completed'])
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        @else
+                            <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        @endif
+                        <span class="module-name">{{ $module['name'] ?? 'Unknown Module' }}</span>
+                    </div>
+                    <span class="percentage {{ (isset($module['completed']) && $module['completed']) ? 'green-text' : 'blue-text' }}">{{ $module['progress'] ?? 0 }} %</span>
                 </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background-color: {{ (isset($module['completed']) && $module['completed']) ? '#2ecc71' : '#3498db' }};"></div>
+                </div>
+                <button class="view-topics-btn">View Topics</button>
+            </div>
+        @endforeach
+    @else
+        <p>No modules available.</p>
+    @endif
+</div>
             </section>
 
             <!-- Bottom Grid -->
