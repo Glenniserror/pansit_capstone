@@ -144,31 +144,27 @@
             </div>
         </main>
     </div>
-    <div id="chat-circle" class="btn btn-raised">
-    <div id="chat-overlay"></div>
-    <svg class="chat-icon" viewBox="0 0 24 24" fill="white">
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-    </svg>
+    <div id="ai-bubble" class="messenger-bubble">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
 </div>
 
-<div class="chat-box">
-    <div class="chat-box-header">
-        Math AI Assistant
-        <span class="chat-box-toggle">×</span>
-    </div>
-    <div class="chat-box-body">
-        <div class="chat-logs">
-            <div class="chat-msg ai">
-                <div class="cm-msg-text">
-                    Halo! Ako ang iyong Math AI. May itutulong ba ako sa Sequences or Polynomials?
-                </div>
-            </div>
+<div id="ai-chat-window" class="chat-window-compact">
+    <div class="chat-header">
+        <div class="user-info">
+            <div class="status-dot"></div>
+            <span>Math AI Assistant</span>
         </div>
+        <button id="close-chat">&times;</button>
     </div>
-    <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Magtanong tungkol sa Math..."/>
-        <button type="submit" class="chat-submit" id="chat-submit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    
+    <div id="chat-content" class="chat-content">
+        <div class="msg bot">Hello! Ask me any math questions.</div>
+    </div>
+
+    <div class="chat-footer">
+        <input type="text" id="ai-input" placeholder="Type a message...">
+        <button id="ai-send-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
     </div>
 </div>
