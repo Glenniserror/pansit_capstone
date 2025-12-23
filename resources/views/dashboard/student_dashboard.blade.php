@@ -17,8 +17,9 @@
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                <span class="brand-name">Math Learning Assistant</span>
+             <span class="brand-name"><span class="gradient-text">Math Learning Assistant</span></span>
             </div>
+
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
@@ -27,7 +28,9 @@
 
         <main class="content">
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome back, {{ auth()->user()->name ?? 'Student' }}!</h1>
+                <h1 class="welcome-title">
+                   <span class="gradient-text">Welcome back, {{ auth()->user()->name ?? 'Student' }}!</span>
+                </h1>
                 <p class="welcome-subtitle">Dive into advanced mathematics with cutting-edge tools</p>
             </div>
 
