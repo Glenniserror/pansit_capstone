@@ -1,17 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     /**
      * 1. PROGRESS BAR ANIMATION
-     * Kinukuha ang percentage mula sa Blade style attribute at dahan-dahang pinupuno ang bar.
+     * Kinukuha ang percentage mula sa Blade style attribute.
      */
     const progressFills = document.querySelectorAll('.progress-fill');
     
-    // Binigyan ng konting delay para makita ng user ang pag-load pagkabukas ng page
     setTimeout(() => {
         progressFills.forEach(fill => {
-            const targetWidth = fill.style.width; // Halimbawa: "46%"
-            fill.style.width = '0'; // I-reset sa zero muna
+            // Kunin ang width na galing sa Blade (halimbawa "0%" o "100%")
+            const targetWidth = fill.style.width; 
             
-            // Re-trigger animation pagkatapos ng maikling moment
+            // I-reset muna para sa animation effect
+            fill.style.width = '0'; 
+            
             setTimeout(() => {
                 fill.style.width = targetWidth;
             }, 150);
@@ -19,13 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
 
     /**
-     * 2. VIEW TOPICS BUTTON INTERACTION
-     * Dinagdagan natin ng effect kapag clinick ang "View Topics".
+     * 2. VIEW TOPICS BUTTON INTERACTION (WITH LOCK CHECK)
      */
     const viewTopicsBtns = document.querySelectorAll('.view-topics-btn');
     viewTopicsBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Konting "loading" feedback para sa user
+        btn.addEventListener('click', function(e) {
+            // 1. I-check kung locked ang module
+            if (this.hasAttribute('disabled') || this.closest('.module-locked')) {
+                e.preventDefault();
+                return; // Huwag ituloy ang action
+            }
+
+            // 2. Kung hindi locked, ituloy ang loading effect
             const originalText = this.innerText;
             this.innerText = 'Opening...';
             this.style.opacity = '0.7';
@@ -33,22 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 this.innerText = originalText;
                 this.style.opacity = '1';
-                // Dito mo pwedeng ilagay ang route link o modal logic
                 console.log('Module topics opened!');
+                // Dito pwedeng ilagay ang window.location.href = "/topics/1";
             }, 600);
         });
     });
 
     /**
-     * 3. GENERAL BUTTON & CARD HOVER EFFECTS
-     * Para sa AI Chatbot, Offline Materials, at Summative Test cards.
+     * 3. LOCKED MODULES ALERT
+     * Kapag clinick ang mismong card na locked, magbibigay ng feedback.
+     */
+    const lockedModules = document.querySelectorAll('.module-locked');
+    lockedModules.forEach(module => {
+        module.addEventListener('click', () => {
+            alert('🔒 Oops! Kailangan mo munang tapusin ang naunang module para ma-unlock ito.');
+        });
+    });
+
+    /**
+     * 4. GENERAL BUTTON & CARD HOVER EFFECTS
      */
     const interactiveElements = document.querySelectorAll('.action-card, .primary-btn, .secondary-btn, .logout-btn');
     
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            el.style.transform = 'translateY(-3px)';
-            el.style.transition = 'all 0.3s ease';
+            // Huwag lagyan ng effect kung locked ang action card (kung sakali)
+            if (!el.classList.contains('module-locked')) {
+                el.style.transform = 'translateY(-3px)';
+                el.style.transition = 'all 0.3s ease';
+            }
         });
 
         el.addEventListener('mouseleave', () => {
@@ -57,12 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /**
-     * 4. FAB (FLOATING ACTION BUTTON)
+     * 5. FAB (FLOATING ACTION BUTTON)
      */
     const fab = document.querySelector('.fab');
     if (fab) {
         fab.addEventListener('click', () => {
-            // Pwedeng palitan ito ng menu toggle sa future
             alert('Quick Math Tools: Calculator, Formula Sheet, and Notes coming soon!');
         });
     }
