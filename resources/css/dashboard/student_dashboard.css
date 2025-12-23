@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ==================================================
-   🎓 ULTRA-MINIMAL ACADEMIC THEME (FULL)
+   🎓 COLORED ACADEMIC THEME (PROFESSIONAL)
 ================================================== */
 :root {
-    --primary: #1e293b;
-    --blue: #334155;
-    --green: #166534;
-    --orange: #92400e;
+    --primary: #1e40af;        /* Academic Blue */
+    --primary-soft: #eff6ff;
+
+    --green: #15803d;          /* Success */
+    --green-soft: #ecfdf5;
+
+    --orange: #b45309;         /* Warning */
+    --orange-soft: #fff7ed;
 
     --bg-main: #f8fafc;
     --bg-card: #ffffff;
@@ -158,8 +162,11 @@ html, body {
     width: 20px;
     height: 20px;
     stroke-width: 1.8;
-    color: var(--text-muted);
 }
+
+.stat-icon.green { color: var(--green); }
+.stat-icon.orange { color: var(--orange); }
+.stat-icon.blue { color: var(--primary); }
 
 .stat-value {
     font-size: 38px;
@@ -228,7 +235,7 @@ html, body {
     width: 18px;
     height: 18px;
     stroke-width: 1.8;
-    color: var(--text-muted);
+    color: var(--primary);
 }
 
 .module-name {
@@ -241,7 +248,7 @@ html, body {
 }
 
 .green-text { color: var(--green); }
-.blue-text { color: var(--blue); }
+.blue-text { color: var(--primary); }
 
 .progress-bar-bg {
     height: 10px;
@@ -253,7 +260,11 @@ html, body {
 
 .progress-fill {
     height: 100%;
-    background: var(--primary);
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        #3b82f6
+    );
 }
 
 /* ================= BUTTONS ================= */
@@ -273,7 +284,11 @@ html, body {
 }
 
 .primary-btn {
-    background: var(--primary);
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        #2563eb
+    );
     color: white;
     border: none;
 }
@@ -312,10 +327,10 @@ html, body {
 }
 
 .icon-box {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    background: var(--bg-soft);
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: var(--primary-soft);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -345,11 +360,15 @@ html, body {
     position: fixed;
     bottom: 32px;
     right: 32px;
-    width: 52px;
-    height: 52px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     border: none;
-    background: var(--primary);
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        #2563eb
+    );
     color: white;
     cursor: pointer;
     box-shadow: var(--shadow-md);
