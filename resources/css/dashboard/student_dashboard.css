@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* ================= ROOT ================= */
+/* ==================================================
+   🎓 ULTRA-MINIMAL ACADEMIC THEME (FULL)
+================================================== */
 :root {
-    --primary: #1a365d;
-    --blue: #2563eb;
-    --green: #16a34a;
-    --orange: #f59e0b;
+    --primary: #1e293b;
+    --blue: #334155;
+    --green: #166534;
+    --orange: #92400e;
 
     --bg-main: #f8fafc;
     --bg-card: #ffffff;
     --bg-soft: #f1f5f9;
 
-    --border: #e2e8f0;
+    --border: #e5e7eb;
 
     --text-main: #0f172a;
     --text-sub: #475569;
@@ -39,6 +41,7 @@ html, body {
     font-family: 'Inter', sans-serif;
     background: var(--bg-main);
     color: var(--text-main);
+    line-height: 1.6;
 }
 
 .dashboard-overlay,
@@ -73,8 +76,10 @@ html, body {
 }
 
 .logo-icon {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.8;
+    stroke: var(--primary);
 }
 
 .brand-name {
@@ -104,7 +109,7 @@ html, body {
 .welcome-title {
     font-size: 42px;
     font-weight: 900;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     margin-bottom: 12px;
 }
 
@@ -144,19 +149,17 @@ html, body {
 .stat-label {
     font-size: 12px;
     font-weight: 800;
-    letter-spacing: .12em;
+    letter-spacing: .1em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
 
 .stat-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.8;
+    color: var(--text-muted);
 }
-
-.stat-icon.green { color: var(--green); }
-.stat-icon.orange { color: var(--orange); }
-.stat-icon.blue { color: var(--blue); }
 
 .stat-value {
     font-size: 38px;
@@ -221,6 +224,13 @@ html, body {
     gap: 12px;
 }
 
+.module-title-row svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.8;
+    color: var(--text-muted);
+}
+
 .module-name {
     font-weight: 700;
     font-size: 18px;
@@ -273,6 +283,13 @@ html, body {
     border: 1px solid var(--border);
 }
 
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible,
+.view-topics-btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
 /* ================= ACTION CARDS ================= */
 .bottom-grid {
     display: grid;
@@ -295,14 +312,21 @@ html, body {
 }
 
 .icon-box {
-    width: 58px;
-    height: 58px;
-    border-radius: var(--radius);
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
     background: var(--bg-soft);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+.icon-box svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.8;
+    stroke: var(--primary);
 }
 
 .card-title {
@@ -321,8 +345,8 @@ html, body {
     position: fixed;
     bottom: 32px;
     right: 32px;
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: none;
     background: var(--primary);
@@ -331,18 +355,24 @@ html, body {
     box-shadow: var(--shadow-md);
 }
 
+.fab svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
     .dashboard-container {
         padding: 24px;
     }
 
-    .welcome-title {
-        font-size: 32px;
-    }
-
     .header {
         flex-direction: column;
         gap: 16px;
+    }
+
+    .welcome-title {
+        font-size: 32px;
     }
 }
