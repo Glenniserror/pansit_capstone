@@ -85,3 +85,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const chatCircle = document.getElementById('chat-circle');
+    const chatBox = document.querySelector('.chat-box');
+    const chatToggle = document.querySelector('.chat-box-toggle');
+    const chatInput = document.getElementById('chat-input');
+    const chatSubmit = document.getElementById('chat-submit');
+    const chatLogs = document.querySelector('.chat-logs');
+
+    // Buksan/Isara ang Chat
+    chatCircle.addEventListener('click', () => {
+        chatBox.style.display = 'flex';
+        chatCircle.style.display = 'none';
+    });
+
+    chatToggle.addEventListener('click', () => {
+        chatBox.style.display = 'none';
+        chatCircle.style.display = 'block';
+    });
+
+    // Function para mag-add ng message sa UI
+    function appendMessage(type, text) {
+        const msg = document.createElement('div');
+        msg.className = `chat-msg ${type}`;
+        msg.innerHTML = `<div class="cm-msg-text">${text}</div>`;
+        chatLogs.appendChild(msg);
+        chatLogs.scrollTop = chatLogs.scrollHeight;
+    }
+
+    // Event kapag nag-send ang user
+    chatSubmit.addEventListener('click', async () => {
+        const message = chatInput.value.trim();
+        if(!message) return;
+
+        appendMessage('user', message);
+        chatInput.value = '';
+
+        // Dito mo ikokonek sa Backend/AI API mo
+        // Sample placeholder response:
+        setTimeout(() => {
+            appendMessage('ai', "Nag-iisip ako... Ang sagot sa iyong math question ay...");
+        }, 1000);
+    });
+});
