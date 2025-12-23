@@ -84,7 +84,7 @@ html, body {
 
 /* HERO */
 .hero-section {
-    text-align: right; /* Changed from center to right */
+    text-align: left; /* Changed from center to left */
     margin-bottom: 48px;
 }
 
