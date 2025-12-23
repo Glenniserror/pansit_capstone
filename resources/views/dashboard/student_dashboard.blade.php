@@ -67,24 +67,17 @@
                             ['name' => 'Polynomials and Polynomial Equations', 'progress' => 0, 'completed' => false],
                             ['name' => 'Advanced Equations and Functions', 'progress' => 0, 'completed' => false]
                         ];
-                        
-                        // Ito ang logic: Ang unang module ay laging unlock (canAccessNext = true sa simula)
                         $canAccessNext = true; 
                     @endphp
 
                     @foreach($displayModules as $module)
-                        @php
-                            $isLocked = !$canAccessNext;
-                        @endphp
+                        @php $isLocked = !$canAccessNext; @endphp
 
                         <div class="module-item {{ $isLocked ? 'module-locked' : '' }}">
                             <div class="module-info">
                                 <div class="module-title-row">
                                     @if($isLocked)
-                                        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" style="width:18px; height:18px; margin-right:8px;">
-                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                        </svg>
+                                        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" style="width:18px; height:18px; margin-right:8px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                                     @elseif($module['completed'] ?? false)
                                         <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                     @else
@@ -99,23 +92,17 @@
                             <div class="progress-bar-bg">
                                 <div class="progress-fill" style="width: {{ $module['progress'] }}%; background: {{ $isLocked ? '#e0e0e0' : '#007bff' }};"></div>
                             </div>
-                            
                             <button class="view-topics-btn" {{ $isLocked ? 'disabled' : '' }}>
                                 {{ $isLocked ? 'Locked' : 'View Topics' }}
                             </button>
                         </div>
-
-                        @php
-                            // Pagkatapos ng bawat loop, iche-check kung tapos na ba itong module na to.
-                            // Kung tapos na (100%), ang SUSUNOD na module sa loop ay magiging unlock.
-                            $canAccessNext = (($module['progress'] ?? 0) == 100);
-                        @endphp
+                        @php $canAccessNext = (($module['progress'] ?? 0) == 100); @endphp
                     @endforeach
                 </div>
             </section>
 
             <div class="bottom-grid">
-                <div class="action-card">
+                <div class="action-card" id="aiChatCard">
                     <div class="icon-box blue-bg">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </div>
@@ -144,5 +131,34 @@
             </div>
         </main>
     </div>
+
+    <div class="ai-chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="ai-info">
+                <div class="ai-avatar">AI</div>
+                <span>Math Assistant</span>
+            </div>
+            <button class="close-chat" id="closeChat">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message ai-msg">Hi! I'm your Math Assistant. How can I help you today?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Ask a math question..." id="chatInput">
+            <button id="sendMessage">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <button class="chat-fab" id="openChat">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </button>
+
 </body>
 </html>
