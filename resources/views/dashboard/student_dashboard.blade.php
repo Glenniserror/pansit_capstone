@@ -67,28 +67,49 @@
                             ['name' => 'Polynomials and Polynomial Equations', 'progress' => 0, 'completed' => false],
                             ['name' => 'Advanced Equations and Functions', 'progress' => 0, 'completed' => false]
                         ];
+                        
+                        // Ito ang logic: Ang unang module ay laging unlock (canAccessNext = true sa simula)
+                        $canAccessNext = true; 
                     @endphp
 
                     @foreach($displayModules as $module)
-                        <div class="module-item">
+                        @php
+                            $isLocked = !$canAccessNext;
+                        @endphp
+
+                        <div class="module-item {{ $isLocked ? 'module-locked' : '' }}">
                             <div class="module-info">
                                 <div class="module-title-row">
-                                    @if($module['completed'] ?? false)
+                                    @if($isLocked)
+                                        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" style="width:18px; height:18px; margin-right:8px;">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                    @elseif($module['completed'] ?? false)
                                         <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                     @else
                                         <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                                     @endif
                                     <span class="module-name">{{ $module['name'] }}</span>
                                 </div>
-                                <span class="percentage blue-text">
-                                    {{ $module['progress'] }}%
+                                <span class="percentage {{ $isLocked ? 'gray-text' : 'blue-text' }}">
+                                    {{ $isLocked ? 'Locked' : $module['progress'] . '%' }}
                                 </span>
                             </div>
                             <div class="progress-bar-bg">
-                                <div class="progress-fill" style="width: {{ $module['progress'] }}%; background: #007bff;"></div>
+                                <div class="progress-fill" style="width: {{ $module['progress'] }}%; background: {{ $isLocked ? '#e0e0e0' : '#007bff' }};"></div>
                             </div>
-                            <button class="view-topics-btn">View Topics</button>
+                            
+                            <button class="view-topics-btn" {{ $isLocked ? 'disabled' : '' }}>
+                                {{ $isLocked ? 'Locked' : 'View Topics' }}
+                            </button>
                         </div>
+
+                        @php
+                            // Pagkatapos ng bawat loop, iche-check kung tapos na ba itong module na to.
+                            // Kung tapos na (100%), ang SUSUNOD na module sa loop ay magiging unlock.
+                            $canAccessNext = (($module['progress'] ?? 0) == 100);
+                        @endphp
                     @endforeach
                 </div>
             </section>
