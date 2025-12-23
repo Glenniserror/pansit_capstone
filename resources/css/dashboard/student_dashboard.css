@@ -75,18 +75,13 @@ body {
     width: 36px;
     height: 36px;
 }
+
 .brand-name {
     font-weight: 800;
     font-size: 1.2rem;
-}
-
-.gradient-text {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;   /* Chrome, Safari, Edge */
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;            /* Standard, future-proof */
-    color: transparent;                /* Fallback for unsupported browsers */
-    display: inline-block;             /* Required for background-clip to work */
 }
 
 .logout-btn {
@@ -117,15 +112,9 @@ body {
 .welcome-title {
     font-size: 2.6rem;
     font-weight: 900;
-}
-
-.gradient-text {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;   /* Chrome, Safari, Edge */
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;            /* Standard (future-proof) */
-    color: transparent;                /* Fallback for unsupported browsers */
-    display: inline-block;             /* Needed for background-clip to work reliably */
 }
 
 .welcome-subtitle {
