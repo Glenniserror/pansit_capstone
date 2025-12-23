@@ -84,7 +84,7 @@ html, body {
 
 /* HERO */
 .hero-section {
-    text-align: center;
+    text-align: right; /* Changed from center to right */
     margin-bottom: 48px;
 }
 
@@ -99,7 +99,6 @@ html, body {
     color: var(--text-secondary);
     font-size: 16px;
 }
-
 /* STATS */
 .stats-grid {
     display: grid;
