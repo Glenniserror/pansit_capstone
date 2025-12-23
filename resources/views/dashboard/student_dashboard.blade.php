@@ -84,7 +84,7 @@
                                 </span>
                             </div>
                             <div class="progress-bar-bg">
-                                <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background-color: {{ ($module['completed'] ?? false) ? '#2ecc71' : '#3498db' }};"></div>
+                                <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background: linear-gradient(90deg, {{ ($module['completed'] ?? false) ? '#2ecc71, #27ae60' : '#3498db, #2980b9' }});"></div>
                             </div>
                             <button class="view-topics-btn">View Topics</button>
                         </div>
