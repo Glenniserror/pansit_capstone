@@ -195,3 +195,113 @@ body {
 .stat-card:nth-child(1) { animation-delay: 0.1s; }
 .stat-card:nth-child(2) { animation-delay: 0.2s; }
 .stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Bottom Grid Layout */
+.bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dalawang column lang gaya ng image */
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Pag-target sa Summative Test para lumipat sa ilalim ng AI Chatbot */
+.bottom-grid .action-card:nth-child(3) {
+    grid-column: 1; /* Nilalagay ang Summative Test sa unang column */
+}
+
+/* Pag-target sa Offline Materials para tumakip sa vertical space sa kanan */
+.bottom-grid .action-card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1 / span 2; /* Pinapahaba nito ang Offline Materials card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.action-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.action-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Icon Boxes */
+.icon-box {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Blue Style (Chatbot & Summative) */
+.blue-bg { 
+    background-color: #eef5ff; 
+}
+.blue-bg svg { 
+    stroke: #007bff; 
+    width: 24px;
+}
+
+/* Green Style (Offline Materials) */
+.green-bg { 
+    background-color: #eafff2; 
+}
+.green-bg svg { 
+    stroke: #28a745; 
+    width: 24px;
+}
+
+/* Button Styles */
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    color: #333;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.secondary-btn:hover {
+    background-color: #f8f9fa;
+}
+
+/* Texts */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
