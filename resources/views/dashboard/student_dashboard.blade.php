@@ -35,7 +35,7 @@
                         <span class="stat-label">Overall Progress</span>
                         <svg class="stat-icon green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
                     </div>
-                    <div class="stat-value">{{ $overallProgress ?? 46 }}%</div>
+                    <div class="stat-value">0%</div>
                     <div class="stat-desc">Across all modules</div>
                 </div>
                 <div class="stat-card">
@@ -43,7 +43,7 @@
                         <span class="stat-label">Quizzes Completed</span>
                         <svg class="stat-icon orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
                     </div>
-                    <div class="stat-value">{{ $quizzesCompleted ?? '12/20' }}</div>
+                    <div class="stat-value">0/20</div>
                     <div class="stat-desc">Keep going!</div>
                 </div>
                 <div class="stat-card">
@@ -51,7 +51,7 @@
                         <span class="stat-label">Current Streak</span>
                         <svg class="stat-icon blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                     </div>
-                    <div class="stat-value">{{ $currentStreak ?? 7 }} days</div>
+                    <div class="stat-value">0 days</div>
                     <div class="stat-desc">Personal best!</div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 <div class="module-list">
                     @php
                         $displayModules = isset($modules) && count($modules) > 0 ? $modules : [
-                            ['name' => 'Sequences and Series', 'progress' => 100, 'completed' => true],
+                            ['name' => 'Sequences and Series', 'progress' => 0, 'completed' => false],
                             ['name' => 'Polynomials and Polynomial Equations', 'progress' => 0, 'completed' => false],
                             ['name' => 'Advanced Equations and Functions', 'progress' => 0, 'completed' => false]
                         ];
@@ -80,12 +80,12 @@
                                     @endif
                                     <span class="module-name">{{ $module['name'] }}</span>
                                 </div>
-                                <span class="percentage {{ ($module['completed'] ?? false) ? 'green-text' : 'blue-text' }}">
+                                <span class="percentage blue-text">
                                     {{ $module['progress'] }}%
                                 </span>
                             </div>
                             <div class="progress-bar-bg">
-                                <div class="progress-fill" style="width: {{ $module['progress'] }}%; background: {{ ($module['completed'] ?? false) ? '#28a745' : '#007bff' }};"></div>
+                                <div class="progress-fill" style="width: {{ $module['progress'] }}%; background: #007bff;"></div>
                             </div>
                             <button class="view-topics-btn">View Topics</button>
                         </div>
