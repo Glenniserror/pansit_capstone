@@ -13,7 +13,7 @@
     <div class="dashboard-container">
         <header class="header">
             <div class="logo-section">
-                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#4A90E2" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
@@ -76,9 +76,9 @@
                             <div class="module-info">
                                 <div class="module-title-row">
                                     @if($module['completed'] ?? false)
-                                        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                     @else
-                                        <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                                     @endif
                                     <span class="module-name">{{ $module['name'] ?? 'Module' }}</span>
                                 </div>
@@ -87,7 +87,7 @@
                                 </span>
                             </div>
                             <div class="progress-bar-bg">
-                                <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background: linear-gradient(90deg, {{ ($module['completed'] ?? false) ? '#00ff88, #00cc66' : '#00d4ff, #0099cc' }});"></div>
+                                <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background: linear-gradient(90deg, {{ ($module['completed'] ?? false) ? '#28a745, #20c997' : '#007bff, #0056b3' }});"></div>
                             </div>
                             <button class="view-topics-btn">View Topics</button>
                         </div>
@@ -98,7 +98,7 @@
             <div class="bottom-grid">
                 <div class="action-card">
                     <div class="icon-box blue-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </div>
                     <h3 class="card-title">AI Chatbot</h3>
                     <p class="card-desc">Instant AI-powered math assistance</p>
@@ -107,7 +107,7 @@
 
                 <div class="action-card">
                     <div class="icon-box green-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                     </div>
                     <h3 class="card-title">Offline Materials</h3>
                     <p class="card-desc">Premium downloadable resources</p>
@@ -116,7 +116,7 @@
 
                 <div class="action-card">
                     <div class="icon-box light-blue-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                     </div>
                     <h3 class="card-title">Summative Test</h3>
                     <p class="card-desc">Challenge your expertise</p>
