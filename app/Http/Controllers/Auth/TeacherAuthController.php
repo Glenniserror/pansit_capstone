@@ -14,29 +14,6 @@ class TeacherAuthController extends Controller
         return view('login.teacher_login'); 
     }
 
-    public function showRegistrationForm() {
-        return view('auth.teacher_register'); 
-    }
-
-    public function register(Request $request) {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 'teacher', 
-        ]);
-
-        Auth::login($user);
-
-        return redirect()->route('teacher.dashboard');
-    }
-
     public function login(Request $request) {
         $credentials = $request->validate([
             'email' => 'required|email', 
@@ -44,7 +21,7 @@ class TeacherAuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials) && Auth::user()->role === 'teacher') {
-            $request->session()->regenerate();
+            $request->session()->regenerate(); // Mahalaga para iwas 419 error
             return redirect()->route('teacher.dashboard');
         }
 
@@ -52,16 +29,10 @@ class TeacherAuthController extends Controller
         return back()->withErrors(['email' => 'Invalid teacher credentials.']);
     }
 
-    /**
-     * FIXED: Pagkatapos mag-logout, ibabalik ang user sa homepage.
-     */
     public function logout(Request $request) {
         Auth::logout();
-        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
-        // Dito binago mula student.login patungong homepage
         return redirect()->route('homepage'); 
     }
 }

@@ -17,16 +17,17 @@
                 </svg>
                 <span class="nav-brand">Teacher Dashboard</span>
             </div>
-
-            <form method="POST" action="{{ route('student.logout') }}">
-                @csrf 
+            
+            {{-- FIXED LOGOUT: Tumuturo sa teacher.logout route --}}
+            <form method="POST" action="{{ route('teacher.logout') }}">
+                @csrf
                 <button type="submit" class="header-logout-btn">Logout</button>
             </form>
         </header>
 
         <main class="main-container">
             <section class="welcome-banner reveal">
-                <h1>Welcome, {{ Auth::check() ? Auth::user()->name : 'Teacher' }}</h1>
+                <h1>Welcome, {{ Auth::user()->name }}</h1>
                 <p>Monitor and guide your students' progress</p>
             </section>
 
@@ -47,29 +48,11 @@
                     </div>
                     <div class="stat-icon green">📈</div>
                 </div>
-                <div class="stat-card reveal">
-                    <div class="stat-content">
-                        <span class="label">Pending Reviews</span>
-                        <h2 class="number">18</h2>
-                        <span class="desc">Quizzes to grade</span>
-                    </div>
-                    <div class="stat-icon orange">📄</div>
-                </div>
-                <div class="stat-card reveal">
-                    <div class="stat-content">
-                        <span class="label">Messages</span>
-                        <h2 class="number">7</h2>
-                        <span class="desc">Unread Messages</span>
-                    </div>
-                    <div class="stat-icon light-blue">💬</div>
-                </div>
             </section>
 
             <div class="dashboard-main-content">
                 <section class="activity-card reveal">
                     <h3 class="card-title">Recent Student Activity</h3>
-                    <p class="card-subtitle">Monitor your students' progress</p>
-
                     <div class="student-list">
                         <div class="student-item">
                             <div class="info">
@@ -85,13 +68,6 @@
                             </div>
                             <span class="status-badge good">Good</span>
                         </div>
-                        <div class="student-item">
-                            <div class="info">
-                                <strong>Kristine Villamor</strong>
-                                <span>Progress: 45%</span>
-                            </div>
-                            <span class="status-badge help">Needs Help</span>
-                        </div>
                     </div>
                     <button class="btn-outline-wide">View All Students</button>
                 </section>
@@ -99,20 +75,11 @@
                 <aside class="actions-column">
                     <div class="action-panel reveal">
                         <h3>Provide Feedback</h3>
-                        <p>Send personalized recommendations to students</p>
                         <button class="btn-primary-blue">Send Feedback</button>
                     </div>
-
                     <div class="action-panel reveal">
                         <h3>Print Materials</h3>
-                        <p>Download modules for offline distribution</p>
                         <button class="btn-outline-gray">📥 Generate PDFs</button>
-                    </div>
-
-                    <div class="action-panel reveal">
-                        <h3>Generate Reports</h3>
-                        <p>Create detailed performance reports</p>
-                        <button class="btn-outline-gray">📊 View Reports</button>
                     </div>
                 </aside>
             </div>

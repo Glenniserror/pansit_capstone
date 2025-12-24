@@ -40,9 +40,9 @@ Route::prefix('teacher')->group(function () {
     Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
 
     // Dashboard (Protektado ng Auth)
-     Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard')->middleware('auth');
-    });
-
+    // Siguraduhing ang 'auth' middleware ay naka-setup sa iyong app
+    Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard')->middleware('auth');
+});
 
 /*----------- Admin Routes -----------*/
 Route::prefix('admin')->group(function () {
