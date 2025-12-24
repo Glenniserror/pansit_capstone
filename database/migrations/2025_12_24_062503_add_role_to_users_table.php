@@ -9,15 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
-            // Idinagdag ang 'role' column pagkatapos ng 'email'
-            // Nilagyan din natin ng default value na 'student' para hindi mag-error sa luma
-            $table->string('role')->default('student')->after('email');
-        });
-    }
-
+    public function up(): void {
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('role')->default('student')->after('email');
+    });
+}
     /**
      * Reverse the migrations.
      */
