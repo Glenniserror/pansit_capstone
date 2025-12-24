@@ -17,25 +17,41 @@ Route::get('/', function () {
     return view('glenn.homepage');
 })->name('homepage');
 
-    // Student Auth
-    Route::prefix('student')->group(function () {
-        Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
-        Route::post('/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
-        Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
-    });
+/*----------- Student Routes -----------*/
+Route::prefix('student')->group(function () {
+    // Auth
+    Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
+    Route::post('/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
+    Route::get('/register', [StudentAuthController::class, 'showRegistrationForm'])->name('student.register');
+    Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register.submit');
+    Route::post('/logout', [StudentAuthController::class, 'logout'])->name('student.logout');
 
-    // Teacher Auth
-    Route::prefix('teacher')->group(function () {
-        Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
-        Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
-        Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register');
-    });
+    // Dashboard (Protektado ng Auth)
+    Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard')->middleware('auth');
+});
 
-    // Admin Auth
-    Route::prefix('admin')->group(function () {
-        Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-        Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
-        Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
-    });
+/*----------- Teacher Routes -----------*/
+Route::prefix('teacher')->group(function () {
+    // Auth
+    Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
+    Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
+    Route::get('/register', [TeacherAuthController::class, 'showRegistrationForm'])->name('teacher.register');
+    Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register.submit');
+    Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
 
+    // Dashboard (Protektado ng Auth)
+    Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard')->middleware('auth');
+});
 
+/*----------- Admin Routes -----------*/
+Route::prefix('admin')->group(function () {
+    // Auth
+    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+    Route::get('/register', [AdminAuthController::class, 'showRegistrationForm'])->name('admin.register');
+    Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register.submit');
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+    // Dashboard (Protektado ng Auth)
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
+});
