@@ -1,38 +1,42 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class TeacherAuthController extends Controller
 {
-    public function showLoginForm() { 
-        return view('login.teacher_login'); 
+    // Ipakita ang Login Form
+    public function showLogin()
+    {
+        return view('auth.teacher-login');
     }
 
-    public function login(Request $request) {
+    // Proseso ng Login
+    public function login(Request $request)
+    {
         $credentials = $request->validate([
-            'email' => 'required|email', 
-            'password' => 'required'
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials) && Auth::user()->role === 'teacher') {
-            $request->session()->regenerate(); // Mahalaga para iwas 419 error
-            return redirect()->route('teacher.dashboard');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('teacher/dashboard');
         }
 
-        Auth::logout();
-        return back()->withErrors(['email' => 'Invalid teacher credentials.']);
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
-    public function logout(Request $request) {
+    // Proseso ng Logout
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('homepage'); 
+        return redirect('/teacher/login');
     }
 }
