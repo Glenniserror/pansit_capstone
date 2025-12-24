@@ -32,15 +32,17 @@ Route::prefix('student')->group(function () {
 
 /*----------- Teacher Routes -----------*/
 Route::prefix('teacher')->group(function () {
-    // Auth
+    // Auth 
     Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
     Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
-    Route::get('/register', [TeacherAuthController::class, 'showRegistrationForm'])->name('teacher.register');
-    Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register.submit');
+    Route::get('/register', [TeacherAuthController::class, 'showRegistrationForm'])->name('teacher.register.form');
+    Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register'); 
     Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
 
     // Dashboard (Protektado ng Auth)
-    Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard')->middleware('auth');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
+    });
 });
 
 /*----------- Admin Routes -----------*/
