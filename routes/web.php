@@ -27,7 +27,7 @@ Route::prefix('student')->group(function () {
     Route::post('/logout', [StudentAuthController::class, 'logout'])->name('student.logout');
 
     // Dashboard (Protektado ng Auth)
-    Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard')->middleware('auth');
+    Route::get('/', [StudentDashboardController::class, 'index'])->name('student.dashboard')->middleware('auth');
 });
 
 /*----------- Teacher Routes -----------*/

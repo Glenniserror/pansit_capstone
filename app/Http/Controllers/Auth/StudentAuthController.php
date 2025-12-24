@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User; // Siguraduhing naka-import ang User model
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class StudentAuthController extends Controller
@@ -14,10 +14,8 @@ class StudentAuthController extends Controller
         return view('login.student_login'); 
     }
 
-    // --- DAGDAG NA REGISTER METHODS ---
-
     public function showRegistrationForm() {
-        return view('auth.student_register'); // Siguraduhing mayroon kang ganitong view file
+        return view('auth.student_register'); 
     }
 
     public function register(Request $request) {
@@ -31,15 +29,13 @@ class StudentAuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'student', // Awtomatikong 'student' ang role
+            'role' => 'student', 
         ]);
 
         Auth::login($user);
 
         return redirect()->route('student.dashboard');
     }
-
-    // --- END NG REGISTER METHODS ---
 
     public function login(Request $request) {
         $credentials = $request->validate([
@@ -56,10 +52,16 @@ class StudentAuthController extends Controller
         return back()->withErrors(['email' => 'Invalid student credentials.']);
     }
 
+    /**
+     * FIXED: Pagkatapos mag-logout, ibabalik ang user sa homepage.
+     */
     public function logout(Request $request) {
         Auth::logout();
+        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('student.login');
+        
+        // Dito binago mula student.login patungong homepage
+        return redirect()->route('homepage'); 
     }
 }
