@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Idadagdag ang 'role' column pagkatapos ng email
-            // Ginawa nating default ay 'student'
+            // Idinagdag ang 'role' column pagkatapos ng 'email'
+            // Nilagyan din natin ng default value na 'student' para hindi mag-error sa luma
             $table->string('role')->default('student')->after('email');
         });
     }
@@ -24,7 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Tatanggalin ang column kapag ni-rollback
+            // Tatanggalin ang column kapag ni-rollback ang migration
             $table->dropColumn('role');
         });
     }

@@ -15,19 +15,19 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role', // <--- Idinagdag ko na dito para gumana ang Role system natin
+        'role', // Pinapayagan nito ang Laravel na i-save ang role sa database
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
