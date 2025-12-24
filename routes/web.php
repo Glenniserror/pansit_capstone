@@ -40,10 +40,9 @@ Route::prefix('teacher')->group(function () {
     Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
 
     // Dashboard (Protektado ng Auth)
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
+    Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
     });
-});
+
 
 /*----------- Admin Routes -----------*/
 Route::prefix('admin')->group(function () {
