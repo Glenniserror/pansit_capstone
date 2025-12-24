@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role', // <--- Idinagdag ko na dito para gumana ang Role system natin
     ];
 
     /**
