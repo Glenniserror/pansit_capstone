@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard | Bubog NHS</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
 </head>
 <body>
@@ -24,6 +23,13 @@
 <main class="dashboard-container">
     <header class="welcome-header">
         <h1>Welcome, {{ Auth::user()->name }}</h1>
+        
+        @if(session('success'))
+            <div style="background: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c8e6c9;">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <p>You have no active student activity yet. Start by reviewing modules or enrolling students.</p>
     </header>
 
@@ -100,20 +106,6 @@
 </main>
 
 <div id="ai-bubble" class="fab">💬</div>
-
-<script>
-    @if(session('success'))
-        Swal.fire({ 
-            icon: 'success', 
-            title: 'Logged In', 
-            text: "{{ session('success') }}", 
-            timer: 2000, 
-            showConfirmButton: false,
-            toast: true,
-            position: 'top-end'
-        });
-    @endif
-</script>
 
 </body>
 </html>
