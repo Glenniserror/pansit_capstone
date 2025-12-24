@@ -1,42 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
+import './bootstrap';
 
-    /**
-     * 1. REVEAL ANIMATION ON SCROLL
-     */
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+                // Staggered effect (sunod-sunod na lilitaw)
+                setTimeout(() => {
+                    entry.target.classList.add('card-visible');
+                }, index * 100);
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    // Apply animation to all cards
+    document.querySelectorAll('.card').forEach(card => {
+        card.classList.add('card-animate');
+        observer.observe(card);
+    });
 
-    /**
-     * 2. BUTTON INTERACTION & HOVER
-     */
-    const buttons = document.querySelectorAll('.btn-primary-blue, .btn-outline-gray, .btn-outline-wide');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const originalText = this.innerText;
-            this.style.opacity = '0.7';
-            this.innerText = 'Processing...';
-            
-            setTimeout(() => {
-                this.style.opacity = '1';
-                this.innerText = originalText;
-            }, 800);
-        });
-
-        btn.addEventListener('mouseenter', () => {
-            btn.style.transform = 'translateY(-2px)';
-            btn.style.transition = '0.3s ease';
-        });
-
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'translateY(0)';
-        });
+    // Button click animation effect
+    document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('mousedown', () => btn.style.transform = 'scale(0.95)');
+        btn.addEventListener('mouseup', () => btn.style.transform = 'scale(1)');
     });
 });

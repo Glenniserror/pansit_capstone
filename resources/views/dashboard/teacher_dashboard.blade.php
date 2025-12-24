@@ -3,87 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Teacher Dashboard</title>
     @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
 </head>
 <body>
-    <div class="dashboard-wrapper">
-        <header class="top-navbar">
-            <div class="header-left">
-                <svg class="nav-logo" viewBox="0 0 24 24" fill="none" stroke="#4A90E2" stroke-width="2">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                </svg>
-                <span class="nav-brand">Teacher Dashboard</span>
+    <div class="dashboard-container">
+        <header class="header">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size: 24px;">📘</span>
+                <h2 style="font-weight: 800;">Teacher Dashboard</h2>
             </div>
-            
-            {{-- FIXED LOGOUT: Tumuturo sa teacher.logout route --}}
-            <form method="POST" action="{{ route('teacher.logout') }}">
-                @csrf
-                <button type="submit" class="header-logout-btn">Logout</button>
-            </form>
+            <button class="btn-outline" style="width: auto;">Logout</button>
         </header>
 
-        <main class="main-container">
-            <section class="welcome-banner reveal">
-                <h1>Welcome, {{ Auth::user()->name }}</h1>
-                <p>Monitor and guide your students' progress</p>
-            </section>
+        <section style="margin-bottom: 2rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Welcome, Teacher</h1>
+            <p style="color: #666;">Monitor and guide your students' progress</p>
+        </section>
 
-            <section class="stats-grid">
-                <div class="stat-card reveal">
-                    <div class="stat-content">
-                        <span class="label">Total Students</span>
-                        <h2 class="number">124</h2>
-                        <span class="desc">Active learners</span>
-                    </div>
-                    <div class="stat-icon blue">👥</div>
-                </div>
-                <div class="stat-card reveal">
-                    <div class="stat-content">
-                        <span class="label">Average Progress</span>
-                        <h2 class="number">67%</h2>
-                        <span class="desc trend-up">+5% from last week</span>
-                    </div>
-                    <div class="stat-icon green">📈</div>
-                </div>
-            </section>
-
-            <div class="dashboard-main-content">
-                <section class="activity-card reveal">
-                    <h3 class="card-title">Recent Student Activity</h3>
-                    <div class="student-list">
-                        <div class="student-item">
-                            <div class="info">
-                                <strong>Meland Carman</strong>
-                                <span>Progress: 78%</span>
-                            </div>
-                            <span class="status-badge excellent">Excellent</span>
-                        </div>
-                        <div class="student-item">
-                            <div class="info">
-                                <strong>Stephanie Tamayuza</strong>
-                                <span>Progress: 65%</span>
-                            </div>
-                            <span class="status-badge good">Good</span>
-                        </div>
-                    </div>
-                    <button class="btn-outline-wide">View All Students</button>
-                </section>
-
-                <aside class="actions-column">
-                    <div class="action-panel reveal">
-                        <h3>Provide Feedback</h3>
-                        <button class="btn-primary-blue">Send Feedback</button>
-                    </div>
-                    <div class="action-panel reveal">
-                        <h3>Print Materials</h3>
-                        <button class="btn-outline-gray">📥 Generate PDFs</button>
-                    </div>
-                </aside>
+        <div class="stats-grid">
+            <div class="card">
+                <p class="label">Total Students</p>
+                <div class="value">124</div>
+                <p class="subtext">Active learners</p>
             </div>
-        </main>
+            <div class="card">
+                <p class="label">Average Progress</p>
+                <div class="value">67% <span style="color: green; font-size: 1rem;">↗</span></div>
+                <p class="subtext">+5% from last week</p>
+            </div>
+            <div class="card">
+                <p class="label">Pending Reviews</p>
+                <div class="value">18</div>
+                <p class="subtext">Quizzes to grade</p>
+            </div>
+            <div class="card">
+                <p class="label">Messages</p>
+                <div class="value">7</div>
+                <p class="subtext">Unread Messages</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <div class="card">
+                <h3 style="margin-bottom: 1.5rem;">Recent Student Activity</h3>
+                <div class="student-item">
+                    <div><strong>Meland Carman</strong><br><small>Progress: 78%</small></div>
+                    <span class="badge excellent">Excellent</span>
+                </div>
+                <div class="student-item">
+                    <div><strong>Stephanie Tamayuza</strong><br><small>Progress: 65%</small></div>
+                    <span class="badge good">Good</span>
+                </div>
+                <div class="student-item">
+                    <div><strong>Kristine Villamor</strong><br><small>Progress: 45%</small></div>
+                    <span class="badge help">Needs Help</span>
+                </div>
+                <button class="btn-outline" style="margin-top: 1rem;">View All Students</button>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="card">
+                    <h3>Provide Feedback</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin: 1rem 0;">Send personalized recommendations to students</p>
+                    <button class="btn-blue">Send Feedback</button>
+                </div>
+                <div class="card">
+                    <h3>Print Materials</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin: 1rem 0;">Download modules for offline distribution</p>
+                    <button class="btn-outline">📥 Generate PDFs</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
