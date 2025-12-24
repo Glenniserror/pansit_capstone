@@ -6,7 +6,7 @@
     <title>Teacher Dashboard | Bubog NHS</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @vite(['resources/css/dashboard.css', 'resources/js/dashboard.js'])
+    @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
 </head>
 <body>
 
