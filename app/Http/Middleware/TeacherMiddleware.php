@@ -8,11 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TeacherMiddleware
 {
+    /**
+     * Handle an incoming request.
+     */
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->check() && auth()->user()->role === 'teacher') {
             return $next($request);
         }
+
         return redirect('/')->with('error', 'Access Denied. Teachers only.');
     }
 }

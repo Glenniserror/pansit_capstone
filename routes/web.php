@@ -43,41 +43,19 @@ Route::middleware('guest')->group(function () {
     });
 });
 
-/*----------- PROTECTED ROUTES (Requires Auth) -----------*/
-// Ang mga routes na ito ay accessible lang base sa ROLE ng user.
-
-// STUDENT GROUP
-Route::middleware(['auth', 'isStudent'])->group(function () {
-    Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+// 2. Student Guest Routes (Para sa hindi pa naka-login)
+Route::group(['prefix' => 'student', 'middleware' => 'guest'], function () {
+    Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
+    Route::post('/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
     
-    Route::post('/student/logout', function (Request $request) {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    })->name('student.logout');
+    // Dagdagan mo ng Register logic sa Controller kung gagamitin ang Sign Up tab
+    Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
 });
 
-// TEACHER GROUP
-Route::middleware(['auth', 'isTeacher'])->group(function () {
-    Route::get('/teacher/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
-    
-    Route::post('/teacher/logout', function (Request $request) {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    })->name('teacher.logout');
+// 3. Protected Student Routes (Dito papasok ang Middleware mo)
+Route::group(['prefix' => 'student', 'middleware' => ['auth', 'student.access']], function () {
+    Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
 });
 
-// ADMIN GROUP
-Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    
-    Route::post('/admin/logout', function (Request $request) {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    })->name('admin.logout');
-});
+// 4. Logout
+Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');

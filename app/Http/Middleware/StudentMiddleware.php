@@ -13,6 +13,7 @@ class StudentMiddleware
         if (auth()->check() && auth()->user()->role === 'student') {
             return $next($request);
         }
+
         return redirect('/')->with('error', 'Access Denied. Students only.');
     }
 }
