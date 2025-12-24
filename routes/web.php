@@ -37,7 +37,8 @@ Route::prefix('student')->group(function () {
 Route::prefix('teacher')->group(function () {
     // Guest only routes
     Route::middleware('guest')->group(function () {
-        Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
+        // Dinagdagan ko ng ->name('login') dito para sa auth middleware
+        Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('login')->name('teacher.login');
         Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
         Route::get('/register', [TeacherAuthController::class, 'showRegistrationForm'])->name('teacher.register.form');
         Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register');
@@ -45,7 +46,6 @@ Route::prefix('teacher')->group(function () {
 
     // Auth only routes
     Route::middleware('auth')->group(function () {
-        // Ito yung dashboard na may HTML/CSS/JS/Vite na ginawa natin
         Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
         Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
     });
