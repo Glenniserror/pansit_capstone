@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('glenn.homepage');
 })->name('homepage');
 
-/*----------- GUEST ROUTES (Public) -----------*/
-// Ang mga routes na ito ay accessible lang kung HINDI pa naka-login ang user.
-Route::middleware('guest')->group(function () {
-    
     // Student Auth
     Route::prefix('student')->group(function () {
         Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
@@ -41,5 +37,5 @@ Route::middleware('guest')->group(function () {
         Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
         Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
     });
-});
+
 
