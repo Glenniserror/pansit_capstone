@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /**
-     * 1. REVEAL ON SCROLL ANIMATION
-     * Mag-a-appear ang mga cards pagka-load o pagka-scroll.
+     * 1. REVEAL ANIMATION (INTERSECTION OBSERVER)
+     * Nag-ti-trigger ng 'active' class kapag lumabas ang card sa screen.
      */
     const revealElements = document.querySelectorAll('.reveal');
     
@@ -18,57 +18,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * 2. GENERAL BUTTON & CARD HOVER EFFECTS
-     * Lift effect para sa cards at buttons (Same as Student side).
+     * 2. BUTTON INTERACTION (LOADING EFFECT)
+     * Nagbabago ang text ng button kapag pinindot gaya ng sa Student side.
      */
-    const interactiveElements = document.querySelectorAll('.stat-card, .student-item, .action-panel, .btn-primary-blue, .btn-outline-gray, .btn-outline-wide');
+    const actionButtons = document.querySelectorAll('.btn-primary-blue, .btn-outline-wide, .btn-outline-gray');
     
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            el.style.transform = 'translateY(-3px)';
-            el.style.transition = 'all 0.3s ease';
-            if(el.classList.contains('stat-card') || el.classList.contains('action-panel')) {
-                el.style.boxShadow = '0 8px 15px rgba(0,0,0,0.08)';
-            }
-        });
+    actionButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Huwag lagyan ng effect kung logout button
+            if (this.classList.contains('header-logout-btn')) return;
 
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = 'translateY(0)';
-            el.style.boxShadow = 'none';
+            const originalText = this.innerText;
+            this.innerText = 'Opening...';
+            this.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                this.innerText = originalText;
+                this.style.opacity = '1';
+                console.log('Teacher action successful!');
+            }, 600);
         });
     });
 
 
     /**
-     * 3. ACTION BUTTON INTERACTION (Loading State)
+     * 3. CARD & ITEM HOVER EFFECTS
+     * Lift effect kapag hinover ang mga cards.
      */
-    const actionBtns = document.querySelectorAll('.btn-primary-blue, .btn-outline-gray, .btn-outline-wide');
+    const interactiveCards = document.querySelectorAll('.stat-card, .student-item, .action-panel');
     
-    actionBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const originalText = this.innerText;
-            
-            // Temporary loading feel
-            this.style.opacity = '0.7';
-            this.innerText = 'Processing...';
-            
-            setTimeout(() => {
-                this.style.opacity = '1';
-                this.innerText = originalText;
-                console.log('Action triggered successfully');
-            }, 800);
+    interactiveCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-3px)';
+            card.style.transition = 'all 0.3s ease';
+            card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = 'none';
         });
     });
 
 
     /**
      * 4. DYNAMIC TREND INDICATOR
-     * Automatic color check para sa green trend.
      */
     const trends = document.querySelectorAll('.trend-up');
     trends.forEach(trend => {
         if (trend.innerText.includes('+')) {
-            trend.style.color = '#10b981'; // Success Green
+            trend.style.color = '#10b981'; // Green color for growth
         }
     });
+
 });

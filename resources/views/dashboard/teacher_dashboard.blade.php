@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- FIXED: CSRF Token para sa security at JS requests --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Teacher Dashboard - Math Assistant</title>
+    <title>Teacher Dashboard</title>
     @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
 </head>
 <body>
@@ -19,9 +18,8 @@
                 <span class="nav-brand">Teacher Dashboard</span>
             </div>
 
-            {{-- FIXED: Form logout with CSRF to avoid 419 error --}}
             <form method="POST" action="{{ route('student.logout') }}">
-                @csrf
+                @csrf 
                 <button type="submit" class="header-logout-btn">Logout</button>
             </form>
         </header>
@@ -93,13 +91,6 @@
                                 <span>Progress: 45%</span>
                             </div>
                             <span class="status-badge help">Needs Help</span>
-                        </div>
-                        <div class="student-item">
-                            <div class="info">
-                                <strong>Rhyssa Embanacido</strong>
-                                <span>Progress: 82%</span>
-                            </div>
-                            <span class="status-badge excellent">Excellent</span>
                         </div>
                     </div>
                     <button class="btn-outline-wide">View All Students</button>
