@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- FIX: CSRF Token para sa security at AJAX --}}
+    {{-- FIXED: CSRF Token para sa security at JS requests --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Dashboard</title>
     @vite(['resources/css/dashboard/student_dashboard.css', 'resources/js/dashboard/student_dashboard.js'])
@@ -19,19 +19,11 @@
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
 
-            {{-- FIXED LOGOUT: Siguradong nandito ang form at may @csrf --}}
-            @if (Route::has('logout'))
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="logout-btn">Logout</button>
-                </form>
-            @else
-                {{-- Fallback kung wala pang route --}}
-                <form method="POST" action="/logout">
-                    @csrf
-                    <button type="submit" class="logout-btn">Logout</button>
-                </form>
-            @endif
+            {{-- FIXED: Ginagamit ang 'student.logout' route para mag-redirect sa homepage --}}
+            <form method="POST" action="{{ route('student.logout') }}">
+                @csrf
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
         </header>
 
         <main class="content">
@@ -111,7 +103,6 @@
                 </div>
             </section>
 
-            {{-- BINABALIK: Bottom Grid Section --}}
             <div class="bottom-grid">
                 <div class="action-card">
                     <div class="icon-box blue-bg">
@@ -143,7 +134,7 @@
         </main>
     </div>
 
-    {{-- Floating Elements --}}
+    {{-- Chatbot UI Elements --}}
     <div id="ai-bubble" class="messenger-bubble">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </div>
