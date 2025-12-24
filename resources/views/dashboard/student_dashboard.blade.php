@@ -116,12 +116,12 @@
 
             <div class="bottom-grid">
                 <div class="action-card">
-                    <div class="icon-box blue-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    </div>
+                <div class="icon-box blue-bg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                </div>
                     <h3 class="card-title">AI Chatbot</h3>
                     <p class="card-desc">Get instant help with your math questions</p>
-                    <button class="primary-btn">Start Chat</button>
+                    <button class="primary-btn" id="start-chat-btn">Start Chat</button>
                 </div>
 
                 <div class="action-card">

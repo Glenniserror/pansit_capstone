@@ -124,3 +124,40 @@ document.addEventListener('DOMContentLoaded', function() {
     sendBtn.onclick = sendMessage;
     input.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Kunin ang mga elements
+    const bubble = document.getElementById('ai-bubble');
+    const chatWindow = document.getElementById('ai-chat-window');
+    const startChatBtn = document.getElementById('start-chat-btn'); // New button
+    const closeBtn = document.getElementById('close-chat');
+
+    // Function para buksan ang chat
+    function openChat() {
+        chatWindow.style.display = 'flex';
+        bubble.style.display = 'none'; // Itago ang floating bubble
+        
+        // Optional: I-scroll kusa sa pinaka-baba ng messages
+        const content = document.getElementById('chat-content');
+        content.scrollTop = content.scrollHeight;
+    }
+
+    // Function para isara ang chat
+    function closeChat() {
+        chatWindow.style.display = 'none';
+        bubble.style.display = 'flex'; // Ipakita ulit ang bubble
+    }
+
+    // Event Listeners
+    if (startChatBtn) {
+        startChatBtn.addEventListener('click', openChat);
+    }
+    
+    if (bubble) {
+        bubble.addEventListener('click', openChat);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeChat);
+    }
+});
