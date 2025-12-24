@@ -10,39 +10,41 @@ use App\Http\Controllers\Auth\TeacherAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\TeacherDashboardController;
-use App\Http\Controllers\AdminDashboardController; // Siguraduhing mayroon nito
+use App\Http\Controllers\AdminDashboardController;
 
 /*----------- Homepage -----------*/
 Route::get('/', function () {
     return view('glenn.homepage');
 })->name('homepage');
 
-/*----------- Guest Routes (Public) -----------*/
-// Dito nakalagay ang mga login at register routes na hindi kailangang naka-login
+/*----------- GUEST ROUTES (Public) -----------*/
+// Ang mga routes na ito ay accessible lang kung HINDI pa naka-login ang user.
+Route::middleware('guest')->group(function () {
+    
+    // Student Auth
+    Route::prefix('student')->group(function () {
+        Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
+        Route::post('/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
+        Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
+    });
 
-// Student Auth
-Route::prefix('student')->group(function () {
-    Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
-    Route::post('/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
-    Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
+    // Teacher Auth
+    Route::prefix('teacher')->group(function () {
+        Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
+        Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
+        Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register');
+    });
+
+    // Admin Auth
+    Route::prefix('admin')->group(function () {
+        Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+        Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+        Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
+    });
 });
 
-// Teacher Auth
-Route::prefix('teacher')->group(function () {
-    Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
-    Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
-    Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register');
-});
-
-// Admin Auth
-Route::prefix('admin')->group(function () {
-    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
-    Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
-});
-
-/*----------- Protected Routes (Middlewares) -----------*/
-// Dito nakalagay ang mga dashboards na kailangan ng auth at role check
+/*----------- PROTECTED ROUTES (Requires Auth) -----------*/
+// Ang mga routes na ito ay accessible lang base sa ROLE ng user.
 
 // STUDENT GROUP
 Route::middleware(['auth', 'isStudent'])->group(function () {
