@@ -209,3 +209,66 @@ body {
     background: var(--primary-blue); 
     color: #fff; border: none; border-radius: 8px; cursor: pointer; 
 }
+/* --- ZERO PROGRESS & EMPTY STATE ADDITIONS --- */
+
+/* Page Entrance Fade-in Animation */
+body {
+    animation: fadeInPage 0.8s ease-out;
+}
+
+@keyframes fadeInPage {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Empty State Box Styling */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    text-align: center;
+    border: 2px dashed var(--border-light);
+    border-radius: 12px;
+    color: var(--text-muted);
+    background-color: #fafafa;
+    margin: 1.5rem 0;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+    max-width: 250px;
+}
+
+/* Disabled State para sa Main Action Buttons */
+.main-action-btn:disabled {
+    background-color: #e0e0e0 !important;
+    color: #a0a0a0 !important;
+    border: none !important;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Animation para sa Running Numbers (Value flickering effect) */
+.value {
+    transition: all 0.5s ease-out;
+}
+
+/* Review Badge for Zero state */
+.badge.none {
+    background: #bdc3c7;
+}

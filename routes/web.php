@@ -1,59 +1,81 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
+// Controllers
 use App\Http\Controllers\Auth\StudentAuthController;
 use App\Http\Controllers\Auth\TeacherAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\StudentDashboardController;
-use App\Http\Controllers\DashboardController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\AdminDashboardController; // Siguraduhing mayroon nito
 
-/*-----------Homepage-----------*/
-
+/*----------- Homepage -----------*/
 Route::get('/', function () {
     return view('glenn.homepage');
-});
-/*-----------Login-----------*/
+})->name('homepage');
 
+/*----------- Guest Routes (Public) -----------*/
+// Dito nakalagay ang mga login at register routes na hindi kailangang naka-login
+
+// Student Auth
 Route::prefix('student')->group(function () {
-    // Login page
     Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
-    // Handle login POST
     Route::post('/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
-    // Handle signup POST
     Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
 });
 
+// Teacher Auth
 Route::prefix('teacher')->group(function () {
-    // Login page
     Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('teacher.login');
-    // Handle login POST
     Route::post('/login', [TeacherAuthController::class, 'login'])->name('teacher.login.submit');
-    // Handle signup POST
     Route::post('/register', [TeacherAuthController::class, 'register'])->name('teacher.register');
 });
 
+// Admin Auth
 Route::prefix('admin')->group(function () {
-    // Login page
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-    // Handle login POST
     Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
-    // Handle signup POST
     Route::post('/register', [AdminAuthController::class, 'register'])->name('admin.register');
 });
 
-/*-----------Student_dashboard-----------*/
+/*----------- Protected Routes (Middlewares) -----------*/
+// Dito nakalagay ang mga dashboards na kailangan ng auth at role check
 
-Route::post('/student/login', [StudentAuthController::class, 'login'])
-    ->name('student.login.submit');
+// STUDENT GROUP
+Route::middleware(['auth', 'isStudent'])->group(function () {
+    Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+    
+    Route::post('/student/logout', function (Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    })->name('student.logout');
+});
 
-Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])
-    ->middleware('auth')
-    ->name('student.dashboard');
+// TEACHER GROUP
+Route::middleware(['auth', 'isTeacher'])->group(function () {
+    Route::get('/teacher/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
+    
+    Route::post('/teacher/logout', function (Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    })->name('teacher.logout');
+});
 
-Route::post('/logout', function () {
-    Auth::logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
-
-    return redirect('/'); // 👉 homepage
-})->name('logout');
+// ADMIN GROUP
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    
+    Route::post('/admin/logout', function (Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    })->name('admin.logout');
+});
