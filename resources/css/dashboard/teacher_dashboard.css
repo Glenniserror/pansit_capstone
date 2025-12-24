@@ -1,274 +1,107 @@
-/**
- * resources/css/dashboard.css
- */
-
 :root {
-    --primary-blue: #1E88E5;
-    --bg-light: #fcfcfc;
-    --border-light: #eeeeee;
-    --text-main: #333333;
-    --text-muted: #888888;
+    --white: #ffffff;
+    --bg-gray: #fcfcfc;
+    --border-color: #e5e7eb;
+    --primary-blue: #007bff;
+    --text-dark: #111827;
+    --text-muted: #6b7280;
 }
 
-* {
+body {
+    background-color: var(--bg-gray);
+    color: var(--text-dark);
+    font-family: 'Inter', system-ui, sans-serif;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-body { 
-    background-color: var(--bg-light); 
-    color: var(--text-main);
-    line-height: 1.5;
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 6%;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* Navbar */
-.navbar {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    padding: 1rem 5%; 
-    background: #ffffff; 
-    border-bottom: 1px solid var(--border-light);
-    position: sticky;
-    top: 0;
-    z-index: 50;
+.nav-brand { font-weight: 700; font-size: 1.1rem; }
+.header-logout-btn {
+    background: white; border: 1px solid var(--border-color);
+    padding: 6px 18px; border-radius: 8px; cursor: pointer;
 }
 
-.nav-logo { 
-    width: 35px; 
-    height: auto;
-    margin-right: 10px; 
-    object-fit: contain;
-}
+.main-container { padding: 40px 6%; }
 
-.brand-name { font-weight: 700; font-size: 1.25rem; }
-
-.logout-btn {
-    padding: 0.5rem 1.25rem; 
-    border: 1px solid #ddd; 
-    border-radius: 8px;
-    background: #ffffff; 
-    color: var(--text-main);
-    cursor: pointer; 
-    transition: all 0.3s ease;
-    text-decoration: none; /* Para sa <a> tag na logout */
-    font-size: 0.9rem;
-}
-
-.logout-btn:hover {
-    background: #f8f9fa;
-    border-color: var(--primary-blue);
-    color: var(--primary-blue);
-}
-
-/* Container */
-.dashboard-container { 
-    max-width: 1280px; 
-    margin: 2rem auto; 
-    padding: 0 1.5rem; 
-}
-
-.welcome-header h1 { font-size: 1.875rem; font-weight: 700; margin-bottom: 0.25rem; }
-.welcome-header p { color: var(--text-muted); margin-bottom: 2rem; }
-
-/* Stats Grid */
+/* Stats Row */
 .stats-grid {
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-    gap: 1.5rem; 
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 30px 0;
 }
 
 .stat-card {
-    background: #ffffff; 
-    padding: 1.5rem; 
+    background: var(--white);
+    padding: 20px;
     border-radius: 12px;
-    border: 1px solid var(--border-light); 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
 }
 
-.stat-info .label { font-size: 0.875rem; color: #666; font-weight: 500; }
-.stat-info .value { font-size: 1.75rem; font-weight: 700; margin: 0.25rem 0; color: var(--text-main); }
-.stat-info .sub-text, .trend { font-size: 0.75rem; color: var(--text-muted); }
-.trend { color: #10b981; font-weight: 600; }
-.stat-icon { font-size: 1.5rem; color: var(--primary-blue); opacity: 0.8; }
+.stat-card .number { font-size: 2rem; margin: 8px 0; }
+.stat-card .desc { font-size: 0.8rem; color: var(--text-muted); }
+.trend-up { color: #10b981; font-weight: 600; }
 
-/* Layout Content */
-.content-layout { 
-    display: grid; 
-    grid-template-columns: 1.6fr 1fr; 
-    gap: 1.5rem; 
+/* Main Grid Layout */
+.dashboard-main-content {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 25px;
 }
 
-/* Para sa responsive mobile view */
-@media (max-width: 992px) {
-    .content-layout { grid-template-columns: 1fr; }
+.activity-card, .action-panel {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
 }
 
-.card-container, .side-card {
-    background: #ffffff; 
-    border: 1px solid var(--border-light); 
-    border-radius: 12px; 
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-/* Activity List */
-.activity-list { margin: 1.25rem 0; }
+/* Student Items */
 .student-item {
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem; 
-    border: 1px solid #f9fafb; 
-    border-radius: 10px; 
-    margin-bottom: 0.75rem;
-    background: #fff;
-    transition: transform 0.2s;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
 }
 
-.student-info h4 { font-size: 0.95rem; font-weight: 600; }
-.student-info span { font-size: 0.8rem; color: var(--text-muted); }
+.student-item .info span { display: block; font-size: 0.85rem; color: var(--text-muted); }
 
 /* Badges */
-.badge { padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; color: #fff; font-weight: 600; text-transform: uppercase; }
-.excellent { background: var(--primary-blue); }
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: white;
+}
+.excellent { background: #007bff; }
 .good { background: #10b981; }
-.help { background: #ef4444; }
+.help { background: #dc2626; }
 
 /* Buttons */
-.btn-primary { background: var(--primary-blue); color: #fff; border: none; }
-.btn-primary:hover { background: #1565C0; }
-
-.btn-outline { background: #fff; border: 1px solid #d1d5db; color: #374151; }
-.btn-outline:hover { background: #f9fafb; border-color: var(--primary-blue); }
-
-.view-all-btn { 
-    width: 100%; 
-    padding: 0.75rem; 
-    border-radius: 8px; 
-    border: 1px solid var(--border-light); 
-    background: #fff; 
-    cursor: pointer; 
-    font-weight: 500;
-    transition: 0.2s;
+.btn-primary-blue {
+    width: 100%; background: #007bff; color: white;
+    border: none; padding: 12px; border-radius: 8px; cursor: pointer;
 }
 
-.main-action-btn { 
-    width: 100%; 
-    padding: 0.75rem; 
-    border-radius: 8px; 
-    cursor: pointer; 
-    margin-top: 1rem; 
-    font-weight: 600; 
-    display: block;
-    text-align: center;
-    transition: all 0.2s;
+.btn-outline-wide, .btn-outline-gray {
+    width: 100%; background: white; border: 1px solid var(--border-color);
+    padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 500;
 }
 
-/* Floating Chat */
-.fab {
-    position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px;
-    background: var(--primary-blue); border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; color: #fff; font-size: 1.5rem; cursor: pointer; 
-    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4); z-index: 1000;
-}
+.actions-column { display: flex; flex-direction: column; gap: 20px; }
 
-.chat-window {
-    position: fixed; bottom: 6rem; right: 2rem; width: 340px; height: 480px;
-    background: #fff; border-radius: 16px; box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-    display: flex; flex-direction: column; z-index: 1001; overflow: hidden;
-    border: 1px solid var(--border-light);
-}
-
-.chat-header { 
-    background: var(--primary-blue); 
-    color: #fff; padding: 1rem; 
-    display: flex; justify-content: space-between; align-items: center;
-}
-
-.chat-header button { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-
-.chat-content { flex: 1; padding: 1rem; overflow-y: auto; background: #f9fafb; }
-
-.chat-input-area { padding: 1rem; border-top: 1px solid var(--border-light); display: flex; background: #fff; }
-.chat-input-area input { 
-    flex: 1; padding: 0.6rem; 
-    border: 1px solid #ddd; 
-    border-radius: 8px; outline: none; 
-    font-size: 0.9rem;
-}
-
-.chat-input-area button { 
-    margin-left: 0.5rem; padding: 0 1rem; 
-    background: var(--primary-blue); 
-    color: #fff; border: none; border-radius: 8px; cursor: pointer; 
-}
-/* --- ZERO PROGRESS & EMPTY STATE ADDITIONS --- */
-
-/* Page Entrance Fade-in Animation */
-body {
-    animation: fadeInPage 0.8s ease-out;
-}
-
-@keyframes fadeInPage {
-    from { 
-        opacity: 0; 
-        transform: translateY(10px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-/* Empty State Box Styling */
-.empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 1rem;
-    text-align: center;
-    border: 2px dashed var(--border-light);
-    border-radius: 12px;
-    color: var(--text-muted);
-    background-color: #fafafa;
-    margin: 1.5rem 0;
-}
-
-.empty-state-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    opacity: 0.3;
-}
-
-.empty-state p {
-    font-size: 0.9rem;
-    max-width: 250px;
-}
-
-/* Disabled State para sa Main Action Buttons */
-.main-action-btn:disabled {
-    background-color: #e0e0e0 !important;
-    color: #a0a0a0 !important;
-    border: none !important;
-    cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-/* Animation para sa Running Numbers (Value flickering effect) */
-.value {
-    transition: all 0.5s ease-out;
-}
-
-/* Review Badge for Zero state */
-.badge.none {
-    background: #bdc3c7;
-}
+/* Animation Classes */
+.reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
