@@ -53,8 +53,7 @@ class TeacherAuthController extends Controller
     }
 
     /**
-     * FIXED: Ginaya ang logic sa StudentAuthController.
-     * Pagkatapos mag-logout, ibabalik ang teacher sa homepage.
+     * FIXED: Pagkatapos mag-logout, ibabalik ang user sa homepage.
      */
     public function logout(Request $request) {
         Auth::logout();
@@ -62,7 +61,7 @@ class TeacherAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         
-        // Binago mula teacher.login patungong homepage para parehas sila ng Student
+        // Dito binago mula student.login patungong homepage
         return redirect()->route('homepage'); 
     }
 }
