@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- FIXED: Dagdag ng CSRF Token sa Head para sa AJAX/JS requests --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Dashboard</title>
     @vite(['resources/css/dashboard/student_dashboard.css', 'resources/js/dashboard/student_dashboard.js'])
 </head>
@@ -17,7 +19,7 @@
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
 
-            {{-- FIXED: Added Route check --}}
+            {{-- FIXED: Logout Form with CSRF --}}
             @if (Route::has('logout'))
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -28,13 +30,14 @@
 
         <main class="content">
             <div class="hero-section">
-                {{-- FIXED: Safer null coalescing for user name --}}
-                <h1 class="welcome-title">Welcome back, {{ Auth::user()->name ?? 'Student' }}!</h1>
+                {{-- FIXED: Auth check para hindi mag-error kung biglang nag-expire ang session --}}
+                <h1 class="welcome-title">
+                    Welcome back, {{ Auth::check() ? Auth::user()->name : 'Student' }}!
+                </h1>
                 <p class="welcome-subtitle">Continue your mathematics learning journey</p>
             </div>
 
             <div class="stats-grid">
-                {{-- Progress Card --}}
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-label">Overall Progress</span>
@@ -47,7 +50,6 @@
                     <div class="stat-desc">Across all modules</div>
                 </div>
 
-                {{-- Quizzes Card --}}
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-label">Quizzes Completed</span>
@@ -64,7 +66,6 @@
                     <div class="stat-desc">Keep going!</div>
                 </div>
 
-                {{-- Streak Card --}}
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-label">Current Streak</span>
@@ -81,11 +82,9 @@
 
             <section class="modules-section">
                 <h2 class="section-title">Learning Modules</h2>
-                <p class="section-subtitle">Track your progress across all topics</p>
-
                 <div class="module-list">
                     @php
-                        $displayModules = (isset($modules) && is_iterable($modules) && count($modules) > 0) ? $modules : [
+                        $displayModules = (isset($modules) && is_iterable($modules)) ? $modules : [
                             ['name' => 'Sequences and Series', 'progress' => 0, 'completed' => false],
                             ['name' => 'Polynomials and Polynomial Equations', 'progress' => 0, 'completed' => false],
                             ['name' => 'Advanced Equations and Functions', 'progress' => 0, 'completed' => false]
@@ -104,11 +103,6 @@
                                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                         </svg>
-                                    @elseif($module['completed'] ?? false)
-                                        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2" style="width:18px; height:18px; margin-right:8px;">
-                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                        </svg>
                                     @else
                                         <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2" style="width:18px; height:18px; margin-right:8px;">
                                             <circle cx="12" cy="12" r="10"></circle>
@@ -117,81 +111,40 @@
                                     @endif
                                     <span class="module-name">{{ $module['name'] }}</span>
                                 </div>
-                                <span class="percentage {{ $isLocked ? 'gray-text' : 'blue-text' }}">
+                                <span class="percentage">
                                     {{ $isLocked ? 'Locked' : ($module['progress'] ?? 0) . '%' }}
                                 </span>
                             </div>
                             <div class="progress-bar-bg">
-                                <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%; background: {{ $isLocked ? '#e0e0e0' : '#007bff' }};"></div>
+                                <div class="progress-fill" style="width: {{ $module['progress'] ?? 0 }}%;"></div>
                             </div>
-                            
                             <button class="view-topics-btn" {{ $isLocked ? 'disabled' : '' }}>
                                 {{ $isLocked ? 'Locked' : 'View Topics' }}
                             </button>
                         </div>
-
-                        @php
-                            // Logic: Unlock next if current is 100%
-                            $canAccessNext = (($module['progress'] ?? 0) == 100);
-                        @endphp
+                        @php $canAccessNext = (($module['progress'] ?? 0) == 100); @endphp
                     @endforeach
                 </div>
             </section>
-
-            <div class="bottom-grid">
-                <div class="action-card">
-                    <div class="icon-box blue-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    </div>
-                    <h3 class="card-title">AI Chatbot</h3>
-                    <p class="card-desc">Get instant help with your math questions</p>
-                    <button class="primary-btn" id="start-chat-btn">Start Chat</button>
-                </div>
-
-                <div class="action-card">
-                    <div class="icon-box green-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    </div>
-                    <h3 class="card-title">Offline Materials</h3>
-                    <p class="card-desc">Download assessment to practice offline</p>
-                    <button class="secondary-btn">View Downloads</button>
-                </div>
-
-                <div class="action-card">
-                    <div class="icon-box blue-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                    </div>
-                    <h3 class="card-title">Summative Test</h3>
-                    <p class="card-desc">Test your knowledge with interactive summative test</p>
-                    <button class="primary-btn">Start Summative Test</button>
-                </div>
-            </div>
         </main>
     </div>
 
-    {{-- Floating Elements --}}
+    {{-- Chatbot UI --}}
     <div id="ai-bubble" class="messenger-bubble">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </div>
 
     <div id="ai-chat-window" class="chat-window-compact">
         <div class="chat-header">
-            <div class="user-info">
-                <div class="status-dot"></div>
-                <span>Math AI Assistant</span>
-            </div>
+            <span>Math AI Assistant</span>
             <button id="close-chat">&times;</button>
         </div>
-        
         <div id="chat-content" class="chat-content">
             <div class="msg bot">Hello! Ask me any math questions.</div>
         </div>
-
         <div class="chat-footer">
             <input type="text" id="ai-input" placeholder="Type a message...">
-            <button id="ai-send-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
+            <button id="ai-send-btn">Send</button>
         </div>
     </div>
 </body>
