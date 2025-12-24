@@ -40,7 +40,7 @@ Route::prefix('teacher')->group(function () {
     Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
 
     // Dashboard (Protektado ng Auth)
-    Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
+     Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard')->middleware('auth');
     });
 
 
