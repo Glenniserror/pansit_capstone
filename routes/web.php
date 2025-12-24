@@ -43,19 +43,3 @@ Route::middleware('guest')->group(function () {
     });
 });
 
-// 2. Student Guest Routes (Para sa hindi pa naka-login)
-Route::group(['prefix' => 'student', 'middleware' => 'guest'], function () {
-    Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
-    Route::post('/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
-    
-    // Dagdagan mo ng Register logic sa Controller kung gagamitin ang Sign Up tab
-    Route::post('/register', [StudentAuthController::class, 'register'])->name('student.register');
-});
-
-// 3. Protected Student Routes (Dito papasok ang Middleware mo)
-Route::group(['prefix' => 'student', 'middleware' => ['auth', 'student.access']], function () {
-    Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
-});
-
-// 4. Logout
-Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
