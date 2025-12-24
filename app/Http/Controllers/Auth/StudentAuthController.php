@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class StudentAuthController extends Controller
 {
     public function showLoginForm() { 
-        return view('student.login'); 
+        return view('login/student_login'); 
     }
 
     public function login(Request $request) {
