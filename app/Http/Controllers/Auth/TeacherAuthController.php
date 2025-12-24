@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User; // Siguraduhing naka-import ang User model
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class TeacherAuthController extends Controller
@@ -14,10 +14,8 @@ class TeacherAuthController extends Controller
         return view('login.teacher_login'); 
     }
 
-    // --- DAGDAG NA REGISTER METHODS ---
-
     public function showRegistrationForm() {
-        return view('auth.teacher_register'); // Siguraduhing mayroon kang ganitong view file
+        return view('auth.teacher_register'); 
     }
 
     public function register(Request $request) {
@@ -31,15 +29,13 @@ class TeacherAuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'teacher', // Awtomatikong 'teacher' ang role
+            'role' => 'teacher', 
         ]);
 
         Auth::login($user);
 
         return redirect()->route('teacher.dashboard');
     }
-
-    // --- END NG REGISTER METHODS ---
 
     public function login(Request $request) {
         $credentials = $request->validate([
@@ -56,10 +52,17 @@ class TeacherAuthController extends Controller
         return back()->withErrors(['email' => 'Invalid teacher credentials.']);
     }
 
+    /**
+     * FIXED: Ginaya ang logic sa StudentAuthController.
+     * Pagkatapos mag-logout, ibabalik ang teacher sa homepage.
+     */
     public function logout(Request $request) {
         Auth::logout();
+        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('teacher.login');
+        
+        // Binago mula teacher.login patungong homepage para parehas sila ng Student
+        return redirect()->route('homepage'); 
     }
 }
