@@ -40,12 +40,15 @@ class AdminAuthController extends Controller
     }
 
     public function logout(Request $request)
-    {
-        Auth::guard('admin')->logout();
+{
+    // I-logout ang student guard
+    Auth::guard('admin')->logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+    // I-clear ang session
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login');
-    }
+    // Dito siya babalik sa homepage na binigay mo
+    return redirect('/'); 
+}
 }

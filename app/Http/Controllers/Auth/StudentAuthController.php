@@ -40,12 +40,15 @@ class StudentAuthController extends Controller
     }
 
     public function logout(Request $request)
-    {
-        Auth::guard('student')->logout();
+{
+    // I-logout ang student guard
+    Auth::guard('student')->logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+    // I-clear ang session
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-        return redirect()->route('student.login');
-    }
+    // Dito siya babalik sa homepage na binigay mo
+    return redirect('/'); 
+}
 }
