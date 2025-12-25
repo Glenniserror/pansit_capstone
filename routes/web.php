@@ -13,33 +13,24 @@ Route::get('/', function () {
     return view('glenn.homepage');
 })->name('homepage');
 
-// Student Routes
+
+// Student ROUTES
 Route::prefix('student')->name('student.')->group(function () {
-
-    // ================= GUEST ROUTES =================
+    // Guest only
     Route::middleware('guest:student')->group(function () {
-        // Login form
         Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');
-        // Handle login submission
         Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');
-        // Registration form
-        Route::get('/register', [StudentAuthController::class, 'showRegisterForm'])->name('register');
-        // Handle registration submission
-        Route::post('/register', [StudentAuthController::class, 'register'])->name('register.submit');
+        Route::post('/register', [StudentAuthController::class, 'register'])->name('register');
     });
-
-    // ================= AUTHENTICATED ROUTES =================
+    // Protected
     Route::middleware('auth:student')->group(function () {
-        // Dashboard
         Route::get('/dashboard', function () {
             return view('dashboard.student_dashboard');
         })->name('dashboard');
-
-        // Logout
+        
         Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
     });
 });
-
 
 // TEACHER ROUTES
 Route::prefix('teacher')->name('teacher.')->group(function () {
