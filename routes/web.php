@@ -26,16 +26,12 @@ Route::prefix('student')->name('student.')->group(function () {
     });
 });
 
-/*========== TEACHER ==========*/
+// Teacher Guest Routes (Login & Register)
 Route::prefix('teacher')->name('teacher.')->group(function () {
-    // Authentication routes
-    Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [TeacherAuthController::class, 'login'])->name('login.submit');
-    Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
-    // Dashboard (protected)
-    Route::middleware(['auth:teacher'])->group(function () {
-        Route::get('/dashboard', fn () => view('teacher.dashboard'))->name('dashboard');
-    });
+    Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('login');// View Routes
+    Route::post('/login', [TeacherAuthController::class, 'login'])->name('login.submit');// Form Submission Routes
+    Route::post('/register', [TeacherAuthController::class, 'register'])->name('register');
+    Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');// Logout
 });
 
 /*========== ADMIN ==========*/
