@@ -45,7 +45,7 @@ class StudentAuthController extends Controller
 
         if (Auth::attempt($credentials) && Auth::user()->role === 'student') {
             $request->session()->regenerate();
-            return redirect()->route('student.dashboard');
+            return redirect()->route('dashboard.student_dashboard');
         }
 
         Auth::logout();
