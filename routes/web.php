@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\StudentAuthController;
 use App\Http\Controllers\Auth\TeacherAuthController;
 use App\Http\Controllers\Auth\AdminAuthController;
-use App\Http\Controllers\StudentDashboardController;
-use App\Http\Controllers\TeacherDashboardController;
-use App\Http\Controllers\AdminDashboardController;
 
 /*----------- Homepage -----------*/
 Route::get('/', function () {
@@ -25,9 +22,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 /*----------- Student Auth Routes -----------*/
 Route::prefix('student')->name('student.')->group(function () {
-    Route::get('login', [StudentAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [StudentAuthController::class, 'login']);
-    Route::post('logout', [StudentAuthController::class, 'logout'])->name('logout');
+
+    // Show login / signup page
+    Route::get('/login', [StudentAuthController::class, 'showLoginForm'])
+        ->name('login');
+
+    // Handle login form
+    Route::post('/login', [StudentAuthController::class, 'login'])
+        ->name('login.submit');
+
+    // Handle signup form
+    Route::post('/register', [StudentAuthController::class, 'register'])
+        ->name('register');
+
+    // Logout
+    Route::post('/logout', [StudentAuthController::class, 'logout'])
+        ->name('logout');
 });
 
 /*----------- Teacher Auth Routes -----------*/
