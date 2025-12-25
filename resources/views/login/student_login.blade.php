@@ -23,7 +23,7 @@
             <div class="form-content">
 
                 <div class="icon-header">
-                    <img src="{{ asset('image/student.png') }}" alt="Student Icon">
+                    <img src="{{ asset('image/student.png') }}" alt="Teacher Icon">
                 </div>
 
                 <h1>Student Portal</h1>
