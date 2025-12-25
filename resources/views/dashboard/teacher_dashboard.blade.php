@@ -17,9 +17,11 @@
                 <span class="brand-name">Math Assistant <span class="badge-role">Teacher</span></span>
             </div>
 
-            <form method="POST" action="{{ route('logout') }}">
+            <form action="{{ route('teacher.logout') }}" method="POST" style="margin: 0;">
                 @csrf
-                <button type="submit" class="logout-btn">Logout</button>
+                <button type="submit" class="btn-outline" style="width: auto; cursor: pointer;">
+                    Logout
+                </button>
             </form>
         </header>
 
@@ -151,5 +153,12 @@
     </div>
 </body>
 </html>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
