@@ -30,7 +30,7 @@ class StudentAuthController extends Controller
             'role' => 'student',
         ]);
 
-        Auth::login($user);
+        Auth::guard('student')->login($user);
         $request->session()->regenerate();
 
         return redirect()->route('student.dashboard');
@@ -38,35 +38,29 @@ class StudentAuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (
-            Auth::attempt([
-                'email' => $credentials['email'],
-                'password' => $credentials['password'],
-                'role' => 'student',
-            ])
-        ) {
+        if (Auth::guard('student')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 'student',
+        ])) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard.student_dashbaord');
+            return redirect()->route('student.dashboard');
         }
 
-        return back()->withErrors([
-            'email' => 'Invalid student credentials.',
-        ]);
+        return back()->withErrors(['email' => 'Invalid student credentials']);
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
-
+        Auth::guard('student')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect('/');
     }
 }
-
