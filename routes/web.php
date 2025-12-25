@@ -67,3 +67,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     });
 });
+
+Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
+// Handle login submission
+Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
+// Show registration form (optional if you allow signup)
+Route::get('/student/register', [StudentAuthController::class, 'showRegisterForm'])->name('student.register');
+// Handle registration
+Route::post('/student/register', [StudentAuthController::class, 'register']);
