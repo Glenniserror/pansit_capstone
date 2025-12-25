@@ -209,40 +209,5 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Quick Math Tools: Calculator, Formula Sheet, and Notes coming soon!');
         });
     }
-    /* === STAT CARD MOUSE MOVE EFFECT === */
-document.querySelectorAll('.stat-card').forEach(card => {
-
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -6;
-        const rotateY = ((x - centerX) / centerX) * 6;
-
-        card.style.transform = `
-            perspective(800px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateY(-6px)
-        `;
-
-        card.style.setProperty('--x', `${x}px`);
-        card.style.setProperty('--y', `${y}px`);
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = `
-            perspective(800px)
-            rotateX(0deg)
-            rotateY(0deg)
-            translateY(0)
-        `;
-    });
-
-});
-
+    
 });
