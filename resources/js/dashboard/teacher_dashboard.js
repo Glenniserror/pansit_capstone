@@ -1,74 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. SEARCH FILTER PARA SA MGA ESTUDYANTE
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.placeholder = '🔍 Search student name...';
-    searchInput.className = 'search-bar';
-    
-    // Isasama natin ang search bar sa itaas ng student list
-    const studentSection = document.querySelector('.modules-section');
+    // 1. Search Functionality
     const studentList = document.querySelector('.student-list');
-    studentSection.insertBefore(searchInput, studentList);
-
-    searchInput.addEventListener('keyup', (e) => {
-        const term = e.target.value.toLowerCase();
-        const students = document.querySelectorAll('.student-row');
-
-        students.forEach(student => {
-            const name = student.querySelector('.student-name').textContent.toLowerCase();
-            if (name.includes(term)) {
-                student.style.display = 'flex';
-            } else {
-                student.style.display = 'none';
-            }
-        });
-    });
-
-    // 2. NUMBER COUNTER ANIMATION (Para sa Stats)
-    const statsValues = document.querySelectorAll('.stat-value');
+    const searchBar = document.createElement('input');
+    searchBar.placeholder = "🔍 Search students...";
+    searchBar.className = "search-bar";
+    searchBar.style.cssText = "width:100%; padding:10px; border-radius:8px; border:1px solid #e0e0e0; margin-bottom:15px;";
     
-    statsValues.forEach(val => {
-        const target = parseInt(val.innerText.replace('%', ''));
-        let count = 0;
-        const isPercentage = val.innerText.includes('%');
+    document.querySelector('.modules-section').insertBefore(searchBar, studentList);
+
+    searchBar.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('.student-row');
         
-        const updateCount = () => {
-            const speed = 200 / target;
-            if (count < target) {
-                count++;
-                val.innerText = isPercentage ? `${count}%` : count;
-                setTimeout(updateCount, 20);
+        rows.forEach(row => {
+            const name = row.querySelector('.student-name').innerText.toLowerCase();
+            row.style.display = name.includes(term) ? 'flex' : 'none';
+        });
+    });
+
+    // 2. Simple Stat Animation
+    const stats = document.querySelectorAll('.stat-value');
+    stats.forEach(stat => {
+        const target = parseInt(stat.innerText);
+        if(!isNaN(target)) {
+            let count = 0;
+            const update = () => {
+                if(count < target) {
+                    count += Math.ceil(target/20);
+                    stat.innerText = count + (stat.innerText.includes('%') ? '%' : '');
+                    setTimeout(update, 30);
+                } else {
+                    stat.innerText = target + (stat.innerText.includes('%') ? '%' : '');
+                }
             }
-        };
-        updateCount();
-    });
-
-    // 3. BUTTON LOADING STATES
-    const actionButtons = document.querySelectorAll('.primary-btn, .secondary-btn');
-
-    actionButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const originalHTML = this.innerHTML;
-            this.disabled = true;
-            this.innerHTML = `<span class="spinner"></span> Processing...`;
-            
-            // Simulation ng API Call / Action
-            setTimeout(() => {
-                this.innerHTML = originalHTML;
-                this.disabled = false;
-                alert('Action completed successfully!');
-            }, 1500);
-        });
-    });
-
-    // 4. STUDENT ROW HOVER EFFECT
-    const studentRows = document.querySelectorAll('.student-row');
-    studentRows.forEach(row => {
-        row.addEventListener('click', () => {
-            const name = row.querySelector('.student-name').textContent;
-            console.log(`Viewing profile of: ${name}`);
-            // Dito mo pwedeng ilagay ang redirect: window.location.href = `/student/${id}`;
-        });
+            update();
+        }
     });
 });
