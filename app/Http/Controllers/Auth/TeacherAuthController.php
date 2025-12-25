@@ -1,43 +1,67 @@
 <?php
 
-// FIX 1: Dapat itugma ang namespace sa folder location nito
-namespace App\Http\Controllers\Auth; 
+namespace App\Http\Controllers\Auth;
 
-// FIX 2: Kailangan nating i-import ang base Controller class
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherAuthController extends Controller
 {
-    // FIX 3: Palitan ang pangalan para mag-match sa iyong web.php (showLoginForm)
-    public function showLoginForm()
-    {
-        return view('auth.teacher-login');
+    public function showLoginForm() { 
+        return view('login.teacher_login'); 
     }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+    public function showRegistrationForm() {
+        return view('auth.teacher_register'); 
+    }
+
+    public function register(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended(route('teacher.dashboard'));
-        }
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'teaher', 
+        ]);
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        Auth::login($user);
+
+        return redirect()->route('teacher.dashboard');
     }
 
-    public function logout(Request $request)
-    {
+    public function login(Request $request) {
+        $credentials = $request->validate([
+            'email' => 'required|email', 
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($credentials) && Auth::user()->role === 'teacher') {
+            $request->session()->regenerate();
+            return redirect()->route('teacher.dashboard');
+        }
+
         Auth::logout();
+        return back()->withErrors(['email' => 'Invalid teacher credentials.']);
+    }
+
+    /**
+     * FIXED: Pagkatapos mag-logout, ibabalik ang user sa homepage.
+     */
+    public function logout(Request $request) {
+        Auth::logout();
+        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('teacher.login');
+        
+        // Dito binago mula student.login patungong homepage
+        return redirect()->route('homepage'); 
     }
 }
