@@ -51,7 +51,7 @@ class StudentAuthController extends Controller
             ])
         ) {
             $request->session()->regenerate();
-            return redirect()->route('student.dashboard');
+            return redirect()->route('dashboard.student_dashbaord');
         }
 
         return back()->withErrors([
