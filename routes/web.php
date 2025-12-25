@@ -14,20 +14,26 @@ Route::get('/', function () {
 })->name('homepage');
 
 
-// Student ROUTES
+// Student Routes
 Route::prefix('student')->name('student.')->group(function () {
-    // Guest only
+    // ================= GUEST ROUTES =================
     Route::middleware('guest:student')->group(function () {
+        // Login form
         Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');
+        // Handle login
         Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');
-        Route::post('/register', [StudentAuthController::class, 'register'])->name('register');
+        // Registration form
+        Route::get('/register', [StudentAuthController::class, 'showRegisterForm'])->name('register');
+        // Handle registration
+        Route::post('/register', [StudentAuthController::class, 'register'])->name('register.submit');
     });
-    // Protected
+    // ================= AUTHENTICATED ROUTES =================
     Route::middleware('auth:student')->group(function () {
+        // Dashboard
         Route::get('/dashboard', function () {
             return view('dashboard.student_dashboard');
         })->name('dashboard');
-        
+        // Logout
         Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
     });
 });
