@@ -35,7 +35,7 @@ class TeacherAuthController extends Controller
 
         // 4. Fail handling
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our student records.',
+            'email' => 'The provided credentials do not match our teacher records.',
         ])->onlyInput('email');
     }
 
