@@ -18,23 +18,17 @@ Route::get('/', function () {
 Route::prefix('student')->name('student.')->group(function () {
     // ================= GUEST ROUTES =================
     Route::middleware('guest:student')->group(function () {
-        // Login form
-        Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');
-        // Handle login
-        Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');
-        // Registration form
-        Route::get('/register', [StudentAuthController::class, 'showRegisterForm'])->name('register');
-        // Handle registration
-        Route::post('/register', [StudentAuthController::class, 'register'])->name('register.submit');
+        Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');// Login form
+        Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit'); // Handle login
+        Route::get('/register', [StudentAuthController::class, 'showRegisterForm'])->name('register');// Registration form
+        Route::post('/register', [StudentAuthController::class, 'register'])->name('register.submit');// Handle registration
     });
     // ================= AUTHENTICATED ROUTES =================
     Route::middleware('auth:student')->group(function () {
-        // Dashboard
-        Route::get('/dashboard', function () {
+        Route::get('/dashboard', function () {// Dashboard
             return view('dashboard.student_dashboard');
         })->name('dashboard');
-        // Logout
-        Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
+        Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');// Logout
     });
 });
 
