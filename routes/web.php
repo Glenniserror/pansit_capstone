@@ -13,17 +13,12 @@ Route::get('/', function () {
     return view('glenn.homepage');
 })->name('homepage');
 
-/*========== STUDENT ==========*/
+// Student Guest Routes (Login & Register)
 Route::prefix('student')->name('student.')->group(function () {
-    // Authentication routes
-    Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');
+    Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');// View Routes
+    Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');// Form Submission Routes
     Route::post('/register', [StudentAuthController::class, 'register'])->name('register');
-    Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
-    // Dashboard (protected)
-    Route::middleware(['auth:student'])->group(function () {
-        Route::get('/dashboard', fn () => view('student.dashboard'))->name('dashboard');
-    });
+    Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');// Logout
 });
 
 // Teacher Guest Routes (Login & Register)
@@ -34,14 +29,10 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
     Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');// Logout
 });
 
-/*========== ADMIN ==========*/
+// Admin Guest Routes (Login & Register)
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Authentication routes
-    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
-    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
-    // Dashboard (protected)
-    Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard');
-    });
+    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');// View Routes
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');// Form Submission Routes
+    Route::post('/register', [AdminAuthController::class, 'register'])->name('register');
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');// Logout
 });
