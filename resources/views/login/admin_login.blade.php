@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal | Bubog NHS</title>
+    <title>Admin Portal | Bubog NHS</title>
 
     <link rel="icon" href="{{ asset('image/logo-removebg-preview.png') }}">
 
     @vite([
-        'resources/css/login/student_login.css',
-        'resources/js/login/student_login.js'
+        'resources/css/login/admin_login.css',
+        'resources/js/login/admin_login.js'
     ])
 </head>
 <body>
@@ -23,10 +23,10 @@
             <div class="form-content">
 
                 <div class="icon-header">
-                    <img src="{{ asset('image/student.png') }}" alt="Student Icon">
+                    <img src="{{ asset('image/admin.png') }}" alt="admin Icon">
                 </div>
 
-                <h1>Student Portal</h1>
+                <h1>Admin Portal</h1>
                 <p id="sub-text">Sign in to your account</p>
 
                 @if ($errors->any())
@@ -45,7 +45,7 @@
                 </div>
 
                 <div id="login-form-container">
-                    <form method="POST" action="{{ route('student.login.submit') }}">
+                    <form method="POST" action="{{ route('admin.login.submit') }}">
                         @csrf
 
                         <div class="input-group">
@@ -63,7 +63,7 @@
                 </div>
 
                 <div id="signup-form-container" class="hidden">
-                    <form method="POST" action="{{ route('student.register') }}">
+                    <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
 
                         <div class="input-group">
