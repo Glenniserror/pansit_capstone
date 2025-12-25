@@ -25,7 +25,7 @@ Route::prefix('student')->name('student.')->group(function () {
     // Protected (Dashboard/Logout)
     Route::middleware('auth:student')->group(function () {
         Route::get('/dashboard', function () {
-            return view('student.dashboard'); // Siguraduhin na may view ka nito
+            return view('dashboard.student_dashboard'); // Siguraduhin na may view ka nito
         })->name('dashboard');
         
         Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
@@ -43,7 +43,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
     // Protected
     Route::middleware('auth:teacher')->group(function () {
         Route::get('/dashboard', function () {
-            return view('teacher.dashboard');
+            return view('dashboard.teacher_dashboard');
         })->name('dashboard');
         
         Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
@@ -61,7 +61,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Protected
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', function () {
-            return view('admin.dashboard');
+            return view('dashboard.admin_dashboard');
         })->name('dashboard');
         
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
