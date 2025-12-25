@@ -1,3 +1,65 @@
+/* Enhanced Button Interactions */
+.primary-btn, .secondary-btn, .logout-btn, .view-topics-btn {
+    position: relative;
+    overflow: hidden; /* For spinner */
+    transition: all 0.3s ease;
+}
+
+.primary-btn:focus, .secondary-btn:focus, .logout-btn:focus, .view-topics-btn:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.primary-btn:disabled, .secondary-btn:disabled, .logout-btn:disabled, .view-topics-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--locked-gray);
+}
+
+/* Loading State */
+.loading {
+    pointer-events: none;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Tooltip for Locked Modules */
+.tooltip {
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 2000;
+    transform: translateX(-50%);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Press Effect for Buttons */
+.primary-btn:active, .secondary-btn:active, .logout-btn:active, .view-topics-btn:active {
+    transform: scale(0.95);
+}
+
 :root {
     --primary-blue: #007bff;
     --success-green: #28a745;
