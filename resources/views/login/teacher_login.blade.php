@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal | Bubog NHS</title>
+    <title>Teacher Portal | Bubog NHS</title>
 
     <!-- FAVICON -->
     <link rel="icon" href="{{ asset('image/logo-removebg-preview.png') }}">
@@ -27,7 +27,7 @@
 
                 <!-- ICON HEADER -->
                 <div class="icon-header">
-                    <img src="{{ asset('image/student.png') }}" alt="teacher Icon">
+                    <img src="{{ asset('image\teacher.png') }}" alt="Teacher Icon">
                 </div>
 
                 <h1>Student Portal</h1>
