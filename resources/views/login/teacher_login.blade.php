@@ -30,7 +30,7 @@
                     <img src="{{ asset('image\teacher.png') }}" alt="Teacher Icon">
                 </div>
 
-                <h1>Student Portal</h1>
+                <h1>Teacher Portal</h1>
                 <p id="sub-text">Sign in to your account</p>
 
                 <!-- TAB SWITCHER -->
