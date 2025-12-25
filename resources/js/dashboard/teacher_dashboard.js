@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
-        const rows = document.querySelectorAll('.module-item');
+        const rows = document.querySelectorAll('.student-row');
 
         rows.forEach(row => {
-            const name = row.querySelector('.module-name').textContent.toLowerCase();
-            row.style.display = name.includes(term) ? 'block' : 'none';
+            const name = row.querySelector('.student-name').textContent.toLowerCase();
+            row.style.display = name.includes(term) ? 'flex' : 'none';
         });
     });
 
@@ -65,46 +65,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         });
     });
-
-    // 4. CHATBOT FUNCTIONALITY (Optional)
-    const chatBubble = document.getElementById('ai-bubble');
-    const chatWindow = document.getElementById('ai-chat-window');
-    const closeChat = document.getElementById('close-chat');
-    const sendBtn = document.getElementById('ai-send-btn');
-    const inputField = document.getElementById('ai-input');
-    const chatContent = document.getElementById('chat-content');
-
-    if (chatBubble && chatWindow) {
-        chatBubble.addEventListener('click', () => {
-            chatWindow.style.display = 'flex';
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatWindow.style.display = 'none';
-        });
-
-        sendBtn.addEventListener('click', () => {
-            const message = inputField.value.trim();
-            if (message) {
-                const userMsg = document.createElement('div');
-                userMsg.className = 'msg user';
-                userMsg.textContent = message;
-                chatContent.appendChild(userMsg);
-                inputField.value = '';
-
-                // Simulate bot response
-                setTimeout(() => {
-                    const botMsg = document.createElement('div');
-                    botMsg.className = 'msg bot';
-                    botMsg.textContent = 'Thanks for your question! I\'m here to help with math.';
-                    chatContent.appendChild(botMsg);
-                    chatContent.scrollTop = chatContent.scrollHeight;
-                }, 1000);
-            }
-        });
-
-        inputField.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendBtn.click();
-        });
-    }
 });
