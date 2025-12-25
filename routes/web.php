@@ -14,18 +14,18 @@ Route::get('/', function () {
 })->name('homepage');
 
 
-// STUDENT ROUTES
+// Student ROUTES
 Route::prefix('student')->name('student.')->group(function () {
-    // Guest only (Login/Register)
+    // Guest only
     Route::middleware('guest:student')->group(function () {
         Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');
         Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');
         Route::post('/register', [StudentAuthController::class, 'register'])->name('register');
     });
-    // Protected (Dashboard/Logout)
+    // Protected
     Route::middleware('auth:student')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard.student_dashboard'); // Siguraduhin na may view ka nito
+            return view('dashboard.student_dashboard');
         })->name('dashboard');
         
         Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
@@ -68,10 +68,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-Route::get('/student/login', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
-// Handle login submission
-Route::post('/student/login', [StudentAuthController::class, 'login'])->name('student.login.submit');
-// Show registration form (optional if you allow signup)
-Route::get('/student/register', [StudentAuthController::class, 'showRegisterForm'])->name('student.register');
-// Handle registration
-Route::post('/student/register', [StudentAuthController::class, 'register']);
