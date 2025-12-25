@@ -20,7 +20,7 @@ class StudentAuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::guard('teacher')->attempt([
+        if (Auth::guard('student')->attempt([
             'email' => $request->email,
             'password' => $request->password,
             'role' => 'student',
