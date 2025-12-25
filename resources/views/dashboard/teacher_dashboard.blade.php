@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Dashboard</title>
+    <title>Teacher Dashboard - Math Learning Assistant</title>
+    {{-- Laravel Vite integration --}}
     @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
 </head>
 <body>
@@ -19,9 +20,7 @@
 
             <form action="{{ route('teacher.logout') }}" method="POST" style="margin: 0;">
                 @csrf
-                <button type="submit" class="btn-outline" style="width: auto; cursor: pointer;">
-                    Logout
-                </button>
+                <button type="submit" class="logout-btn">Logout</button>
             </form>
         </header>
 
@@ -37,7 +36,7 @@
                         <span class="stat-label">Total Students</span>
                         <svg class="stat-icon blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     </div>
-                    <div class="stat-value">124</div>
+                    <div class="stat-value" data-target="124">0</div>
                     <div class="stat-desc">Active learners</div>
                 </div>
                 <div class="stat-card">
@@ -45,7 +44,7 @@
                         <span class="stat-label">Avg. Progress</span>
                         <svg class="stat-icon green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
                     </div>
-                    <div class="stat-value">67%</div>
+                    <div class="stat-value" data-target="67">0%</div>
                     <div class="stat-desc">+5% from last week</div>
                 </div>
                 <div class="stat-card">
@@ -53,7 +52,7 @@
                         <span class="stat-label">Pending Reviews</span>
                         <svg class="stat-icon orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line></svg>
                     </div>
-                    <div class="stat-value">18</div>
+                    <div class="stat-value" data-target="18">0</div>
                     <div class="stat-desc">Quizzes to grade</div>
                 </div>
                 <div class="stat-card">
@@ -61,7 +60,7 @@
                         <span class="stat-label">Messages</span>
                         <svg class="stat-icon blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </div>
-                    <div class="stat-value">7</div>
+                    <div class="stat-value" data-target="7">0</div>
                     <div class="stat-desc">Unread inquiries</div>
                 </div>
             </div>
@@ -70,6 +69,8 @@
                 <section class="modules-section">
                     <h2 class="section-title">Recent Student Activity</h2>
                     <p class="section-subtitle">Real-time update on student performance</p>
+                    
+                    {{-- Search bar added via JS --}}
 
                     <div class="student-list">
                         <div class="student-row">
@@ -120,7 +121,7 @@
                     <button class="view-topics-btn">View All Students</button>
                 </section>
 
-                <aside class="bottom-grid sidebar-actions">
+                <aside class="sidebar-actions">
                     <div class="action-card">
                         <div class="icon-box blue-bg">
                             <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -153,12 +154,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
