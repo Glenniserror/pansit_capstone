@@ -13,24 +13,33 @@ Route::get('/', function () {
     return view('glenn.homepage');
 })->name('homepage');
 
-
 // Student Routes
 Route::prefix('student')->name('student.')->group(function () {
+
     // ================= GUEST ROUTES =================
     Route::middleware('guest:student')->group(function () {
-        Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');// Login form
-        Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit'); // Handle login
-        Route::get('/register', [StudentAuthController::class, 'showRegisterForm'])->name('register');// Registration form
-        Route::post('/register', [StudentAuthController::class, 'register'])->name('register.submit');// Handle registration
+        // Login form
+        Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');
+        // Handle login submission
+        Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');
+        // Registration form
+        Route::get('/register', [StudentAuthController::class, 'showRegisterForm'])->name('register');
+        // Handle registration submission
+        Route::post('/register', [StudentAuthController::class, 'register'])->name('register.submit');
     });
+
     // ================= AUTHENTICATED ROUTES =================
     Route::middleware('auth:student')->group(function () {
-        Route::get('/dashboard', function () {// Dashboard
+        // Dashboard
+        Route::get('/dashboard', function () {
             return view('dashboard.student_dashboard');
         })->name('dashboard');
-        Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');// Logout
+
+        // Logout
+        Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
     });
 });
+
 
 // TEACHER ROUTES
 Route::prefix('teacher')->name('teacher.')->group(function () {
