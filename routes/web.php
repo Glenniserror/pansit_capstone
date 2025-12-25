@@ -22,22 +22,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 /*----------- Student Auth Routes -----------*/
 Route::prefix('student')->name('student.')->group(function () {
-
-    // Show login / signup page
     Route::get('/login', [StudentAuthController::class, 'showLoginForm'])
-        ->name('login');
-
-    // Handle login form
+        ->name('login');// Show login / signup page
     Route::post('/login', [StudentAuthController::class, 'login'])
-        ->name('login.submit');
-
-    // Handle signup form
+        ->name('login.submit');// Handle login form
     Route::post('/register', [StudentAuthController::class, 'register'])
-        ->name('register');
-
-    // Logout
+        ->name('register');// Handle signup form
     Route::post('/logout', [StudentAuthController::class, 'logout'])
-        ->name('logout');
+        ->name('logout');// Logout
 });
 
 /*----------- Teacher Auth Routes -----------*/
