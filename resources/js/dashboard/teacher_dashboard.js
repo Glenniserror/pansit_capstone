@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Animate Numerical Counters
+    
+    // 1. Counter Animation para sa Metrics
+    const counters = document.querySelectorAll('.value');
+    
     const animateCounters = () => {
-        const counters = document.querySelectorAll('.value');
         counters.forEach(counter => {
-            const target = parseInt(counter.innerText.replace('%', ''));
-            const isPercentage = counter.innerText.includes('%');
+            const target = parseInt(counter.getAttribute('data-target'));
+            const isPercentage = counter.innerText.includes('%') || counter.getAttribute('data-target') === "67";
             let count = 0;
-            const speed = 2000 / target; // Total animation time: 2 seconds
-
+            
+            // Speed control: mas malaking numero, mas mabilis ang dagdag
+            const increment = target / 50; 
+            
             const updateCount = () => {
                 if (count < target) {
-                    count++;
-                    counter.innerText = isPercentage ? `${count}%` : count;
-                    setTimeout(updateCount, speed);
+                    count += increment;
+                    counter.innerText = isPercentage ? `${Math.ceil(count)}%` : Math.ceil(count);
+                    setTimeout(updateCount, 30);
                 } else {
                     counter.innerText = isPercentage ? `${target}%` : target;
                 }
@@ -21,47 +25,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // 2. Entrance Animations for Cards
+    // 2. Intersection Observer para sa Entrance Animation
+    // Lalabas lang ang animation kapag scroll-down o pag-load ng page
     const observerOptions = {
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const revealOnScroll = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Add a slight stagger effect
+                // Staggered effect: dahan-dahang susunod ang bawat card
                 setTimeout(() => {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
+                    entry.target.classList.add('reveal-active');
                 }, index * 100);
             }
         });
     }, observerOptions);
 
-    // Apply initial hidden state and observe
-    const cards = document.querySelectorAll('.metric-card, .student-item, .card');
-    cards.forEach(card => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(20px)";
-        card.style.transition = "all 0.6s ease-out";
-        observer.observe(card);
+    // I-apply ang initial styles at i-observe ang bawat card
+    const allCards = document.querySelectorAll('.metric-card, .student-item, .action-card');
+    allCards.forEach(card => {
+        card.classList.add('reveal-hidden'); // Itatago muna sa CSS
+        revealOnScroll.observe(card);
     });
 
-    // 3. Button Interaction Feedback
+    // Patakbuhin ang counter animation
+    animateCounters();
+
+    // 3. Button Click Feedback
     const buttons = document.querySelectorAll('button');
     buttons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            // Simple Ripple/Scale effect
-            this.style.transform = "scale(0.95)";
-            setTimeout(() => {
-                this.style.transform = "scale(1)";
-                if(this.classList.contains('primary-btn')) {
-                    alert('Feedback module opening...');
-                }
-            }, 100);
+        btn.addEventListener('mousedown', function() {
+            this.style.transform = 'scale(0.96)';
+        });
+        btn.addEventListener('mouseup', function() {
+            this.style.transform = 'scale(1)';
         });
     });
-
-    // Run counter animation
-    animateCounters();
 });

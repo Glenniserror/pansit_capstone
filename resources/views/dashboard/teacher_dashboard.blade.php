@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Math Learning Assistant - Dashboard</title>
-    @vite(['resources/css/dashboard/student_dashboard.css', 'resources/js/dashboard/student_dashboard.js'])
+    <title>Math Learning Assistant - Dashboard</title>
+    @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
 </head>
 <body>
     <div class="dashboard-container">
@@ -29,100 +29,106 @@
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Total Students</p>
-                        <h2 class="value">124</h2>
+                        <h2 class="value" data-target="124">0</h2>
                         <p class="sub-label">Active learners</p>
                     </div>
-                    <div class="icon blue-icon">👥</div>
+                    <div class="icon-circle blue-bg">👥</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Average Progress</p>
-                        <h2 class="value">67%</h2>
+                        <h2 class="value" data-target="67">0%</h2>
                         <p class="sub-label positive">+5% from last week</p>
                     </div>
-                    <div class="icon green-icon">📈</div>
+                    <div class="icon-circle green-bg">📈</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Pending Reviews</p>
-                        <h2 class="value">18</h2>
+                        <h2 class="value" data-target="18">0</h2>
                         <p class="sub-label">Quizzes to grade</p>
                     </div>
-                    <div class="icon orange-icon">📄</div>
+                    <div class="icon-circle orange-bg">📄</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Messages</p>
-                        <h2 class="value">7</h2>
+                        <h2 class="value" data-target="7">0</h2>
                         <p class="sub-label">Unread Messages</p>
                     </div>
-                    <div class="icon teal-icon">💬</div>
+                    <div class="icon-circle teal-bg">💬</div>
                 </div>
             </div>
 
-            <div class="main-grid">
+            <div class="dashboard-layout">
+                
                 <section class="activity-section card">
-                    <h3 class="section-title">Recent Student Activity</h3>
-                    <p class="section-subtitle">Monitor your students' progress</p>
+                    <div class="card-header">
+                        <h3>Recent Student Activity</h3>
+                        <p>Monitor your students' progress</p>
+                    </div>
                     
                     <div class="student-list">
                         <div class="student-item">
-                            <div class="student-info">
-                                <strong>Meland Carman</strong>
-                                <span>Progress: 78%</span>
+                            <div class="student-details">
+                                <span class="student-name">Meland Carman</span>
+                                <span class="student-progress">Progress: 78%</span>
                             </div>
                             <span class="badge excellent">Excellent</span>
                         </div>
+
                         <div class="student-item">
-                            <div class="student-info">
-                                <strong>Stephanie Tamayuza</strong>
-                                <span>Progress: 65%</span>
+                            <div class="student-details">
+                                <span class="student-name">Stephanie Tamayuza</span>
+                                <span class="student-progress">Progress: 65%</span>
                             </div>
                             <span class="badge good">Good</span>
                         </div>
+
                         <div class="student-item">
-                            <div class="student-info">
-                                <strong>Kristine Villamor</strong>
-                                <span>Progress: 45%</span>
+                            <div class="student-details">
+                                <span class="student-name">Kristine Villamor</span>
+                                <span class="student-progress">Progress: 45%</span>
                             </div>
-                            <span class="badge needs-help">Needs Help</span>
+                            <span class="badge help">Needs Help</span>
                         </div>
+
                         <div class="student-item">
-                            <div class="student-info">
-                                <strong>Rhyssa Embanacido</strong>
-                                <span>Progress: 82%</span>
+                            <div class="student-details">
+                                <span class="student-name">Rhyssa Embanacido</span>
+                                <span class="student-progress">Progress: 82%</span>
                             </div>
                             <span class="badge excellent">Excellent</span>
                         </div>
                     </div>
-                    <button class="view-all-btn">View All Students</button>
+
+                    <button class="ghost-btn full-width">View All Students</button>
                 </section>
 
-                <div class="action-column">
+                <aside class="sidebar-actions">
                     <div class="action-card card">
-                        <div class="action-content">
-                            <h4>Provide Feedback</h4>
-                            <p>Send personalized recommendations to students</p>
-                            <button class="primary-btn">Send Feedback</button>
-                        </div>
+                        <h4>Provide Feedback</h4>
+                        <p>Send personalized recommendations to students</p>
+                        <button class="primary-btn">Send Feedback</button>
                     </div>
+
                     <div class="action-card card">
-                        <div class="action-content">
-                            <h4>Print Materials</h4>
-                            <p>Download modules for offline distribution</p>
-                            <button class="secondary-btn">📄 Generate PDFs</button>
-                        </div>
+                        <h4>Print Materials</h4>
+                        <p>Download modules for offline distribution</p>
+                        <button class="ghost-btn">📄 Generate PDFs</button>
                     </div>
+
                     <div class="action-card card">
-                        <div class="action-content">
-                            <h4>Generate Reports</h4>
-                            <p>Create detailed performance reports</p>
-                            <button class="secondary-btn">📊 View Reports</button>
-                        </div>
+                        <h4>Generate Reports</h4>
+                        <p>Create detailed performance reports</p>
+                        <button class="ghost-btn">📊 View Reports</button>
                     </div>
-                </div>
+                </aside>
+
             </div>
         </main>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
