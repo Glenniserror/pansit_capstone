@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Math Learning Assistant - Dashboard</title>
-    @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="dashboard-container">
@@ -21,116 +21,108 @@
 
         <main class="content">
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome back, Teacher!</h1>
+                <h1 class="welcome-title">Welcome, Teacher</h1>
                 <p class="welcome-subtitle">Monitor and guide your students' progress</p>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-label">Total Students</span>
-                        <svg class="stat-icon green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <p class="label">Total Students</p>
+                        <h2 class="value">124</h2>
+                        <p class="sub-label">Active learners</p>
                     </div>
-                    <div class="stat-value">124</div>
-                    <div class="stat-desc">Active learners</div>
+                    <div class="icon blue-icon">👥</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-label">Average Progress</span>
-                        <svg class="stat-icon orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <p class="label">Average Progress</p>
+                        <h2 class="value">67%</h2>
+                        <p class="sub-label positive">+5% from last week</p>
                     </div>
-                    <div class="stat-value">67%</div>
-                    <div class="stat-desc">+5% from last week</div>
+                    <div class="icon green-icon">📈</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-label">Pending Reviews</span>
-                        <svg class="stat-icon blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <p class="label">Pending Reviews</p>
+                        <h2 class="value">18</h2>
+                        <p class="sub-label">Quizzes to grade</p>
                     </div>
-                    <div class="stat-value">18</div>
-                    <div class="stat-desc">Quizzes to grade</div>
+                    <div class="icon orange-icon">📄</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <p class="label">Messages</p>
+                        <h2 class="value">7</h2>
+                        <p class="sub-label">Unread Messages</p>
+                    </div>
+                    <div class="icon teal-icon">💬</div>
                 </div>
             </div>
 
-            <section class="modules-section">
-                <h2 class="section-title">Student Activity</h2>
-                <p class="section-subtitle">Monitor progress across all students</p>
-
-                <div class="module-list">
-                    <div class="module-item">
-                        <div class="module-info">
-                            <div class="module-title-row">
-                                <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2" style="width:18px; height:18px; margin-right:8px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                <span class="module-name">Meland Carman</span>
+            <div class="main-grid">
+                <section class="activity-section card">
+                    <h3 class="section-title">Recent Student Activity</h3>
+                    <p class="section-subtitle">Monitor your students' progress</p>
+                    
+                    <div class="student-list">
+                        <div class="student-item">
+                            <div class="student-info">
+                                <strong>Meland Carman</strong>
+                                <span>Progress: 78%</span>
                             </div>
-                            <span class="percentage">78%</span>
+                            <span class="badge excellent">Excellent</span>
                         </div>
-                        <div class="progress-bar-bg">
-                            <div class="progress-fill" style="width: 78%;"></div>
-                        </div>
-                        <button class="view-topics-btn">View Details</button>
-                    </div>
-                    <div class="module-item">
-                        <div class="module-info">
-                            <div class="module-title-row">
-                                <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2" style="width:18px; height:18px; margin-right:8px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                <span class="module-name">Stephanie Tamayuza</span>
+                        <div class="student-item">
+                            <div class="student-info">
+                                <strong>Stephanie Tamayuza</strong>
+                                <span>Progress: 65%</span>
                             </div>
-                            <span class="percentage">65%</span>
+                            <span class="badge good">Good</span>
                         </div>
-                        <div class="progress-bar-bg">
-                            <div class="progress-fill" style="width: 65%;"></div>
-                        </div>
-                        <button class="view-topics-btn">View Details</button>
-                    </div>
-                    <div class="module-item">
-                        <div class="module-info">
-                            <div class="module-title-row">
-                                <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2" style="width:18px; height:18px; margin-right:8px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                <span class="module-name">Kristine Villamor</span>
+                        <div class="student-item">
+                            <div class="student-info">
+                                <strong>Kristine Villamor</strong>
+                                <span>Progress: 45%</span>
                             </div>
-                            <span class="percentage">45%</span>
+                            <span class="badge needs-help">Needs Help</span>
                         </div>
-                        <div class="progress-bar-bg">
-                            <div class="progress-fill" style="width: 45%;"></div>
+                        <div class="student-item">
+                            <div class="student-info">
+                                <strong>Rhyssa Embanacido</strong>
+                                <span>Progress: 82%</span>
+                            </div>
+                            <span class="badge excellent">Excellent</span>
                         </div>
-                        <button class="view-topics-btn">View Details</button>
                     </div>
-                </div>
-                <button class="secondary-btn full-width">View All Students</button>
-            </section>
+                    <button class="view-all-btn">View All Students</button>
+                </section>
 
-            <div class="bottom-grid">
-                <div class="action-card">
-                    <div class="icon-box blue-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <div class="action-column">
+                    <div class="action-card card">
+                        <div class="action-content">
+                            <h4>Provide Feedback</h4>
+                            <p>Send personalized recommendations to students</p>
+                            <button class="primary-btn">Send Feedback</button>
+                        </div>
                     </div>
-                    <h3 class="card-title">Provide Feedback</h3>
-                    <p class="card-desc">Send personalized recommendations</p>
-                    <button class="primary-btn">Send Feedback</button>
-                </div>
-
-                <div class="action-card">
-                    <div class="icon-box green-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <div class="action-card card">
+                        <div class="action-content">
+                            <h4>Print Materials</h4>
+                            <p>Download modules for offline distribution</p>
+                            <button class="secondary-btn">📄 Generate PDFs</button>
+                        </div>
                     </div>
-                    <h3 class="card-title">Print Materials</h3>
-                    <p class="card-desc">Download modules offline</p>
-                    <button class="secondary-btn">Generate PDFs</button>
-                </div>
-
-                <div class="action-card">
-                    <div class="icon-box blue-bg">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    <div class="action-card card">
+                        <div class="action-content">
+                            <h4>Generate Reports</h4>
+                            <p>Create detailed performance reports</p>
+                            <button class="secondary-btn">📊 View Reports</button>
+                        </div>
                     </div>
-                    <h3 class="card-title">Generate Reports</h3>
-                    <p class="card-desc">Create detailed performance reports</p>
-                    <button class="secondary-btn">View Reports</button>
                 </div>
             </div>
         </main>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
