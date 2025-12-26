@@ -113,7 +113,7 @@
                     <div class="icon-box blue-bg">💬</div>
                     <h3>AI Chatbot</h3>
                     <p>Get instant help with your math questions</p>
-                    <button id="start-chat-btn" class="primary-btn">Start Chat</button>
+                    <button id="start-chat-btn" type="button" class="primary-btn">Start Chat</button>
                 </div>
 
                 <div class="action-card">
