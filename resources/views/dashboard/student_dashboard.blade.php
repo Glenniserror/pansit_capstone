@@ -132,38 +132,36 @@
             </div>
         </main>
     </div>
-    <div class="action-card messenger-style">
-    <div class="chat-header">
-        <div class="user-info">
-            <div class="avatar-status">
-                <img src="https://ui-avatars.com/api/?name=AI+Bot&background=0D8ABC&color=fff" alt="AI">
-                <span class="online-dot"></span>
+    <div class="chat-wrapper" id="chatWrapper">
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="header-info">
+                <div class="bot-avatar">MLA</div>
+                <div>
+                    <h4>Math AI Assistant</h4>
+                    <span class="status">Active Now</span>
+                </div>
             </div>
-            <div>
-                <h3>AI Math Assistant</h3>
-                <p class="status-text">Active now</p>
+            <button class="close-chat" id="closeChat">&times;</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg bot-msg">
+                Hello! I'm your Math Learning Assistant. How can I help you today?
             </div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <button id="sendBtn">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+            </button>
         </div>
     </div>
 
-    <div class="chat-window">
-        <div class="message received">
-            <p>Hello! I'm your AI tutor. How can I help you with your Math lessons today? 👋</p>
-        </div>
-        <div class="message sent">
-            <p>Can you help me with Sequences and Series?</p>
-        </div>
-        <div class="message received">
-            <p>Of course! Which part of Sequences do you find difficult? arithmetic or geometric?</p>
-        </div>
-    </div>
-
-    <div class="chat-input-area">
-        <input type="text" placeholder="Aa" class="chat-input">
-        <button class="send-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084ff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
-        </button>
-    </div>
+    <button class="chat-bubble" id="chatBubble">
+        <svg viewBox="0 0 28 28" fill="white" width="28" height="28"><path d="M14 2.1c7.1 0 12.9 5.3 12.9 11.8 0 3.7-1.9 6.9-4.9 9.1-.4.3-.6.7-.5 1.2l.6 2.3c.1.4-.3.8-.7.7l-2.6-1.1c-.4-.2-.8-.2-1.2 0-1.1.4-2.3.6-3.6.6-7.1 0-12.9-5.3-12.9-11.8C1.1 7.4 6.9 2.1 14 2.1z"></path></svg>
+    </button>
 </div>
 </body>
 </html>
