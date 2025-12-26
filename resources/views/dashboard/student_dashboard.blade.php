@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Student Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    @vite(['resources/css/dashboard/student_dashboard.css'])
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
 </head>
 <body>
     <div class="dashboard-container">
@@ -133,7 +133,7 @@
         </main>
     </div>
 
-    {{-- Chatbot UI Elements --}}
+    <!-- Chatbot UI Elements -->
     <div id="ai-bubble" class="messenger-bubble">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </div>
@@ -156,5 +156,7 @@
             </button>
         </div>
     </div>
+
+    <script src="script.js"></script> <!-- Link to external JS -->
 </body>
 </html>
