@@ -286,12 +286,3 @@ body {
     align-items: center;
     justify-content: center;
 }
-#ai-chat-window {
-    z-index: 9999 !important; /* Siguraduhin na nasa pinaka-ibabaw */
-    display: none; /* Default hidden */
-}
-
-#ai-bubble {
-    z-index: 9998 !important;
-    cursor: pointer !important;
-}

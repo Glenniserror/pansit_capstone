@@ -1,76 +1,68 @@
-
-document.addEventListener('DOMContentLoaded', function() {
+<script>
+// Balutin natin sa function para sigurado
+window.addEventListener('load', function() {
+    
+    // 1. Kunin ang mga kailangan
     const bubble = document.getElementById('ai-bubble');
-    const window = document.getElementById('ai-chat-window');
+    const windowChat = document.getElementById('ai-chat-window');
+    const startBtn = document.getElementById('start-chat-btn');
     const closeBtn = document.getElementById('close-chat');
     const sendBtn = document.getElementById('ai-send-btn');
     const input = document.getElementById('ai-input');
     const content = document.getElementById('chat-content');
 
-    // Open/Close
-    bubble.onclick = () => { window.style.display = 'flex'; bubble.style.display = 'none'; };
-    closeBtn.onclick = () => { window.style.display = 'none'; bubble.style.display = 'flex'; };
+    // 2. Debugging: I-check natin sa Console (F12) kung nahanap ba ang mga elements
+    if (!bubble || !windowChat || !startBtn) {
+        console.error("May kulang na ID sa HTML mo! Pakicheck kung tama ang spelling ng 'ai-bubble', 'ai-chat-window', o 'start-chat-btn'.");
+        return;
+    }
 
-    function sendMessage() {
-        const text = input.value.trim();
-        if(!text) return;
+    // 3. Open Function
+    function open() {
+        windowChat.style.display = 'flex';
+        bubble.style.display = 'none';
+        input.focus();
+    }
 
-        // User message
+    // 4. Close Function
+    function close() {
+        windowChat.style.display = 'none';
+        bubble.style.display = 'flex';
+    }
+
+    // 5. Send Function
+    function send() {
+        const msg = input.value.trim();
+        if(!msg) return;
+
         const userDiv = document.createElement('div');
         userDiv.className = 'msg user';
-        userDiv.textContent = text;
+        userDiv.textContent = msg;
         content.appendChild(userDiv);
         
         input.value = '';
         content.scrollTop = content.scrollHeight;
 
-        // Simulate Bot Typing
         setTimeout(() => {
             const botDiv = document.createElement('div');
             botDiv.className = 'msg bot';
             botDiv.textContent = "Solving... 💡";
             content.appendChild(botDiv);
             content.scrollTop = content.scrollHeight;
-        }, 600);
+        }, 500);
     }
 
-    sendBtn.onclick = sendMessage;
-    input.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
+    // 6. Click Events
+    bubble.onclick = open;
+    startBtn.onclick = open;
+    closeBtn.onclick = close;
+    sendBtn.onclick = send;
+
+    // Enter Key
+    input.onkeydown = function(e) {
+        if(e.key === 'Enter') send();
+    };
+
+    console.log("Chatbot logic is ready!");
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Kunin ang mga elements
-    const bubble = document.getElementById('ai-bubble');
-    const chatWindow = document.getElementById('ai-chat-window');
-    const startChatBtn = document.getElementById('start-chat-btn'); // New button
-    const closeBtn = document.getElementById('close-chat');
-
-    // Function para buksan ang chat
-    function openChat() {
-        chatWindow.style.display = 'flex';
-        bubble.style.display = 'none'; // Itago ang floating bubble
-        
-        // Optional: I-scroll kusa sa pinaka-baba ng messages
-        const content = document.getElementById('chat-content');
-        content.scrollTop = content.scrollHeight;
-    }
-
-    // Function para isara ang chat
-    function closeChat() {
-        chatWindow.style.display = 'none';
-        bubble.style.display = 'flex'; // Ipakita ulit ang bubble
-    }
-
-    // Event Listeners
-    if (startChatBtn) {
-        startChatBtn.addEventListener('click', openChat);
-    }
-    
-    if (bubble) {
-        bubble.addEventListener('click', openChat);
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeChat);
-    }
-});
+</script>
