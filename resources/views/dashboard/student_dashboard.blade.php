@@ -132,5 +132,38 @@
             </div>
         </main>
     </div>
+    <div class="action-card messenger-style">
+    <div class="chat-header">
+        <div class="user-info">
+            <div class="avatar-status">
+                <img src="https://ui-avatars.com/api/?name=AI+Bot&background=0D8ABC&color=fff" alt="AI">
+                <span class="online-dot"></span>
+            </div>
+            <div>
+                <h3>AI Math Assistant</h3>
+                <p class="status-text">Active now</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-window">
+        <div class="message received">
+            <p>Hello! I'm your AI tutor. How can I help you with your Math lessons today? 👋</p>
+        </div>
+        <div class="message sent">
+            <p>Can you help me with Sequences and Series?</p>
+        </div>
+        <div class="message received">
+            <p>Of course! Which part of Sequences do you find difficult? arithmetic or geometric?</p>
+        </div>
+    </div>
+
+    <div class="chat-input-area">
+        <input type="text" placeholder="Aa" class="chat-input">
+        <button class="send-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084ff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+        </button>
+    </div>
+</div>
 </body>
 </html>
