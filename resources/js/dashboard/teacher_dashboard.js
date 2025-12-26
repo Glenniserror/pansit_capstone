@@ -1,57 +1,67 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /**
-     * 1. PROGRESS BAR ANIMATION
-     * Kinukuha ang percentage mula sa Blade style attribute.
-     */
-    const progressFills = document.querySelectorAll('.progress-fill');
-    
-    setTimeout(() => {
-        progressFills.forEach(fill => {
-            // Kunin ang width na galing sa Blade (halimbawa "0%" o "100%")
-            const targetWidth = fill.style.width; 
-            
-            // I-reset muna para sa animation effect
-            fill.style.width = '0'; 
-            
-            setTimeout(() => {
-                fill.style.width = targetWidth;
-            }, 150);
-        });
-    }, 400);
+    // 1. Animate Numerical Counters
+    const animateCounters = () => {
+        const counters = document.querySelectorAll('.value');
+        counters.forEach(counter => {
+            const target = parseInt(counter.innerText.replace('%', ''));
+            const isPercentage = counter.innerText.includes('%');
+            let count = 0;
+            const speed = 2000 / target; // Total animation time: 2 seconds
 
-    /**
-     * 2. VIEW TOPICS BUTTON INTERACTION (WITH LOCK CHECK)
-     */
-    const viewTopicsBtns = document.querySelectorAll('.view-topics-btn');
-    viewTopicsBtns.forEach(btn => {
+            const updateCount = () => {
+                if (count < target) {
+                    count++;
+                    counter.innerText = isPercentage ? `${count}%` : count;
+                    setTimeout(updateCount, speed);
+                } else {
+                    counter.innerText = isPercentage ? `${target}%` : target;
+                }
+            };
+            updateCount();
+        });
+    };
+
+    // 2. Entrance Animations for Cards
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add a slight stagger effect
+                setTimeout(() => {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }, index * 100);
+            }
+        });
+    }, observerOptions);
+
+    // Apply initial hidden state and observe
+    const cards = document.querySelectorAll('.metric-card, .student-item, .card');
+    cards.forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "all 0.6s ease-out";
+        observer.observe(card);
+    });
+
+    // 3. Button Interaction Feedback
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            // 2. Kung hindi locked, ituloy ang loading effect
-            const originalText = this.innerText;
-            this.innerText = 'Opening...';
-            this.style.opacity = '0.7';
-            
+            // Simple Ripple/Scale effect
+            this.style.transform = "scale(0.95)";
             setTimeout(() => {
-                this.innerText = originalText;
-                this.style.opacity = '1';
-                console.log('Student details opened!');
-                // Dito pwedeng ilagay ang window.location.href = "/student/1";
-            }, 600);
+                this.style.transform = "scale(1)";
+                if(this.classList.contains('primary-btn')) {
+                    alert('Feedback module opening...');
+                }
+            }, 100);
         });
     });
 
-    /**
-     * 4. GENERAL BUTTON & CARD HOVER EFFECTS
-     */
-    const interactiveElements = document.querySelectorAll('.action-card, .primary-btn, .secondary-btn, .logout-btn');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            el.style.transform = 'translateY(-3px)';
-            el.style.transition = 'all 0.3s ease';
-        });
-
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = 'translateY(0)';
-        });
-    });
+    // Run counter animation
+    animateCounters();
 });

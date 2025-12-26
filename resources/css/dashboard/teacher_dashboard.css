@@ -155,3 +155,23 @@ body {
     cursor: pointer;
     font-weight: 500;
 }
+/* Add this to your style.css */
+
+.metric-card:hover, .student-item:hover, .card:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.badge {
+    transition: filter 0.3s ease;
+}
+
+.badge:hover {
+    filter: brightness(1.1);
+}
