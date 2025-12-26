@@ -5,48 +5,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('sendBtn');
     const input = document.getElementById('userInput');
     const messages = document.getElementById('chatMessages');
+    const typing = document.getElementById('typing');
 
-    // Toggle Chat Window
+    // Toggle Window
     bubble.addEventListener('click', () => {
         window.style.display = 'flex';
-        bubble.style.transform = 'scale(0) rotate(90deg)';
         bubble.style.opacity = '0';
-        setTimeout(() => { bubble.style.visibility = 'hidden'; }, 400);
+        bubble.style.pointerEvents = 'none';
     });
 
     closeBtn.addEventListener('click', () => {
         window.style.display = 'none';
-        bubble.style.visibility = 'visible';
-        bubble.style.transform = 'scale(1) rotate(0deg)';
         bubble.style.opacity = '1';
+        bubble.style.pointerEvents = 'auto';
     });
 
-    // Messaging Function
-    function sendMessage() {
-        const text = input.value.trim();
-        if (text === "") return;
-
-        // User Message UI
-        const userDiv = document.createElement('div');
-        userDiv.className = 'message user-message';
-        userDiv.textContent = text;
-        messages.appendChild(userDiv);
+    function addMessage(type, text) {
+        const div = document.createElement('div');
+        div.className = `msg-bubble ${type}`;
         
-        input.value = "";
-        messages.scrollTop = messages.scrollHeight;
+        const now = new Date();
+        const timeStr = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
 
-        // Simulate Bot Typing
-        setTimeout(() => {
-            const botDiv = document.createElement('div');
-            botDiv.className = 'message bot-message';
-            botDiv.textContent = "Sinusuri ko ang iyong tanong... Hintayin lamang ang sagot.";
-            messages.appendChild(botDiv);
-            messages.scrollTop = messages.scrollHeight;
-        }, 800);
+        div.innerHTML = `
+            <div class="msg-content">${text}</div>
+            <span class="msg-time">${timeStr}</span>
+        `;
+        
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
     }
 
-    sendBtn.addEventListener('click', sendMessage);
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
+    function handleSend() {
+        const text = input.value.trim();
+        if(!text) return;
+
+        addMessage('user', text);
+        input.value = '';
+
+        // Show Typing Indicator
+        typing.style.display = 'flex';
+        messages.scrollTop = messages.scrollHeight;
+
+        setTimeout(() => {
+            typing.style.display = 'none';
+            addMessage('bot', "Analyzing your math query... Solution is being generated. 🤖✨");
+        }, 1500);
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    input.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
 });

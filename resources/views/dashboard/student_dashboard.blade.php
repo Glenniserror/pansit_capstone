@@ -132,41 +132,54 @@
             </div>
         </main>
     </div>
-    <div class="chat-system">
-    <div class="glass-chat-window" id="chatWindow">
-        <div class="chat-header">
-            <div class="bot-info">
-                <div class="bot-avatar-active">
-                    <img src="https://ui-avatars.com/api/?name=MLA&background=007AFF&color=fff" alt="AI">
-                    <span class="online-pulse"></span>
+    <div class="premium-chat-system">
+    <div class="ultra-trigger" id="chatBubble">
+        <div class="pulse-ring"></div>
+        <img src="image_84b3ff.png" alt="Math AI" class="trigger-img">
+    </div>
+
+    <div class="premium-window" id="chatWindow">
+        <div class="premium-header">
+            <div class="user-profile">
+                <div class="avatar-wrapper">
+                    <img src="https://ui-avatars.com/api/?name=Math+AI&background=007AFF&color=fff" alt="">
+                    <span class="active-dot"></span>
                 </div>
-                <div>
-                    <h4>Math AI Assistant</h4>
-                    <p>Powered by Advanced AI</p>
+                <div class="text-group">
+                    <h5>Math Assistant v2.0</h5>
+                    <p>Online | High Performance AI</p>
                 </div>
             </div>
-            <button class="close-glass-btn" id="closeChat">&times;</button>
+            <button class="minimize-btn" id="closeChat">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
         </div>
 
-        <div class="chat-body" id="chatMessages">
-            <div class="message bot-message">
-                Kamusta! Ako ang iyong Math Assistant. May maipaglilingkod ba ako sa iyong math problems ngayon?
+        <div class="premium-body" id="chatMessages">
+            <div class="date-divider">Today</div>
+            <div class="msg-bubble bot">
+                <div class="msg-content">
+                    Ready to solve complex equations. What's on your mind? 📐
+                </div>
+                <span class="msg-time">12:00 PM</span>
             </div>
         </div>
 
-        <div class="chat-footer">
-            <div class="glass-input-group">
-                <input type="text" id="userInput" placeholder="Tungkol saan ang tanong mo?">
-                <button id="sendBtn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        <div class="typing-indicator" id="typing">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="premium-footer">
+            <div class="input-container">
+                <button class="attach-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                </button>
+                <input type="text" id="userInput" placeholder="Ask a question...">
+                <button class="send-btn-modern" id="sendBtn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="white" stroke="none"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                 </button>
             </div>
         </div>
-    </div>
-
-    <div class="chat-trigger" id="chatBubble">
-        <div class="notification-badge"></div>
-        <img src="image_84b3ff.png" alt="Chat Icon" class="main-icon">
     </div>
 </div>
 </body>
