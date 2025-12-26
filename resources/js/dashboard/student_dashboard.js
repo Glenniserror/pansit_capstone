@@ -1,101 +1,76 @@
+
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. SELECT ELEMENTS
     const bubble = document.getElementById('ai-bubble');
-    const chatWindow = document.getElementById('ai-chat-window');
-    const startChatBtn = document.getElementById('start-chat-btn');
+    const window = document.getElementById('ai-chat-window');
     const closeBtn = document.getElementById('close-chat');
     const sendBtn = document.getElementById('ai-send-btn');
     const input = document.getElementById('ai-input');
-    const chatContent = document.getElementById('chat-content');
+    const content = document.getElementById('chat-content');
 
-    // 2. TOGGLE FUNCTIONS (Buksan at Isara)
-    function openChat() {
-        if (chatWindow) {
-            chatWindow.style.display = 'flex';
-            if (bubble) bubble.style.display = 'none';
-            input.focus();
-            chatContent.scrollTop = chatContent.scrollHeight;
-        }
-    }
+    // Open/Close
+    bubble.onclick = () => { window.style.display = 'flex'; bubble.style.display = 'none'; };
+    closeBtn.onclick = () => { window.style.display = 'none'; bubble.style.display = 'flex'; };
 
-    function closeChat() {
-        if (chatWindow) {
-            chatWindow.style.display = 'none';
-            if (bubble) bubble.style.display = 'flex';
-        }
-    }
-
-    // 3. SEND MESSAGE LOGIC
     function sendMessage() {
         const text = input.value.trim();
-        if (!text) return;
+        if(!text) return;
 
-        // User message bubble
+        // User message
         const userDiv = document.createElement('div');
         userDiv.className = 'msg user';
         userDiv.textContent = text;
-        chatContent.appendChild(userDiv);
+        content.appendChild(userDiv);
         
         input.value = '';
-        chatContent.scrollTop = chatContent.scrollHeight;
+        content.scrollTop = content.scrollHeight;
 
-        // Bot simulation
+        // Simulate Bot Typing
         setTimeout(() => {
             const botDiv = document.createElement('div');
             botDiv.className = 'msg bot';
             botDiv.textContent = "Solving... 💡";
-            chatContent.appendChild(botDiv);
-            chatContent.scrollTop = chatContent.scrollHeight;
-
-            // Optional: Palitan ang message pagkatapos ng 1 segundo
-            setTimeout(() => {
-                botDiv.textContent = "I'm analyzing your math problem. Can you provide more details?";
-                chatContent.scrollTop = chatContent.scrollHeight;
-            }, 1000);
+            content.appendChild(botDiv);
+            content.scrollTop = content.scrollHeight;
         }, 600);
     }
 
-    // 4. EVENT LISTENERS
-    // Para sa "Start Chat" button sa dashboard card
+    sendBtn.onclick = sendMessage;
+    input.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Kunin ang mga elements
+    const bubble = document.getElementById('ai-bubble');
+    const chatWindow = document.getElementById('ai-chat-window');
+    const startChatBtn = document.getElementById('start-chat-btn'); // New button
+    const closeBtn = document.getElementById('close-chat');
+
+    // Function para buksan ang chat
+    function openChat() {
+        chatWindow.style.display = 'flex';
+        bubble.style.display = 'none'; // Itago ang floating bubble
+        
+        // Optional: I-scroll kusa sa pinaka-baba ng messages
+        const content = document.getElementById('chat-content');
+        content.scrollTop = content.scrollHeight;
+    }
+
+    // Function para isara ang chat
+    function closeChat() {
+        chatWindow.style.display = 'none';
+        bubble.style.display = 'flex'; // Ipakita ulit ang bubble
+    }
+
+    // Event Listeners
     if (startChatBtn) {
-        startChatBtn.onclick = function(e) {
-            e.preventDefault(); // Iwasan ang page reload
-            openChat();
-        };
+        startChatBtn.addEventListener('click', openChat);
     }
-
-    // Para sa Floating Bubble
+    
     if (bubble) {
-        bubble.onclick = openChat;
+        bubble.addEventListener('click', openChat);
     }
 
-    // Para sa X (Close) button
     if (closeBtn) {
-        closeBtn.onclick = closeChat;
+        closeBtn.addEventListener('click', closeChat);
     }
-
-    // Para sa Send button
-    if (sendBtn) {
-        sendBtn.onclick = sendMessage;
-    }
-
-    // Para sa Enter key
-    if (input) {
-        input.onkeypress = function(e) {
-            if (e.key === 'Enter') sendMessage();
-        };
-    }
-
-    // 5. PROGRESS BAR ANIMATION (Bonus)
-    const progressFills = document.querySelectorAll('.progress-fill');
-    setTimeout(() => {
-        progressFills.forEach(fill => {
-            const targetWidth = fill.style.width; 
-            fill.style.width = '0'; 
-            setTimeout(() => {
-                fill.style.width = targetWidth;
-                fill.style.transition = 'width 1s ease-in-out';
-            }, 100);
-        });
-    }, 500);
 });
