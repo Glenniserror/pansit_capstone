@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+     <title>Math Learning Assistant - Dashboard</title>
+    @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
 </head>
 <body>
     <div class="dashboard-container">
