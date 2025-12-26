@@ -292,3 +292,12 @@ body {
     align-items: center;
     justify-content: center;
 }
+.chat-window-compact {
+    display: none;
+}
+
+.chat-window-compact.open {
+    display: flex;
+    animation: slideUp 0.3s ease;
+}
+    

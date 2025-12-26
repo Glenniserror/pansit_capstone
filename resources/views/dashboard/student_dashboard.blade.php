@@ -6,7 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Student Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    @vite(['resources/css/dashboard/student_dashboard.css' , 'resources/css/dashboard/student_dashboard.js'])
+    @vite([
+    'resources/css/dashboard/student_dashboard.css',
+    'resources/js/dashboard/student_dashboard.js'
+])
+
 </head>
 <body>
     <div class="dashboard-container">
@@ -157,6 +161,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script> <!-- Link to external JS -->
+
 </body>
 </html>
