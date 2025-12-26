@@ -28,7 +28,7 @@
 
         <main class="content">
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome, {{ Auth::check() ? Auth::user()->name : 'Teacher' }}!</h1>
+                <h1 class="welcome-title">Welcome back, {{ Auth::check() ? Auth::user()->name : 'Teacher' }}!</h1>
                 <p class="welcome-subtitle">Monitor and guide your students' progress</p>
             </div>
 
@@ -45,8 +45,8 @@
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Average Progress</p>
-                        <h2 class="value" data-target="0">0%</h2>  <!-- Changed to 0% -->
-                        <p class="sub-label neutral">No progress yet</p>  <!-- Updated sub-label -->
+                        <h2 class="value" data-target="67">0%</h2>
+                        <p class="sub-label positive">+5% from last week</p>
                     </div>
                     <div class="icon-circle green-bg">📈</div>
                 </div>
@@ -80,33 +80,33 @@
                         <div class="student-item">
                             <div class="student-details">
                                 <span class="student-name">Meland Carman</span>
-                                <span class="student-progress">Progress: 0%</span>  <!-- Changed to 0% -->
+                                <span class="student-progress">Progress: 78%</span>
                             </div>
-                            <span class="badge needs-help">Needs Help</span>  <!-- Updated badge -->
+                            <span class="badge excellent">Excellent</span>
                         </div>
 
                         <div class="student-item">
                             <div class="student-details">
                                 <span class="student-name">Stephanie Tamayuza</span>
-                                <span class="student-progress">Progress: 0%</span>  <!-- Changed to 0% -->
+                                <span class="student-progress">Progress: 65%</span>
                             </div>
-                            <span class="badge needs-help">Needs Help</span>  <!-- Updated badge -->
+                            <span class="badge good">Good</span>
                         </div>
 
                         <div class="student-item">
                             <div class="student-details">
                                 <span class="student-name">Kristine Villamor</span>
-                                <span class="student-progress">Progress: 0%</span>  <!-- Changed to 0% -->
+                                <span class="student-progress">Progress: 45%</span>
                             </div>
-                            <span class="badge needs-help">Needs Help</span>  <!-- Updated badge -->
+                            <span class="badge help">Needs Help</span>
                         </div>
 
                         <div class="student-item">
                             <div class="student-details">
                                 <span class="student-name">Rhyssa Embanacido</span>
-                                <span class="student-progress">Progress: 0%</span>  <!-- Changed to 0% -->
+                                <span class="student-progress">Progress: 82%</span>
                             </div>
-                            <span class="badge needs-help">Needs Help</span>  <!-- Updated badge -->
+                            <span class="badge excellent">Excellent</span>
                         </div>
                     </div>
 
