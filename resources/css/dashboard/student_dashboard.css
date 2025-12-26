@@ -4,6 +4,7 @@
     --text-main: #111827;
     --text-muted: #6b7280;
     --blue-primary: #0070f3;
+    --green-success: #10b981;
 }
 
 body {
@@ -13,7 +14,6 @@ body {
     margin: 0;
 }
 
-/* HEADER */
 .header {
     display: flex;
     justify-content: space-between;
@@ -22,36 +22,34 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.logo-section { display: flex; align-items: center; gap: 10px; }
-.brand-name { font-weight: 700; font-size: 1.1rem; }
+.logo-section { display: flex; align-items: center; gap: 8px; }
+.brand-name { font-weight: 700; font-size: 1rem; }
 
 .logout-btn {
-    padding: 6px 14px;
+    padding: 6px 16px;
     border: 1px solid var(--border-color);
     background: #fff;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     cursor: pointer;
 }
 
-/* CONTENT AREA */
 .main-content {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 32px 24px;
+    padding: 40px 20px;
 }
 
-.hero-section { margin-bottom: 30px; }
-.welcome-title { font-size: 1.8rem; font-weight: 800; margin: 0; }
-.welcome-subtitle { color: var(--text-muted); margin-top: 5px; }
+.welcome-title { font-size: 2rem; font-weight: 800; margin-bottom: 4px; }
+.welcome-subtitle { color: var(--text-muted); margin-bottom: 32px; }
 
-/* METRICS GRID (Top Row) */
+/* METRICS */
 .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 .metric-card {
@@ -60,76 +58,102 @@ body {
     padding: 20px;
 }
 
-.metric-content {
+.metric-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    margin-bottom: 12px;
 }
 
-.metric-label { font-weight: 700; font-size: 0.9rem; margin: 0 0 10px 0; }
-.metric-value { font-size: 1.8rem; font-weight: 800; margin: 0; }
-.metric-sub { font-size: 0.8rem; color: #9ca3af; margin-top: 4px; }
-.positive { color: #10b981; font-weight: 600; }
+.metric-label { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
+.metric-value { font-size: 1.5rem; font-weight: 800; margin: 0; }
+.metric-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
 
-.metric-icon.blue { color: #3b82f6; }
-.metric-icon.green { color: #10b981; }
-.metric-icon.orange { color: #f97316; }
-.metric-icon.light-blue { color: #0ea5e9; }
+.icon.green { color: var(--green-success); }
+.icon.orange { color: #f97316; }
+.icon.blue { color: #3b82f6; }
 
-/* LOWER GRID (Recent Activity & Action Cards) */
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 24px;
-}
-
-/* COMMON BOX STYLE (Recent Activity, Feedback, Print, etc.) */
-.main-card, .action-card {
+/* MODULES */
+.modules-container {
     border: 1px solid var(--border-color);
-    border-radius: 16px; /* Rounded corners gaya sa image */
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 32px;
+}
+
+.card-header h3 { font-size: 1.25rem; font-weight: 700; margin: 0; }
+.card-header p { font-size: 0.9rem; color: var(--text-muted); margin: 4px 0 24px 0; }
+
+.module-item {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.module-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.status-icon { font-size: 0.9rem; }
+.status-icon.success { color: var(--green-success); }
+.module-name { flex-grow: 1; font-weight: 600; font-size: 0.9rem; color: #374151; }
+.percentage { font-size: 0.75rem; font-weight: 700; color: var(--green-success); }
+
+.progress-bar-bg {
+    height: 6px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--green-success);
+}
+
+.view-topics-btn {
+    width: 100%;
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* BOTTOM ACTIONS */
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.action-card {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
     padding: 24px;
 }
 
-.card-header h3, .action-card h3 { 
-    font-size: 1.1rem; 
-    font-weight: 700; 
-    margin: 0; 
-}
-
-.card-header p, .action-card p { 
-    font-size: 0.85rem; 
-    color: var(--text-muted); 
-    margin: 4px 0 20px 0; 
-}
-
-/* STUDENT LIST ITEMS */
-.student-list { display: flex; flex-direction: column; gap: 12px; }
-
-.student-item {
+.icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 16px;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    justify-content: center;
+    margin-bottom: 16px;
 }
 
-.details .name { display: block; font-weight: 700; font-size: 0.95rem; }
-.details .prog { font-size: 0.8rem; color: var(--text-muted); }
+.blue-bg { background-color: #eff6ff; color: #3b82f6; }
+.green-bg { background-color: #ecfdf5; color: #10b981; }
 
-/* BADGES */
-.badge {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 20px;
-    color: white;
-}
-.badge-blue { background-color: var(--blue-primary); }
-.badge-green { background-color: #10b981; }
-.badge-red { background-color: #b91c1c; }
+.action-card h3 { font-size: 1.1rem; font-weight: 700; margin: 0 0 8px 0; }
+.action-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
 
-/* BUTTONS */
 .primary-btn {
     width: 100%;
     background-color: var(--blue-primary);
@@ -141,22 +165,17 @@ body {
     cursor: pointer;
 }
 
-.outline-btn, .view-all-btn {
+.outline-btn {
     width: 100%;
+    background: white;
     border: 1px solid var(--border-color);
-    background: #fff;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.sidebar { display: flex; flex-direction: column; gap: 16px; }
-
-@media (max-width: 768px) {
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .dashboard-grid { grid-template-columns: 1fr; }
+@media (max-width: 640px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+    .bottom-grid { grid-template-columns: 1fr; }
 }
