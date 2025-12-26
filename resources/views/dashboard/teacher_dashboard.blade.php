@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- FIXED: CSRF Token para sa security at JS requests --}}
+    {{-- CSRF Token para sa security at JS requests --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Teacher Dashboard</title>
     @vite(['resources/css/dashboard/teacher_dashboard.css', 'resources/js/dashboard/teacher_dashboard.js'])
@@ -19,7 +19,6 @@
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
 
-            {{-- FIXED: Logout Form para sa Teacher --}}
             <form method="POST" action="{{ route('teacher.logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
@@ -32,44 +31,53 @@
                 <p class="welcome-subtitle">Monitor and guide your students' progress</p>
             </div>
 
-            {{-- Metrics Grid Section --}}
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Total Students</p>
-                        <h2 class="value" data-target="124">0</h2>
+                        <h2 class="value">124</h2>
                         <p class="sub-label">Active learners</p>
                     </div>
-                    <div class="icon-circle blue-bg">👥</div>
+                    <div class="icon-circle icon-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
                 </div>
+
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Average Progress</p>
-                        <h2 class="value" data-target="67">0%</h2>
+                        <h2 class="value">67%</h2>
                         <p class="sub-label positive">+5% from last week</p>
                     </div>
-                    <div class="icon-circle green-bg">📈</div>
+                    <div class="icon-circle icon-green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                    </div>
                 </div>
+
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Pending Reviews</p>
-                        <h2 class="value" data-target="18">0</h2>
+                        <h2 class="value">18</h2>
                         <p class="sub-label">Quizzes to grade</p>
                     </div>
-                    <div class="icon-circle orange-bg">📄</div>
+                    <div class="icon-circle icon-orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                    </div>
                 </div>
+
                 <div class="metric-card">
                     <div class="metric-info">
                         <p class="label">Messages</p>
-                        <h2 class="value" data-target="7">0</h2>
+                        <h2 class="value">7</h2>
                         <p class="sub-label">Unread Messages</p>
                     </div>
-                    <div class="icon-circle teal-bg">💬</div>
+                    <div class="icon-circle icon-teal">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-10.6 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
+                    </div>
                 </div>
             </div>
 
             <div class="dashboard-layout">
-                {{-- Left Side: Recent Activity Section --}}
                 <section class="activity-section card">
                     <div class="card-header">
                         <h3>Recent Student Activity</h3>
@@ -110,10 +118,9 @@
                         </div>
                     </div>
 
-                    <button class="ghost-btn full-width">View All Students</button>
+                    <button class="ghost-btn" style="width: 100%; margin-top: 16px;">View All Students</button>
                 </section>
 
-                {{-- Right Side: Actions Sidebar --}}
                 <aside class="sidebar-actions">
                     <div class="action-card card">
                         <div class="icon-box blue-bg">
