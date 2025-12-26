@@ -1,69 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const chatBubble = document.getElementById('chatBubble');
-    const chatWindow = document.getElementById('chatWindow');
-    const closeChat = document.getElementById('closeChat');
+    const bubble = document.getElementById('chatBubble');
+    const window = document.getElementById('chatWindow');
+    const closeBtn = document.getElementById('closeChat');
     const sendBtn = document.getElementById('sendBtn');
-    const userInput = document.getElementById('userInput');
-    const chatMessages = document.getElementById('chatMessages');
-    
-    // Hanapin ang "Start Chat" button sa dashboard
-    const dashboardChatBtn = document.querySelector('.primary-btn'); // O gamitin ang ID kung nilagyan mo
+    const input = document.getElementById('userInput');
+    const messages = document.getElementById('chatMessages');
 
-    // Function to Open Chat
-    function openChat() {
-        chatWindow.style.display = 'flex';
-        chatBubble.style.display = 'none';
-        userInput.focus();
-    }
+    // Toggle Chat Window
+    bubble.addEventListener('click', () => {
+        window.style.display = 'flex';
+        bubble.style.transform = 'scale(0) rotate(90deg)';
+        bubble.style.opacity = '0';
+        setTimeout(() => { bubble.style.visibility = 'hidden'; }, 400);
+    });
 
-    // Function to Close Chat
-    function hideChat() {
-        chatWindow.style.display = 'none';
-        chatBubble.style.display = 'flex';
-    }
+    closeBtn.addEventListener('click', () => {
+        window.style.display = 'none';
+        bubble.style.visibility = 'visible';
+        bubble.style.transform = 'scale(1) rotate(0deg)';
+        bubble.style.opacity = '1';
+    });
 
-    // Event Listeners
-    chatBubble.addEventListener('click', openChat);
-    closeChat.addEventListener('click', hideChat);
-    
-    // Connect dashboard button to chat
-    if(dashboardChatBtn && dashboardChatBtn.innerText.includes('Chat')) {
-        dashboardChatBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openChat();
-        });
-    }
+    // Messaging Function
+    function sendMessage() {
+        const text = input.value.trim();
+        if (text === "") return;
 
-    function appendMessage(role, text) {
-        const group = document.createElement('div');
-        group.className = `msg-group ${role}`;
+        // User Message UI
+        const userDiv = document.createElement('div');
+        userDiv.className = 'message user-message';
+        userDiv.textContent = text;
+        messages.appendChild(userDiv);
         
-        const msg = document.createElement('div');
-        msg.className = 'msg';
-        msg.textContent = text;
-        
-        group.appendChild(msg);
-        chatMessages.appendChild(group);
-        
-        // Auto scroll to bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+        input.value = "";
+        messages.scrollTop = messages.scrollHeight;
 
-    function handleSend() {
-        const val = userInput.value.trim();
-        if(!val) return;
-
-        appendMessage('user', val);
-        userInput.value = '';
-
-        // Fake AI Response
+        // Simulate Bot Typing
         setTimeout(() => {
-            appendMessage('bot', "I'm thinking... Let me solve that math problem for you! 🧠");
+            const botDiv = document.createElement('div');
+            botDiv.className = 'message bot-message';
+            botDiv.textContent = "Sinusuri ko ang iyong tanong... Hintayin lamang ang sagot.";
+            messages.appendChild(botDiv);
+            messages.scrollTop = messages.scrollHeight;
         }, 800);
     }
 
-    sendBtn.addEventListener('click', handleSend);
-    userInput.addEventListener('keypress', (e) => {
-        if(e.key === 'Enter') handleSend();
+    sendBtn.addEventListener('click', sendMessage);
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
     });
 });

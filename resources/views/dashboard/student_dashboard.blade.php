@@ -132,46 +132,42 @@
             </div>
         </main>
     </div>
-    <div class="chat-wrapper">
-    <div class="chat-window" id="chatWindow">
+    <div class="chat-system">
+    <div class="glass-chat-window" id="chatWindow">
         <div class="chat-header">
-            <div class="header-user">
-                <div class="avatar-container">
-                    <div class="status-indicator"></div>
-                    <img src="https://ui-avatars.com/api/?name=Math+AI&background=3b82f6&color=fff" alt="AI">
+            <div class="bot-info">
+                <div class="bot-avatar-active">
+                    <img src="https://ui-avatars.com/api/?name=MLA&background=007AFF&color=fff" alt="AI">
+                    <span class="online-pulse"></span>
                 </div>
-                <div class="header-text">
-                    <h4>Math Assistant</h4>
-                    <span>Always active</span>
+                <div>
+                    <h4>Math AI Assistant</h4>
+                    <p>Powered by Advanced AI</p>
                 </div>
             </div>
-            <div class="header-actions">
-                <button class="icon-btn" id="closeChat">&times;</button>
-            </div>
+            <button class="close-glass-btn" id="closeChat">&times;</button>
         </div>
-        
-        <div class="chat-messages" id="chatMessages">
-            <div class="msg-group bot">
-                <div class="msg">Hi! 👋 I'm your Math AI. Ready to solve some equations?</div>
+
+        <div class="chat-body" id="chatMessages">
+            <div class="message bot-message">
+                Kamusta! Ako ang iyong Math Assistant. May maipaglilingkod ba ako sa iyong math problems ngayon?
             </div>
         </div>
 
-        <div class="chat-input-container">
-            <div class="input-wrapper">
-                <input type="text" id="userInput" placeholder="Ask a math question...">
+        <div class="chat-footer">
+            <div class="glass-input-group">
+                <input type="text" id="userInput" placeholder="Tungkol saan ang tanong mo?">
                 <button id="sendBtn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                 </button>
             </div>
         </div>
     </div>
 
-    <button class="chat-bubble-trigger" id="chatBubble">
-        <span class="notification-dot"></span>
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" stroke-width="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-    </button>
+    <div class="chat-trigger" id="chatBubble">
+        <div class="notification-badge"></div>
+        <img src="image_84b3ff.png" alt="Chat Icon" class="main-icon">
+    </div>
 </div>
 </body>
 </html>
