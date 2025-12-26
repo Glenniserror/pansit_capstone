@@ -28,7 +28,7 @@
 
         <main class="content">
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome back, {{ Auth::check() ? Auth::user()->name : 'Student' }}!</h1>
+                <h1 class="welcome-title">Welcome, {{ Auth::check() ? Auth::user()->name : 'Student' }}!</h1>
                 <p class="welcome-subtitle">Continue your mathematics learning journey</p>
             </div>
 
