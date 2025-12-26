@@ -18,7 +18,7 @@
                 </svg>
                 <span class="brand-name">Admin Dashboard</span>
             </div>
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
