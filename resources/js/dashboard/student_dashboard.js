@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. SELECTIONS ---
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. SELECT ELEMENTS
     const bubble = document.getElementById('ai-bubble');
     const chatWindow = document.getElementById('ai-chat-window');
     const startChatBtn = document.getElementById('start-chat-btn');
@@ -7,48 +7,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('ai-send-btn');
     const input = document.getElementById('ai-input');
     const chatContent = document.getElementById('chat-content');
-    const progressFills = document.querySelectorAll('.progress-fill');
 
-    // --- 2. CHATBOT FUNCTIONS ---
+    // 2. TOGGLE FUNCTIONS (Buksan at Isara)
+    function openChat() {
+        if (chatWindow) {
+            chatWindow.style.display = 'flex';
+            if (bubble) bubble.style.display = 'none';
+            input.focus();
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+    }
 
-    // Function para buksan ang chat
-    const openChat = () => {
-        chatWindow.style.display = 'flex';
-        if (bubble) bubble.style.display = 'none';
-        input.focus(); // Auto-focus sa input box
-        chatContent.scrollTop = chatContent.scrollHeight; // Scroll sa pinakababa
-    };
+    function closeChat() {
+        if (chatWindow) {
+            chatWindow.style.display = 'none';
+            if (bubble) bubble.style.display = 'flex';
+        }
+    }
 
-    // Function para isara ang chat
-    const closeChat = () => {
-        chatWindow.style.display = 'none';
-        if (bubble) bubble.style.display = 'flex';
-    };
+    // 3. SEND MESSAGE LOGIC
+    function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
 
-    // Function para mag-append ng message sa UI
-    const appendMessage = (text, sender) => {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `msg ${sender}`;
-        msgDiv.textContent = text;
-        chatContent.appendChild(msgDiv);
+        // User message bubble
+        const userDiv = document.createElement('div');
+        userDiv.className = 'msg user';
+        userDiv.textContent = text;
+        chatContent.appendChild(userDiv);
         
-        // Auto-scroll pababa
-        chatContent.scrollTo({
-            top: chatContent.scrollHeight,
-            behavior: 'smooth'
-        });
-    };
-
-    // Main Function para sa pag-send ng message
-    const handleSendMessage = () => {
-        const message = input.value.trim();
-        if (message === '') return;
-
-        // Ipakita ang message ng student
-        appendMessage(message, 'user');
         input.value = '';
+        chatContent.scrollTop = chatContent.scrollHeight;
 
-        // Magpakita ng "Thinking..." animation (simulated)
+        // Bot simulation
         setTimeout(() => {
             const botDiv = document.createElement('div');
             botDiv.className = 'msg bot';
@@ -56,53 +47,55 @@ document.addEventListener('DOMContentLoaded', () => {
             chatContent.appendChild(botDiv);
             chatContent.scrollTop = chatContent.scrollHeight;
 
-            // Dito mo pwedeng i-connect ang totoong AI API (halimbawa: OpenAI o Gemini)
+            // Optional: Palitan ang message pagkatapos ng 1 segundo
             setTimeout(() => {
-                botDiv.textContent = "Nakuha ko ang iyong tanong! Paano kita matutulungan sa Math ngayon?";
+                botDiv.textContent = "I'm analyzing your math problem. Can you provide more details?";
                 chatContent.scrollTop = chatContent.scrollHeight;
             }, 1000);
-        }, 500);
-    };
+        }, 600);
+    }
 
-    // --- 3. EVENT LISTENERS ---
+    // 4. EVENT LISTENERS
+    // Para sa "Start Chat" button sa dashboard card
+    if (startChatBtn) {
+        startChatBtn.onclick = function(e) {
+            e.preventDefault(); // Iwasan ang page reload
+            openChat();
+        };
+    }
 
-    // Click events para sa Chat
-    if (startChatBtn) startChatBtn.addEventListener('click', openChat);
-    if (bubble) bubble.addEventListener('click', openChat);
-    if (closeBtn) closeBtn.addEventListener('click', closeChat);
-    if (sendBtn) sendBtn.addEventListener('click', handleSendMessage);
-    
-    // Enter key para mag-send
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            handleSendMessage();
-        }
-    });
+    // Para sa Floating Bubble
+    if (bubble) {
+        bubble.onclick = openChat;
+    }
 
-    // --- 4. OTHER UI LOGIC (Progress & Hover) ---
+    // Para sa X (Close) button
+    if (closeBtn) {
+        closeBtn.onclick = closeChat;
+    }
 
-    // Animation para sa Progress Bars
+    // Para sa Send button
+    if (sendBtn) {
+        sendBtn.onclick = sendMessage;
+    }
+
+    // Para sa Enter key
+    if (input) {
+        input.onkeypress = function(e) {
+            if (e.key === 'Enter') sendMessage();
+        };
+    }
+
+    // 5. PROGRESS BAR ANIMATION (Bonus)
+    const progressFills = document.querySelectorAll('.progress-fill');
     setTimeout(() => {
         progressFills.forEach(fill => {
             const targetWidth = fill.style.width; 
             fill.style.width = '0'; 
             setTimeout(() => {
                 fill.style.width = targetWidth;
-                fill.style.transition = 'width 1.2s ease-in-out';
+                fill.style.transition = 'width 1s ease-in-out';
             }, 100);
         });
-    }, 300);
-
-    // Hover effect para sa mga Action Cards
-    const cards = document.querySelectorAll('.action-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-5px)';
-            card.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = 'none';
-        });
-    });
+    }, 500);
 });
