@@ -26,7 +26,7 @@
                     <img src="{{ asset('image/student.png') }}" alt="student Icon">
                 </div>
 
-                <h1>Admin Portal</h1>
+                <h1>Student Portal</h1>
                 <p id="sub-text">Sign in to your account</p>
 
                 @if ($errors->any())
