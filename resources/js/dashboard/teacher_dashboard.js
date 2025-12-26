@@ -1,24 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Animated counter
+document.querySelectorAll('.stat-value').forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    let count = 0;
 
-    /* STAT COUNTER (same logic as student animations) */
-    document.querySelectorAll('.stat-value').forEach(el => {
-        const target = parseInt(el.dataset.target);
-        let count = 0;
+    const increment = Math.ceil(target / 40);
 
-        const step = Math.ceil(target / 50);
-
-        const update = () => {
-            count += step;
-            if (count > target) count = target;
-
-            el.textContent = el.textContent.includes('%')
+    const updateCounter = () => {
+        count += increment;
+        if (count < target) {
+            counter.textContent = counter.classList.contains('percent')
                 ? count + '%'
                 : count;
+            requestAnimationFrame(updateCounter);
+        } else {
+            counter.textContent = counter.classList.contains('percent')
+                ? target + '%'
+                : target;
+        }
+    };
 
-            if (count < target) requestAnimationFrame(update);
-        };
-
-        update();
-    });
-
+    updateCounter();
 });
