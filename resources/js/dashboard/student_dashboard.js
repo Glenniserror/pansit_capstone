@@ -1,58 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const bubble = document.getElementById('chatBubble');
-    const window = document.getElementById('chatWindow');
-    const closeBtn = document.getElementById('closeChat');
-    const sendBtn = document.getElementById('sendBtn');
-    const input = document.getElementById('userInput');
-    const messages = document.getElementById('chatMessages');
-    const typing = document.getElementById('typing');
+    const chatWidget = document.getElementById('chatbot-widget');
+    const closeChatBtn = document.getElementById('close-chat');
+    const sendBtn = document.getElementById('send-btn');
+    const userInput = document.getElementById('user-input');
+    const chatMessages = document.getElementById('chat-messages');
+    
+    // Hanapin ang button sa loob ng AI Chatbot card
+    const startChatBtn = document.querySelector('.action-card:nth-child(1) .primary-btn');
 
-    // Toggle Window
-    bubble.addEventListener('click', () => {
-        window.style.display = 'flex';
-        bubble.style.opacity = '0';
-        bubble.style.pointerEvents = 'none';
-    });
-
-    closeBtn.addEventListener('click', () => {
-        window.style.display = 'none';
-        bubble.style.opacity = '1';
-        bubble.style.pointerEvents = 'auto';
-    });
-
-    function addMessage(type, text) {
-        const div = document.createElement('div');
-        div.className = `msg-bubble ${type}`;
-        
-        const now = new Date();
-        const timeStr = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
-
-        div.innerHTML = `
-            <div class="msg-content">${text}</div>
-            <span class="msg-time">${timeStr}</span>
-        `;
-        
-        messages.appendChild(div);
-        messages.scrollTop = messages.scrollHeight;
+    if (startChatBtn) {
+        startChatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            chatWidget.style.display = 'flex';
+            userInput.focus();
+        });
     }
 
-    function handleSend() {
-        const text = input.value.trim();
-        if(!text) return;
+    if (closeChatBtn) {
+        closeChatBtn.addEventListener('click', () => {
+            chatWidget.style.display = 'none';
+        });
+    }
 
-        addMessage('user', text);
-        input.value = '';
+    function sendMessage() {
+        const text = userInput.value.trim();
+        if (!text) return;
 
-        // Show Typing Indicator
-        typing.style.display = 'flex';
-        messages.scrollTop = messages.scrollHeight;
+        appendMessage(text, 'user-msg');
+        userInput.value = '';
 
+        // Bot Logic
         setTimeout(() => {
-            typing.style.display = 'none';
-            addMessage('bot', "Analyzing your math query... Solution is being generated. 🤖✨");
-        }, 1500);
+            const response = generateResponse(text);
+            appendMessage(response, 'bot-msg');
+        }, 700);
     }
 
-    sendBtn.addEventListener('click', handleSend);
-    input.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleSend(); });
+    function appendMessage(text, className) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${className}`;
+        msgDiv.innerText = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function generateResponse(input) {
+        const q = input.toLowerCase();
+        if (q.includes("sequence")) return "A sequence is an ordered list of numbers. Common types include Arithmetic and Geometric sequences.";
+        if (q.includes("polynomial")) return "Polynomials are algebraic expressions like 2x + 5 or x² - 4.";
+        if (q.includes("hi") || q.includes("hello")) return "Hello! Ready to learn math today?";
+        return "I'm not quite sure about that specific topic, but I can help you with Sequences and Polynomials!";
+    }
+
+    if (sendBtn) sendBtn.addEventListener('click', sendMessage);
+    if (userInput) {
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    }
 });
