@@ -132,35 +132,45 @@
             </div>
         </main>
     </div>
-    <div class="chat-wrapper" id="chatWrapper">
+    <div class="chat-wrapper">
     <div class="chat-window" id="chatWindow">
         <div class="chat-header">
-            <div class="header-info">
-                <div class="bot-avatar">MLA</div>
-                <div>
-                    <h4>Math AI Assistant</h4>
-                    <span class="status">Active Now</span>
+            <div class="header-user">
+                <div class="avatar-container">
+                    <div class="status-indicator"></div>
+                    <img src="https://ui-avatars.com/api/?name=Math+AI&background=3b82f6&color=fff" alt="AI">
+                </div>
+                <div class="header-text">
+                    <h4>Math Assistant</h4>
+                    <span>Always active</span>
                 </div>
             </div>
-            <button class="close-chat" id="closeChat">&times;</button>
+            <div class="header-actions">
+                <button class="icon-btn" id="closeChat">&times;</button>
+            </div>
         </div>
         
         <div class="chat-messages" id="chatMessages">
-            <div class="msg bot-msg">
-                Hello! I'm your Math Learning Assistant. How can I help you today?
+            <div class="msg-group bot">
+                <div class="msg">Hi! 👋 I'm your Math AI. Ready to solve some equations?</div>
             </div>
         </div>
 
-        <div class="chat-input-area">
-            <input type="text" id="userInput" placeholder="Type a message...">
-            <button id="sendBtn">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
-            </button>
+        <div class="chat-input-container">
+            <div class="input-wrapper">
+                <input type="text" id="userInput" placeholder="Ask a math question...">
+                <button id="sendBtn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
         </div>
     </div>
 
-    <button class="chat-bubble" id="chatBubble">
-        <svg viewBox="0 0 28 28" fill="white" width="28" height="28"><path d="M14 2.1c7.1 0 12.9 5.3 12.9 11.8 0 3.7-1.9 6.9-4.9 9.1-.4.3-.6.7-.5 1.2l.6 2.3c.1.4-.3.8-.7.7l-2.6-1.1c-.4-.2-.8-.2-1.2 0-1.1.4-2.3.6-3.6.6-7.1 0-12.9-5.3-12.9-11.8C1.1 7.4 6.9 2.1 14 2.1z"></path></svg>
+    <button class="chat-bubble-trigger" id="chatBubble">
+        <span class="notification-dot"></span>
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
     </button>
 </div>
 </body>

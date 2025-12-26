@@ -1,48 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const bubble = document.getElementById('chatBubble');
-    const window = document.getElementById('chatWindow');
-    const close = document.getElementById('closeChat');
+    const chatBubble = document.getElementById('chatBubble');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
     const sendBtn = document.getElementById('sendBtn');
-    const input = document.getElementById('userInput');
-    const messages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const chatMessages = document.getElementById('chatMessages');
+    
+    // Hanapin ang "Start Chat" button sa dashboard
+    const dashboardChatBtn = document.querySelector('.primary-btn'); // O gamitin ang ID kung nilagyan mo
 
-    // Open/Close Chat
-    bubble.addEventListener('click', () => {
-        window.style.display = 'flex';
-        bubble.style.display = 'none';
-    });
-
-    close.addEventListener('click', () => {
-        window.style.display = 'none';
-        bubble.style.display = 'flex';
-    });
-
-    // Send Message Function
-    function sendMessage() {
-        const text = input.value.trim();
-        if (text === "") return;
-
-        // User Message
-        const userDiv = document.createElement('div');
-        userDiv.className = 'msg user-msg';
-        userDiv.textContent = text;
-        messages.appendChild(userDiv);
-
-        input.value = "";
-        messages.scrollTop = messages.scrollHeight;
-
-        // Simulate Bot Reply
-        setTimeout(() => {
-            const botDiv = document.createElement('div');
-            botDiv.className = 'msg bot-msg';
-            botDiv.textContent = "I'm processing your request about: " + text;
-            messages.appendChild(botDiv);
-            messages.scrollTop = messages.scrollHeight;
-        }, 1000);
+    // Function to Open Chat
+    function openChat() {
+        chatWindow.style.display = 'flex';
+        chatBubble.style.display = 'none';
+        userInput.focus();
     }
 
-    sendBtn.addEventListener('click', sendMessage);
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
+    // Function to Close Chat
+    function hideChat() {
+        chatWindow.style.display = 'none';
+        chatBubble.style.display = 'flex';
+    }
+
+    // Event Listeners
+    chatBubble.addEventListener('click', openChat);
+    closeChat.addEventListener('click', hideChat);
+    
+    // Connect dashboard button to chat
+    if(dashboardChatBtn && dashboardChatBtn.innerText.includes('Chat')) {
+        dashboardChatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openChat();
+        });
+    }
+
+    function appendMessage(role, text) {
+        const group = document.createElement('div');
+        group.className = `msg-group ${role}`;
+        
+        const msg = document.createElement('div');
+        msg.className = 'msg';
+        msg.textContent = text;
+        
+        group.appendChild(msg);
+        chatMessages.appendChild(group);
+        
+        // Auto scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleSend() {
+        const val = userInput.value.trim();
+        if(!val) return;
+
+        appendMessage('user', val);
+        userInput.value = '';
+
+        // Fake AI Response
+        setTimeout(() => {
+            appendMessage('bot', "I'm thinking... Let me solve that math problem for you! 🧠");
+        }, 800);
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    userInput.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') handleSend();
     });
 });
