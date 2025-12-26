@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Math Learning Assistant | Teacher Dashboard</title>
+    <title>Teacher Dashboard</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     @vite([
         'resources/css/dashboard/teacher_dashboard.css',
@@ -17,108 +16,120 @@
 </head>
 <body>
 
-<div class="dashboard-container">
+<header class="topbar">
+    <div class="brand">
+        <svg viewBox="0 0 24 24">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>Teacher Dashboard</span>
+    </div>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="logo-section">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-            <span class="brand-name">Math Learning Assistant</span>
-        </div>
+    <form method="POST" action="{{ route('teacher.logout') }}">
+        @csrf
+        <button class="logout-btn">Logout</button>
+    </form>
+</header>
 
-        <form method="POST" action="{{ route('teacher.logout') }}">
-            @csrf
-            <button class="logout-btn">Logout</button>
-        </form>
-    </header>
+<main class="container">
 
-    <!-- HERO -->
-    <section class="hero-section">
-        <h1 class="welcome-title">
-            Welcome, {{ Auth::check() ? Auth::user()->name : 'Teacher' }}
-        </h1>
-        <p class="welcome-subtitle">
-            Monitor and guide your students' progress
-        </p>
+    <section class="page-header">
+        <h1>Welcome, Teacher</h1>
+        <p>Monitor and guide your students' progress</p>
     </section>
 
     <!-- STATS -->
-    <section class="stats-grid">
+    <section class="stats">
         <div class="stat-card">
-            <span class="stat-label">Total Students</span>
-            <div class="stat-value" data-target="124">0</div>
-            <span class="stat-desc">Active learners</span>
+            <p>Total Students</p>
+            <h2 data-target="124">0</h2>
+            <span>Active learners</span>
         </div>
 
         <div class="stat-card">
-            <span class="stat-label">Average Progress</span>
-            <div class="stat-value percent" data-target="67">0%</div>
-            <span class="stat-desc">+5% from last week</span>
+            <p>Average Progress</p>
+            <h2 data-target="67">0%</h2>
+            <span>+5% from last week</span>
         </div>
 
         <div class="stat-card">
-            <span class="stat-label">Pending Reviews</span>
-            <div class="stat-value" data-target="18">0</div>
-            <span class="stat-desc">Quizzes to grade</span>
+            <p>Pending Reviews</p>
+            <h2 data-target="18">0</h2>
+            <span>Quizzes to grade</span>
         </div>
 
         <div class="stat-card">
-            <span class="stat-label">Messages</span>
-            <div class="stat-value" data-target="7">0</div>
-            <span class="stat-desc">Unread messages</span>
+            <p>Messages</p>
+            <h2 data-target="7">0</h2>
+            <span>Unread Messages</span>
         </div>
     </section>
 
-    <!-- MAIN GRID -->
-    <section class="bottom-grid">
+    <!-- CONTENT -->
+    <section class="content-grid">
 
-        <!-- STUDENT ACTIVITY -->
-        <div class="card large-card">
-            <h3 class="card-title">Recent Student Activity</h3>
+        <!-- STUDENTS -->
+        <div class="card students">
+            <h3>Recent Student Activity</h3>
+            <p class="muted">Monitor your students' progress</p>
 
-            <div class="student-row excellent">
-                <span>Meland Carman</span>
-                <span>78%</span>
+            <div class="student">
+                <div>
+                    <strong>Meland Carman</strong>
+                    <small>Progress: 78%</small>
+                </div>
+                <span class="badge excellent">Excellent</span>
             </div>
 
-            <div class="student-row good">
-                <span>Stephanie Tamayuza</span>
-                <span>65%</span>
+            <div class="student">
+                <div>
+                    <strong>Stephanie Tamayuza</strong>
+                    <small>Progress: 65%</small>
+                </div>
+                <span class="badge good">Good</span>
             </div>
 
-            <div class="student-row danger">
-                <span>Kristine Villamor</span>
-                <span>45%</span>
+            <div class="student">
+                <div>
+                    <strong>Kristine Villamor</strong>
+                    <small>Progress: 45%</small>
+                </div>
+                <span class="badge danger">Needs Help</span>
             </div>
 
-            <button class="secondary-btn full-width">View All Students</button>
+            <div class="student">
+                <div>
+                    <strong>Rhyssa Embanacido</strong>
+                    <small>Progress: 82%</small>
+                </div>
+                <span class="badge excellent">Excellent</span>
+            </div>
+
+            <button class="outline-btn">View All Students</button>
         </div>
 
         <!-- ACTIONS -->
         <div class="card">
-            <h3 class="card-title">Provide Feedback</h3>
-            <p class="card-desc">Send personalized recommendations</p>
-            <button class="primary-btn full-width">Send Feedback</button>
+            <h3>Provide Feedback</h3>
+            <p class="muted">Send personalized recommendations to students</p>
+            <button class="primary-btn">Send Feedback</button>
         </div>
 
         <div class="card">
-            <h3 class="card-title">Print Materials</h3>
-            <p class="card-desc">Download modules for offline use</p>
-            <button class="secondary-btn full-width">Generate PDFs</button>
+            <h3>Print Materials</h3>
+            <p class="muted">Download modules for offline distribution</p>
+            <button class="outline-btn">Generate PDFs</button>
         </div>
 
         <div class="card">
-            <h3 class="card-title">Generate Reports</h3>
-            <p class="card-desc">Create detailed performance reports</p>
-            <button class="secondary-btn full-width">View Reports</button>
+            <h3>Generate Reports</h3>
+            <p class="muted">Create detailed performance reports</p>
+            <button class="outline-btn">View Reports</button>
         </div>
 
     </section>
 
-</div>
+</main>
 
 </body>
 </html>

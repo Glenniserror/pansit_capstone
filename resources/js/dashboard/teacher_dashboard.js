@@ -1,23 +1,16 @@
-// Animated counter
-document.querySelectorAll('.stat-value').forEach(counter => {
+document.querySelectorAll('[data-target]').forEach(counter => {
     const target = parseInt(counter.dataset.target);
-    let count = 0;
+    let value = 0;
 
-    const increment = Math.ceil(target / 40);
-
-    const updateCounter = () => {
-        count += increment;
-        if (count < target) {
-            counter.textContent = counter.classList.contains('percent')
-                ? count + '%'
-                : count;
-            requestAnimationFrame(updateCounter);
+    const update = () => {
+        value += Math.ceil(target / 40);
+        if (value < target) {
+            counter.textContent = counter.textContent.includes('%') ? value + '%' : value;
+            requestAnimationFrame(update);
         } else {
-            counter.textContent = counter.classList.contains('percent')
-                ? target + '%'
-                : target;
+            counter.textContent = counter.textContent.includes('%') ? target + '%' : target;
         }
     };
 
-    updateCounter();
+    update();
 });
