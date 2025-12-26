@@ -113,7 +113,7 @@
                     <div class="icon-box blue-bg">💬</div>
                     <h3>AI Chatbot</h3>
                     <p>Get instant help with your math questions</p>
-                    <button class="primary-btn">Start Chat</button>
+                    <button id="start-chat-btn" class="primary-btn">Start Chat</button>
                 </div>
 
                 <div class="action-card">
@@ -132,6 +132,7 @@
             </div>
         </main>
     </div>
+
     {{-- Chatbot UI Elements --}}
     <div id="ai-bubble" class="messenger-bubble">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
