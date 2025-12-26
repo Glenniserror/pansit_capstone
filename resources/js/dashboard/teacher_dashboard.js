@@ -3,8 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     /**
-     * 1. COUNTER ANIMATION
-     * Pinapatakbo ang mga numero sa metric cards (Total Students, etc.)
+     * 1. METRICS COUNTER ANIMATION
+     * Pag-animate ng mga numero (0 to 124, etc.) pag-load ng page.
      */
     const animateValue = (element, start, end, duration) => {
         let startTimestamp = null;
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
             const value = Math.floor(progress * (end - start) + start);
             
-            // Check kung percentage ang kailangan (Average Progress)
+            // Check kung kailangan ng percentage (%) sign base sa data-target
             const isPercent = element.innerText.includes('%') || element.dataset.target === "67";
             element.innerHTML = isPercent ? `${value}%` : value;
             
@@ -24,16 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.requestAnimationFrame(step);
     };
 
-    // Trigger counters pagka-load ng page
+    // Trigger ang animation sa lahat ng elements na may class na 'value'
     const counters = document.querySelectorAll('.value');
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
-        animateValue(counter, 0, target, 1500); // 1.5 seconds duration
+        if (!isNaN(target)) {
+            animateValue(counter, 0, target, 1500); // 1.5 seconds duration
+        }
     });
 
     /**
      * 2. REVEAL ON SCROLL / ENTRANCE
-     * Nagbibigay ng Fade-in at Slide-up effect sa mga cards
+     * Dahan-dahang pag-angat ng mga cards (Reveal Effect).
      */
     const observerOptions = {
         threshold: 0.1,
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Staggered delay: hindi sabay-sabay lilitaw
+                // Staggered delay para hindi sabay-sabay lilitaw ang cards
                 setTimeout(() => {
                     entry.target.classList.add('active');
                 }, index * 100);
@@ -52,22 +54,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // I-setup ang lahat ng elements na gustong i-animate
-    const animatableElements = document.querySelectorAll('.metric-card, .student-item, .action-card');
+    // I-apply ang observer sa mga sections na gusto nating i-animate
+    const animatableElements = document.querySelectorAll('.metric-card, .student-item, .action-card, .card');
     
     animatableElements.forEach(el => {
-        el.classList.add('reveal-effect'); // Initial hidden state
+        el.classList.add('reveal-effect'); // Siguraduhin na may initial hidden state sa CSS
         revealObserver.observe(el);
     });
 
     /**
      * 3. BUTTON CLICK FEEDBACK
-     * Dinadagdagan ng bounce/scale effect kapag kiniclick ang buttons
+     * Dinadagdagan ng micro-interaction ang buttons kapag pinipindot.
      */
     const buttons = document.querySelectorAll('button');
     buttons.forEach(btn => {
         btn.addEventListener('mousedown', () => {
-            btn.style.transform = 'scale(0.95)';
+            btn.style.transform = 'scale(0.96)';
         });
         btn.addEventListener('mouseup', () => {
             btn.style.transform = 'scale(1)';
@@ -76,4 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.transform = 'scale(1)';
         });
     });
+
+    /**
+     * 4. LOGOUT CONFIRMATION (Optional)
+     * Nagpapakita ng simple alert bago mag-logout ang teacher.
+     */
+    const logoutForm = document.querySelector('form[action*="logout"]');
+    if (logoutForm) {
+        logoutForm.addEventListener('submit', (e) => {
+            const confirmLogout = confirm("Are you sure you want to logout?");
+            if (!confirmLogout) {
+                e.preventDefault();
+            }
+        });
+    }
 });
