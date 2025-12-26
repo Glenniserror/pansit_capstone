@@ -1,20 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     const bubble = document.getElementById('ai-bubble');
-    const window = document.getElementById('ai-chat-window');
+    const chatWindow = document.getElementById('ai-chat-window'); // Iniba ang pangalan mula 'window'
     const closeBtn = document.getElementById('close-chat');
     const sendBtn = document.getElementById('ai-send-btn');
     const input = document.getElementById('ai-input');
     const content = document.getElementById('chat-content');
+    const startChatBtn = document.getElementById('start-chat-btn'); // Eto yung id na idinagdag natin
 
-    // Open/Close
-    bubble.onclick = () => { window.style.display = 'flex'; bubble.style.display = 'none'; };
-    closeBtn.onclick = () => { window.style.display = 'none'; bubble.style.display = 'flex'; };
+    // Function para buksan ang chat
+    function openChat() {
+        chatWindow.style.display = 'flex';
+        bubble.style.display = 'none';
+    }
 
+    // Function para isara ang chat
+    function closeChat() {
+        chatWindow.style.display = 'none';
+        bubble.style.display = 'flex';
+    }
+
+    // Event Listeners para sa pagbukas at pagsara
+    if(startChatBtn) startChatBtn.onclick = openChat;
+    if(bubble) bubble.onclick = openChat;
+    if(closeBtn) closeBtn.onclick = closeChat;
+
+    // Function para sa pagpapadala ng message
     function sendMessage() {
         const text = input.value.trim();
         if(!text) return;
 
-        // User message
         const userDiv = document.createElement('div');
         userDiv.className = 'msg user';
         userDiv.textContent = text;
@@ -23,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         input.value = '';
         content.scrollTop = content.scrollHeight;
 
-        // Simulate Bot Typing
         setTimeout(() => {
             const botDiv = document.createElement('div');
             botDiv.className = 'msg bot';
@@ -33,43 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 600);
     }
 
-    sendBtn.onclick = sendMessage;
-    input.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Kunin ang mga elements
-    const bubble = document.getElementById('ai-bubble');
-    const chatWindow = document.getElementById('ai-chat-window');
-    const startChatBtn = document.getElementById('start-chat-btn'); // New button
-    const closeBtn = document.getElementById('close-chat');
-
-    // Function para buksan ang chat
-    function openChat() {
-        chatWindow.style.display = 'flex';
-        bubble.style.display = 'none'; // Itago ang floating bubble
-        
-        // Optional: I-scroll kusa sa pinaka-baba ng messages
-        const content = document.getElementById('chat-content');
-        content.scrollTop = content.scrollHeight;
-    }
-
-    // Function para isara ang chat
-    function closeChat() {
-        chatWindow.style.display = 'none';
-        bubble.style.display = 'flex'; // Ipakita ulit ang bubble
-    }
-
-    // Event Listeners
-    if (startChatBtn) {
-        startChatBtn.addEventListener('click', openChat);
-    }
-    
-    if (bubble) {
-        bubble.addEventListener('click', openChat);
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeChat);
+    if(sendBtn) sendBtn.onclick = sendMessage;
+    if(input) {
+        input.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
     }
 });
