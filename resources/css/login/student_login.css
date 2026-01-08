@@ -173,35 +173,47 @@ input:focus {
 
     body {
         height: auto;
-        padding: 20px 0;
+        padding: 16px 0;
+        background: linear-gradient(180deg, #1E88E5 0%, #90CAF9 100%);
         overflow-y: auto;
     }
 
     .main-container {
         width: 100%;
-        padding: 15px;
+        max-width: 420px;
+        margin: auto;
+        padding: 12px;
     }
 
     .portal-card {
         flex-direction: column;
-        min-height: auto;
-        border-radius: 16px;
+        border-radius: 18px;
+        box-shadow: 
+            0 10px 25px rgba(0, 0, 0, 0.12),
+            0 4px 12px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
     }
 
-    /* IMAGE ON TOP */
+    /* ================= IMAGE ================= */
     .image-side {
         width: 100%;
-        min-height: 200px;
+        min-height: 180px;
+        background: linear-gradient(135deg, #1565C0, #42A5F5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 20px;
     }
 
     .school-logo {
-        width: 180px;
+        width: 160px;
+        animation: float 5s ease-in-out infinite;
     }
 
-    /* FORM BELOW */
+    /* ================= FORM ================= */
     .form-side {
-        padding: 30px 20px;
+        padding: 32px 24px;
+        background: #ffffff;
     }
 
     .form-content {
@@ -209,16 +221,79 @@ input:focus {
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 22px;
+        font-weight: 800;
+        color: #1f2937;
+        margin-bottom: 6px;
+    }
+
+    #sub-text {
+        font-size: 13px;
+        color: #6b7280;
+        margin-bottom: 22px;
+    }
+
+    /* ================= TABS ================= */
+    .tab-switcher {
+        background: #f3f4f6;
+        padding: 6px;
+        border-radius: 12px;
+        margin-bottom: 26px;
     }
 
     .tab-switcher button {
+        font-size: 13px;
+        font-weight: 600;
         padding: 10px;
-        font-size: 14px;
+        border-radius: 10px;
+        color: #6b7280;
     }
 
+    .tab-switcher button.active {
+        background: #ffffff;
+        color: #1E88E5;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ================= INPUTS ================= */
+    .input-group label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #4b5563;
+    }
+
+    input {
+        padding: 13px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+        background: #f9fafb;
+    }
+
+    input:focus {
+        border-color: #1E88E5;
+        box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+    }
+
+    /* ================= BUTTON ================= */
     .btn-sign {
         padding: 14px;
+        border-radius: 12px;
         font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        background: linear-gradient(135deg, #1E88E5, #1565C0);
+        box-shadow: 0 8px 18px rgba(30, 136, 229, 0.35);
+    }
+
+    .btn-sign:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 22px rgba(30, 136, 229, 0.45);
+    }
+
+    /* ================= BACK LINK ================= */
+    .back-home {
+        font-size: 12px;
+        opacity: 0.85;
+        margin-bottom: 12px;
     }
 }
