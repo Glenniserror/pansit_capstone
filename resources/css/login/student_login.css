@@ -216,3 +216,58 @@ input:focus {
         border-radius: 0 0 40px 40px;
     }
 }
+
+/* --- HIGH-END MOBILE SCROLL OPTIMIZATION --- */
+
+@media (max-width: 1024px) {
+    body {
+        /* Inalis ang 'overflow: hidden' para payagan ang vertical scroll */
+        height: auto; 
+        min-height: 100vh;
+        overflow-y: auto;
+        display: block; /* Pinapalitan ang flex para mas natural ang scroll flow */
+        padding: 20px 0;
+    }
+
+    .main-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+
+    .portal-card {
+        flex-direction: column;
+        min-height: auto; /* Pinapayagan ang card na humaba depende sa content */
+        margin-bottom: 50px; /* Space sa dulo para hindi dikit sa screen */
+    }
+
+    .image-side {
+        order: -1; /* Logo sa itaas */
+        min-height: 250px;
+        padding: 40px;
+    }
+
+    .form-side {
+        padding: 40px 25px;
+        /* Glassmorphism effect para sa modernong look */
+        background: rgba(255, 255, 255, 1);
+        border-radius: 30px 30px 0 0;
+        margin-top: -40px; /* Floating look sa mobile */
+    }
+
+    /* Input adjustments para sa mobile keyboard */
+    input {
+        font-size: 16px; /* Iniiwasan ang 'auto-zoom' ng iOS safari */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-side {
+        min-height: 200px;
+    }
+    
+    .form-side {
+        padding: 30px 20px;
+    }
+}
