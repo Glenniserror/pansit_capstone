@@ -169,48 +169,50 @@ input:focus {
 }
 
 
-/* MOBILE RESPONSIVE STYLES */
-
+/* 8. HIGH-END MOBILE RESPONSIVENESS */
 @media (max-width: 1024px) {
-    .main-container {
-        width: 95%; /* Hindi na siya fixed na 1000px */
-        padding: 10px;
-    }
-
     .portal-card {
-        flex-direction: column; /* Pagpapatungin ang logo at form */
+        flex-direction: column;
         min-height: auto;
+        border-radius: 40px 40px 30px 30px;
     }
 
     .image-side {
-        padding: 40px 20px;
-        order: -1; /* Sinisiguro na ang logo ay laging nasa taas */
+        padding: 60px 20px;
+        order: -1; /* Logo sa taas */
+        min-height: 250px;
     }
 
     .school-logo {
-        width: 180px; /* Mas maliit na logo para sa mobile */
+        width: 160px;
     }
 
     .form-side {
-        padding: 30px 20px;
+        padding: 50px 30px;
+        border-radius: 30px 30px 0 0;
+        margin-top: -30px; /* Overlay effect */
+        z-index: 5;
     }
 }
 
 @media (max-width: 480px) {
     body {
-        /* Inaallow ang scroll sa mobile para hindi maputol ang form */
-        height: auto;
-        min-height: 100vh;
-        overflow-y: auto;
+        background: #fff; /* Solid sa mobile for focus */
         align-items: flex-start;
-        padding-top: 20px;
+        overflow-y: auto;
     }
 
-    h1 {
-        font-size: 24px;
+    .main-container {
+        padding: 0;
     }
 
-    .form-content {
-        max-width: 100%;
+    .portal-card {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .image-side {
+        min-height: 200px;
+        border-radius: 0 0 40px 40px;
     }
 }
