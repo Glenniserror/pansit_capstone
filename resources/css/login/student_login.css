@@ -169,3 +169,48 @@ input:focus {
 }
 
 
+/* MOBILE RESPONSIVE STYLES */
+
+@media (max-width: 1024px) {
+    .main-container {
+        width: 95%; /* Hindi na siya fixed na 1000px */
+        padding: 10px;
+    }
+
+    .portal-card {
+        flex-direction: column; /* Pagpapatungin ang logo at form */
+        min-height: auto;
+    }
+
+    .image-side {
+        padding: 40px 20px;
+        order: -1; /* Sinisiguro na ang logo ay laging nasa taas */
+    }
+
+    .school-logo {
+        width: 180px; /* Mas maliit na logo para sa mobile */
+    }
+
+    .form-side {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        /* Inaallow ang scroll sa mobile para hindi maputol ang form */
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .form-content {
+        max-width: 100%;
+    }
+}
