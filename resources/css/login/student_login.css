@@ -167,3 +167,58 @@ input:focus {
 .hidden {
     display: none;
 }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+    body {
+        height: auto;
+        padding: 20px 0;
+        overflow-y: auto;
+    }
+
+    .main-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .portal-card {
+        flex-direction: column;
+        min-height: auto;
+        border-radius: 16px;
+    }
+
+    /* IMAGE ON TOP */
+    .image-side {
+        width: 100%;
+        min-height: 200px;
+        padding: 20px;
+    }
+
+    .school-logo {
+        width: 180px;
+    }
+
+    /* FORM BELOW */
+    .form-side {
+        padding: 30px 20px;
+    }
+
+    .form-content {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .tab-switcher button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .btn-sign {
+        padding: 14px;
+        font-size: 15px;
+    }
+}
