@@ -9,15 +9,22 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <header class="navbar">
-            <div class="logo-area">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0070f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                <span class="brand-text">Admin Dashboard</span>
-            </div>
-            <form method="POST" action="{{ route('admin.logout') }}">
+        <header class="header">
+    <div class="logo-section">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span class="brand-name">Math Learning Assistant</span>
+    </div>
+
+    <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
-        </header>
+            </form>
+</header>
+
 
         <main class="content-wrapper">
             <section class="hero">
