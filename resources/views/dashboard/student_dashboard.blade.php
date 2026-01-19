@@ -10,6 +10,7 @@
     'resources/css/dashboard/student_dashboard.css',
     'resources/js/dashboard/student_dashboard.js'
 ])
+
 </head>
 <body>
      <div class="dashboard-container">
