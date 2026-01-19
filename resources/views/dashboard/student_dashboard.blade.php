@@ -27,7 +27,6 @@
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
         </header>
-
         <main class="main-content">
             <div class="hero-section">
                 <h1 class="welcome-title">Welcome, Student!</h1>
