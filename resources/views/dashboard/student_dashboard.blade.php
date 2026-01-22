@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Student Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    @vite(['resources/css/dashboard/student_dashboard.css'])
-    @vite(['resources/css/dashboard/student_dashboard.js'])
+    @vite([
+    'resources/css/dashboard/student_dashboard.css',
+    'resources/js/dashboard/student_dashboard.js'
+])
+
 </head>
 <body>
-    <div class="dashboard-container">
+      <div class="dashboard-container">
         <header class="header">
             <div class="logo-section">
                 <div class="logo-icon">
@@ -20,10 +24,10 @@
                 </div>
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
-            <form method="POST" action="{{ route('student.logout') }}">
-                @csrf
-                <button type="submit" class="logout-btn">Logout</button>
-            </form>
+            <form method="POST" action="{{ route('teacher.logout') }}">
+            @csrf
+          <button type="submit" class="logout-btn">Logout</button>
+    </form>
         </header>
 
         <main class="main-content">
@@ -83,7 +87,7 @@
                     <div class="module-title-row">
                         <span class="status-icon pending">🕒</span>
                         <span class="module-name">Polynomials and Polynomial Equations</span>
-                        <span class="percentage">5%</span>
+                        <span class="percentage">0%</span>
                     </div>
                     <div class="progress-bar-bg">
                         <div class="progress-fill blue" style="width: 5%;"></div>
@@ -129,12 +133,14 @@
         </main>
     </div>
 
+    <!-- Chat Bubble -->
     <div id="ai-bubble" class="messenger-bubble">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
     </div>
 
+    <!-- Chat Window -->
     <div id="ai-chat-window" class="chat-window-compact">
         <div class="chat-header">
             <div class="user-info">
