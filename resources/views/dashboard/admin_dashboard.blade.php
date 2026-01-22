@@ -11,11 +11,12 @@
     <div class="dashboard-container">
         <header class="header">
             <div class="logo-section">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                    stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                </svg>
+                <div class="logo-icon"> 
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
 
@@ -28,7 +29,7 @@
         <main class="content-wrapper">
             <section class="hero">
                 <h1>System Administration</h1>
-                <p>Manage users, permission, and platform settings</p>
+                <p>Manage users, permissions, and platform settings</p>
             </section>
 
             <div class="metrics-grid">
@@ -83,7 +84,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
                     </div>
                     <h3>User Management</h3>
-                    <p>Manage account, roles, and permissions</p>
+                    <p>Manage accounts, roles, and permissions</p>
                     <button class="action-btn">Manage Users</button>
                 </div>
 
@@ -92,7 +93,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     </div>
                     <h3>Roles & Permissions</h3>
-                    <p>Configure acess levels and privileges</p>
+                    <p>Configure access levels and privileges</p>
                     <button class="action-btn">Configure Roles</button>
                 </div>
 
@@ -101,7 +102,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                     </div>
                     <h3>Analytics</h3>
-                    <p>View platform usage and perform metrics</p>
+                    <p>View platform usage and performance metrics</p>
                     <button class="action-btn">View Analytics</button>
                 </div>
 
@@ -129,13 +130,13 @@
                     </div>
                     <h3>System Settings</h3>
                     <p>Configure platform preferences and features</p>
-                    <button class="action-btn">Send Feedback</button>
+                    <button class="action-btn">System Settings</button>
                 </div>
             </div>
 
             <section class="activity-box">
                 <h2>Recent System Activity</h2>
-                <p class="subtitle">Latest user registration and system events</p>
+                <p class="subtitle">Latest user registrations and system events</p>
                 <div class="log-list">
                     <div class="log-item">
                         <strong>New Student Registration</strong>
