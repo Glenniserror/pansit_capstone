@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Learning Assistant - Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-     @vite([
-        'resources/css/dashboard/student_dashboard.css',
-        'resources/js/dashboard/student_dashboard.js'
-    ])
+    @vite(['resources/css/dashboard/admin_dashboard.css'])
 </head>
 <body>
   <div class="dashboard-container">
@@ -22,7 +19,7 @@
                 </div>
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
-            <form method="POST" action="{{ route('admin.logout') }}">
+            <form method="POST" action="{{ route('student.logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
@@ -110,7 +107,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     </div>
                     <h3>Roles & Permissions</h3>
-                    <p>Configure access levels and privileges</p>
+                    <p>Configure acess levels and privileges</p>
                     <button class="action-btn">Configure Roles</button>
                 </div>
 
