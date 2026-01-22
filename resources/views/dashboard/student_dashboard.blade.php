@@ -31,7 +31,7 @@
 
         <main class="main-content">
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome back, Student!</h1>
+                <h1 class="welcome-title">Welcome, Student!</h1>
                 <p class="welcome-subtitle">Continue your mathematics learning journey</p>
             </div>
 
