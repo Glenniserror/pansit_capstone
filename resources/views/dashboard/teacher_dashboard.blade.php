@@ -36,7 +36,7 @@
                     <div class="metric-body">
                         <div class="metric-info">
                             <p class="metric-label">Total Students</p>
-                            <h2 class="metric-value">124</h2>
+                            <h2 class="metric-value">0</h2>
                             <p class="metric-sub">Active learners</p>
                         </div>
                         <div class="metric-icon blue">
@@ -49,8 +49,8 @@
                     <div class="metric-body">
                         <div class="metric-info">
                             <p class="metric-label">Average Progress</p>
-                            <h2 class="metric-value">67%</h2>
-                            <p class="metric-sub"><span class="positive">+5%</span> from last week</p>
+                            <h2 class="metric-value">0%</h2>
+                            <p class="metric-sub"><span class="positive">+0%</span> from last week</p>
                         </div>
                         <div class="metric-icon green">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
@@ -62,7 +62,7 @@
                     <div class="metric-body">
                         <div class="metric-info">
                             <p class="metric-label">Pending Reviews</p>
-                            <h2 class="metric-value">18</h2>
+                            <h2 class="metric-value">0</h2>
                             <p class="metric-sub">Quizzes to grade</p>
                         </div>
                         <div class="metric-icon orange">
@@ -75,7 +75,7 @@
                     <div class="metric-body">
                         <div class="metric-info">
                             <p class="metric-label">Messages</p>
-                            <h2 class="metric-value">7</h2>
+                            <h2 class="metric-value">0</h2>
                             <p class="metric-sub">Unread Messages</p>
                         </div>
                         <div class="metric-icon light-blue">

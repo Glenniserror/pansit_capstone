@@ -38,8 +38,8 @@
                         <span>Total Users</span>
                         <svg class="icon-svg blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     </div>
-                    <h2 class="metric-val">200</h2>
-                    <p class="metric-sub">+12 this week</p>
+                    <h2 class="metric-val">0</h2>
+                    <p class="metric-sub">+0 this week</p>
                 </div>
 
                 <div class="metric-card">
@@ -47,8 +47,8 @@
                         <span>Active Students</span>
                         <svg class="icon-svg green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                     </div>
-                    <h2 class="metric-val">107</h2>
-                    <p class="metric-sub">54% of total</p>
+                    <h2 class="metric-val">0</h2>
+                    <p class="metric-sub">0% of total</p>
                 </div>
 
                 <div class="metric-card">
@@ -56,7 +56,7 @@
                         <span>Teachers</span>
                         <svg class="icon-svg orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
                     </div>
-                    <h2 class="metric-val">23</h2>
+                    <h2 class="metric-val">0</h2>
                     <p class="metric-sub">All active</p>
                 </div>
 
