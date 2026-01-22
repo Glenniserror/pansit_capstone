@@ -1,49 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Chat functionality
+const bubble = document.getElementById('ai-bubble');
+const chatWindow = document.getElementById('ai-chat-window');
+const closeChat = document.getElementById('close-chat');
+const startChatBtn = document.getElementById('start-chat-btn');
+const sendBtn = document.getElementById('ai-send-btn');
+const input = document.getElementById('ai-input');
+const chatContent = document.getElementById('chat-content');
 
-    const aiBubble = document.getElementById('ai-bubble');
-    const chatWindow = document.getElementById('ai-chat-window');
-    const startChatBtn = document.getElementById('start-chat-btn');
-    const closeChatBtn = document.getElementById('close-chat');
-    const aiInput = document.getElementById('ai-input');
-    const sendBtn = document.getElementById('ai-send-btn');
-    const chatContent = document.getElementById('chat-content');
+function openChat() {
+    chatWindow.classList.add('open');
+    bubble.style.display = 'none';
+}
 
-    if (!aiBubble || !chatWindow) return;
+function closeWindow() {
+    chatWindow.classList.remove('open');
+    bubble.style.display = 'flex';
+}
 
-    let isOpen = false;
+function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
 
-    function toggleChat() {
-        isOpen = !isOpen;
-        chatWindow.classList.toggle('open', isOpen);
-        if (isOpen) setTimeout(() => aiInput.focus(), 100);
-    }
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg user';
+    userMsg.textContent = text;
+    chatContent.appendChild(userMsg);
 
-    aiBubble.addEventListener('click', toggleChat);
-    startChatBtn?.addEventListener('click', toggleChat);
-    closeChatBtn.addEventListener('click', toggleChat);
+    input.value = '';
+    chatContent.scrollTop = chatContent.scrollHeight;
 
-    function addMessage(text, type) {
-        const div = document.createElement('div');
-        div.className = `msg ${type}`;
-        div.textContent = text;
-        chatContent.appendChild(div);
+    setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'msg bot';
+        botMsg.textContent = 'I can help you with that math problem!';
+        chatContent.appendChild(botMsg);
         chatContent.scrollTop = chatContent.scrollHeight;
-    }
+    }, 1000);
+}
 
-    function sendMessage() {
-        const text = aiInput.value.trim();
-        if (!text) return;
-
-        addMessage(text, 'user');
-        aiInput.value = '';
-
-        setTimeout(() => {
-            addMessage('I can help you with algebra, calculus, and more 😊', 'bot');
-        }, 700);
-    }
-
-    sendBtn.addEventListener('click', sendMessage);
-    aiInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') sendMessage();
-    });
+bubble.addEventListener('click', openChat);
+startChatBtn.addEventListener('click', openChat);
+closeChat.addEventListener('click', closeWindow);
+sendBtn.addEventListener('click', sendMessage);
+input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
 });
