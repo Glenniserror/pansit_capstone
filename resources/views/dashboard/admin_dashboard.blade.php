@@ -19,7 +19,7 @@
                 </div>
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
-            <form method="POST" action="{{ route('student.logout') }}">
+            <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
