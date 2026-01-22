@@ -45,7 +45,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">124</h2>
+                    <h2 class="metric-value">0</h2>
                     <p class="metric-sub">Active students</p>
                 </div>
 
@@ -59,7 +59,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">67%</h2>
+                    <h2 class="metric-value">0%</h2>
                     <p class="metric-sub">Compared to last week</p>
                 </div>
 
@@ -76,7 +76,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">18</h2>
+                    <h2 class="metric-value">0</h2>
                     <p class="metric-sub">Quizzes to grade</p>
                 </div>
 
@@ -89,7 +89,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">7</h2>
+                    <h2 class="metric-value">0</h2>
                     <p class="metric-sub">Unread messages</p>
                 </div>
             </div>

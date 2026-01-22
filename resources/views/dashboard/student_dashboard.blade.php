@@ -46,7 +46,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">46%</h2>
+                    <h2 class="metric-value">0%</h2>
                     <p class="metric-sub">Across all modules</p>
                 </div>
 
@@ -61,7 +61,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">12/20</h2>
+                    <h2 class="metric-value">0/20</h2>
                     <p class="metric-sub">Keep going!</p>
                 </div>
 
@@ -76,7 +76,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">7 days</h2>
+                    <h2 class="metric-value">0 days</h2>
                     <p class="metric-sub">Personal best!</p>
                 </div>
             </div>
