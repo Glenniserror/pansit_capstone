@@ -39,8 +39,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         </div>
                     </div>
-                    <h2 class="metric-val">200</h2>
-                    <p class="metric-sub">+12 this month</p>
+                    <h2 class="metric-val">0</h2>
+                    <p class="metric-sub">+0 this month</p>
                 </div>
 
                 <div class="metric-card">
@@ -50,8 +50,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
                         </div>
                     </div>
-                    <h2 class="metric-val">107</h2>
-                    <p class="metric-sub">+8% active</p>
+                    <h2 class="metric-val">0</h2>
+                    <p class="metric-sub">+0% active</p>
                 </div>
 
                 <div class="metric-card">
@@ -61,8 +61,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         </div>
                     </div>
-                    <h2 class="metric-val">23</h2>
-                    <p class="metric-sub">5 new</p>
+                    <h2 class="metric-val">0</h2>
+                    <p class="metric-sub">0 new</p>
                 </div>
 
                 <div class="metric-card">
