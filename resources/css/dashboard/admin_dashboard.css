@@ -46,7 +46,6 @@ body {
     gap: 10px;
 }
 
-/* Gradient Box para sa Logo Icon */
 .logo-icon {
     width: 28px;
     height: 28px;
@@ -60,7 +59,7 @@ body {
 .logo-icon svg {
     width: 16px;
     height: 16px;
-    stroke: white; /* Siniguradong puti ang icon sa loob ng gradient box */
+    stroke: white;
 }
 
 .brand-name {
@@ -69,7 +68,6 @@ body {
     color: var(--text-main);
 }
 
-/* Updated Logout Button */
 .logout-btn {
     padding: 8px 20px;
     border: 1px solid #d1d5db;
@@ -109,21 +107,21 @@ body {
 }
 
 /* ===============================
-    METRICS GRID & CARDS
+    METRICS GRID & CARDS (BAGONG STYLE)
    =============================== */
 .metrics-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 }
 
 .metric-card {
     background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
     padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .metric-card:hover {
@@ -131,42 +129,50 @@ body {
     transform: translateY(-2px);
 }
 
-.metric-top {
+.metric-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #4b5563;
-    font-size: 0.875rem;
-    font-weight: 500;
+    margin-bottom: 8px;
 }
 
-/* Icon Backgrounds (Pastel) */
-.icon-bg {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+.metric-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.icon-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease;
 }
 
-.icon-bg svg { width: 20px; height: 20px; }
+.icon-container svg {
+    width: 22px;
+    height: 22px;
+}
 
-.blue-bg { background-color: #eff6ff; color: #3b82f6; }
-.green-bg { background-color: #ecfdf5; color: #10b981; }
-.orange-bg { background-color: #fff7ed; color: #f97316; }
-.purple-bg { background-color: #faf5ff; color: #a855f7; }
+/* Themes for Icons */
+.green-theme { background-color: #ecfdf5; color: #10b981; }
+.orange-theme { background-color: #fff7ed; color: #f97316; }
+.blue-theme { background-color: #eff6ff; color: #3b82f6; }
+.purple-theme { background-color: #faf5ff; color: #a855f7; }
 
-.metric-val {
-    font-size: 2rem;
+.metric-value {
+    font-size: 32px;
     font-weight: 700;
-    margin: 12px 0 4px 0;
-    color: var(--text-main);
+    color: #1a1a1a;
+    margin: 4px 0;
 }
 
 .metric-sub {
+    font-size: 12px;
     color: #9ca3af;
-    font-size: 0.75rem;
 }
 
 /* ===============================
@@ -230,7 +236,9 @@ body {
 
 .action-btn:hover { background: var(--blue-hover); }
 
+/* Activity Box Spacing */
 .activity-box {
+    margin-top: 40px;
     background: white;
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -238,18 +246,41 @@ body {
 }
 
 .activity-box h2 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    margin-bottom: 24px;
+    display: block;
+    color: var(--text-sub);
+}
+
+.log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .log-item {
-    border: 1px solid var(--border);
+    background: white;
+    border: 1px solid #f1f5f9;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
+    padding: 24px 32px;
     display: flex;
     flex-direction: column;
+    gap: 4px;
+}
+
+.log-item strong {
+    font-size: 1.05rem;
+    color: #111827;
+}
+
+.log-item span {
+    font-size: 0.95rem;
+    color: #64748b;
 }
 
 /* ===============================
