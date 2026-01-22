@@ -1,3 +1,6 @@
+/* ===============================
+   ROOT VARIABLES & RESET
+   =============================== */
 :root {
     --text-main: #111827;
     --text-sub: #6b7280;
@@ -42,39 +45,15 @@ body {
     font-weight: 600;
     font-size: 0.8rem;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.header .logout-btn:hover {
+    background: #f9fafb;
 }
 
 /* ===============================
-   LEGACY NAVBAR (OPTIONAL)
-   Keep only if still used elsewhere
-   =============================== */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    border-bottom: 1px solid var(--border);
-}
-
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.logout-btn {
-    padding: 8px 20px;
-    border: 1px solid var(--border);
-    background: #fff;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* ===============================
-   WRAPPER
+   WRAPPER & HERO
    =============================== */
 .content-wrapper {
     max-width: 1000px;
@@ -82,9 +61,6 @@ body {
     padding: 0 20px;
 }
 
-/* ===============================
-   HERO
-   =============================== */
 .hero h1 {
     font-size: 2.2rem;
     font-weight: 800;
@@ -97,7 +73,7 @@ body {
 }
 
 /* ===============================
-   METRICS GRID
+   METRICS GRID & CARDS
    =============================== */
 .metrics-grid {
     display: grid;
@@ -110,19 +86,24 @@ body {
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px;
+    background: #fff;
 }
 
+/* Aligning the metric top section */
 .metric-top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-weight: 600;
     font-size: 0.95rem;
+    color: #374151;
 }
 
 .metric-val {
-    font-size: 1.9rem;
+    font-size: 2rem; /* Updated to 2rem based on your request */
     font-weight: 800;
-    margin: 12px 0 4px 0;
+    margin: 10px 0 5px 0;
+    color: var(--text-main);
 }
 
 .metric-sub {
@@ -131,20 +112,30 @@ body {
 }
 
 /* ===============================
-   ICON COLORS
+   METRICS ICON BACKGROUNDS
    =============================== */
-.icon-svg {
+.icon-bg {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-bg svg {
     width: 22px;
     height: 22px;
 }
 
-.icon-svg.blue { color: #3b82f6; }
-.icon-svg.green { color: #10b981; }
-.icon-svg.orange { color: #f97316; }
-.icon-svg.light-blue { color: #0ea5e9; }
+/* Colors for the metrics icons */
+.blue-bg { background-color: #eff6ff; color: #3b82f6; }
+.green-bg { background-color: #ecfdf5; color: #10b981; }
+.orange-bg { background-color: #fff7ed; color: #f97316; }
+.purple-bg { background-color: #faf5ff; color: #a855f7; }
 
 /* ===============================
-   MODULES GRID
+   MODULES GRID & CARDS
    =============================== */
 .modules-grid {
     display: grid;
@@ -157,11 +148,9 @@ body {
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 18px;
+    background: #fff;
 }
 
-/* ===============================
-   MODULE BANNERS
-   =============================== */
 .banner {
     height: 40px;
     border-radius: 8px;
@@ -200,7 +189,13 @@ body {
     padding: 12px;
     border-radius: 8px;
     font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.action-btn:hover {
+    background: #0056b3;
 }
 
 /* ===============================
@@ -210,6 +205,7 @@ body {
     border: 1px solid var(--border);
     border-radius: 15px;
     padding: 30px;
+    background: #fff;
 }
 
 .activity-box h2 {
@@ -244,7 +240,7 @@ body {
 }
 
 /* ===============================
-   RESPONSIVE
+   RESPONSIVE (MOBILE)
    =============================== */
 @media (max-width: 850px) {
     .metrics-grid {
@@ -252,6 +248,12 @@ body {
     }
 
     .modules-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .metrics-grid {
         grid-template-columns: 1fr;
     }
 }
