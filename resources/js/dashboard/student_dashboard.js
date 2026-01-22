@@ -1,40 +1,49 @@
-const bubble = document.getElementById('ai-bubble');
-const chatWindow = document.getElementById('ai-chat-window');
-const closeChat = document.getElementById('close-chat');
-const sendBtn = document.getElementById('ai-send-btn');
-const input = document.getElementById('ai-input');
-const chatContent = document.getElementById('chat-content');
+document.addEventListener('DOMContentLoaded', () => {
 
-bubble.addEventListener('click', () => {
-    chatWindow.classList.add('open');
-    bubble.style.display = 'none';
+    const aiBubble = document.getElementById('ai-bubble');
+    const chatWindow = document.getElementById('ai-chat-window');
+    const startChatBtn = document.getElementById('start-chat-btn');
+    const closeChatBtn = document.getElementById('close-chat');
+    const aiInput = document.getElementById('ai-input');
+    const sendBtn = document.getElementById('ai-send-btn');
+    const chatContent = document.getElementById('chat-content');
+
+    if (!aiBubble || !chatWindow) return;
+
+    let isOpen = false;
+
+    function toggleChat() {
+        isOpen = !isOpen;
+        chatWindow.classList.toggle('open', isOpen);
+        if (isOpen) setTimeout(() => aiInput.focus(), 100);
+    }
+
+    aiBubble.addEventListener('click', toggleChat);
+    startChatBtn?.addEventListener('click', toggleChat);
+    closeChatBtn.addEventListener('click', toggleChat);
+
+    function addMessage(text, type) {
+        const div = document.createElement('div');
+        div.className = `msg ${type}`;
+        div.textContent = text;
+        chatContent.appendChild(div);
+        chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    function sendMessage() {
+        const text = aiInput.value.trim();
+        if (!text) return;
+
+        addMessage(text, 'user');
+        aiInput.value = '';
+
+        setTimeout(() => {
+            addMessage('I can help you with algebra, calculus, and more 😊', 'bot');
+        }, 700);
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    aiInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') sendMessage();
+    });
 });
-
-closeChat.addEventListener('click', () => {
-    chatWindow.classList.remove('open');
-    bubble.style.display = 'flex';
-});
-
-sendBtn.addEventListener('click', sendMessage);
-input.addEventListener('keypress', e => {
-    if (e.key === 'Enter') sendMessage();
-});
-
-function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-
-    const userMsg = document.createElement('div');
-    userMsg.className = 'msg user';
-    userMsg.textContent = text;
-    chatContent.appendChild(userMsg);
-
-    input.value = '';
-
-    setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'msg bot';
-        botMsg.textContent = 'I can help you with that math problem!';
-        chatContent.appendChild(botMsg);
-    }, 800);
-}
