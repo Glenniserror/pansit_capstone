@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Learning Assistant - Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    @vite(['resources/css/dashboard/admin_dashboard.css'])
-</head>
-<body>
-    <div class="dashboard-container">
+ <div class="dashboard-container">
         <header class="header">
             <div class="logo-section">
                 <div class="logo-icon">
@@ -19,10 +9,7 @@
                 </div>
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
-            <form method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-                <button type="submit" class="logout-btn">Logout</button>
-            </form>
+            <button class="logout-btn">Logout</button>
         </header>
 
         <main class="main-content">
@@ -44,8 +31,8 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">0</h2>
-                    <p class="metric-sub">+0 this week</p>
+                    <h2 class="metric-value">200</h2>
+                    <p class="metric-sub">+12 this month</p>
                 </div>
 
                 <div class="metric-card">
@@ -58,8 +45,8 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">0</h2>
-                    <p class="metric-sub">0% of total</p>
+                    <h2 class="metric-value">107</h2>
+                    <p class="metric-sub">+8% active</p>
                 </div>
 
                 <div class="metric-card">
@@ -74,8 +61,8 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">0</h2>
-                    <p class="metric-sub">All active</p>
+                    <h2 class="metric-value">23</h2>
+                    <p class="metric-sub">5 new</p>
                 </div>
 
                 <div class="metric-card">
@@ -88,92 +75,48 @@
                         </div>
                     </div>
                     <h2 class="metric-value">99.9%</h2>
-                    <p class="metric-sub">Uptime</p>
+                    <p class="metric-sub">All systems operational</p>
                 </div>
             </div>
 
             <div class="content-grid">
                 <div class="feature-card blue-bg">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                    </div>
+                    <div class="feature-icon">👥</div>
                     <h3>User Management</h3>
-                    <p>Manage account, roles, and permissions</p>
+                    <p>Add, edit, and remove user permissions</p>
                     <button class="action-btn">Manage Users</button>
                 </div>
 
                 <div class="feature-card green-bg">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                    </div>
+                    <div class="feature-icon">🛡️</div>
                     <h3>Roles & Permissions</h3>
-                    <p>Configure access levels and privileges</p>
+                    <p>Define user roles and privileges</p>
                     <button class="action-btn">Configure Roles</button>
                 </div>
 
                 <div class="feature-card orange-bg">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
-                            </svg>
-                        </div>
-                    </div>
+                    <div class="feature-icon">📈</div>
                     <h3>Analytics</h3>
                     <p>View platform usage and perform metrics</p>
                     <button class="action-btn">View Analytics</button>
                 </div>
 
                 <div class="feature-card blue-bg">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                        </div>
-                    </div>
+                    <div class="feature-icon">📊</div>
                     <h3>Activity Tracking</h3>
                     <p>Monitor active users and engagement</p>
                     <button class="action-btn">Track Activity</button>
                 </div>
 
                 <div class="feature-card green-bg">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                            </svg>
-                        </div>
-                    </div>
+                    <div class="feature-icon">📚</div>
                     <h3>Content Management</h3>
                     <p>Manage learning modules and materials</p>
                     <button class="action-btn">Manage Content</button>
                 </div>
 
                 <div class="feature-card orange-bg">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M12 1v6m0 6v6m-9-9h6m6 0h6"></path>
-                                <path d="M16.24 7.76l-1.42 1.42m-5.66 5.66l-1.42 1.42m0-11.32l1.42 1.42m5.66 5.66l1.42 1.42"></path>
-                            </svg>
-                        </div>
-                    </div>
+                    <div class="feature-icon">⚙️</div>
                     <h3>System Settings</h3>
                     <p>Configure platform preferences and features</p>
                     <button class="action-btn">Send Feedback</button>
