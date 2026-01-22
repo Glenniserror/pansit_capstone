@@ -44,8 +44,8 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">200</h2>
-                    <p class="metric-sub">+12 this week</p>
+                    <h2 class="metric-value">0</h2>
+                    <p class="metric-sub">+0 this week</p>
                 </div>
 
                 <div class="metric-card">
@@ -58,8 +58,8 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">107</h2>
-                    <p class="metric-sub">54% of total</p>
+                    <h2 class="metric-value">0</h2>
+                    <p class="metric-sub">0% of total</p>
                 </div>
 
                 <div class="metric-card">
@@ -74,7 +74,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h2 class="metric-value">23</h2>
+                    <h2 class="metric-value">0</h2>
                     <p class="metric-sub">All active</p>
                 </div>
 
