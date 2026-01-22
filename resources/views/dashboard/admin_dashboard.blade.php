@@ -1,4 +1,14 @@
-<div class="dashboard-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Learning Assistant - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    @vite(['resources/css/dashboard/admin_dashboard.css'])
+</head>
+<body>
+  <div class="dashboard-container">
         <header class="header">
             <div class="logo-section">
                 <div class="logo-icon">
@@ -9,7 +19,10 @@
                 </div>
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
-            <button class="logout-btn">Logout</button>
+            <form method="POST" action="{{ route('student.logout') }}">
+                @csrf
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
         </header>
 
         <main class="main-content">
