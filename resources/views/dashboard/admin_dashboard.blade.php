@@ -136,7 +136,8 @@
 
             <section class="activity-box">
                 <h2>Recent System Activity</h2>
-                <p class="subtitle">Latest user registrations and system events</p>
+                <p class="subtitle">Latest user registrations and system events</p><br>
+                
                 <div class="log-list">
                     <div class="log-item">
                         <strong>New Student Registration</strong>
