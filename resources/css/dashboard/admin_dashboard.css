@@ -209,8 +209,8 @@ body {
     font-size: 0.85rem;
     color: var(--text-sub);
     margin-bottom: 20px;
-    height: 32px;
-    overflow: hidden;
+    height: 31px;
+    overflow: visible;
 }
 
 /* ===============================
