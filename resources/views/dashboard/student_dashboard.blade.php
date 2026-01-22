@@ -20,7 +20,10 @@
                 </div>
                 <span class="brand-name">Math Learning Assistant</span>
             </div>
-            <button class="logout-btn">Logout</button>
+            <form method="POST" action="{{ route('student.logout') }}">
+                @csrf
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
         </header>
 
         <main class="main-content">
@@ -153,7 +156,5 @@
             </button>
         </div>
     </div>
-
-    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
