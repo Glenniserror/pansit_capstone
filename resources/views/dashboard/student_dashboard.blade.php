@@ -90,7 +90,7 @@
                         <span class="percentage">0%</span>
                     </div>
                     <div class="progress-bar-bg">
-                        <div class="progress-fill blue" style="width: 5%;"></div>
+                        <div class="progress-fill blue" style="width: 0%;"></div>
                     </div>
                     <button class="view-topics-btn">View Topics</button>
                 </div>
