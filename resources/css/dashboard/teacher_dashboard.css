@@ -134,9 +134,9 @@ body {
 
 /* LABEL (GAYA NG SA STUDENT) */
 .metric-label {
-    font-size: 15px;
-    font-weight: 600; /* Pinakapal na gaya ng sa student */
-    color: #1f2937;
+    font-size: 13px;
+    font-weight: 600;
+    color: #373151;
     letter-spacing: -0.01em;
 }
 
