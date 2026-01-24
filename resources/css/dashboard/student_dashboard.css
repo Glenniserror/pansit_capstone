@@ -143,10 +143,20 @@ body {
 .metric-icon {
     font-size: 18px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .metric-card:hover .metric-icon {
     transform: scale(1.1) rotate(5deg);
+}
+
+/* Support for all icon container types */
+.icon-container,
+.icon-bg {
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .metric-value {
@@ -793,7 +803,16 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- ANIMATIONS --- */
+/* Metric card icon animations - matching teacher dashboard */
+.metric-card:hover .icon-container,
+.metric-card:hover .icon-bg,
+.metric-card:hover .metric-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* ===============================
+   ANIMATIONS - FROM TEACHER DASHBOARD
+   =============================== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -828,6 +847,7 @@ body {
 .admin-card:nth-child(5) { animation-delay: 0.5s; }
 .admin-card:nth-child(6) { animation-delay: 0.6s; }
 
+/* SMOOTH METRIC CARDS ANIMATION */
 .metric-card {
     animation: fadeInScale 0.5s ease forwards;
     opacity: 0;
