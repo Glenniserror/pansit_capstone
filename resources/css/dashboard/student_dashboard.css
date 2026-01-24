@@ -243,54 +243,56 @@ body {
     padding: 20px;
 }
 
+/* Updated action card styles - removed gradients */
 .action-card.blue-light {
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    border-color: #bfdbfe;
+    background: white;
+    border-color: #e5e7eb;
 }
 
 .action-card.green-light {
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border-color: #bbf7d0;
+    background: white;
+    border-color: #e5e7eb;
 }
 
+/* Updated icon box styles to match the image */
 .icon-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 12px;
-    font-size: 20px;
+    margin-bottom: 16px;
+    font-size: 22px;
 }
 
 .icon-box.message {
-    background: #dbeafe;
-    color: #2563eb;
+    background: #eff6ff;
+    color: #3b82f6;
 }
 
 .icon-box.download {
-    background: #dcfce7;
-    color: #16a34a;
+    background: #f0fdf4;
+    color: #10b981;
 }
 
 .icon-box.test {
-    background: #dbeafe;
-    color: #2563eb;
+    background: #eff6ff;
+    color: #3b82f6;
 }
 
 .action-card h3 {
     font-size: 16px;
     font-weight: 700;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     color: #1a1a1a;
 }
 
 .action-card p {
     font-size: 13px;
-    color: #6b7280;
-    margin-bottom: 14px;
-    line-height: 1.4;
+    color: #9ca3af;
+    margin-bottom: 16px;
+    line-height: 1.5;
 }
 
 .primary-btn {
@@ -501,22 +503,173 @@ body {
 }
 
 @media (max-width: 768px) {
+    .header {
+        padding: 12px 16px;
+    }
+
+    .logo-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+    }
+
+    .logout-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+
+    .main-content {
+        padding: 20px 16px;
+    }
+
+    .welcome-title {
+        font-size: 22px;
+    }
+
+    .welcome-subtitle {
+        font-size: 13px;
+    }
+
     .metrics-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .metric-card {
+        padding: 16px;
+    }
+
+    .metric-value {
+        font-size: 28px;
+    }
+
+    .modules-container {
+        padding: 20px 16px;
+        margin-bottom: 20px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .module-item {
+        padding: 14px;
     }
 
     .bottom-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .action-card {
+        padding: 18px;
+    }
+
+    .icon-box {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+
+    .action-card h3 {
+        font-size: 15px;
+    }
+
+    .action-card p {
+        font-size: 12px;
     }
 
     .chat-window-compact {
         width: calc(100vw - 40px);
         right: 20px;
         left: 20px;
-    } 
+    }
+
+    .messenger-bubble {
+        width: 52px;
+        height: 52px;
+    }
+
+    .messenger-bubble svg {
+        width: 24px;
+        height: 24px;
+    }
 }
 
-/* --- ADDED ICON SHOWCASE CODES BELOW --- */
+@media (max-width: 480px) {
+    .header {
+        padding: 10px 12px;
+    }
+
+    .main-content {
+        padding: 16px 12px;
+    }
+
+    .welcome-title {
+        font-size: 20px;
+    }
+
+    .metrics-grid {
+        gap: 10px;
+    }
+
+    .metric-card {
+        padding: 14px;
+    }
+
+    .metric-value {
+        font-size: 24px;
+    }
+
+    .modules-container {
+        padding: 16px 12px;
+    }
+
+    .bottom-grid {
+        gap: 10px;
+    }
+
+    .action-card {
+        padding: 16px;
+    }
+
+    .primary-btn,
+    .outline-btn {
+        padding: 9px;
+        font-size: 13px;
+    }
+
+    .chat-window-compact {
+        width: calc(100vw - 24px);
+        right: 12px;
+        left: 12px;
+        height: calc(100vh - 120px);
+        bottom: 75px;
+    }
+
+    .messenger-bubble {
+        width: 50px;
+        height: 50px;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-content {
+        max-width: 900px;
+    }
+}
+
+/* --- ICON SHOWCASE CODES --- */
 
 /* Container for the grid of icons */
 .icon-showcase {
@@ -530,7 +683,7 @@ body {
 .icon-container {
     width: 40px;
     height: 40px;
-    border-radius: 10px; /* Rounded corners as per image */
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -545,20 +698,20 @@ body {
 
 /* Green Theme (Progress) */
 .green-theme {
-    background-color: #ecfdf5; /* Very light green tint */
-    color: #10b981;           /* Emerald green stroke */
+    background-color: #f0fdf4;
+    color: #10b981;
 }
 
 /* Orange Theme (Quizzes) */
 .orange-theme {
-    background-color: #fff7ed; /* Very light orange tint */
-    color: #f97316;           /* Orange stroke */
+    background-color: #fff7ed;
+    color: #f97316;
 }
 
 /* Blue Theme (Streak) */
 .blue-theme {
-    background-color: #eff6ff; /* Very light blue tint */
-    color: #3b82f6;           /* Blue stroke */
+    background-color: #eff6ff;
+    color: #3b82f6;
 }
 
 /* Simple hover effect */
