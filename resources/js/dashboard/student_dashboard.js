@@ -45,6 +45,7 @@ const bubble = document.getElementById('ai-bubble');
             if (e.key === 'Enter') sendMessage();
         });
 
+// Logout Handler
 document.getElementById('logout-btn').addEventListener('click', function() {
     Swal.fire({
         title: 'Are you sure?',
