@@ -371,11 +371,6 @@ body {
     z-index: 1;
 }
 
-.view-all-btn:hover::before {
-    width: 500px;
-    height: 200px;
-}
-
 .view-all-btn:hover {
     background: var(--blue-hover);
     transform: translateY(-2px);
