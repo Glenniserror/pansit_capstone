@@ -101,6 +101,8 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
 }
 
 .metric-card::before {
@@ -124,6 +126,11 @@ body {
 .metric-card:hover::before {
     opacity: 1;
 }
+
+.metric-card:nth-child(1) { animation-delay: 0.1s; }
+.metric-card:nth-child(2) { animation-delay: 0.2s; }
+.metric-card:nth-child(3) { animation-delay: 0.3s; }
+.metric-card:nth-child(4) { animation-delay: 0.4s; }
 
 .metric-header {
     display: flex;
@@ -157,6 +164,11 @@ body {
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+}
+
+.metric-card:hover .icon-container,
+.metric-card:hover .icon-bg {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .metric-value {
@@ -309,6 +321,8 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
 }
 
 .action-card::before {
@@ -333,18 +347,10 @@ body {
     opacity: 1;
 }
 
-/* Updated action card styles - removed gradients */
-.action-card.blue-light {
-    background: white;
-    border-color: #e5e7eb;
-}
+.action-card:nth-child(1) { animation-delay: 0.15s; }
+.action-card:nth-child(2) { animation-delay: 0.25s; }
+.action-card:nth-child(3) { animation-delay: 0.35s; }
 
-.action-card.green-light {
-    background: white;
-    border-color: #e5e7eb;
-}
-
-/* Updated icon box styles to match the image */
 .icon-box {
     width: 48px;
     height: 48px;
@@ -396,6 +402,7 @@ body {
     z-index: 1;
 }
 
+/* PRIMARY BUTTON - For Start Chat, View Downloads, Start Summative Test */
 .primary-btn {
     width: 100%;
     background: #2563eb;
@@ -451,6 +458,8 @@ body {
     cursor: pointer;
     color: #374151;
     transition: all 0.2s;
+    position: relative;
+    z-index: 1;
 }
 
 .outline-btn:hover {
@@ -647,6 +656,8 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
 }
 
 .admin-card::before {
@@ -670,6 +681,13 @@ body {
 .admin-card:hover::before {
     opacity: 1;
 }
+
+.admin-card:nth-child(1) { animation-delay: 0.1s; }
+.admin-card:nth-child(2) { animation-delay: 0.2s; }
+.admin-card:nth-child(3) { animation-delay: 0.3s; }
+.admin-card:nth-child(4) { animation-delay: 0.4s; }
+.admin-card:nth-child(5) { animation-delay: 0.5s; }
+.admin-card:nth-child(6) { animation-delay: 0.6s; }
 
 .admin-card .icon-box {
     width: 60px;
@@ -741,7 +759,7 @@ body {
 }
 
 .action-button:hover::before {
-    width: 300px;
+    width: 1000px;
     height: 300px;
 }
 
@@ -803,15 +821,8 @@ body {
     transform: translateY(-2px);
 }
 
-/* Metric card icon animations - matching teacher dashboard */
-.metric-card:hover .icon-container,
-.metric-card:hover .icon-bg,
-.metric-card:hover .metric-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
 /* ===============================
-   ANIMATIONS - FROM TEACHER DASHBOARD
+   ANIMATIONS
    =============================== */
 @keyframes fadeInUp {
     from {
@@ -834,38 +845,6 @@ body {
         transform: scale(1);
     }
 }
-
-.admin-card {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
-}
-
-.admin-card:nth-child(1) { animation-delay: 0.1s; }
-.admin-card:nth-child(2) { animation-delay: 0.2s; }
-.admin-card:nth-child(3) { animation-delay: 0.3s; }
-.admin-card:nth-child(4) { animation-delay: 0.4s; }
-.admin-card:nth-child(5) { animation-delay: 0.5s; }
-.admin-card:nth-child(6) { animation-delay: 0.6s; }
-
-/* SMOOTH METRIC CARDS ANIMATION */
-.metric-card {
-    animation: fadeInScale 0.5s ease forwards;
-    opacity: 0;
-}
-
-.metric-card:nth-child(1) { animation-delay: 0.1s; }
-.metric-card:nth-child(2) { animation-delay: 0.2s; }
-.metric-card:nth-child(3) { animation-delay: 0.3s; }
-.metric-card:nth-child(4) { animation-delay: 0.4s; }
-
-.action-card {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-.action-card:nth-child(1) { animation-delay: 0.15s; }
-.action-card:nth-child(2) { animation-delay: 0.25s; }
-.action-card:nth-child(3) { animation-delay: 0.35s; }
 
 @media (max-width: 768px) {
     .header {
