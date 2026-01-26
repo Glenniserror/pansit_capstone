@@ -1,4 +1,6 @@
-/* ALL ORIGINAL STYLES PRESERVED */
+/* ================================
+   RESET & BASE STYLES
+   ================================ */
 * {
     margin: 0;
     padding: 0;
@@ -11,11 +13,23 @@ body {
     color: #1a1a1a;
 }
 
+/* ================================
+   LAYOUT COMPONENTS
+   ================================ */
 .dashboard-container {
     min-height: 100vh;
     background-color: #fafafa;
 }
 
+.main-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+/* ================================
+   HEADER
+   ================================ */
 .header {
     display: flex;
     justify-content: space-between;
@@ -63,12 +77,9 @@ body {
     border-color: #9ca3af;
 }
 
-.main-content {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 32px 24px;
-}
-
+/* ================================
+   HERO SECTION
+   ================================ */
 .hero-section {
     margin-bottom: 24px;
 }
@@ -85,6 +96,9 @@ body {
     font-size: 14px;
 }
 
+/* ================================
+   METRICS GRID
+   ================================ */
 .metrics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -130,7 +144,6 @@ body {
 .metric-card:nth-child(1) { animation-delay: 0.1s; }
 .metric-card:nth-child(2) { animation-delay: 0.2s; }
 .metric-card:nth-child(3) { animation-delay: 0.3s; }
-.metric-card:nth-child(4) { animation-delay: 0.4s; }
 
 .metric-header {
     display: flex;
@@ -147,27 +160,7 @@ body {
     color: #374151;
 }
 
-.metric-icon {
-    font-size: 18px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.metric-card:hover .metric-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Support for all icon container types */
-.icon-container,
-.icon-bg {
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.metric-card:hover .icon-container,
-.metric-card:hover .icon-bg {
+.metric-card:hover .icon-container {
     transform: scale(1.1) rotate(5deg);
 }
 
@@ -192,6 +185,9 @@ body {
     z-index: 1;
 }
 
+/* ================================
+   MODULES CONTAINER
+   ================================ */
 .modules-container {
     background: white;
     border: 1px solid #e5e7eb;
@@ -306,6 +302,9 @@ body {
     border-color: #d1d5db;
 }
 
+/* ================================
+   ACTION CARDS
+   ================================ */
 .bottom-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -321,8 +320,6 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
 }
 
 .action-card::before {
@@ -347,41 +344,8 @@ body {
     opacity: 1;
 }
 
-.action-card:nth-child(1) { animation-delay: 0.15s; }
-.action-card:nth-child(2) { animation-delay: 0.25s; }
-.action-card:nth-child(3) { animation-delay: 0.35s; }
-
-.icon-box {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    font-size: 22px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.action-card:hover .icon-box {
+.action-card:hover .icon-container {
     transform: scale(1.1) rotate(5deg);
-}
-
-.icon-box.message {
-    background: #eff6ff;
-    color: #3b82f6;
-}
-
-.icon-box.download {
-    background: #f0fdf4;
-    color: #10b981;
-}
-
-.icon-box.test {
-    background: #eff6ff;
-    color: #3b82f6;
 }
 
 .action-card h3 {
@@ -402,7 +366,52 @@ body {
     z-index: 1;
 }
 
-/* PRIMARY BUTTON - For Start Chat, View Downloads, Start Summative Test */
+/* ================================
+   ICON CONTAINER
+   ================================ */
+.icon-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.icon-container svg {
+    width: 22px;
+    height: 22px;
+}
+
+.icon-container:hover {
+    transform: translateY(-2px);
+}
+
+.green-theme {
+    background-color: #f0fdf4;
+    color: #10b981;
+}
+
+.orange-theme {
+    background-color: #fff7ed;
+    color: #f97316;
+}
+
+.blue-theme {
+    background-color: #eff6ff;
+    color: #3b82f6;
+}
+
+.mb-12 {
+    margin-bottom: 12px;
+}
+
+/* ================================
+   BUTTONS
+   ================================ */
 .primary-btn {
     width: 100%;
     background: #2563eb;
@@ -449,29 +458,55 @@ body {
 
 .outline-btn {
     width: 100%;
-    background: white;
-    border: 1px solid #d1d5db;
+    background: #2563eb !important;
+    color: white !important;
+    border: none !important;
     padding: 10px;
     border-radius: 6px;
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
-    color: #374151;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+    overflow: hidden;
+}
+
+.outline-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.outline-btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .outline-btn:hover {
-    background: #f9fafb;
-    border-color: #9ca3af;
+    background: #1d4ed8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+}
+
+.outline-btn:active {
+    transform: translateY(0);
 }
 
 .full-width-mobile {
     grid-column: 1 / -1;
 }
 
-/* Chat Components */
+/* ================================
+   CHAT COMPONENTS
+   ================================ */
 .messenger-bubble {
     position: fixed;
     bottom: 20px;
@@ -517,17 +552,6 @@ body {
 .chat-window-compact.open {
     display: flex;
     animation: slideUp 0.3s ease;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .chat-header {
@@ -639,202 +663,9 @@ body {
     height: 18px;
 }
 
-/* --- ADMIN DASHBOARD STYLES --- */
-.admin-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 20px;
-}
-
-.admin-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 28px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
-}
-
-.admin-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.admin-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    border-color: #d1d5db;
-}
-
-.admin-card:hover::before {
-    opacity: 1;
-}
-
-.admin-card:nth-child(1) { animation-delay: 0.1s; }
-.admin-card:nth-child(2) { animation-delay: 0.2s; }
-.admin-card:nth-child(3) { animation-delay: 0.3s; }
-.admin-card:nth-child(4) { animation-delay: 0.4s; }
-.admin-card:nth-child(5) { animation-delay: 0.5s; }
-.admin-card:nth-child(6) { animation-delay: 0.6s; }
-
-.admin-card .icon-box {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.admin-card:hover .icon-box {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.admin-card .icon-box svg {
-    width: 28px;
-    height: 28px;
-}
-
-.admin-card h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #1a1a1a;
-    position: relative;
-    z-index: 1;
-}
-
-.admin-card p {
-    font-size: 14px;
-    color: #6b7280;
-    line-height: 1.6;
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 1;
-}
-
-.action-button {
-    width: 100%;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.action-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.action-button:hover::before {
-    width: 1000px;
-    height: 300px;
-}
-
-.action-button:hover {
-    background: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
-}
-
-.action-button:active {
-    transform: translateY(0);
-}
-
-/* --- ICON SHOWCASE CODES --- */
-.icon-showcase {
-    display: flex;
-    gap: 20px;
-    padding: 40px;
-    background-color: #ffffff;
-}
-
-.icon-container {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
-
-.icon-container svg {
-    width: 22px;
-    height: 22px;
-}
-
-/* Icon Theme Colors */
-.green-theme {
-    background-color: #f0fdf4;
-    color: #10b981;
-}
-
-.orange-theme {
-    background-color: #fff7ed;
-    color: #f97316;
-}
-
-.blue-theme {
-    background-color: #eff6ff;
-    color: #3b82f6;
-}
-
-.yellow-theme {
-    background-color: #fffbeb;
-    color: #f59e0b;
-}
-
-.icon-container:hover {
-    transform: translateY(-2px);
-}
-
-/* ===============================
+/* ================================
    ANIMATIONS
-   =============================== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+   ================================ */
 @keyframes fadeInScale {
     from {
         opacity: 0;
@@ -846,6 +677,33 @@ body {
     }
 }
 
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-content {
+        max-width: 900px;
+    }
+}
+
+/* Mobile Large */
 @media (max-width: 768px) {
     .header {
         padding: 12px 16px;
@@ -913,12 +771,6 @@ body {
         padding: 18px;
     }
 
-    .icon-box {
-        width: 44px;
-        height: 44px;
-        font-size: 20px;
-    }
-
     .action-card h3 {
         font-size: 15px;
     }
@@ -942,35 +794,9 @@ body {
         width: 24px;
         height: 24px;
     }
-
-    .admin-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .admin-card {
-        padding: 24px;
-    }
-
-    .admin-card .icon-box {
-        width: 52px;
-        height: 52px;
-    }
-
-    .admin-card .icon-box svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    .admin-card h3 {
-        font-size: 18px;
-    }
-
-    .admin-card p {
-        font-size: 13px;
-    }
 }
 
+/* Mobile Small */
 @media (max-width: 480px) {
     .header {
         padding: 10px 12px;
@@ -1027,43 +853,5 @@ body {
         height: 50px;
         bottom: 16px;
         right: 16px;
-    }
-
-    .admin-card {
-        padding: 20px;
-    }
-
-    .admin-card .icon-box {
-        width: 48px;
-        height: 48px;
-    }
-
-    .admin-card .icon-box svg {
-        width: 22px;
-        height: 22px;
-    }
-
-    .admin-card h3 {
-        font-size: 16px;
-    }
-
-    .action-button {
-        padding: 10px 16px;
-        font-size: 13px;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .main-content {
-        max-width: 900px;
-    }
-
-    .admin-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
     }
 }

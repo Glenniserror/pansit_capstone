@@ -21,6 +21,7 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 .dashboard-container {
@@ -29,7 +30,7 @@ body {
 }
 
 /* ===============================
-    UPDATED HEADER STYLE
+    HEADER
    =============================== */
 .header {
     display: flex;
@@ -46,7 +47,6 @@ body {
     gap: 10px;
 }
 
-/* Gradient Box para sa Logo Icon */
 .logo-icon {
     width: 28px;
     height: 28px;
@@ -69,7 +69,6 @@ body {
     color: var(--text-main);
 }
 
-/* Updated Logout Button */
 .logout-btn {
     padding: 8px 20px;
     border: 1px solid #d1d5db;
@@ -95,7 +94,11 @@ body {
     padding: 0 24px;
 }
 
-.welcome-title {
+.hero {
+    margin-bottom: 32px;
+}
+
+.hero h1 {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 4px;
@@ -104,12 +107,11 @@ body {
 
 .hero p {
     color: var(--text-sub);
-    margin-bottom: 32px;
-    font-size: 1.1rem;
+    font-size: 14px;
 }
 
 /* ===============================
-    METRICS GRID & CARDS (Image 2 Style)
+    METRICS GRID & CARDS
    =============================== */
 .metrics-grid {
     display: grid;
@@ -157,13 +159,12 @@ body {
     align-items: center;
     font-size: 13px;
     font-weight: 600;
-    color: #373151;
+    color: #374151;
     margin-bottom: 12px;
     position: relative;
     z-index: 1;
 }
 
-/* Icon Backgrounds (Pastel) */
 .icon-bg {
     width: 36px;
     height: 36px;
@@ -204,7 +205,7 @@ body {
 }
 
 .metric-val {
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 700;
     margin: 12px 0 4px 0;
     color: var(--text-main);
@@ -219,7 +220,7 @@ body {
 
 .metric-sub {
     color: #9ca3af;
-    font-size: 0.75rem;
+    font-size: 12px;
     position: relative;
     z-index: 1;
 }
@@ -278,21 +279,21 @@ body {
 }
 
 .module-card h3 {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 700;
     margin-bottom: 8px;
+    color: #1a1a1a;
 }
 
 .module-card p {
-    font-size: 0.85rem;
+    font-size: 13px;
     color: var(--text-sub);
     margin-bottom: 20px;
-    height: 31px;
-    overflow: visible;
+    line-height: 1.5;
 }
 
 /* ===============================
-    BUTTONS & ACTIVITY
+    BUTTONS
    =============================== */
 .action-btn {
     width: 100%;
@@ -302,6 +303,7 @@ body {
     padding: 10px;
     border-radius: 6px;
     font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -336,6 +338,9 @@ body {
     transform: translateY(0);
 }
 
+/* ===============================
+    ACTIVITY BOX
+   =============================== */
 .activity-box {
     background: white;
     border: 1px solid var(--border);
@@ -344,184 +349,55 @@ body {
 }
 
 .activity-box h2 {
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 20px;
+    font-weight: 700;
     margin-bottom: 5px;
+    color: #1a1a1a;
+}
+
+.activity-box .subtitle {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+}
+
+.log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .log-item {
+    background: #fafafa;
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 16px;
-    margin-bottom: 12px;
     display: flex;
     flex-direction: column;
+    gap: 4px;
     transition: all 0.3s ease;
 }
 
 .log-item:hover {
-    background: #fafafa;
+    background: white;
     border-color: #d1d5db;
     transform: translateX(4px);
 }
 
-/* ===============================
-    ADMIN DASHBOARD STYLES (Image 1)
-   =============================== */
-.admin-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 20px;
-}
-
-.admin-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.admin-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.admin-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    border-color: #d1d5db;
-}
-
-.admin-card:hover::before {
-    opacity: 1;
-}
-
-.icon-box {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.admin-card:hover .icon-box {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.icon-box svg {
-    width: 28px;
-    height: 28px;
-}
-
-/* Icon Theme Colors */
-.blue-theme {
-    background-color: #eff6ff;
-    color: #3b82f6;
-}
-
-.green-theme {
-    background-color: #f0fdf4;
-    color: #10b981;
-}
-
-.yellow-theme {
-    background-color: #fffbeb;
-    color: #f59e0b;
-}
-
-.admin-card h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #1a1a1a;
-    position: relative;
-    z-index: 1;
-}
-
-.admin-card p {
+.log-item strong {
     font-size: 14px;
-    color: #6b7280;
-    line-height: 1.6;
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 1;
-}
-
-.action-button {
-    width: 100%;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
     font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
+    color: #374151;
 }
 
-.action-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.action-button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.action-button:hover {
-    background: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
-}
-
-.action-button:active {
-    transform: translateY(0);
+.log-item span {
+    font-size: 13px;
+    color: #9ca3af;
 }
 
 /* ===============================
     ANIMATIONS
    =============================== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 @keyframes fadeInScale {
     from {
         opacity: 0;
@@ -533,20 +409,17 @@ body {
     }
 }
 
-/* Admin Cards Animation */
-.admin-card {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.admin-card:nth-child(1) { animation-delay: 0.1s; }
-.admin-card:nth-child(2) { animation-delay: 0.2s; }
-.admin-card:nth-child(3) { animation-delay: 0.3s; }
-.admin-card:nth-child(4) { animation-delay: 0.4s; }
-.admin-card:nth-child(5) { animation-delay: 0.5s; }
-.admin-card:nth-child(6) { animation-delay: 0.6s; }
-
-/* Metric Cards Animation */
 .metric-card {
     animation: fadeInScale 0.5s ease forwards;
     opacity: 0;
@@ -557,7 +430,6 @@ body {
 .metric-card:nth-child(3) { animation-delay: 0.3s; }
 .metric-card:nth-child(4) { animation-delay: 0.4s; }
 
-/* Module Cards Animation */
 .module-card {
     animation: fadeInUp 0.5s ease forwards;
     opacity: 0;
@@ -566,6 +438,9 @@ body {
 .module-card:nth-child(1) { animation-delay: 0.15s; }
 .module-card:nth-child(2) { animation-delay: 0.25s; }
 .module-card:nth-child(3) { animation-delay: 0.35s; }
+.module-card:nth-child(4) { animation-delay: 0.45s; }
+.module-card:nth-child(5) { animation-delay: 0.55s; }
+.module-card:nth-child(6) { animation-delay: 0.65s; }
 
 /* ===============================
     RESPONSIVE
@@ -575,17 +450,43 @@ body {
         grid-template-columns: repeat(2, 1fr); 
     }
     
-    .admin-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    
     .modules-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    .header {
+        padding: 12px 16px;
+    }
+
+    .logo-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+    }
+
+    .logout-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+
+    .content-wrapper {
+        padding: 0 16px;
+        margin: 20px auto;
+    }
+
+    .hero h1 {
+        font-size: 22px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
     .modules-grid { 
         grid-template-columns: 1fr; 
     }
@@ -594,68 +495,56 @@ body {
         grid-template-columns: repeat(2, 1fr); 
     }
     
-    .admin-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .admin-card {
-        padding: 24px;
-    }
-
-    .icon-box {
-        width: 52px;
-        height: 52px;
-    }
-
-    .icon-box svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    .admin-card h3 {
-        font-size: 18px;
-    }
-
-    .admin-card p {
-        font-size: 13px;
-    }
-    
     .metric-card {
         padding: 16px;
     }
     
     .metric-val {
-        font-size: 1.75rem;
+        font-size: 28px;
+    }
+
+    .module-card {
+        padding: 20px;
+    }
+
+    .activity-box {
+        padding: 20px 16px;
+    }
+
+    .activity-box h2 {
+        font-size: 18px;
+    }
+
+    .log-item {
+        padding: 14px;
+    }
+
+    .log-item strong {
+        font-size: 13px;
+    }
+
+    .log-item span {
+        font-size: 12px;
     }
 }
 
 @media (max-width: 500px) {
+    .header {
+        padding: 10px 12px;
+    }
+
+    .content-wrapper {
+        padding: 0 12px;
+        margin: 16px auto;
+    }
+
+    .hero h1 {
+        font-size: 20px;
+    }
+
     .metrics-grid { 
         grid-template-columns: 1fr; 
-    }
-    
-    .admin-card {
-        padding: 20px;
-    }
-
-    .icon-box {
-        width: 48px;
-        height: 48px;
-    }
-
-    .icon-box svg {
-        width: 22px;
-        height: 22px;
-    }
-
-    .admin-card h3 {
-        font-size: 16px;
-    }
-
-    .action-button {
-        padding: 10px 16px;
-        font-size: 13px;
+        gap: 10px;
     }
     
     .metric-card {
@@ -663,7 +552,7 @@ body {
     }
     
     .metric-val {
-        font-size: 1.5rem;
+        font-size: 24px;
     }
     
     .icon-bg {
@@ -674,5 +563,30 @@ body {
     .icon-bg svg {
         width: 18px;
         height: 18px;
+    }
+
+    .module-card {
+        padding: 16px;
+    }
+
+    .module-card h3 {
+        font-size: 15px;
+    }
+
+    .module-card p {
+        font-size: 12px;
+    }
+
+    .action-btn {
+        padding: 9px;
+        font-size: 13px;
+    }
+
+    .activity-box {
+        padding: 16px 12px;
+    }
+
+    .log-item {
+        padding: 12px;
     }
 }
