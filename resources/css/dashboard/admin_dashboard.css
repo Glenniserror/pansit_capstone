@@ -327,7 +327,7 @@ body {
 }
 
 .action-btn:hover::before {
-    width: 300px;
+    width: 200px;
     height: 300px;
 }
 
