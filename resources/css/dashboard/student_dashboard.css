@@ -198,6 +198,9 @@ body {
     padding: 24px;
     margin-bottom: 24px;
     transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+    animation-delay: 0.05s;
 }
 
 .modules-container:hover {
@@ -224,6 +227,8 @@ body {
     padding: 16px;
     margin-bottom: 12px;
     transition: all 0.3s ease;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
 }
 
 .module-item:hover {
@@ -231,6 +236,12 @@ body {
     border-color: #d1d5db;
     transform: translateX(4px);
 }
+
+.module-item:nth-child(2) { animation-delay: 0.1s; }
+.module-item:nth-child(3) { animation-delay: 0.2s; }
+.module-item:nth-child(4) { animation-delay: 0.3s; }
+.module-item:nth-child(5) { animation-delay: 0.4s; }
+.module-item:nth-child(6) { animation-delay: 0.5s; }
 
 .module-title-row {
     display: flex;
@@ -325,6 +336,8 @@ body {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
 }
 
 .action-card::before {
@@ -352,6 +365,10 @@ body {
 .action-card:hover .icon-container {
     transform: scale(1.1) rotate(5deg);
 }
+
+.bottom-grid .action-card:nth-child(1) { animation-delay: 0.15s; }
+.bottom-grid .action-card:nth-child(2) { animation-delay: 0.25s; }
+.bottom-grid .action-card:nth-child(3) { animation-delay: 0.35s; }
 
 .action-card h3 {
     font-size: 16px;
@@ -596,6 +613,10 @@ body {
     justify-content: center;
 }
 
+#close-chat:hover {
+    color: #ef4444;
+}
+
 .chat-content {
     flex: 1;
     padding: 16px;
@@ -646,6 +667,10 @@ body {
     outline: none;
 }
 
+#ai-input:focus {
+    background: #e4e6eb;
+}
+
 #ai-send-btn {
     background: #0084ff;
     border: none;
@@ -666,6 +691,90 @@ body {
 #ai-send-btn svg {
     width: 18px;
     height: 18px;
+}
+
+/* ================================
+   CUSTOM SWEETALERT2 STYLING
+   ================================ */
+.swal2-popup {
+    border-radius: 16px !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.swal2-title {
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    font-size: 24px !important;
+}
+
+.swal2-html-container {
+    color: #6b7280 !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+.swal2-icon {
+    margin: 20px auto !important;
+}
+
+.swal2-confirm {
+    border-radius: 8px !important;
+    padding: 10px 24px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+}
+
+.swal2-confirm:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.swal2-cancel {
+    border-radius: 8px !important;
+    padding: 10px 24px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+}
+
+.swal2-cancel:hover {
+    transform: translateY(-2px) !important;
+}
+
+.swal2-input {
+    border-radius: 8px !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+}
+
+.swal2-input:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.swal2-validation-message {
+    border-radius: 8px !important;
+    background: #fef2f2 !important;
+    color: #ef4444 !important;
+    border: 1px solid #fecaca !important;
+    font-size: 13px !important;
+}
+
+.swal2-timer-progress-bar {
+    background: #3b82f6 !important;
+}
+
+.swal2-toast {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.swal2-toast .swal2-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
 }
 
 /* ================================
@@ -713,34 +822,6 @@ body {
     }
 }
 
-/* Apply animations to modules */
-.module-item {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-.module-item:nth-child(1) { animation-delay: 0.1s; }
-.module-item:nth-child(2) { animation-delay: 0.2s; }
-.module-item:nth-child(3) { animation-delay: 0.3s; }
-.module-item:nth-child(4) { animation-delay: 0.4s; }
-.module-item:nth-child(5) { animation-delay: 0.5s; }
-.module-item:nth-child(6) { animation-delay: 0.6s; }
-
-/* Apply animations to action cards */
-.action-card {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-.bottom-grid .action-card:nth-child(1) { animation-delay: 0.15s; }
-.bottom-grid .action-card:nth-child(2) { animation-delay: 0.25s; }
-
-/* Apply animations to modules container */
-.modules-container {
-    animation: fadeIn 0.5s ease forwards;
-    opacity: 0;
-    animation-delay: 0.05s;
-}
 /* ================================
    RESPONSIVE DESIGN
    ================================ */
