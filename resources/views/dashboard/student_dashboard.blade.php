@@ -27,7 +27,7 @@
             </div>
             <form method="POST" action="{{ route('student.logout') }}">
                 @csrf
-                <button type="submit" class="logout-btn">Logout</button>
+                <button type="button" class="logout-btn" id="logout-btn">Logout</button>
             </form>
         </header>
 
@@ -187,5 +187,8 @@
             </button>
         </div>
     </div>
+
+    <!-- SweetAlert2 JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
 </html>
