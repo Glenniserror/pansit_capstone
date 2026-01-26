@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Learning Assistant - Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    @vite(['resources/css/dashboard/admin_dashboard.css'])
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    @vite([
+        'resources/css/dashboard/admin_dashboard.css',
+        'resources/js/dashboard/admin_dashboard.js'
+    ])
 </head>
 <body>
     <div class="dashboard-container">
@@ -22,7 +27,7 @@
 
             <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
-                <button type="submit" class="logout-btn">Logout</button>
+                <button type="button" class="logout-btn" id="logout-btn">Logout</button>
             </form>
         </header>
 
@@ -155,5 +160,8 @@
             </section>
         </main>
     </div>
+
+    <!-- SweetAlert2 JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
 </html>
