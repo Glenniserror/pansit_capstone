@@ -32,7 +32,7 @@ class AuthController extends Controller
             if ($user->role !== 'student') {
                 Auth::logout();
                 return back()->withErrors([
-                    'email' => 'These credentials do not belong to a student account.',
+                    'email' => 'This account is registered as a ' . ucfirst($user->role) . '. Please use the ' . $user->role . ' login portal.',
                 ]);
             }
 
@@ -41,27 +41,35 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Invalid email or password. Please check your credentials or create a new account.',
         ])->onlyInput('email');
     }
 
     public function studentRegister(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'email.unique' => 'This email is already registered. Please use a different email or login.',
+            'password.confirmed' => 'Password confirmation does not match.',
+            'password.min' => 'Password must be at least 8 characters.',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 'student',
-        ]);
+        try {
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+                'role' => 'student',
+            ]);
 
-        Auth::login($user);
-        return redirect()->route('student.dashboard');
+            Auth::login($user);
+            return redirect()->route('student.dashboard')->with('success', 'Account created successfully!');
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => 'An error occurred during signup. Please try again.'])->withInput();
+        }
     }
 
     // ============ TEACHER ============
@@ -86,7 +94,7 @@ class AuthController extends Controller
             if ($user->role !== 'teacher') {
                 Auth::logout();
                 return back()->withErrors([
-                    'email' => 'These credentials do not belong to a teacher account.',
+                    'email' => 'This account is registered as a ' . ucfirst($user->role) . '. Please use the ' . $user->role . ' login portal.',
                 ]);
             }
 
@@ -95,27 +103,35 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Invalid email or password. Please check your credentials or create a new account.',
         ])->onlyInput('email');
     }
 
     public function teacherRegister(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'email.unique' => 'This email is already registered. Please use a different email or login.',
+            'password.confirmed' => 'Password confirmation does not match.',
+            'password.min' => 'Password must be at least 8 characters.',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 'teacher',
-        ]);
+        try {
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+                'role' => 'teacher',
+            ]);
 
-        Auth::login($user);
-        return redirect()->route('teacher.dashboard');
+            Auth::login($user);
+            return redirect()->route('teacher.dashboard')->with('success', 'Account created successfully!');
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => 'An error occurred during signup. Please try again.'])->withInput();
+        }
     }
 
     // ============ ADMIN ============
@@ -140,7 +156,7 @@ class AuthController extends Controller
             if ($user->role !== 'admin') {
                 Auth::logout();
                 return back()->withErrors([
-                    'email' => 'These credentials do not belong to an admin account.',
+                    'email' => 'This account is registered as a ' . ucfirst($user->role) . '. Please use the ' . $user->role . ' login portal.',
                 ]);
             }
 
@@ -149,7 +165,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Invalid email or password. Please check your credentials or contact the administrator.',
         ])->onlyInput('email');
     }
 
