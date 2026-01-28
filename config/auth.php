@@ -1,47 +1,65 @@
 <?php
 
 return [
-// config/auth.php
 
-'guards' => [
-    'web' => [
-        'driver' => 'session',
-        'provider' => 'users',
-    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Defaults
+    |--------------------------------------------------------------------------
+    */
 
-    // Idagdag itong tatlo:
-    'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins',
-    ],
-    'student' => [
-        'driver' => 'session',
-        'provider' => 'students',
-    ],
-    'teacher' => [
-        'driver' => 'session',
-        'provider' => 'teachers',
-    ],
-],
-
-'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\User::class,
+    'defaults' => [
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
 
-    // Idagdag itong tatlo at siguraduhin na tama ang path ng Models:
-    'admins' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Admin::class,
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guards
+    |--------------------------------------------------------------------------
+    */
+
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
-    'students' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Student::class,
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Providers
+    |--------------------------------------------------------------------------
+    */
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
     ],
-    'teachers' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Teacher::class,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Resetting Passwords
+    |--------------------------------------------------------------------------
+    */
+
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
     ],
-],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Password Confirmation Timeout
+    |--------------------------------------------------------------------------
+    */
+
+    'password_timeout' => 10800,
+
 ];

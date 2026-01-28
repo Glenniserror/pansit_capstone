@@ -14,57 +14,50 @@ Route::get('/', function () {
 })->name('homepage');
 
 
-// Student ROUTES
-Route::prefix('student')->name('student.')->group(function () {
-    // Guest only
-    Route::middleware('guest:student')->group(function () {
-        Route::get('/login', [StudentAuthController::class, 'showLoginForm'])->name('login');
-        Route::post('/login', [StudentAuthController::class, 'login'])->name('login.submit');
-        Route::post('/register', [StudentAuthController::class, 'register'])->name('register');
-    });
-    // Protected
-    Route::middleware('auth:student')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard.student_dashboard');
-        })->name('dashboard');
-        
-        Route::post('/logout', [StudentAuthController::class, 'logout'])->name('logout');
+// ============ STUDENT ROUTES ============
+Route::prefix('student')->group(function () {
+    // Login
+    Route::get('/login', [AuthController::class, 'showStudentLoginForm'])->name('student.login');
+    Route::post('/login', [AuthController::class, 'studentLogin'])->name('student.login.submit');
+    
+    // Register
+    Route::post('/register', [AuthController::class, 'studentRegister'])->name('student.register');
+    
+    // Dashboard (Protected)
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('student.logout');
     });
 });
 
-// TEACHER ROUTES
-Route::prefix('teacher')->name('teacher.')->group(function () {
-    // Guest only
-    Route::middleware('guest:teacher')->group(function () {
-        Route::get('/login', [TeacherAuthController::class, 'showLoginForm'])->name('login');
-        Route::post('/login', [TeacherAuthController::class, 'login'])->name('login.submit');
-        Route::post('/register', [TeacherAuthController::class, 'register'])->name('register');
-    });
-    // Protected
-    Route::middleware('auth:teacher')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard.teacher_dashboard');
-        })->name('dashboard');
-        
-        Route::post('/logout', [TeacherAuthController::class, 'logout'])->name('logout');
+// ============ TEACHER ROUTES ============
+Route::prefix('teacher')->group(function () {
+    // Login
+    Route::get('/login', [AuthController::class, 'showTeacherLoginForm'])->name('teacher.login');
+    Route::post('/login', [AuthController::class, 'teacherLogin'])->name('teacher.login.submit');
+    
+    // Register
+    Route::post('/register', [AuthController::class, 'teacherRegister'])->name('teacher.register');
+    
+    // Dashboard (Protected)
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher.dashboard');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('teacher.logout');
     });
 });
 
-// ADMIN ROUTES
-Route::prefix('admin')->name('admin.')->group(function () {
-    // Guest only
-    Route::middleware('guest:admin')->group(function () {
-        Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
-        Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
-        Route::post('/register', [AdminAuthController::class, 'register'])->name('register');
-    });
-    // Protected
-    Route::middleware('auth:admin')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard.admin_dashboard');
-        })->name('dashboard');
-        
-        Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+// ============ ADMIN ROUTES ============
+Route::prefix('admin')->group(function () {
+    // Login
+    Route::get('/login', [AuthController::class, 'showAdminLoginForm'])->name('admin.login');
+    Route::post('/login', [AuthController::class, 'adminLogin'])->name('admin.login.submit');
+    
+    // Register
+    Route::post('/register', [AuthController::class, 'adminRegister'])->name('admin.register');
+    
+    // Dashboard (Protected)
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });
 });
-
