@@ -1,47 +1,15 @@
 <?php
 
-return [
-// config/auth.php
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "user_db";
 
-'guards' => [
-    'web' => [
-        'driver' => 'session',
-        'provider' => 'users',
-    ],
+$conn = new mysqli($host, $user, $password, $database);
 
-    // Idagdag itong tatlo:
-    'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins',
-    ],
-    'student' => [
-        'driver' => 'session',
-        'provider' => 'students',
-    ],
-    'teacher' => [
-        'driver' => 'session',
-        'provider' => 'teachers',
-    ],
-],
+if ($conn->connect_error){
+    die("Connection failed: ". $conn->connect_error);
+}
 
-'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\User::class,
-    ],
 
-    // Idagdag itong tatlo at siguraduhin na tama ang path ng Models:
-    'admins' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Admin::class,
-    ],
-    'students' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Student::class,
-    ],
-    'teachers' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Teacher::class,
-    ],
-],
-];
+?>
