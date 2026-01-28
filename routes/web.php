@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 // Controllers
-use App\Http\Controllers\Auth\StudentAuthController;
-use App\Http\Controllers\Auth\TeacherAuthController;
-use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\AdminDashboardController;
+
 
 /*----------- Homepage -----------*/
 Route::get('/', function () {
