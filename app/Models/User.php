@@ -9,9 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * @property string $role
-     */
+    public string $role;
+
     protected $fillable = [
         'name',
         'email',
