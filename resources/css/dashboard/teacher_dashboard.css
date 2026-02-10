@@ -1,0 +1,676 @@
+/* ===============================
+    GLOBAL RESET & FONTS
+   =============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-main: #111827;
+    --text-sub: #6b7280;
+    --border: #e5e7eb;
+    --blue: #3b82f6;
+    --blue-hover: #2563eb;
+    --bg-main: #fafafa;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-container {
+    min-height: 100vh;
+    background-color: var(--bg-main);
+}
+
+/* ===============================
+    HEADER
+   =============================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: white;
+}
+
+.brand-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.logout-btn {
+    padding: 8px 20px;
+    border: 1px solid #d1d5db;
+    background: white;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #991b1b;
+    border-color: #7f1d1d;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(153, 27, 27, 0.3);
+}
+
+/* ===============================
+    MAIN CONTENT & HERO
+   =============================== */
+.main-content {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+.hero-section {
+    margin-bottom: 32px;
+}
+
+.welcome-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+}
+
+.welcome-subtitle {
+    color: var(--text-sub);
+    font-size: 14px;
+}
+
+/* ===============================
+    METRICS GRID & CARDS
+   =============================== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.metric-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.03), rgba(147, 51, 234, 0.03));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.metric-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    border-color: #d1d5db;
+}
+
+.metric-card:hover::before {
+    opacity: 1;
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.metric-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    letter-spacing: -0.01em;
+}
+
+/* Icon Backgrounds */
+.icon-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.metric-card:hover .icon-container {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.icon-container svg { 
+    width: 22px; 
+    height: 22px; 
+}
+
+.blue-theme { 
+    background-color: #eff6ff; 
+    color: #3b82f6; 
+}
+
+.green-theme { 
+    background-color: #f0fdf4; 
+    color: #10b981; 
+}
+
+.orange-theme { 
+    background-color: #fff7ed; 
+    color: #f97316; 
+}
+
+.purple-theme { 
+    background-color: #faf5ff; 
+    color: #a855f7; 
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 12px 0 4px 0;
+    color: var(--text-main);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover .metric-value {
+    transform: scale(1.05);
+}
+
+.metric-sub {
+    color: #9ca3af;
+    font-size: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===============================
+    CONTENT GRID & CARDS
+   =============================== */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.02), rgba(147, 51, 234, 0.02));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-header {
+    position: relative;
+    z-index: 1;
+}
+
+.card-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: #1a1a1a;
+}
+
+.card-header p {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0 0 20px 0;
+}
+
+/* ===============================
+    STUDENTS LIST & BADGES
+   =============================== */
+.student-item {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.student-item:hover {
+    background: white;
+    border-color: #d1d5db;
+    transform: translateX(4px);
+}
+
+.student-info h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+}
+
+.student-info p {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.status-badge {
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.status-badge:hover {
+    transform: scale(1.05);
+}
+
+.badge-excellent { 
+    background-color: #2196F3; 
+    color: white; 
+}
+
+.badge-good { 
+    background-color: #4CAF50; 
+    color: white; 
+}
+
+.badge-needs-help { 
+    background-color: #F44336; 
+    color: white; 
+}
+
+.view-all-btn {
+    width: 100%;
+    background: var(--blue);
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.view-all-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.view-all-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.view-all-btn:hover {
+    background: var(--blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
+
+.view-all-btn:active {
+    transform: translateY(0);
+}
+
+/* ===============================
+    ACTION SECTIONS & BUTTONS
+   =============================== */
+.action-section {
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.action-section:last-child {
+    margin-bottom: 0;
+}
+
+.action-section .card-header {
+    margin-bottom: 12px;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.action-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.action-btn.primary {
+    background: var(--blue);
+    color: white;
+    border: none;
+}
+
+.action-btn.primary:hover {
+    background: var(--blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
+
+.action-btn.primary:active {
+    transform: translateY(0);
+}
+
+.action-btn.secondary {
+    background: var(--blue);
+    color: white;
+    border: none;
+}
+
+.action-btn.secondary:hover {
+    background: var(--blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
+
+.action-btn.secondary:active {
+    transform: translateY(0);
+}
+
+/* ===============================
+    ANIMATIONS
+   =============================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Metric Cards Animation */
+.metric-card {
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
+}
+
+.metric-card:nth-child(1) { animation-delay: 0.1s; }
+.metric-card:nth-child(2) { animation-delay: 0.2s; }
+.metric-card:nth-child(3) { animation-delay: 0.3s; }
+.metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Content Cards Animation */
+.card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.content-grid .card:nth-child(1) { animation-delay: 0.2s; }
+.content-grid .card:nth-child(2) { animation-delay: 0.3s; }
+
+/* ===============================
+    RESPONSIVE
+   =============================== */
+@media (max-width: 1024px) {
+    .metrics-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 968px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 16px;
+    }
+
+    .logo-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+    }
+
+    .logout-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+
+    .main-content {
+        padding: 0 16px;
+        margin: 20px auto;
+    }
+
+    .welcome-title {
+        font-size: 22px;
+    }
+
+    .welcome-subtitle {
+        font-size: 13px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrics-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .metric-card {
+        padding: 16px;
+    }
+    
+    .metric-value {
+        font-size: 28px;
+    }
+
+    .card {
+        padding: 20px 16px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .student-item {
+        padding: 14px;
+    }
+
+    .student-info h3 {
+        font-size: 13px;
+    }
+
+    .student-info p {
+        font-size: 11px;
+    }
+
+    .status-badge {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        padding: 10px 12px;
+    }
+
+    .main-content {
+        padding: 0 12px;
+        margin: 16px auto;
+    }
+
+    .welcome-title {
+        font-size: 20px;
+    }
+
+    .metrics-grid { 
+        grid-template-columns: 1fr; 
+        gap: 10px;
+    }
+    
+    .metric-card {
+        padding: 14px;
+    }
+    
+    .metric-value {
+        font-size: 24px;
+    }
+    
+    .icon-container {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .icon-container svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .content-grid {
+        gap: 10px;
+    }
+
+    .card {
+        padding: 16px 12px;
+    }
+
+    .student-item {
+        padding: 12px;
+    }
+
+    .action-btn {
+        padding: 9px;
+        font-size: 13px;
+    }
+}
