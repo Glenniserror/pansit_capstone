@@ -28,7 +28,7 @@ body {
     background: inherit;
     filter: blur(14px);
     transform: scale(1.15);
-    opacity: 0.4; /* bawasan mula 0.7 → 0.4 */
+    opacity: 0.4;
     z-index: 1;
 }
 
@@ -38,13 +38,12 @@ body {
     inset: 0;
     background: linear-gradient(
         90deg,
-        rgba(0, 70, 160, 0.6) 0%,    /* bawasan opacity */
-        rgba(0, 120, 185, 0.5) 50%,  /* bawasan opacity */
-        rgba(0, 175, 165, 0.4) 100%  /* bawasan opacity */
+        rgba(0, 70, 160, 0.6) 0%,
+        rgba(0, 120, 185, 0.5) 50%,
+        rgba(0, 175, 165, 0.4) 100%
     );
     z-index: 2;
 }
-
 
 /* content */
 .hero-content {
@@ -53,6 +52,7 @@ body {
     text-align: center;
     color: #fff;
     max-width: 800px;
+    padding: 0 20px;
 }
 
 .hero-content h1 {
@@ -84,20 +84,19 @@ body {
 
 .btn {
     padding: 14px 32px;
-    border-radius: 12px; /* subtle curve */
+    border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 600;
     color: #fff;
-
     display: inline-flex;
     align-items: center;
     gap: 10px;
-
     cursor: pointer;
     text-decoration: none;
-
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn:hover {
@@ -105,58 +104,62 @@ body {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
 }
 
+/* soft glow effect */
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.35), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn:hover::after {
+    opacity: 1;
+}
+
+/* realistic press effect */
+.btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
 /* icon size */
 .btn i {
     font-size: 1.1rem;
 }
 
-/* responsive */
-@media (max-width: 768px) {
-    .hero {
-        height: auto;
-        padding: 80px 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.3rem;
-    }
-
-    .hero-content h2 {
-        font-size: 1.1rem;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-    }
-}
-
 /* ================= BUTTON GRADIENTS ================= */
-
-/* STUDENT BUTTON: darker blue-teal */
+/* STUDENT BUTTON */
 .student {
-    background: linear-gradient(135deg, #1e2d7a, #0a7c8c); /* darker, muted */
+    background: linear-gradient(135deg, #1e2d7a, #0a7c8c);
 }
 
 .student:hover {
-    background: linear-gradient(135deg, #2563eb, #06b6d4); /* slightly brighter on hover */
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
 }
 
-/* TEACHER BUTTON: darker sky-blue to green */
+/* TEACHER BUTTON */
 .teacher {
-    background: linear-gradient(135deg, #015b8a, #0f6f36); /* darker, muted */
+    background: linear-gradient(135deg, #015b8a, #0f6f36);
 }
 
 .teacher:hover {
-    background: linear-gradient(135deg, #0ea5e9, #22c55e); /* slightly brighter on hover */
+    background: linear-gradient(135deg, #0ea5e9, #22c55e);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
 }
 
-/* ADMIN BUTTON: darker purple to light blue */
+/* ADMIN BUTTON */
 .admin {
-    background: linear-gradient(135deg, #3a2f9c, #1f8fbf); /* darker, muted */
+    background: linear-gradient(135deg, #3a2f9c, #1f8fbf);
 }
 
 .admin:hover {
-    background: linear-gradient(135deg, #6366f1, #60a5fa); /* slightly brighter on hover */
+    background: linear-gradient(135deg, #6366f1, #60a5fa);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
 }
 
 /* ================= FEATURES ================= */
@@ -167,7 +170,7 @@ body {
 }
 
 .features h3 {
-    font-size: 2rem; /* Adjusted to match .topics h2 for consistency */
+    font-size: 2rem;
     font-weight: 800;
     color: #1f2937;
 }
@@ -191,7 +194,9 @@ body {
     padding: 34px 30px;
     border: 1.5px solid #e6f0fb;
     text-align: left;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.35s cubic-bezier(.21,.61,.35,1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
     position: relative;
     overflow: hidden;
 }
@@ -216,8 +221,8 @@ body {
 }
 
 .feature-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     border-color: #2563eb;
 }
 
@@ -232,7 +237,7 @@ body {
     transform: scale(1.12);
 }
 
-/* ICON COLORS - Keep original */
+/* ICON COLORS */
 .feature-card:nth-child(1) i { color: #2563eb; }
 .feature-card:nth-child(2) i { color: #14b8a6; }
 .feature-card:nth-child(3) i { color: #f59e0b; }
@@ -240,7 +245,7 @@ body {
 .feature-card:nth-child(5) i { color: #2563eb; }
 .feature-card:nth-child(6) i { color: #14b8a6; }
 
-/* TEXT - Keep original styles */
+/* TEXT */
 .feature-card h4 {
     font-size: 1.05rem;
     font-weight: 700;
@@ -252,55 +257,6 @@ body {
     font-size: 0.85rem;
     color: #94a3b8;
     line-height: 1.6;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 1024px) {
-    .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .features {
-        padding: 50px 8%;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .feature-card {
-        padding: 28px 20px;
-    }
-
-    .feature-card h4 {
-        font-size: 1rem;
-    }
-
-    .feature-card p {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .features {
-        padding: 40px 5%;
-    }
-
-    .feature-card {
-        padding: 24px 16px;
-    }
-
-    .feature-card h4 {
-        font-size: 0.95rem;
-    }
-
-    .feature-card p {
-        font-size: 0.78rem;
-    }
 }
 
 /* ================= TOPICS ================= */
@@ -339,7 +295,9 @@ body {
     border-radius: 12px;
     border: 1px solid #e5e7eb;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.35s cubic-bezier(.21,.61,.35,1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
     position: relative;
     overflow: hidden;
 }
@@ -365,8 +323,8 @@ body {
 
 /* HOVER EFFECT */
 .topic-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     border-color: #3b82f6;
 }
 
@@ -416,8 +374,8 @@ body {
 .footer-sub {
     margin-top: 6px;
 }
-/* ================= PRO HERO ANIMATION ================= */
 
+/* ================= ANIMATIONS ================= */
 @keyframes heroZoom {
     from {
         transform: scale(1.15);
@@ -460,6 +418,7 @@ body {
     animation: fadeUp 0.9s ease forwards;
     animation-delay: 0.4s;
 }
+
 .hero-actions .btn {
     opacity: 0;
     animation: fadeUp 0.7s ease forwards;
@@ -476,65 +435,8 @@ body {
 .hero-actions .btn:nth-child(3) {
     animation-delay: 0.9s;
 }
-.btn {
-    position: relative;
-    overflow: hidden;
-}
 
-/* soft glow */
-.btn::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.35), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.btn:hover::after {
-    opacity: 1;
-}
-
-/* realistic press */
-.btn:active {
-    transform: translateY(1px) scale(0.98);
-}
-.feature-card {
-    position: relative;
-    overflow: hidden;
-}
-
-/* glow sweep */
-.feature-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 14px;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(37, 99, 235, 0.15),
-        transparent
-    );
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.feature-card:hover::before {
-    opacity: 1;
-}
-@keyframes reveal {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 /* ================= SCROLL REVEAL ================= */
-
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -552,141 +454,498 @@ body {
     transition-delay: 0.15s;
 }
 
-.topic-card {
-    transition: 
-        transform 0.35s cubic-bezier(.21,.61,.35,1),
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
+/* ================= PROFESSIONAL MOBILE RESPONSIVE ================= */
+
+/* Tablet - 769px to 1024px */
+@media (max-width: 1024px) {
+    .hero {
+        height: 550px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .features, .topics {
+        padding: 60px 8%;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .topics-grid {
+        gap: 28px;
+    }
 }
 
-.topic-card:hover {
-    transform: translateY(-10px) scale(1.04);
-}
-/* ================= BUTTON HOVER EFFECT ================= */
-.btn {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
-}
+/* Mobile Large - 481px to 768px */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 70px 20px 60px;
+        display: flex;
+        align-items: center;
+    }
 
-/* soft glow effect */
-.btn::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.35), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+    .hero-content {
+        padding: 0 15px;
+    }
 
-/* realistic press effect */
-.btn:active {
-    transform: translateY(1px) scale(0.98);
-}
+    .hero-content h1 {
+        font-size: 2.4rem;
+        letter-spacing: 1px;
+        line-height: 1.2;
+    }
 
-/* ================= BUTTON GRADIENTS + SCALE ================= */
-/* STUDENT BUTTON */
-.student {
-    background: linear-gradient(135deg, #1e2d7a, #0a7c8c);
-}
+    .hero-content h2 {
+        font-size: 1.1rem;
+        margin: 8px 0 12px;
+    }
 
-.student:hover {
-    background: linear-gradient(135deg, #2563eb, #06b6d4);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-}
+    .hero-content p {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 32px;
+        padding: 0 10px;
+    }
 
-/* TEACHER BUTTON */
-.teacher {
-    background: linear-gradient(135deg, #015b8a, #0f6f36);
-}
+    .hero-actions {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+    }
 
-.teacher:hover {
-    background: linear-gradient(135deg, #0ea5e9, #22c55e);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-}
+    .btn {
+        width: 100%;
+        padding: 17px 28px;
+        font-size: 0.96rem;
+        justify-content: center;
+        border-radius: 11px;
+    }
 
-/* ADMIN BUTTON */
-.admin {
-    background: linear-gradient(135deg, #3a2f9c, #1f8fbf);
-}
+    .btn i {
+        font-size: 1.05rem;
+    }
 
-.admin:hover {
-    background: linear-gradient(135deg, #6366f1, #60a5fa);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-}
+    /* Features Section */
+    .features {
+        padding: 55px 7%;
+    }
 
-/* soft glow for all buttons */
-.btn:hover::after {
-    opacity: 1;
-}
+    .features h3 {
+        font-size: 1.85rem;
+    }
 
-/* ================= FEATURE CARD HOVER EFFECT ================= */
-.feature-card {
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.35s cubic-bezier(.21,.61,.35,1),
-                box-shadow 0.35s ease,
-                border-color 0.35s ease;
-}
+    .section-desc {
+        font-size: 0.88rem;
+        padding: 0 12px;
+        margin: 8px 0 40px;
+    }
 
-/* glow sweep */
-.feature-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 14px;
-    background: linear-gradient(120deg, transparent, rgba(37, 99, 235, 0.15), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-.feature-card:hover::before {
-    opacity: 1;
-}
+    .feature-card {
+        padding: 30px 24px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
 
-/* transform + shadow on hover */
-.feature-card:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    border-color: #2563eb;
-}
+    .feature-card h4 {
+        font-size: 1.02rem;
+    }
 
-/* icon scale */
-.feature-card i {
-    transition: transform 0.3s ease;
-}
+    .feature-card p {
+        font-size: 0.88rem;
+    }
 
-.feature-card:hover i {
-    transform: scale(1.12);
-}
+    /* Topics Section */
+    .topics {
+        padding: 55px 7%;
+    }
 
-/* ================= TOPIC CARD HOVER EFFECT ================= */
-.topic-card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.35s cubic-bezier(.21,.61,.35,1),
-                box-shadow 0.35s ease,
-                border-color 0.35s ease;
-}
+    .topics h2 {
+        font-size: 1.85rem;
+    }
 
-.topic-card:hover {
-    transform: translateY(-10px) scale(1.04);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    border-color: #3b82f6;
-}
+    .subtitle {
+        font-size: 0.88rem;
+        padding: 0 12px;
+    }
 
-/* number circle highlight */
-.topic-card span {
-    transition: background 0.3s ease;
+    .topics-grid {
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .topic-card {
+        width: 100%;
+        max-width: 340px;
+        padding: 34px 20px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 30px 7%;
+    }
+
+    .footer p {
+        font-size: 0.83rem;
+    }
 }
 
-.topic-card:hover span {
-    background: #1d4ed8;
+/* Mobile Medium - 376px to 480px */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 100vh;
+        padding: 60px 18px 50px;
+    }
+
+    .hero-content {
+        padding: 0 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+        letter-spacing: 0.8px;
+    }
+
+    .hero-content h2 {
+        font-size: 1rem;
+        margin: 6px 0 10px;
+    }
+
+    .hero-content p {
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-bottom: 28px;
+    }
+
+    .hero-actions {
+        max-width: 300px;
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 15px 24px;
+        font-size: 0.92rem;
+        border-radius: 10px;
+    }
+
+    .btn i {
+        font-size: 1rem;
+    }
+
+    /* Features */
+    .features {
+        padding: 45px 5%;
+    }
+
+    .features h3 {
+        font-size: 1.65rem;
+    }
+
+    .section-desc {
+        font-size: 0.84rem;
+        margin: 6px 0 35px;
+    }
+
+    .feature-grid {
+        gap: 18px;
+    }
+
+    .feature-card {
+        padding: 26px 20px;
+    }
+
+    .feature-card i {
+        font-size: 1.5rem;
+        margin-bottom: 14px;
+    }
+
+    .feature-card h4 {
+        font-size: 0.98rem;
+        margin-bottom: 8px;
+    }
+
+    .feature-card p {
+        font-size: 0.84rem;
+        line-height: 1.5;
+    }
+
+    /* Topics */
+    .topics {
+        padding: 45px 5%;
+    }
+
+    .topics h2 {
+        font-size: 1.65rem;
+    }
+
+    .subtitle {
+        font-size: 0.84rem;
+    }
+
+    .topics-grid {
+        gap: 18px;
+        margin-top: 35px;
+    }
+
+    .topic-card {
+        max-width: 300px;
+        padding: 30px 18px;
+    }
+
+    .topic-card span {
+        width: 44px;
+        height: 44px;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+
+    .topic-card p {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 25px 5%;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
 }
 
+/* Mobile Small - Up to 375px */
+@media (max-width: 375px) {
+    .hero {
+        padding: 50px 15px 45px;
+    }
 
+    .hero-content h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-content h2 {
+        font-size: 0.95rem;
+    }
+
+    .hero-content p {
+        font-size: 0.85rem;
+        margin-bottom: 25px;
+    }
+
+    .hero-actions {
+        max-width: 280px;
+        gap: 11px;
+    }
+
+    .btn {
+        padding: 14px 22px;
+        font-size: 0.88rem;
+    }
+
+    .features h3, .topics h2 {
+        font-size: 1.55rem;
+    }
+
+    .section-desc, .subtitle {
+        font-size: 0.82rem;
+    }
+
+    .feature-card {
+        padding: 24px 18px;
+    }
+
+    .feature-card i {
+        font-size: 1.4rem;
+    }
+
+    .feature-card h4 {
+        font-size: 0.95rem;
+    }
+
+    .feature-card p {
+        font-size: 0.82rem;
+    }
+
+    .topic-card {
+        max-width: 270px;
+        padding: 28px 16px;
+    }
+
+    .topic-card span {
+        width: 42px;
+        height: 42px;
+        font-size: 0.9rem;
+    }
+
+    .topic-card p {
+        font-size: 0.88rem;
+    }
+}
+
+/* Mobile Extra Small - Up to 320px */
+@media (max-width: 320px) {
+    .hero {
+        padding: 45px 12px 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.65rem;
+    }
+
+    .hero-content h2 {
+        font-size: 0.9rem;
+    }
+
+    .hero-content p {
+        font-size: 0.82rem;
+        margin-bottom: 22px;
+    }
+
+    .hero-actions {
+        max-width: 260px;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 13px 20px;
+        font-size: 0.85rem;
+    }
+
+    .btn i {
+        font-size: 0.95rem;
+    }
+
+    .features, .topics {
+        padding: 40px 4%;
+    }
+
+    .features h3, .topics h2 {
+        font-size: 1.45rem;
+    }
+
+    .section-desc, .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .feature-card {
+        padding: 22px 16px;
+    }
+
+    .feature-card i {
+        font-size: 1.3rem;
+    }
+
+    .feature-card h4 {
+        font-size: 0.92rem;
+    }
+
+    .feature-card p {
+        font-size: 0.8rem;
+    }
+
+    .topic-card {
+        max-width: 250px;
+        padding: 26px 14px;
+    }
+
+    .topic-card span {
+        width: 40px;
+        height: 40px;
+        font-size: 0.88rem;
+    }
+
+    .topic-card p {
+        font-size: 0.86rem;
+    }
+
+    .footer {
+        padding: 22px 4%;
+    }
+
+    .footer p {
+        font-size: 0.78rem;
+    }
+}
+
+/* ================= TOUCH DEVICE OPTIMIZATIONS ================= */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .btn:hover {
+        transform: none;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-card:hover,
+    .topic-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Increase touch target sizes */
+    .btn {
+        min-height: 48px;
+    }
+
+    /* Active states for touch */
+    .btn:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+    }
+
+    .feature-card:active,
+    .topic-card:active {
+        opacity: 0.95;
+    }
+}
+
+/* ================= LANDSCAPE ORIENTATION (MOBILE) ================= */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content h2 {
+        font-size: 0.95rem;
+        margin: 4px 0 8px;
+    }
+
+    .hero-content p {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-actions {
+        flex-direction: row;
+        max-width: 100%;
+        gap: 12px;
+    }
+
+    .btn {
+        width: auto;
+        padding: 12px 24px;
+        font-size: 0.88rem;
+    }
+}
