@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <h2 class="metric-value">0</h2>
-                    <p class="metric-sub">Active students</p>
+                    <p class="metric-sub">Active learners</p>
                 </div>
 
                 <div class="metric-card">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <h2 class="metric-value">0%</h2>
-                    <p class="metric-sub">Compared to last week</p>
+                    <p class="metric-sub">+0% from last week</p>
                 </div>
 
                 <div class="metric-card">
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <h2 class="metric-value">0</h2>
-                    <p class="metric-sub">Unread messages</p>
+                    <p class="metric-sub">Unread Messages</p>
                 </div>
             </div>
 
@@ -109,33 +109,29 @@
                     <div class="student-item">
                         <div class="student-info">
                             <h3>Meland Carman</h3>
-                            <p>Progress: 78%</p>
+                            <p>Progress: 0%</p>
                         </div>
-                        <button class="status-badge badge-excellent">Excellent</button>
                     </div>
 
                     <div class="student-item">
                         <div class="student-info">
                             <h3>Stephanie Tamayuza</h3>
-                            <p>Progress: 85%</p>
+                            <p>Progress: 0%</p>
                         </div>
-                        <button class="status-badge badge-good">Good</button>
                     </div>
 
                     <div class="student-item">
                         <div class="student-info">
                             <h3>Kristine Villamor</h3>
-                            <p>Progress: 45%</p>
+                            <p>Progress: 0%</p>
                         </div>
-                        <button class="status-badge badge-needs-help">Needs Help</button>
                     </div>
 
                     <div class="student-item">
                         <div class="student-info">
                             <h3>Rhyssa Embahancido</h3>
-                            <p>Progress: 82%</p>
+                            <p>Progress: 0%</p>
                         </div>
-                        <button class="status-badge badge-excellent">Excellent</button>
                     </div>
 
                     <button class="view-all-btn">View All Students</button>
@@ -172,14 +168,26 @@
 
                     <div class="action-section">
                         <div class="card-header">
-                            <h3>View Analytics</h3>
-                            <p>Track comprehensive class and individual performance metrics</p>
+                            <h3>Student Progress</h3>
+                            <p>Track learning progress and performance</p>
                         </div>
                         <button class="action-btn secondary">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            View Progress
+                        </button>
+                    </div>
+
+                    <div class="action-section">
+                        <div class="card-header">
+                            <h3>Generate Reports</h3>
+                            <p>Create detailed performance reports</p>
+                        </div>
+                        <button class="action-btn secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
                             </svg>
                             View Reports
                         </button>
