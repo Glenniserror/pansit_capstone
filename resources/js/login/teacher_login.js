@@ -37,4 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
             portalCard.style.flexDirection = "row"; // Logo LEFT
         }
     });
+    //para hindi mag auto fill yung unput fields
+    window.addEventListener('load', function () {
+        document.querySelectorAll('input[type="email"], input[type="password"], input[type="text"]').forEach(function (input) {
+            input.value = '';
+        });
+    });
 });
