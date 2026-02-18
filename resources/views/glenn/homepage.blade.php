@@ -21,9 +21,8 @@
 <section class="hero">
     <div class="hero-blur"></div>
     <div class="hero-gradient"></div>
-
     <div class="hero-content">
-        <h1>LearnMath AI</h1>
+        <h1>MathsaLove</h1>
         <h2>Math Learning Assistant</h2>
 
         <p>
