@@ -48,6 +48,11 @@
                     <form method="POST" action="{{ route('admin.login.submit') }}" autocomplete="off">
                         @csrf
 
+                        {{-- Dummy inputs para linlangin ang browser autofill --}}
+                        {{-- Dito muna mag-a-autofill ang browser, hindi sa actual inputs --}}
+                        <input type="email" style="display:none" aria-hidden="true">
+                        <input type="password" style="display:none" aria-hidden="true">
+
                         <div class="input-group">
                             <label>Email</label>
                             <input type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" autocomplete="off" required>
@@ -65,6 +70,11 @@
                 <div id="signup-form-container" class="hidden">
                     <form method="POST" action="{{ route('admin.register') }}" autocomplete="off">
                         @csrf
+
+                        {{-- Dummy inputs para linlangin ang browser autofill --}}
+                        <input type="text" style="display:none" aria-hidden="true">
+                        <input type="email" style="display:none" aria-hidden="true">
+                        <input type="password" style="display:none" aria-hidden="true">
 
                         <div class="input-group">
                             <label>Username</label>
@@ -105,14 +115,15 @@
 
     </div>
 </div>
+
 <script>
-    // Delayed clear para malampasan ang browser autofill
-    // Kasi ang Chrome ay nagla-load ng autofill PAGKATAPOS ng load event
-    setTimeout(function () {
+    // I-clear ang lahat ng input fields pagkatapos mag-load ang page
+    // Para maiwasan ang browser autofill / autocomplete
+    window.addEventListener('load', function () {
         document.querySelectorAll('input[type="email"], input[type="password"], input[type="text"]').forEach(function (input) {
             input.value = ''; // Burahin ang nakalagay na value sa bawat input
         });
-    }, 200); // 200ms delay — sapat para malampasan ang autofill ng browser
+    });
 </script>
 
 </body>
