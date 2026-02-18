@@ -105,14 +105,14 @@
 
     </div>
 </div>
-// I-clear ang lahat ng input fields pagkatapos mag-load ang page
-// Para maiwasan ang browser autofill / autocomplete
 <script>
-    window.addEventListener('load', function () {
+    // Delayed clear para malampasan ang browser autofill
+    // Kasi ang Chrome ay nagla-load ng autofill PAGKATAPOS ng load event
+    setTimeout(function () {
         document.querySelectorAll('input[type="email"], input[type="password"], input[type="text"]').forEach(function (input) {
-            input.value = '';
+            input.value = ''; // Burahin ang nakalagay na value sa bawat input
         });
-    });
+    }, 200); // 200ms delay — sapat para malampasan ang autofill ng browser
 </script>
 
 </body>
