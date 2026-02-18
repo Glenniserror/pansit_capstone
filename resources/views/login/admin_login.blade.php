@@ -105,6 +105,15 @@
 
     </div>
 </div>
+// I-clear ang lahat ng input fields pagkatapos mag-load ang page
+// Para maiwasan ang browser autofill / autocomplete
+<script>
+    window.addEventListener('load', function () {
+        document.querySelectorAll('input[type="email"], input[type="password"], input[type="text"]').forEach(function (input) {
+            input.value = '';
+        });
+    });
+</script>
 
 </body>
 </html>
