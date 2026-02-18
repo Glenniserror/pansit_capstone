@@ -45,17 +45,17 @@
                 </div>
 
                 <div id="login-form-container">
-                    <form method="POST" action="{{ route('teacher.login.submit') }}">
+                    <form method="POST" action="{{ route('teacher.login.submit') }}" autocomplete="off">
                         @csrf
 
                         <div class="input-group">
                             <label>Email</label>
-                            <input type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" required>
+                            <input type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" autocomplete="off" required>
                         </div>
 
                         <div class="input-group">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Enter your password" required>
+                            <input type="password" name="password" placeholder="Enter your password" autocomplete="new-password" required>
                         </div>
 
                         <button type="submit" class="btn-sign">Sign In</button>
@@ -63,27 +63,27 @@
                 </div>
 
                 <div id="signup-form-container" class="hidden">
-                    <form method="POST" action="{{ route('teacher.register') }}">
+                    <form method="POST" action="{{ route('teacher.register') }}" autocomplete="off">
                         @csrf
 
                         <div class="input-group">
                             <label>Username</label>
-                            <input type="text" name="name" placeholder="Enter your Username" value="{{ old('name') }}" required>
+                            <input type="text" name="name" placeholder="Enter your Username" value="{{ old('name') }}" autocomplete="off" required>
                         </div>
 
                         <div class="input-group">
                             <label>Email</label>
-                            <input type="email" name="email" placeholder="Enter your Email" value="{{ old('email') }}" required>
+                            <input type="email" name="email" placeholder="Enter your Email" value="{{ old('email') }}" autocomplete="off" required>
                         </div>
 
                         <div class="input-group">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Enter your Password" required>
+                            <input type="password" name="password" placeholder="Enter your Password" autocomplete="new-password" required>
                         </div>
 
                         <div class="input-group">
                             <label>Confirm Password</label>
-                            <input type="password" name="password_confirmation" placeholder="Confirm your Password" required>
+                            <input type="password" name="password_confirmation" placeholder="Confirm your Password" autocomplete="new-password" required>
                         </div>
 
                         <button type="submit" class="btn-sign">Create Account</button>
