@@ -312,7 +312,7 @@ html, body {
 @media (min-width: 1024px) { .section-label { font-size: 18px; } }
 
 /* ================================
-   STUDENT ACTIVITY (matches modules-container style)
+   STUDENT ACTIVITY
    ================================ */
 .modules-container {
     background: var(--card);
@@ -329,7 +329,6 @@ html, body {
 .modules-container:hover { box-shadow: var(--shadow-md); }
 @media (min-width: 1024px) { .modules-container { padding: 24px; margin-bottom: 28px; } }
 
-/* Student Items */
 .student-item {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -386,7 +385,6 @@ html, body {
     margin-top: 1px;
 }
 
-/* Status badges */
 .status-badge {
     padding: 4px 10px;
     border-radius: 99px;
@@ -399,7 +397,6 @@ html, body {
 .badge-good         { background: #dcfce7; color: #15803d; }
 .badge-needs-help   { background: #fee2e2; color: #b91c1c; }
 
-/* View All button — same as view-topics-btn */
 .view-topics-btn {
     width: 100%;
     background: white;

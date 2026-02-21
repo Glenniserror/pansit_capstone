@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Teacher Dashboard</title>
 
     <!-- Google Fonts -->
@@ -13,15 +12,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <!-- Dashboard Styles -->
-    @vite(['resources/css/dashboard/teacher_dashboard.css'])
+    <link rel="stylesheet" href="teacher_dashboard.css">
 </head>
 <body>
 
 <div class="app-shell">
 
-    <!-- ================================
-         DESKTOP SIDEBAR
-         ================================ -->
     <aside class="sidebar">
         <div class="sidebar-brand">
             <div class="logo-icon">
@@ -92,17 +88,10 @@
         </div>
     </aside>
 
-    <!-- Hidden Logout Form -->
-    <form id="logout-form" method="POST" action="{{ route('teacher.logout') }}" style="display: none;">
-        @csrf
-    </form>
+    <form id="logout-form" method="POST" action="#" style="display: none;"></form>
 
-    <!-- ================================
-         MAIN WRAPPER
-         ================================ -->
     <div class="main-wrapper">
 
-        <!-- Mobile / Tablet Header -->
         <header class="header">
             <div class="logo-section">
                 <div class="logo-icon">
@@ -117,16 +106,13 @@
             <button class="logout-btn" id="logout-btn-mobile">Logout</button>
         </header>
 
-        <!-- Main Content -->
         <main class="main-content">
 
-            <!-- Hero -->
             <div class="hero-section">
                 <h1 class="welcome-title">Welcome, Teacher! 👋</h1>
                 <p class="welcome-subtitle">Monitor and guide your students' learning journey</p>
             </div>
 
-            <!-- Metrics -->
             <div class="metrics-scroll-wrap">
                 <div class="metrics-grid">
 
@@ -196,7 +182,6 @@
                 </div>
             </div>
 
-            <!-- Recent Student Activity -->
             <section class="modules-container">
                 <div class="section-label">Recent Student Activity</div>
                 <div class="section-sub">Monitor your students' progress</div>
@@ -248,7 +233,6 @@
                 <button class="view-topics-btn">View All Students</button>
             </section>
 
-            <!-- Action Cards -->
             <div class="bottom-grid">
 
                 <div class="action-card">
@@ -298,15 +282,27 @@
                     </div>
                 </div>
 
+                <div class="action-card" style="animation-delay: 0.34s;">
+                    <div class="action-icon-wrap purple-theme">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                            <polyline points="17 6 23 6 23 12"/>
+                        </svg>
+                    </div>
+                    <div class="action-content">
+                        <h3>Student Progress</h3>
+                        <p>Track and review each student's learning progress</p>
+                        <button class="primary-btn">View Progress</button>
+                    </div>
+                </div>
+
             </div>
 
         </main>
     </div>
 </div>
 
-<!-- ================================
-     BOTTOM NAV (mobile/tablet only)
-     ================================ -->
 <nav class="bottom-nav">
     <button class="nav-item active">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -317,7 +313,6 @@
         <span>Home</span>
         <div class="nav-dot"></div>
     </button>
-
     <button class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -328,7 +323,6 @@
         </svg>
         <span>Students</span>
     </button>
-
     <button class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -337,7 +331,6 @@
         </svg>
         <span>Progress</span>
     </button>
-
     <button class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -346,7 +339,6 @@
         </svg>
         <span>Reports</span>
     </button>
-
     <button class="nav-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -357,11 +349,8 @@
     </button>
 </nav>
 
-<!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
-<!-- Dashboard JS -->
-@vite(['resources/js/dashboard/teacher_dashboard.js'])
+<script src="teacher_dashboard.js"></script>
 
 </body>
 </html>

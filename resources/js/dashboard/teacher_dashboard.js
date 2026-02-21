@@ -1,10 +1,5 @@
-/* ================================
-   TEACHER DASHBOARD — teacher_dashboard.js
-   ================================ */
-
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* ── Bottom Nav — active state ── */
     document.querySelectorAll('.nav-item').forEach(btn => {
         btn.addEventListener('click', function () {
             document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
@@ -12,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ── Sidebar Nav — active state ── */
     document.querySelectorAll('.sidebar-item').forEach(btn => {
         btn.addEventListener('click', function () {
             document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
@@ -20,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ── Logout — SweetAlert2 confirmation ── */
     function confirmLogout() {
         Swal.fire({
             title: 'Are you sure?',
