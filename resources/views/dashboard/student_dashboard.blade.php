@@ -12,7 +12,8 @@
         'resources/css/dashboard/student_dashboard.css',
         'resources/css/chatbot/chatbot.css',
         'resources/js/dashboard/student_dashboard.js',
-        'resources/js/chatbot/chatbot.js'
+        'resources/js/chatbot/chatbot.js',
+        'resources/blade.php/dashboard/chatbot.blade.php'
     ])
 </head>
 <body>
