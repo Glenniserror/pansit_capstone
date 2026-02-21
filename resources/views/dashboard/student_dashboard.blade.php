@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     @vite([
         'resources/css/dashboard/student_dashboard.css',
-        'resources/js/dashboard/student_dashboard.js'
+        'resources/css/chatbot/chatbot.css',
+        'resources/js/dashboard/student_dashboard.js',
+        'resources/js/chatbot/chatbot.js'
     ])
 </head>
 <body>
@@ -166,7 +168,10 @@
         </main>
     </div>
 
-    <!-- SweetAlert2 JS Library -->
+    {{-- Chatbot partial --}}
+    @include('chatbot.chatbot')
+
+    <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
 </html>
