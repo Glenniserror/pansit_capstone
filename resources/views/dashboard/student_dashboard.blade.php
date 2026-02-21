@@ -116,7 +116,7 @@
 
             <!-- Hero -->
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome back!</h1>
+                <h1 class="welcome-title">Welcome, Students!👋</h1>
                 <p class="welcome-subtitle">Continue your mathematics learning journey</p>
             </div>
 

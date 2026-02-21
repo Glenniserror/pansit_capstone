@@ -42,59 +42,83 @@
 
         /* ── Chat Header ── */
         .chat-header {
-            background: linear-gradient(135deg, #3b82f6, var(--blue));
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             padding: 16px 18px;
             display: flex;
             align-items: center;
             gap: 12px;
             flex-shrink: 0;
+            border-bottom: none;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
         }
 
         .chat-avatar {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            border: 2px solid rgba(255,255,255,0.35);
+            border: none;
         }
-        .chat-avatar svg { width: 20px; height: 20px; color: white; }
+        .chat-avatar svg { width: 18px; height: 18px; color: white; }
+        .online-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 2px solid white;
+            bottom: 0;
+            right: 0;
+        }
 
-        .chat-header-info { flex: 1; }
-        .chat-title { font-size: 15px; font-weight: 700; color: white; letter-spacing: -0.2px; }
-        .chat-status {
+        .chat-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chat-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.3px;
+        }
+
+        .chat-status-text {
             font-size: 11px;
             color: rgba(255,255,255,0.75);
+            margin-top: 2px;
+        }
+
+        .chat-header-actions {
             display: flex;
             align-items: center;
-            gap: 5px;
-            margin-top: 1px;
-        }
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #4ade80;
-            animation: pulse 2s infinite;
-            flex-shrink: 0;
         }
 
         #close-chat {
-            background: rgba(255,255,255,0.15);
+            background: none;
             border: none;
-            border-radius: 8px;
-            padding: 7px;
+            color: white;
             cursor: pointer;
-            transition: background 0.2s;
+            padding: 4px;
+            font-size: 20px;
+            line-height: 1;
+            transition: opacity 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        #close-chat:hover { background: rgba(255,255,255,0.25); }
-        #close-chat svg { width: 16px; height: 16px; color: white; }
+        #close-chat:hover { opacity: 0.8; }
 
         /* ── Chat Body ── */
         #chat-content {
@@ -105,6 +129,7 @@
             flex-direction: column;
             gap: 12px;
             scroll-behavior: smooth;
+            background: #f9fafb;
         }
 
         #chat-content::-webkit-scrollbar { width: 4px; }
@@ -137,15 +162,23 @@
         .quick-reply-btn:hover { background: var(--blue); color: white; transform: translateY(-1px); }
         .quick-reply-btn:active { transform: scale(0.96); }
 
-        /* ── Chat Input ── */
-        .chat-input-area {
-            padding: 10px 12px 14px;
+        /* ── Chat Footer ── */
+        .chat-footer {
+            padding: 12px 14px;
             display: flex;
             gap: 8px;
             align-items: center;
             flex-shrink: 0;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid #e5e7eb;
             background: white;
+        }
+
+        /* ── Chat Input ── */
+        .input-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            width: 100%;
         }
 
         #ai-input {

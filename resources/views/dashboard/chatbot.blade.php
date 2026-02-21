@@ -13,16 +13,13 @@
                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
-                <span class="online-dot"></span>
             </div>
             <div class="chat-info">
                 <span class="chat-name">Math AI Assistant</span>
                 <span class="chat-status-text">Online</span>
             </div>
         </div>
-        <div class="chat-header-actions">
-            <button id="close-chat">&times;</button>
-        </div>
+        <button id="close-chat">&times;</button>
     </div>
 
     <!-- Messages -->
