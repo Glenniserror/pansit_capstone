@@ -12,12 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <!-- Dashboard CSS -->
-    <!-- Chatbot CSS -->
     @vite([
         'resources/css/dashboard/student_dashboard.css',
-        'resources/css/dashboard/chatbot.css',
-        'resources/js/dashboard/student_dashboard.js',
-        'resources/js/dashboard/chatbot.js'
+        'resources/js/dashboard/student_dashboard.js'
     ])
 
 </head>
@@ -337,16 +334,8 @@
 
 </nav>
 
-<!-- ================================================
-     CHATBOT PARTIAL
-     ================================================ -->
-@include('dashboard.chatbot')
-
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
-<!-- Dashboard & Chatbot JS -->
-@vite(['resources/js/dashboard/student_dashboard.js', 'resources/js/dashboard/chatbot.js'])
 
 </body>
 </html>
