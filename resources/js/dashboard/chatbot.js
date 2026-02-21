@@ -134,10 +134,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.querySelectorAll('.quick-reply-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            sendMessage(btn.textContent.replace(/[^\w\s]/g, '').trim());
-        });
-    });
-
 });
