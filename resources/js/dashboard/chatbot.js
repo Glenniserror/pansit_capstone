@@ -95,13 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function showWelcome() {
         if (chatContent.dataset.welcomed) return;
         chatContent.dataset.welcomed = '1';
-
-        const badge = document.createElement('div');
-        badge.className = 'bot-welcome-badge';
-        badge.textContent = '✨ Math AI Assistant';
-        chatContent.appendChild(badge);
-
-        appendMessage("Hi there! 👋 I'm your Math AI Assistant. Ask me anything about <em>Sequences</em>, <em>Polynomials</em>, or <em>Functions</em> — or tap a quick reply below to get started!", 'bot');
+        // Welcome message handled by initial bot message in blade template
     }
 
     /* ── Send Message ── */

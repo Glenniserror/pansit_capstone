@@ -28,7 +28,7 @@
     <!-- Messages -->
     <div id="chat-content" class="chat-content">
         <div class="msg bot">
-            <div class="msg-bubble">Hello! I'm here to help you with your math questions. How can I assist you today?</div>
+            <div class="msg-bubble">Hello! I'm here to help you with your math questions. Ask me about <strong>Sequences</strong>, <strong>Polynomials</strong>, or <strong>Functions</strong>.</div>
             <div class="quick-replies">
                 <button class="quick-reply-btn">Sequences</button>
                 <button class="quick-reply-btn">Polynomials</button>
