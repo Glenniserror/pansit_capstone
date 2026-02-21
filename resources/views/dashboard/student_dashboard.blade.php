@@ -166,28 +166,6 @@
         </main>
     </div>
 
-    <div id="ai-bubble" class="messenger-bubble">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-    </div>
-
-    <div id="ai-chat-window" class="chat-window-compact">
-        <div class="chat-header">
-            <div class="user-info"><div class="status-dot"></div><span>Math AI Assistant</span></div>
-            <button id="close-chat">&times;</button>
-        </div>
-        <div id="chat-content" class="chat-content">
-            <div class="msg bot">Hello! Ask me any math questions.</div>
-        </div>
-        <div class="chat-footer">
-            <input type="text" id="ai-input" placeholder="Type a message...">
-            <button id="ai-send-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
-        </div>
-    </div>
-
     <!-- SweetAlert2 JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
