@@ -11,8 +11,11 @@
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-    <!-- Dashboard Styles -->
-    <link rel="stylesheet" href="teacher_dashboard.css">
+    <!-- Vite Assets -->
+    @vite([
+        'resources/css/dashboard/teacher_dashboard.css',
+        'resources/js/dashboard/teacher_dashboard.js'
+    ])
 </head>
 <body>
 
@@ -111,7 +114,7 @@
         <main class="main-content">
 
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome, Teacher! 👋</h1>
+                <h1 class="welcome-title">Welcome, Teacher!</h1>
                 <p class="welcome-subtitle">Monitor and guide your students' learning journey</p>
             </div>
 
@@ -352,8 +355,6 @@
 </nav>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
-<script src="teacher_dashboard.js"></script>
 
 </body>
 </html>
