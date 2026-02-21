@@ -168,7 +168,7 @@
         </main>
     </div>
 
-    {{-- Chatbot partial --}}
+    {{-- Chatbot --}}
     @include('dashboard.chatbot')
 
     <!-- SweetAlert2 JS -->
