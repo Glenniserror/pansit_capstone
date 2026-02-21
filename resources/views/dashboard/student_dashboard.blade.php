@@ -91,11 +91,6 @@
         </div>
     </aside>
 
-    <!-- Hidden Logout Form -->
-    <form id="logout-form" method="POST" action="{{ route('student.logout') }}" style="display: none;">
-        @csrf
-    </form>
-
     <!-- ================================
          MAIN WRAPPER
          ================================ -->
@@ -121,7 +116,7 @@
 
             <!-- Hero -->
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome, Students!👋</h1>
+                <h1 class="welcome-title">Welcome, Student!👋</h1>
                 <p class="welcome-subtitle">Continue your mathematics learning journey</p>
             </div>
 
