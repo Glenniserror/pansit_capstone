@@ -13,7 +13,13 @@
 
     <!-- Dashboard CSS -->
     <!-- Chatbot CSS -->
-    @vite(['resources/css/dashboard/student_dashboard.css', 'resources/css/dashboard/chatbot.css'])
+    @vite([
+        'resources/css/dashboard/student_dashboard.css',
+        'resources/css/dashboard/chatbot.css',
+        'resources/js/dashboard/student_dashboard.js',
+        'resources/js/dashboard/chatbot.js'
+    ])
+
 </head>
 <body>
 
