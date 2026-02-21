@@ -448,16 +448,6 @@ body {
 /* ===============================
     RESPONSIVE
    =============================== */
-@media (max-width: 1280px) {
-    .content-wrapper {
-        max-width: 95%;
-    }
-
-    .modules-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 1024px) {
     .metrics-grid { 
         grid-template-columns: repeat(2, 1fr); 
@@ -466,61 +456,34 @@ body {
     .modules-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .content-wrapper {
-        max-width: 88%;
-    }
-
-    .hero h1 {
-        font-size: 28px;
-    }
 }
 
 @media (max-width: 768px) {
     .header {
-        padding: 14px 18px;
-        flex-wrap: wrap;
-    }
-
-    .logo-section {
-        width: 100%;
+        padding: 12px 16px;
     }
 
     .logo-icon {
-        width: 26px;
-        height: 26px;
-    }
-
-    .logo-icon svg {
-        width: 15px;
-        height: 15px;
+        width: 24px;
+        height: 24px;
     }
 
     .brand-name {
         font-size: 14px;
-        display: none;
     }
 
     .logout-btn {
-        padding: 8px 18px;
+        padding: 6px 16px;
         font-size: 13px;
-        width: 100%;
-        margin-top: 10px;
     }
 
     .content-wrapper {
-        padding: 0 18px;
-        margin: 30px auto;
-        max-width: 95%;
-    }
-
-    .hero {
-        margin-bottom: 28px;
+        padding: 0 16px;
+        margin: 20px auto;
     }
 
     .hero h1 {
-        font-size: 24px;
-        margin-bottom: 6px;
+        font-size: 22px;
     }
 
     .hero p {
@@ -528,64 +491,27 @@ body {
     }
 
     .modules-grid { 
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: 1fr; 
     }
     
     .metrics-grid { 
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        grid-template-columns: repeat(2, 1fr); 
     }
     
     .metric-card {
-        padding: 18px;
-    }
-
-    .metric-top {
-        margin-bottom: 10px;
-    }
-
-    .metric-top span {
-        font-size: 12px;
+        padding: 16px;
     }
     
     .metric-val {
         font-size: 28px;
     }
 
-    .metric-sub {
-        font-size: 11px;
-    }
-
-    .icon-bg {
-        width: 38px;
-        height: 38px;
-    }
-
-    .icon-bg svg {
-        width: 18px;
-        height: 18px;
-    }
-
     .module-card {
         padding: 20px;
     }
 
-    .module-card h3 {
-        font-size: 16px;
-    }
-
-    .module-card p {
-        font-size: 12px;
-    }
-
-    .action-btn {
-        padding: 10px 14px;
-        font-size: 13px;
-    }
-
     .activity-box {
-        padding: 20px 18px;
+        padding: 20px 16px;
     }
 
     .activity-box h2 {
@@ -607,127 +533,7 @@ body {
 
 @media (max-width: 500px) {
     .header {
-        padding: 12px 15px;
-    }
-
-    .content-wrapper {
-        padding: 0 15px;
-        margin: 20px auto;
-    }
-
-    .hero {
-        margin-bottom: 24px;
-    }
-
-    .hero h1 {
-        font-size: 22px;
-    }
-
-    .hero p {
-        font-size: 12px;
-    }
-
-    .metrics-grid { 
-        grid-template-columns: 1fr; 
-        gap: 12px;
-    }
-    
-    .metric-card {
-        padding: 16px;
-    }
-
-    .metric-top {
-        margin-bottom: 8px;
-    }
-
-    .metric-top span {
-        font-size: 12px;
-    }
-    
-    .metric-val {
-        font-size: 28px;
-    }
-
-    .metric-sub {
-        font-size: 11px;
-    }
-    
-    .icon-bg {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .icon-bg svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .module-card {
-        padding: 18px;
-    }
-
-    .module-card h3 {
-        font-size: 15px;
-    }
-
-    .module-card p {
-        font-size: 12px;
-        margin-bottom: 16px;
-    }
-
-    .banner {
-        height: 36px;
-        margin-bottom: 12px;
-        padding-left: 10px;
-    }
-
-    .action-btn {
-        width: 100%;
-        padding: 9px 12px;
-        font-size: 12px;
-        border-radius: 5px;
-    }
-
-    .activity-box {
-        padding: 18px 15px;
-    }
-
-    .activity-box h2 {
-        font-size: 16px;
-    }
-
-    .log-item {
-        padding: 12px;
-        margin-bottom: 10px;
-    }
-
-    .log-item strong {
-        font-size: 12px;
-    }
-
-    .log-item span {
-        font-size: 11px;
-    }
-}
-
-@media (max-width: 360px) {
-    .header {
         padding: 10px 12px;
-    }
-
-    .logo-icon {
-        width: 24px;
-        height: 24px;
-    }
-
-    .logo-icon svg {
-        width: 14px;
-        height: 14px;
-    }
-
-    .logout-btn {
-        padding: 7px 14px;
-        font-size: 12px;
     }
 
     .content-wrapper {
@@ -739,38 +545,27 @@ body {
         font-size: 20px;
     }
 
-    .hero p {
-        font-size: 11px;
-    }
-
-    .metrics-grid {
+    .metrics-grid { 
+        grid-template-columns: 1fr; 
         gap: 10px;
     }
-
+    
     .metric-card {
         padding: 14px;
     }
-
+    
     .metric-val {
         font-size: 24px;
     }
-
-    .metric-sub {
-        font-size: 10px;
-    }
-
+    
     .icon-bg {
         width: 32px;
         height: 32px;
     }
-
+    
     .icon-bg svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    .modules-grid {
-        gap: 10px;
+        width: 18px;
+        height: 18px;
     }
 
     .module-card {
@@ -778,29 +573,23 @@ body {
     }
 
     .module-card h3 {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .module-card p {
-        font-size: 11px;
-    }
-
-    .banner {
-        height: 32px;
-        margin-bottom: 10px;
-        padding-left: 8px;
+        font-size: 12px;
     }
 
     .action-btn {
-        padding: 8px 10px;
-        font-size: 11px;
+        padding: 9px;
+        font-size: 13px;
     }
 
     .activity-box {
-        padding: 14px 12px;
+        padding: 16px 12px;
     }
 
     .log-item {
-        padding: 10px;
+        padding: 12px;
     }
 }

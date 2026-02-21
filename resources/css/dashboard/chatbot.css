@@ -1,3 +1,8 @@
+/* ================================================
+   CHATBOT STYLES — chatbot.css
+   @vite: resources/css/chatbot/chatbot.css
+   ================================================ */
+
 /* ── Messenger Bubble ── */
 .messenger-bubble {
     position: fixed;
@@ -32,52 +37,6 @@
     color: white;
 }
 
-@media (max-width: 768px) {
-    .messenger-bubble {
-        width: 56px;
-        height: 56px;
-        bottom: 20px;
-        right: 20px;
-    }
-
-    .messenger-bubble svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    .messenger-bubble:hover {
-        transform: translateY(-2px);
-    }
-}
-
-@media (max-width: 480px) {
-    .messenger-bubble {
-        width: 54px;
-        height: 54px;
-        bottom: 18px;
-        right: 16px;
-    }
-
-    .messenger-bubble svg {
-        width: 22px;
-        height: 22px;
-    }
-}
-
-@media (max-width: 360px) {
-    .messenger-bubble {
-        width: 50px;
-        height: 50px;
-        bottom: 14px;
-        right: 12px;
-    }
-
-    .messenger-bubble svg {
-        width: 20px;
-        height: 20px;
-    }
-}
-
 .messenger-bubble .notif-dot {
     position: absolute;
     top: 4px;
@@ -104,38 +63,6 @@
     flex-direction: column;
     overflow: hidden;
     z-index: 1000;
-}
-
-@media (max-width: 768px) {
-    .chat-window-compact {
-        width: calc(100vw - 40px);
-        height: 480px;
-        bottom: 80px;
-        right: 20px;
-        left: 20px;
-        border-radius: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .chat-window-compact {
-        width: calc(100vw - 32px);
-        height: 450px;
-        bottom: 75px;
-        right: 16px;
-        left: 16px;
-        border-radius: 10px;
-    }
-}
-
-@media (max-width: 360px) {
-    .chat-window-compact {
-        width: calc(100vw - 24px);
-        height: 400px;
-        bottom: 70px;
-        right: 12px;
-        left: 12px;
-    }
 }
 
 .chat-window-compact.open {
@@ -486,281 +413,25 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
-    .chat-window-compact {
-        width: 340px;
-        height: 480px;
-        bottom: 80px;
-    }
-
-    .quick-reply-btn {
-        font-size: 11px;
-        padding: 5px 10px;
-    }
-}
-
 @media (max-width: 768px) {
     .chat-window-compact {
         width: calc(100vw - 40px);
-        height: 480px;
-        bottom: 80px;
         right: 20px;
         left: 20px;
-    }
-
-    .chat-header {
-        padding: 12px 14px;
-    }
-
-    .chat-info {
-        flex: 1;
-    }
-
-    .chat-name {
-        font-size: 14px;
-    }
-
-    .chat-status-text {
-        font-size: 11px;
-    }
-
-    .chat-avatar {
-        width: 32px;
-        height: 32px;
-    }
-
-    #ai-input {
-        padding: 8px 11px;
-        font-size: 13px;
-    }
-
-    #ai-send-btn {
-        width: 34px;
-        height: 34px;
-    }
-
-    #ai-send-btn svg {
-        width: 15px;
-        height: 15px;
-    }
-
-    .msg {
-        max-width: 85%;
-    }
-
-    .msg-bubble {
-        padding: 9px 12px;
-        font-size: 12px;
-    }
-
-    .msg-time {
-        font-size: 9px;
-    }
-
-    .quick-replies {
-        gap: 5px;
-        max-width: 280px;
-    }
-
-    .quick-reply-btn {
-        padding: 5px 10px;
-        font-size: 11px;
-    }
-
-    .footer-hint {
-        font-size: 10px;
     }
 }
 
 @media (max-width: 480px) {
     .chat-window-compact {
-        width: calc(100vw - 32px);
-        height: 450px;
-        bottom: 75px;
-        right: 16px;
-        left: 16px;
-        border-radius: 10px;
-    }
-
-    .chat-header {
-        padding: 11px 12px;
-    }
-
-    .user-info {
-        gap: 8px;
-    }
-
-    .chat-avatar {
-        width: 30px;
-        height: 30px;
-    }
-
-    .chat-avatar svg {
-        width: 14px;
-        height: 14px;
-    }
-
-    .chat-name {
-        font-size: 13px;
-    }
-
-    .chat-status-text {
-        font-size: 10px;
-    }
-
-    .chat-content {
-        padding: 12px;
-    }
-
-    .chat-divider {
-        font-size: 11px;
-        margin: 10px 0;
-    }
-
-    .msg {
-        max-width: 88%;
-    }
-
-    .msg-bubble {
-        padding: 8px 11px;
-        font-size: 12px;
-        border-radius: 9px;
-    }
-
-    .msg-time {
-        font-size: 9px;
-        padding: 0 2px;
-    }
-
-    .quick-replies {
-        gap: 4px;
-        max-width: 280px;
-        margin-top: 5px;
-    }
-
-    .quick-reply-btn {
-        padding: 5px 9px;
-        font-size: 10px;
-        border-radius: 5px;
-    }
-
-    .typing-indicator {
-        padding: 10px 12px;
-        width: fit-content;
-    }
-
-    .typing-dot {
-        width: 5px;
-        height: 5px;
-    }
-
-    .chat-footer {
-        padding: 10px 12px;
-        gap: 6px;
-    }
-
-    .input-row {
-        gap: 6px;
-    }
-
-    #ai-input {
-        padding: 8px 10px;
-        font-size: 12px;
-        border-radius: 5px;
-    }
-
-    #ai-send-btn {
-        width: 32px;
-        height: 32px;
-        border-radius: 5px;
-    }
-
-    #ai-send-btn svg {
-        width: 14px;
-        height: 14px;
-    }
-
-    .footer-hint {
-        font-size: 9px;
-    }
-
-    .messenger-bubble {
-        width: 54px;
-        height: 54px;
-        bottom: 18px;
-        right: 16px;
-    }
-
-    .messenger-bubble svg {
-        width: 22px;
-        height: 22px;
-    }
-}
-
-@media (max-width: 360px) {
-    .chat-window-compact {
         width: calc(100vw - 24px);
-        height: 400px;
-        bottom: 70px;
         right: 12px;
         left: 12px;
-    }
-
-    .chat-header {
-        padding: 10px 11px;
-    }
-
-    .chat-avatar {
-        width: 28px;
-        height: 28px;
-    }
-
-    .chat-name {
-        font-size: 12px;
-    }
-
-    .chat-status-text {
-        font-size: 9px;
-    }
-
-    .msg {
-        max-width: 90%;
-    }
-
-    .msg-bubble {
-        padding: 7px 10px;
-        font-size: 11px;
-    }
-
-    .quick-reply-btn {
-        padding: 4px 8px;
-        font-size: 9px;
-    }
-
-    #ai-input {
-        padding: 7px 9px;
-        font-size: 11px;
-    }
-
-    #ai-send-btn {
-        width: 30px;
-        height: 30px;
-    }
-
-    #ai-send-btn svg {
-        width: 13px;
-        height: 13px;
+        height: calc(100vh - 110px);
+        bottom: 78px;
     }
 
     .messenger-bubble {
-        width: 50px;
-        height: 50px;
-        bottom: 14px;
-        right: 10px;
-    }
-
-    .messenger-bubble svg {
-        width: 20px;
-        height: 20px;
+        bottom: 16px;
+        right: 16px;
     }
 }
