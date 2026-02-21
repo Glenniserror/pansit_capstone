@@ -310,6 +310,17 @@
         </svg>
         <span>Profile</span>
     </button>
+
+    <!-- FAB Chat Button -->
+    <div class="fab">
+        <button class="fab-btn" id="fab-chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+        </button>
+        <span class="fab-label">AI Chat</span>
+    </div>
 </nav>
 
 <!-- ================================

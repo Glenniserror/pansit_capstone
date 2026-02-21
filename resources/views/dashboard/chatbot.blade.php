@@ -2,15 +2,6 @@
      CHATBOT PARTIAL
      ================================================ -->
 
-<!-- Floating Bubble -->
-<div id="ai-bubble" class="messenger-bubble">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-         stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-    <span class="notif-dot"></span>
-</div>
-
 <!-- Chat Window -->
 <div id="ai-chat-window" class="chat-window-compact">
 
