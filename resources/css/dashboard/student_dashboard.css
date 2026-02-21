@@ -660,21 +660,185 @@ body {
    RESPONSIVE DESIGN
    ================================ */
 
-/* Tablet */
+/* Tablet Large (1025px - 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .main-content {
+        max-width: 95%;
+    }
+}
+
+/* Tablet (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
     .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .main-content {
-        max-width: 900px;
+        max-width: 90%;
+        padding: 28px 20px;
+    }
+
+    .welcome-title {
+        font-size: 26px;
+    }
+
+    .action-card h3 {
+        font-size: 15px;
+    }
+
+    .action-card p {
+        font-size: 12px;
+    }
+
+    .bottom-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Mobile Large */
-@media (max-width: 768px) {
+/* Mobile Large (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
     .header {
-        padding: 12px 16px;
+        padding: 14px 18px;
+    }
+
+    .logo-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+        display: none;
+    }
+
+    .logout-btn {
+        padding: 8px 18px;
+        font-size: 13px;
+    }
+
+    .main-content {
+        padding: 24px 18px;
+    }
+
+    .welcome-title {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .welcome-subtitle {
+        font-size: 13px;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 28px;
+    }
+
+    .metric-card {
+        padding: 18px;
+    }
+
+    .metric-value {
+        font-size: 32px;
+    }
+
+    .modules-container {
+        padding: 22px 18px;
+        margin-bottom: 24px;
+    }
+
+    .card-header h3 {
+        font-size: 18px;
+    }
+
+    .module-item {
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+
+    .module-title-row {
+        gap: 12px;
+    }
+
+    .module-name {
+        font-size: 14px;
+    }
+
+    .percentage {
+        font-size: 12px;
+        min-width: 45px;
+        text-align: right;
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .action-card {
+        padding: 20px;
+    }
+
+    .action-card h3 {
+        font-size: 16px;
+    }
+
+    .action-card p {
+        font-size: 13px;
+    }
+
+    .primary-btn,
+    .outline-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .chat-window-compact {
+        width: calc(100vw - 36px);
+        height: 480px;
+        right: 18px;
+        left: 18px;
+        bottom: 88px;
+    }
+
+    .messenger-bubble {
+        bottom: 20px;
+        right: 18px;
+        width: 56px;
+        height: 56px;
+    }
+
+    .messenger-bubble svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .chat-content {
+        max-height: 400px;
+    }
+
+    .icon-container {
+        width: 38px;
+        height: 38px;
+    }
+
+    .icon-container svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Mobile Small (320px - 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 15px;
+        flex-wrap: wrap;
+    }
+
+    .logo-section {
+        width: 100%;
+        gap: 8px;
     }
 
     .logo-icon {
@@ -683,24 +847,32 @@ body {
     }
 
     .brand-name {
-        font-size: 14px;
+        font-size: 13px;
+        display: none;
     }
 
     .logout-btn {
-        padding: 6px 16px;
-        font-size: 13px;
+        padding: 8px 16px;
+        font-size: 12px;
+        width: 100%;
+        margin-top: 10px;
     }
 
     .main-content {
-        padding: 20px 16px;
+        padding: 20px 14px;
+    }
+
+    .hero-section {
+        margin-bottom: 20px;
     }
 
     .welcome-title {
         font-size: 22px;
+        margin-bottom: 6px;
     }
 
     .welcome-subtitle {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .metrics-grid {
@@ -713,89 +885,87 @@ body {
         padding: 16px;
     }
 
+    .metric-header {
+        margin-bottom: 10px;
+    }
+
+    .metric-label {
+        font-size: 12px;
+    }
+
     .metric-value {
         font-size: 28px;
     }
 
+    .metric-sub {
+        font-size: 11px;
+    }
+
+    .icon-container {
+        width: 36px;
+        height: 36px;
+    }
+
+    .icon-container svg {
+        width: 18px;
+        height: 18px;
+    }
+
     .modules-container {
-        padding: 20px 16px;
+        padding: 18px 14px;
         margin-bottom: 20px;
     }
 
     .card-header h3 {
         font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .card-header p {
+        font-size: 12px;
+        margin-bottom: 16px;
     }
 
     .module-item {
         padding: 14px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
+    .module-title-row {
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .status-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+
+    .module-name {
+        font-size: 13px;
+    }
+
+    .percentage {
+        font-size: 11px;
+        min-width: 40px;
+        text-align: right;
+    }
+
+    .progress-bar-bg {
+        height: 5px;
+        margin-bottom: 10px;
+    }
+
+    .view-topics-btn {
+        padding: 10px;
+        font-size: 12px;
     }
 
     .bottom-grid {
         grid-template-columns: 1fr;
         gap: 12px;
-    }
-
-    .action-card {
-        padding: 18px;
-    }
-
-    .action-card h3 {
-        font-size: 15px;
-    }
-
-    .action-card p {
-        font-size: 12px;
-    }
-
-    .chat-window-compact {
-        width: calc(100vw - 40px);
-        right: 20px;
-        left: 20px;
-    }
-
-    .messenger-bubble {
-        width: 52px;
-        height: 52px;
-    }
-
-    .messenger-bubble svg {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-/* Mobile Small */
-@media (max-width: 480px) {
-    .header {
-        padding: 10px 12px;
-    }
-
-    .main-content {
-        padding: 16px 12px;
-    }
-
-    .welcome-title {
-        font-size: 20px;
-    }
-
-    .metrics-grid {
-        gap: 10px;
-    }
-
-    .metric-card {
-        padding: 14px;
-    }
-
-    .metric-value {
-        font-size: 24px;
-    }
-
-    .modules-container {
-        padding: 16px 12px;
-    }
-
-    .bottom-grid {
-        gap: 10px;
     }
 
     .action-card {
@@ -821,5 +991,56 @@ body {
         height: 50px;
         bottom: 16px;
         right: 16px;
+    }
+
+    .action-card {
+        padding: 16px;
+    }
+
+    .action-card h3 {
+        font-size: 14px;
+    }
+
+    .action-card p {
+        font-size: 11px;
+    }
+
+    .primary-btn,
+    .outline-btn {
+        padding: 10px;
+        font-size: 12px;
+        min-height: 44px;
+    }
+}
+
+/* Ultra-small devices (under 320px) */
+@media (max-width: 320px) {
+    .logo-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .welcome-title {
+        font-size: 20px;
+    }
+
+    .metric-card {
+        padding: 14px;
+    }
+
+    .metric-value {
+        font-size: 26px;
+    }
+
+    .modules-container {
+        padding: 14px;
+    }
+
+    .module-item {
+        padding: 12px;
+    }
+
+    .chat-window-compact {
+        height: calc(100vh - 100px);
     }
 }
