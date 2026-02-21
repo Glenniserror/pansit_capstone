@@ -3,7 +3,7 @@
      Include this snippet inside student_dashboard.html
      before the closing </body> tag.
 
-     For Laravel Blade: @include('chatbot.chatbot')
+     For Laravel Blade: @@include('dashboard.chatbot')
      ================================================ -->
 
 <!-- Floating Bubble -->
