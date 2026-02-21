@@ -10,10 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     @vite([
         'resources/css/dashboard/student_dashboard.css',
-        'resources/css/chatbot/chatbot.css',
+        'resources/css/dashboard/chatbot.css',
         'resources/js/dashboard/student_dashboard.js',
-        'resources/js/chatbot/chatbot.js',
-        'resources/blade.php/dashboard/chatbot.blade.php'
+        'resources/js/dashboard/chatbot.js'
     ])
 </head>
 <body>
