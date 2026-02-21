@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <!-- Dashboard & Chatbot Styles -->
-    <link rel="stylesheet" href="student_dashboard.css">
-    <link rel="stylesheet" href="chatbot.css">
+    @vite(['resources/css/dashboard/student_dashboard.css', 'resources/css/dashboard/chatbot.css'])
 </head>
 <body>
 
@@ -117,7 +116,7 @@
 
             <!-- Hero -->
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome, Student! 👋</h1>
+                <h1 class="welcome-title">Welcome back!</h1>
                 <p class="welcome-subtitle">Continue your mathematics learning journey</p>
             </div>
 
@@ -182,7 +181,7 @@
 
                 <div class="module-item">
                     <div class="module-title-row">
-                        <span class="status-icon">✅</span>
+                        <span class="status-icon">✓</span>
                         <span class="module-name">Sequences and Series</span>
                         <span class="percentage">100%</span>
                     </div>
@@ -194,7 +193,7 @@
 
                 <div class="module-item">
                     <div class="module-title-row">
-                        <span class="status-icon">🕒</span>
+                        <span class="status-icon">—</span>
                         <span class="module-name">Polynomials and Polynomial Equations</span>
                         <span class="percentage blue">0%</span>
                     </div>
@@ -206,7 +205,7 @@
 
                 <div class="module-item">
                     <div class="module-title-row">
-                        <span class="status-icon">🕒</span>
+                        <span class="status-icon">—</span>
                         <span class="module-name">Advanced Equations and Functions</span>
                         <span class="percentage blue">0%</span>
                     </div>
@@ -327,60 +326,16 @@
 <!-- ================================
      CHATBOT WINDOW
      ================================ -->
-<div id="ai-chat-window">
-
-    <!-- Header -->
-    <div class="chat-header">
-        <div class="chat-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-        </div>
-        <div class="chat-header-info">
-            <div class="chat-title">Math AI Assistant</div>
-            <div class="chat-status"><span class="status-dot"></span> Online · Ready to help</div>
-        </div>
-        <button id="close-chat" title="Close">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-        </button>
-    </div>
-
-    <!-- Messages -->
-    <div id="chat-content"></div>
-
-    <!-- Quick Replies -->
-    <div class="quick-replies">
-        <button class="quick-reply-btn">📐 Sequences</button>
-        <button class="quick-reply-btn">🔢 Polynomials</button>
-        <button class="quick-reply-btn">📈 Functions</button>
-        <button class="quick-reply-btn">💡 Study tips</button>
-    </div>
-
-    <!-- Input -->
-    <div class="chat-input-area">
-        <input id="ai-input" type="text" placeholder="Ask a math question…" autocomplete="off" />
-        <button id="ai-send-btn" title="Send">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-        </button>
-    </div>
-</div>
+<!-- ================================================
+     CHATBOT PARTIAL
+     ================================================ -->
+@include('dashboard.chatbot')
 
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
-<!-- Dashboard & Chatbot Scripts -->
-<script src="student_dashboard.js"></script>
-<script src="chatbot.js"></script>
+<!-- Dashboard & Chatbot JS -->
+@vite(['resources/js/dashboard/student_dashboard.js', 'resources/js/dashboard/chatbot.js'])
 
 </body>
 </html>
