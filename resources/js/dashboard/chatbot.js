@@ -1,14 +1,13 @@
-/* ================================================
-   CHATBOT LOGIC — chatbot.js
-   ================================================ */
+/* ================================
+   CHATBOT — chatbot.js
+   ================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const bubble      = document.getElementById('ai-bubble');
     const chatWindow  = document.getElementById('ai-chat-window');
     const chatContent = document.getElementById('chat-content');
-
-    if (!bubble || !chatWindow || !chatContent) return;
+    const input       = document.getElementById('ai-input');
+    let isOpen = false;
 
     /* ── Helpers ── */
     function getTime() {
@@ -17,43 +16,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ── Open / Close ── */
     function openChat() {
+        if (isOpen) return;
+        isOpen = true;
         chatWindow.classList.add('open');
-        bubble.style.display = 'none';
-        setTimeout(() => document.getElementById('ai-input')?.focus(), 300);
-        const dot = bubble.querySelector('.notif-dot');
-        if (dot) dot.style.display = 'none';
+        setTimeout(() => input?.focus(), 320);
     }
 
-    function closeWindow() {
+    function closeChat() {
+        isOpen = false;
         chatWindow.classList.remove('open');
-        bubble.style.display = 'flex';
     }
 
     /* ── Bot Responses ── */
-    const botResponses = [
-        'I can help you with that math problem!',
-        'Great question! Let me break that down step by step.',
+    const genericResponses = [
+        "I can help you with that math problem! Could you share more details?",
+        "Great question! Let me break that down step by step.",
         "Let's work through this together. Start by identifying what's given.",
         "Good thinking! Apply the formula systematically and you'll get there.",
         "That's a classic concept — here's how to approach it.",
     ];
 
-    const topicResponses = {
-        sequences:   'Sequences follow a pattern! Arithmetic sequences have a constant difference *d*, geometric ones have a ratio *r*. Which type are you working on?',
-        polynomials: 'Polynomials are expressions like aₙxⁿ + ... + a₀. Key skills: factoring, long division, and the remainder theorem. What do you need help with?',
-        functions:   'Functions map inputs to outputs. Common types: linear, quadratic, polynomial, and exponential. Which one are you studying?',
+    const topicMap = {
+        sequences:    "Sequences follow a pattern! <em>Arithmetic sequences</em> have a constant difference <em>d</em>, while geometric ones multiply by a ratio <em>r</em>. Which type are you working on?",
+        series:       "A series is the sum of a sequence. For arithmetic: S = n/2 · (a₁ + aₙ). For geometric: S = a₁(1−rⁿ)/(1−r). Want me to walk through an example?",
+        polynomials:  "Polynomials are expressions like aₙxⁿ + ... + a₀. Key skills include <em>factoring</em>, <em>long division</em>, and the <em>remainder theorem</em>. What do you need help with?",
+        polynomial:   "For polynomial equations, try factoring first. If degree ≤ 4, synthetic division or the quadratic formula can help. What's the equation you're solving?",
+        functions:    "Functions map inputs to outputs. Common types: <em>linear</em>, <em>quadratic</em>, <em>polynomial</em>, and <em>exponential</em>. Which one are you studying?",
+        quadratic:    "For quadratics: ax² + bx + c = 0, use the quadratic formula: x = (−b ± √(b²−4ac)) / 2a. The discriminant (b²−4ac) tells you how many real roots there are!",
+        arithmetic:   "In an arithmetic sequence, each term increases by a constant <em>d</em>. The nth term formula is: aₙ = a₁ + (n−1)d. Need an example?",
+        geometric:    "In a geometric sequence, each term is multiplied by a constant ratio <em>r</em>. The nth term is: aₙ = a₁ · rⁿ⁻¹. Want to try one together?",
+        'study tips': "Here are my top study tips for math: 1) Practice daily — even 20 minutes helps. 2) Don't just read solutions — work through problems yourself. 3) Review your mistakes carefully. 4) Try teaching the concept to someone else!",
+        factor:       "To factor a polynomial, first look for a GCF, then try techniques like grouping, difference of squares, or the AC method for trinomials. What polynomial are you working with?",
     };
 
     function getBotResponse(text) {
         const lower = text.toLowerCase();
-        for (const [key, res] of Object.entries(topicResponses)) {
+        for (const [key, res] of Object.entries(topicMap)) {
             if (lower.includes(key)) return res;
         }
-        return botResponses[Math.floor(Math.random() * botResponses.length)];
+        return genericResponses[Math.floor(Math.random() * genericResponses.length)];
     }
 
     /* ── Typing Indicator ── */
     function showTyping() {
+        removeTyping();
         const t = document.createElement('div');
         t.id = 'typing-indicator';
         t.className = 'typing-indicator';
@@ -85,9 +91,21 @@ document.addEventListener('DOMContentLoaded', function () {
         chatContent.scrollTop = chatContent.scrollHeight;
     }
 
+    /* ── Welcome Message ── */
+    function showWelcome() {
+        if (chatContent.dataset.welcomed) return;
+        chatContent.dataset.welcomed = '1';
+
+        const badge = document.createElement('div');
+        badge.className = 'bot-welcome-badge';
+        badge.textContent = '✨ Math AI Assistant';
+        chatContent.appendChild(badge);
+
+        appendMessage("Hi there! 👋 I'm your Math AI Assistant. Ask me anything about <em>Sequences</em>, <em>Polynomials</em>, or <em>Functions</em> — or tap a quick reply below to get started!", 'bot');
+    }
+
     /* ── Send Message ── */
     function sendMessage(text) {
-        const input   = document.getElementById('ai-input');
         const message = text || input?.value.trim();
         if (!message) return;
 
@@ -95,41 +113,37 @@ document.addEventListener('DOMContentLoaded', function () {
         if (input && !text) input.value = '';
 
         showTyping();
+        const delay = 700 + Math.random() * 600;
         setTimeout(() => {
             removeTyping();
             appendMessage(getBotResponse(message), 'bot');
-        }, 800 + Math.random() * 500);
+        }, delay);
     }
 
     /* ── Event Listeners ── */
+    document.getElementById('start-chat-btn')?.addEventListener('click', () => { openChat(); showWelcome(); });
+    document.getElementById('sidebar-chat-btn')?.addEventListener('click', () => { openChat(); showWelcome(); });
+    document.getElementById('fab-chat')?.addEventListener('click', () => { openChat(); showWelcome(); });
 
-    // Floating bubble click
-    bubble.addEventListener('click', openChat);
+    document.addEventListener('openChatbot', () => { openChat(); showWelcome(); });
 
-    // "Start Chat" button inside action card (dashboard)
-    document.getElementById('start-chat-btn')?.addEventListener('click', openChat);
+    document.getElementById('close-chat')?.addEventListener('click', closeChat);
+    document.getElementById('ai-send-btn')?.addEventListener('click', () => sendMessage());
 
-    // Sidebar "AI Chat" button (desktop)
-    document.getElementById('sidebar-chat-btn')?.addEventListener('click', openChat);
+    input?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
 
-    // FAB button in bottom nav (mobile)
-    document.getElementById('fab-chat')?.addEventListener('click', openChat);
-
-    // Listen for custom event dispatched by other buttons
-    document.addEventListener('openChatbot', openChat);
-
-    // Chat window interactions
-    chatWindow.addEventListener('click', (e) => {
-        if (e.target.closest('#close-chat'))                 closeWindow();
-        if (e.target.closest('#ai-send-btn'))               sendMessage();
+    chatContent.addEventListener('click', (e) => {
         if (e.target.classList.contains('quick-reply-btn')) {
             sendMessage(e.target.textContent.replace(/[^\w\s]/g, '').trim());
         }
     });
 
-    // Enter key to send
-    chatWindow.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && e.target.id === 'ai-input') sendMessage();
+    document.querySelectorAll('.quick-reply-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            sendMessage(btn.textContent.replace(/[^\w\s]/g, '').trim());
+        });
     });
 
 });

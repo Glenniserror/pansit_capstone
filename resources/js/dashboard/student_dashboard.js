@@ -1,12 +1,10 @@
 /* ================================
-   student_dashboard.js
+   STUDENT DASHBOARD — student_dashboard.js
    ================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* ----------------------------------------
-       BOTTOM NAV — active state
-       ---------------------------------------- */
+    /* ── Bottom Nav — active state ── */
     document.querySelectorAll('.nav-item').forEach(btn => {
         btn.addEventListener('click', function () {
             document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
@@ -14,9 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ----------------------------------------
-       SIDEBAR NAV — active state
-       ---------------------------------------- */
+    /* ── Sidebar Nav — active state ── */
     document.querySelectorAll('.sidebar-item').forEach(btn => {
         btn.addEventListener('click', function () {
             document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
@@ -24,9 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ----------------------------------------
-       LOGOUT — SweetAlert2 confirmation
-       ---------------------------------------- */
+    /* ── Logout — SweetAlert2 confirmation ── */
     function confirmLogout() {
         Swal.fire({
             title: 'Are you sure?',
@@ -39,31 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
+                console.log('Logging out...');
                 // Replace with your logout route:
                 // document.getElementById('logout-form').submit();
-                console.log('Logging out...');
             }
         });
     }
 
-    const logoutBtns = [
-        document.getElementById('logout-btn-mobile'),
-        document.getElementById('logout-btn-desktop')
-    ];
-    logoutBtns.forEach(btn => { if (btn) btn.addEventListener('click', confirmLogout); });
-
-    /* ----------------------------------------
-       CHAT — open chatbot (dispatches custom event)
-       ---------------------------------------- */
-    function openChat() {
-        document.dispatchEvent(new CustomEvent('openChatbot'));
-    }
-
-    const chatTriggers = [
-        document.getElementById('fab-chat'),
-        document.getElementById('start-chat-btn'),
-        document.getElementById('sidebar-chat-btn')
-    ];
-    chatTriggers.forEach(el => { if (el) el.addEventListener('click', openChat); });
+    ['logout-btn-mobile', 'logout-btn-desktop'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener('click', confirmLogout);
+    });
 
 });
