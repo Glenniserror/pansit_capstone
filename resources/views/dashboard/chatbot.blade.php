@@ -1,3 +1,8 @@
+{{-- ================================================
+     CHATBOT PARTIAL — include this in student_dashboard.blade.php
+     Usage: @include('chatbot.chatbot')
+     ================================================ --}}
+
 <!-- Floating Bubble -->
 <div id="ai-bubble" class="messenger-bubble">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -55,4 +60,5 @@
         </div>
         <div class="footer-hint">Press Enter to send</div>
     </div>
+
 </div>

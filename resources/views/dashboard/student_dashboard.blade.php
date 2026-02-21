@@ -169,7 +169,7 @@
     </div>
 
     {{-- Chatbot partial --}}
-    @include('chatbot.chatbot')
+    @include('dashboard.chatbot')
 
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
