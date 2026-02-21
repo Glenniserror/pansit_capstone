@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Math Learning Assistant - Student Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    @vite([
-        'resources/css/dashboard/student_dashboard.css',
-        'resources/css/dashboard/chatbot.css',
-        'resources/js/dashboard/student_dashboard.js',
-        'resources/js/dashboard/chatbot.js'
-    ])
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="student_dashboard.css">
+
+    <!-- Chatbot CSS -->
+    <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
 
@@ -331,11 +333,77 @@
 
 </nav>
 
+<!-- ================================================
+     CHATBOT PARTIAL
+     For Laravel Blade: replace below with @include('chatbot.chatbot')
+     ================================================ -->
+
+<!-- Floating Bubble -->
+<div id="ai-bubble" class="messenger-bubble">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span class="notif-dot"></span>
+</div>
+
+<!-- Chat Window -->
+<div id="ai-chat-window" class="chat-window-compact">
+    <div class="chat-header">
+        <div class="user-info">
+            <div class="chat-avatar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span class="online-dot"></span>
+            </div>
+            <div class="chat-info">
+                <span class="chat-name">Math AI Assistant</span>
+                <span class="chat-status-text">Online</span>
+            </div>
+        </div>
+        <div class="chat-header-actions">
+            <button id="close-chat">&times;</button>
+        </div>
+    </div>
+
+    <div id="chat-content" class="chat-content">
+        <div class="chat-divider">Today</div>
+        <div class="msg bot">
+            <div class="msg-bubble">Hello! Ask me any math questions. 👋</div>
+            <div class="quick-replies">
+                <button class="quick-reply-btn">📐 Sequences</button>
+                <button class="quick-reply-btn">📊 Polynomials</button>
+                <button class="quick-reply-btn">🔢 Functions</button>
+            </div>
+            <span class="msg-time">Just now</span>
+        </div>
+    </div>
+
+    <div class="chat-footer">
+        <div class="input-row">
+            <input type="text" id="ai-input" placeholder="Type a message...">
+            <button id="ai-send-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+        <div class="footer-hint">Press Enter to send</div>
+    </div>
+</div>
+
 <!-- SweetAlert2 JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
 <!-- Dashboard JS -->
 <script src="student_dashboard.js"></script>
+
+<!-- Chatbot JS -->
+<script src="chatbot.js"></script>
 
 </body>
 </html>

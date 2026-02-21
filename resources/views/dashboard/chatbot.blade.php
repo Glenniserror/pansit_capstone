@@ -1,11 +1,15 @@
-{{-- ================================================
-     CHATBOT PARTIAL — include this in student_dashboard.blade.php
-     Usage: @include('chatbot.chatbot')
-     ================================================ --}}
+<!-- ================================================
+     CHATBOT PARTIAL — chatbot.html
+     Include this snippet inside student_dashboard.html
+     before the closing </body> tag.
+
+     For Laravel Blade: @include('chatbot.chatbot')
+     ================================================ -->
 
 <!-- Floating Bubble -->
 <div id="ai-bubble" class="messenger-bubble">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     </svg>
     <span class="notif-dot"></span>
@@ -18,7 +22,8 @@
     <div class="chat-header">
         <div class="user-info">
             <div class="chat-avatar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
                 <span class="online-dot"></span>
@@ -52,7 +57,8 @@
         <div class="input-row">
             <input type="text" id="ai-input" placeholder="Type a message...">
             <button id="ai-send-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>

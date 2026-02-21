@@ -1,6 +1,5 @@
 /* ================================================
    CHATBOT STYLES — chatbot.css
-   @vite: resources/css/chatbot/chatbot.css
    ================================================ */
 
 /* ── Messenger Bubble ── */
@@ -27,9 +26,7 @@
     box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
 }
 
-.messenger-bubble:active {
-    transform: translateY(0);
-}
+.messenger-bubble:active { transform: translateY(0); }
 
 .messenger-bubble svg {
     width: 22px;
@@ -144,10 +141,7 @@
     display: inline-block;
 }
 
-.chat-header-actions {
-    display: flex;
-    gap: 4px;
-}
+.chat-header-actions { display: flex; gap: 4px; }
 
 #close-chat {
     border: none;
@@ -207,7 +201,7 @@
 }
 
 .chat-divider::before { left: 0; }
-.chat-divider::after { right: 0; }
+.chat-divider::after  { right: 0; }
 
 /* ── Messages ── */
 .msg {
@@ -296,7 +290,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .quick-reply-btn:hover {
@@ -331,7 +325,7 @@
     border-radius: 6px;
     font-size: 13px;
     outline: none;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: #1a1a1a;
     transition: all 0.2s ease;
 }
@@ -433,5 +427,22 @@
     .messenger-bubble {
         bottom: 16px;
         right: 16px;
+    }
+}
+
+/* ── Desktop: bubble sits above bottom-right, not above mobile nav ── */
+@media (min-width: 1024px) {
+    .messenger-bubble {
+        bottom: 28px;
+        right: 28px;
+        width: 56px;
+        height: 56px;
+    }
+
+    .chat-window-compact {
+        bottom: 96px;
+        right: 28px;
+        width: 380px;
+        height: 540px;
     }
 }

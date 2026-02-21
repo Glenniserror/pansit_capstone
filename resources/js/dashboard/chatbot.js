@@ -1,3 +1,7 @@
+/* ================================================
+   CHATBOT LOGIC — chatbot.js
+   ================================================ */
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const bubble      = document.getElementById('ai-bubble');
@@ -6,10 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!bubble || !chatWindow || !chatContent) return;
 
+    /* ── Helpers ── */
     function getTime() {
         return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
+    /* ── Open / Close ── */
     function openChat() {
         chatWindow.classList.add('open');
         bubble.style.display = 'none';
@@ -23,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         bubble.style.display = 'flex';
     }
 
+    /* ── Bot Responses ── */
     const botResponses = [
         'I can help you with that math problem!',
         'Great question! Let me break that down step by step.',
@@ -45,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return botResponses[Math.floor(Math.random() * botResponses.length)];
     }
 
+    /* ── Typing Indicator ── */
     function showTyping() {
         const t = document.createElement('div');
         t.id = 'typing-indicator';
@@ -58,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('typing-indicator')?.remove();
     }
 
+    /* ── Append Message ── */
     function appendMessage(text, type) {
         const msg = document.createElement('div');
         msg.className = `msg ${type}`;
@@ -76,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatContent.scrollTop = chatContent.scrollHeight;
     }
 
+    /* ── Send Message ── */
     function sendMessage(text) {
         const input   = document.getElementById('ai-input');
         const message = text || input?.value.trim();
@@ -91,22 +101,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 800 + Math.random() * 500);
     }
 
-    // Event Listeners
+    /* ── Event Listeners ── */
+
+    // Floating bubble click
     bubble.addEventListener('click', openChat);
+
+    // "Start Chat" button inside action card (dashboard)
     document.getElementById('start-chat-btn')?.addEventListener('click', openChat);
 
+    // Sidebar "AI Chat" button (desktop)
+    document.getElementById('sidebar-chat-btn')?.addEventListener('click', openChat);
+
+    // FAB button in bottom nav (mobile)
+    document.getElementById('fab-chat')?.addEventListener('click', openChat);
+
+    // Listen for custom event dispatched by other buttons
+    document.addEventListener('openChatbot', openChat);
+
+    // Chat window interactions
     chatWindow.addEventListener('click', (e) => {
         if (e.target.closest('#close-chat'))                 closeWindow();
         if (e.target.closest('#ai-send-btn'))               sendMessage();
-        if (e.target.classList.contains('quick-reply-btn')) sendMessage(e.target.textContent.replace(/[^\w\s]/g, '').trim());
+        if (e.target.classList.contains('quick-reply-btn')) {
+            sendMessage(e.target.textContent.replace(/[^\w\s]/g, '').trim());
+        }
     });
 
+    // Enter key to send
     chatWindow.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && e.target.id === 'ai-input') sendMessage();
     });
 
 });
-
-
-
-
