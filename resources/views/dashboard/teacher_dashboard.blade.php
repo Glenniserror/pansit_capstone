@@ -88,7 +88,9 @@
         </div>
     </aside>
 
-    <form id="logout-form" method="POST" action="#" style="display: none;"></form>
+    <form id="logout-form" method="POST" action="{{ route('teacher.logout') }}" style="display: none;">
+        @csrf
+    </form>
 
     <div class="main-wrapper">
 

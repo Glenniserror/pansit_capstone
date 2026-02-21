@@ -91,6 +91,11 @@
         </div>
     </aside>
 
+    <!-- Hidden Logout Form -->
+    <form id="logout-form" method="POST" action="{{ route('student.logout') }}" style="display: none;">
+        @csrf
+    </form>
+
     <!-- ================================
          MAIN WRAPPER
          ================================ -->
