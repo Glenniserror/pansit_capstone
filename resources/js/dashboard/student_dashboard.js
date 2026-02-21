@@ -33,9 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('Logging out...');
-                // Replace with your logout route:
-                // document.getElementById('logout-form').submit();
+                document.getElementById('logout-form').submit();
             }
         });
     }
