@@ -114,7 +114,7 @@
         <main class="main-content">
 
             <div class="hero-section">
-                <h1 class="welcome-title">Welcome, Teacher!</h1>
+                <h1 class="welcome-title">Welcome, Teacher!👋</h1>
                 <p class="welcome-subtitle">Monitor and guide your students' learning journey</p>
             </div>
 
