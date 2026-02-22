@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <!-- Dashboard & Chatbot Styles -->
-    @vite(['resources/css/dashboard/student_dashboard.css', 'resources/css/dashboard/chatbot.css'])
+    @vite([
+        'resources/css/dashboard/student_dashboard.css', 
+        'resources/css/dashboard/chatbot.css'
+    ])
 </head>
 <body>
 
