@@ -20,7 +20,7 @@
           href="/image/pexels-photo-6344238-1280w.webp"
           imagesrcset="/image/pexels-photo-6344238-640w.webp 640w,
                        /image/pexels-photo-6344238-1280w.webp 1280w,
-                       /image/pexels-photo-6344238-1920w.webp 1920w"s
+                       /image/pexels-photo-6344238-1920w.webp 1920w"
           imagesizes="100vw"
           fetchpriority="high">
 
