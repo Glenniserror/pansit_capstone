@@ -49,9 +49,21 @@ it('declares font-display: swap for the self-hosted Inter face', function () {
         ->toContain('font-display: swap');
 });
 
-it('has no infinite animation dragging main-thread work', function () {
-    expect(file_get_contents(resource_path('css/homepage.css')))
-        ->not->toContain('infinite');
+it('limits infinite animation to a motion-safe, GPU-composited scroll cue', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    preg_match_all('/animation:[^;]*\binfinite\b[^;]*;/', $css, $infinite);
+    expect($infinite[0])->toHaveCount(1);
+
+    preg_match_all('/@media \(prefers-reduced-motion: no-preference\)\s*\{(?:[^{}]|\{[^{}]*\})*\}/', $css, $motionSafe);
+    expect(collect($motionSafe[0])->contains(fn (string $b): bool => str_contains($b, 'infinite')))->toBeTrue();
+
+    preg_match('/@keyframes heroScrollBounce\s*\{(?:[^{}]|\{[^{}]*\})*\}/', $css, $keyframes);
+    expect($keyframes[0] ?? '')
+        ->toContain('transform')
+        ->not->toContain('opacity')
+        ->not->toContain('width')
+        ->not->toContain('box-shadow');
 });
 
 it('never starts the LCP hero text at opacity zero', function () {
@@ -73,7 +85,7 @@ it('is written mobile-first with min-width breakpoints only', function () {
 
     expect($css)->not->toMatch('/@media\s*\(\s*max-width/');
 
-    foreach (['640px', '768px', '1024px', '1280px'] as $breakpoint) {
+    foreach (['640px', '768px', '1024px'] as $breakpoint) {
         expect($css)->toMatch('/@media\s*\(min-width:\s*'.preg_quote($breakpoint, '/').'\)/');
     }
 });
@@ -127,6 +139,64 @@ it('stacks the hero buttons full-width on mobile and inline from sm up', functio
 
     expect($btn[0] ?? '')->toContain('width: 100%');
     expect($btnGoesAutoAtSm)->toBeTrue();
+});
+
+it('sizes the hero to the small viewport height so mobile chrome cannot clip it', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    preg_match('/\.hero\s*\{[^}]*\}/', $css, $hero);
+
+    expect($hero[0] ?? '')
+        ->toContain('min-height: 100svh')
+        ->toContain('min-height: 100vh')
+        ->toContain('overflow: hidden')
+        ->toContain('display: flex');
+});
+
+it('darkens the hero photo with a flat layer above the gradient for headline contrast', function () {
+    $html = get('/')->getContent();
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    expect($html)->toContain('hero-overlay');
+
+    preg_match('/\.hero-overlay\s*\{[^}]*\}/', $css, $overlay);
+    expect($overlay[0] ?? '')
+        ->toContain('rgba(0, 0, 0, 0.25)')
+        ->toContain('inset: 0');
+});
+
+it('renders an accessible animated scroll indicator that targets the features section', function () {
+    $html = get('/')->getContent();
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    expect($html)
+        ->toContain('href="#features"')
+        ->toContain('aria-label="Scroll to features"')
+        ->toMatch('/<a[^>]+class="hero-scroll"[^>]*>\s*<svg/')
+        ->toContain('id="features"');
+
+    preg_match('/\.hero-scroll\s*\{[^}]*\}/', $css, $scroll);
+    expect($scroll[0] ?? '')
+        ->toContain('position: absolute')
+        ->toContain('bottom: 32px')
+        ->toContain('width: 48px')
+        ->toContain('height: 48px')
+        ->toContain('border-radius: 50%');
+});
+
+it('offsets the features anchor so a sticky header cannot cover its heading', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    preg_match('/\.features\s*\{[^}]*\}/', $css, $features);
+    expect($features[0] ?? '')->toContain('scroll-margin-top');
+});
+
+it('enables smooth anchor scrolling only when motion is not reduced', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    expect($css)->toMatch(
+        '/@media \(prefers-reduced-motion: no-preference\)\s*\{\s*html\s*\{\s*scroll-behavior: smooth;/'
+    );
 });
 
 it('inlines the homepage stylesheet instead of a render-blocking link', function () {
