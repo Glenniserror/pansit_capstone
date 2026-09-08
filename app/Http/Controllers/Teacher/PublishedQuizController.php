@@ -44,9 +44,14 @@ class PublishedQuizController extends Controller
         return response()->json(['published' => $row]);
     }
 
+    /**
+     * Unpublish the quiz for a topic. Deleted one model at a time (rather
+     * than a mass query delete) so QuizPublishedObserver fires and resets
+     * every student's pre/post progress for that topic.
+     */
     public function destroy(string $topicKey): JsonResponse
     {
-        QuizPublished::where('topic_key', $topicKey)->delete();
+        QuizPublished::where('topic_key', $topicKey)->get()->each->delete();
 
         return response()->json(['deleted' => true]);
     }
