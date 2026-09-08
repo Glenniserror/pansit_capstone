@@ -386,7 +386,7 @@ html,body { min-height:100%; font-family:'Plus Jakarta Sans',sans-serif; backgro
       <div class="section-label">Module 3: Advanced Equations and Functions</div>
       <div class="section-sub" id="mod3-sub">0% complete · 0 of 4 topics done</div>
       <ul class="topic-list">
-        <li class="topic-item mq-topic--locked" data-topic="rat"><span class="topic-dot"></span>Rational Equations<span class="lock-icon">🔒</span></li>
+        <li class="topic-item mq-topic--locked" data-topic="rat"><span class="topic-dot"></span>Rational Functions<span class="lock-icon">🔒</span></li>
         <li class="topic-item mq-topic--locked" data-topic="rad"><span class="topic-dot"></span>Radical Equations<span class="lock-icon">🔒</span></li>
         <li class="topic-item mq-topic--locked" data-topic="exp"><span class="topic-dot"></span>Exponential Functions<span class="lock-icon">🔒</span></li>
         <li class="topic-item mq-topic--locked" data-topic="log"><span class="topic-dot"></span>Logarithmic Functions<span class="lock-icon">🔒</span></li>
@@ -667,10 +667,10 @@ const MQ_TOPICS = {
     pre:mqGeneric("Polynomial Equations"), post:mqGeneric("Polynomial Equations")
   },
   rat:{
-    name:"Rational Equations",
-    lesson:`<h3>⚖️ Rational Equations</h3><p>Contains fractions with polynomial denominators.</p><div class="mq-formula">Multiply both sides by the LCD to clear fractions</div><ul><li>Always check for extraneous solutions (denominators = 0)</li></ul>`,
-    activity:{instruction:"Fill in the blanks for Rational Equations.",items:[{q:"To solve a rational equation, multiply both sides by the _____.",ans:"LCD",hint:"Least Common Denominator"},{q:"A solution that makes the denominator zero is called an _____ solution.",ans:"extraneous",hint:"It must be rejected"},{q:"Solving 1/x = 2 gives x = _____.",ans:"0.5",hint:"x = 1/2"},{q:"The LCD of 1/x and 1/(x+1) is _____.",ans:"x(x+1)",hint:"Multiply the two denominators"},{q:"After solving a rational equation, you must always _____ your answer.",ans:"check",hint:"Substitute back into the original"},]},
-    pre:mqGeneric("Rational Equations"), post:mqGeneric("Rational Equations")
+    name:"Rational Functions",
+    lesson:`<h3>⚖️ Rational Functions</h3><p>Contains fractions with polynomial denominators.</p><div class="mq-formula">Multiply both sides by the LCD to clear fractions</div><ul><li>Always check for extraneous solutions (denominators = 0)</li></ul>`,
+    activity:{instruction:"Fill in the blanks for Rational Functions.",items:[{q:"To solve a rational equation, multiply both sides by the _____.",ans:"LCD",hint:"Least Common Denominator"},{q:"A solution that makes the denominator zero is called an _____ solution.",ans:"extraneous",hint:"It must be rejected"},{q:"Solving 1/x = 2 gives x = _____.",ans:"0.5",hint:"x = 1/2"},{q:"The LCD of 1/x and 1/(x+1) is _____.",ans:"x(x+1)",hint:"Multiply the two denominators"},{q:"After solving a rational equation, you must always _____ your answer.",ans:"check",hint:"Substitute back into the original"},]},
+    pre:mqGeneric("Rational Functions"), post:mqGeneric("Rational Functions")
   },
   rad:{
     name:"Radical Equations",
@@ -1664,7 +1664,7 @@ const HARDCODED_DOWNLOADS = {
     { name:'Polynomial Equations',                     file:'Polynomial Equation.pdf',              size:'661 KB' },
   ],
   'Module 3: Advanced Equations': [
-    { name:'Rational Equations',    file:'Rational Functions.pdf',    size:'1.1 MB' },
+    { name:'Rational Functions',    file:'Rational Functions.pdf',    size:'1.1 MB' },
     { name:'Radical Equations',     file:'Radical Equations.pdf',     size:'3.9 MB' },
     { name:'Exponential Functions', file:'Exponential Functions.pdf', size:'1.5 MB' },
     { name:'Logarithmic Functions', file:'Logarithmic Functions.pdf', size:'1.3 MB' },

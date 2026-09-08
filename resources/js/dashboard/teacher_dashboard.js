@@ -1764,7 +1764,7 @@ const ACTIVITY_OPTIONS = {
         { value: 'polynomial_equations', label: 'Activity 3: Polynomial Equations' },
     ],
     advanced: [
-        { value: 'rational_equations',    label: 'Activity 1: Rational Equations' },
+        { value: 'rational_equations',    label: 'Activity 1: Rational Functions' },
         { value: 'radical_equations',     label: 'Activity 2: Radical Equations' },
         { value: 'exponential_functions', label: 'Activity 3: Exponential Functions' },
         { value: 'logarithmic_functions', label: 'Activity 4: Logarithmic Functions' },
