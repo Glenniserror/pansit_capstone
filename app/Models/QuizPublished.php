@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasUuidPrimaryKey;
+use App\Observers\QuizPublishedObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -11,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * frontend serialises them — kept as strings so the student and teacher
  * parsers (safeParseJSON) work unchanged.
  */
+#[ObservedBy(QuizPublishedObserver::class)]
 class QuizPublished extends Model
 {
     use HasUuidPrimaryKey;

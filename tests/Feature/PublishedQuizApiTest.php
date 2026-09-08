@@ -3,6 +3,7 @@
 use App\Models\QuizCustomTopic;
 use App\Models\QuizPublished;
 use App\Models\Section;
+use App\Models\StudentProgress;
 use App\Models\User;
 
 beforeEach(function () {
@@ -37,6 +38,32 @@ it('unpublishes a quiz by topic key', function () {
         ->assertOk();
 
     $this->assertDatabaseMissing('quiz_published', ['topic_key' => 'geo']);
+});
+
+it('resets every student\'s pre/post progress for a topic when its quiz is unpublished', function () {
+    QuizPublished::create(['topic_key' => 'geo', 'pretest' => '[]', 'posttest' => '[]', 'activity' => '[]']);
+
+    $alice = User::factory()->create(['role' => 'student', 'approval_status' => 'approved', 'section_id' => Section::factory()->create()->id]);
+    $bob = User::factory()->create(['role' => 'student', 'approval_status' => 'approved', 'section_id' => Section::factory()->create()->id]);
+
+    // Both finished the geo pre + post test.
+    foreach ([$alice, $bob] as $student) {
+        StudentProgress::create(['session_id' => (string) $student->id, 'topic_key' => 'geo', 'phase' => 'pre', 'score' => 8, 'total' => 10, 'passed' => true]);
+        StudentProgress::create(['session_id' => (string) $student->id, 'topic_key' => 'geo', 'phase' => 'post', 'score' => 9, 'total' => 10, 'passed' => true]);
+    }
+
+    // Untouched: geo reading progress, and a different topic entirely.
+    StudentProgress::create(['session_id' => (string) $alice->id, 'topic_key' => 'geo', 'phase' => 'reading', 'score' => 100, 'total' => 100]);
+    StudentProgress::create(['session_id' => (string) $alice->id, 'topic_key' => 'ari', 'phase' => 'post', 'score' => 10, 'total' => 10, 'passed' => true]);
+
+    $this->actingAs($this->teacher)
+        ->deleteJson(route('teacher.quiz.published.destroy', 'geo'))
+        ->assertOk();
+
+    expect(StudentProgress::where('topic_key', 'geo')->whereIn('phase', ['pre', 'post'])->count())->toBe(0);
+
+    $this->assertDatabaseHas('student_progress', ['session_id' => (string) $alice->id, 'topic_key' => 'geo', 'phase' => 'reading']);
+    $this->assertDatabaseHas('student_progress', ['session_id' => (string) $alice->id, 'topic_key' => 'ari', 'phase' => 'post']);
 });
 
 it('rejects a non-JSON pretest', function () {
