@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="MathLearn is an AI-powered math learning platform for junior high school students, featuring interactive modules, quizzes, and progress tracking.">
 
-    <title>MATHsaLOVE</title>
+    <title>MathLearn - Math Learning Assistant</title>
 
     <link rel="icon" type="image/png" href="{{ asset('image/587572187-777024998723535-6772324307557000990-n-fotor-20260519155328.png') }}">
 
@@ -20,7 +20,7 @@
           href="/image/pexels-photo-6344238-1280w.webp"
           imagesrcset="/image/pexels-photo-6344238-640w.webp 640w,
                        /image/pexels-photo-6344238-1280w.webp 1280w,
-                       /image/pexels-photo-6344238-1920w.webp 1920w"
+                       /image/pexels-photo-6344238-1920w.webp 1920w"s
           imagesizes="100vw"
           fetchpriority="high">
 
