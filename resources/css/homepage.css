@@ -15,20 +15,56 @@
     font-family: 'Inter', sans-serif;
 }
 
+/* Stop iOS/Safari from inflating text in landscape. */
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     background: #f6f9fc;
     color: #1f2937;
     overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-/* ================= HERO ================= */
+/* No fixed pixel dimensions on media — always fluid. */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ================= HERO =================
+   Full-bleed background photo with centered overlay text (unchanged
+   design direction). Mobile-first: comfortable vertical rhythm on
+   phones, a capped height from tablet up. */
 .hero {
     position: relative;
-    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    min-height: 78vh;
+    padding: 72px 16px;
+}
+
+@media (min-width: 640px) {
+    .hero {
+        padding: 80px 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        min-height: 66vh;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        min-height: 600px;
+        padding: 96px 32px;
+    }
 }
 
 /* sharp background photo — a real <img> (see hero markup) instead of a
@@ -73,43 +109,90 @@ body {
     z-index: 3;
     text-align: center;
     color: #fff;
-    max-width: 800px;
-    padding: 0 20px;
+    width: 100%;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 4px;
 }
 
 .hero-content h1 {
-    font-size: 3.2rem;
+    font-size: 1.875rem;
     font-weight: 800;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.5px;
+    line-height: 1.15;
 }
 
 .hero-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.125rem;
     font-weight: 600;
-    margin: 8px 0 14px;
+    margin: 10px 0 16px;
+    line-height: 1.3;
 }
 
 .hero-content p {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.65;
     opacity: 0.95;
-    margin-bottom: 26px;
+    margin: 0 auto 28px;
+    max-width: 42rem;
 }
 
-/* ================= BUTTONS ================= */
+@media (min-width: 640px) {
+    .hero-content h1 {
+        font-size: 2.25rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.0625rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* ================= BUTTONS =================
+   Full-width stacked on phones, inline auto-width from sm up. */
 .hero-actions {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: 12px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    width: 100%;
     margin: 0 auto;
 }
 
+@media (min-width: 640px) {
+    .hero-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+}
+
 .btn {
-    padding: 14px 32px;
+    padding: 14px 28px;
     border-radius: 12px;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #fff;
     display: inline-flex;
@@ -122,7 +205,16 @@ body {
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
     position: relative;
     overflow: hidden;
-    min-width: 160px;
+    width: 100%;
+    max-width: 22rem;
+    min-height: 48px;
+}
+
+@media (min-width: 640px) {
+    .btn {
+        width: auto;
+        min-width: 168px;
+    }
 }
 
 .btn:hover {
@@ -232,41 +324,93 @@ body {
     box-shadow: 0 12px 28px rgba(0,0,0,0.2);
 }
 
-/* ================= FEATURES ================= */
+/* ================= FEATURES =================
+   grid-cols-1 -> sm:grid-cols-2 -> lg:grid-cols-3, capped at max-w-7xl. */
 .features {
-    padding: 70px 12%;
+    padding: 48px 16px;
     text-align: center;
     background: #f8fafc;
 }
 
 .features h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: #1f2937;
+    line-height: 1.2;
 }
 
 .section-desc {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #6b7280;
-    margin: 10px 0 50px;
+    line-height: 1.6;
+    margin: 12px auto 40px;
+    max-width: 42rem;
 }
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 26px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .features {
+        padding: 56px 24px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .features {
+        padding: 64px 24px;
+    }
+
+    .features h3 {
+        font-size: 1.875rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .features {
+        padding: 96px 32px;
+    }
+
+    .features h3 {
+        font-size: 2.25rem;
+    }
+
+    .section-desc {
+        margin-bottom: 56px;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
 }
 
 /* Feature Card */
 .feature-card {
     background: #ffffff;
     border-radius: 14px;
-    padding: 34px 30px;
+    padding: 26px 22px;
     border: 1.5px solid #e6f0fb;
     text-align: left;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+    .feature-card {
+        padding: 34px 30px;
+    }
 }
 
 .feature-card::before {
@@ -315,51 +459,85 @@ body {
 
 /* TEXT */
 .feature-card h4 {
-    font-size: 1.05rem;
+    font-size: 1.0625rem;
     font-weight: 700;
     margin-bottom: 10px;
     color: #1f2937;
+    line-height: 1.3;
 }
 
 .feature-card p {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #94a3b8;
     line-height: 1.6;
 }
 
-/* ================= TOPICS ================= */
+/* ================= TOPICS =================
+   grid-cols-1 -> md:grid-cols-3 (was a fixed-width flex row). */
 .topics {
-    padding: 80px 12%;
+    padding: 48px 16px;
     text-align: center;
     background: #f8fafc;
     font-family: system-ui, sans-serif;
 }
 
 .topics h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #1f2937;
+    line-height: 1.2;
 }
 
 .subtitle {
-    margin-top: 8px;
+    margin: 8px auto 0;
     color: #94a3b8;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 40rem;
 }
 
 .topics-grid {
-    display: flex;
-    gap: 36px;
-    justify-content: center;
-    margin-top: 50px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 36px auto 0;
+    width: 100%;
+    max-width: 60rem;
+}
+
+@media (min-width: 640px) {
+    .topics {
+        padding: 56px 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .topics h2 {
+        font-size: 1.875rem;
+    }
+
+    .topics-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        margin-top: 48px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .topics {
+        padding: 96px 32px;
+    }
+
+    .topics h2 {
+        font-size: 2.25rem;
+    }
 }
 
 /* CARD */
 .topic-card {
     background: #ffffff;
-    width: 280px;
-    padding: 38px 20px;
+    width: 100%;
+    padding: 32px 22px;
     border-radius: 12px;
     border: 1px solid #e5e7eb;
     cursor: pointer;
@@ -418,7 +596,7 @@ body {
 
 .topic-card p {
     color: #475569;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
 }
@@ -426,18 +604,25 @@ body {
 /* ================= FOOTER ================= */
 .footer {
     background: #ffffff;
-    padding: 35px 12%;
+    padding: 32px 16px;
     text-align: center;
     border-top: 1px solid #e5e7eb;
     font-family: system-ui, sans-serif;
 }
 
+@media (min-width: 1024px) {
+    .footer {
+        padding: 40px 32px;
+    }
+}
+
 .footer p {
-    font-size: 0.85rem;
+    font-size: 1rem;
     /* #475569 (already used for .topic-card p above) gives 7.6:1 against
        the white footer background, vs. 2.6:1 for the previous #94a3b8 —
        meets WCAG AA's 4.5:1 minimum for normal-size text. */
     color: #475569;
+    line-height: 1.6;
 }
 
 .footer-sub {
@@ -517,243 +702,12 @@ html.js .reveal.show {
     transition-delay: 0.15s;
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
+/* ================= VIEWPORT EDGE CASES ================= */
 
-/* Tablet (1024px and below) */
-@media (max-width: 1024px) {
-    .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    
-    .topics-grid {
-        gap: 24px;
-    }
-}
-
-/* Mobile Landscape & Tablet Portrait (768px and below) */
-@media (max-width: 768px) {
-    .hero {
-        height: auto;
-        min-height: 100vh;
-        padding: 60px 20px;
-    }
-
-    .hero-content {
-        padding: 0 15px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.3rem;
-        letter-spacing: 1px;
-    }
-
-    .hero-content h2 {
-        font-size: 1.1rem;
-    }
-
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        gap: 12px;
-        max-width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        max-width: 320px;
-        justify-content: center;
-        padding: 15px 24px;
-    }
-
-    .features {
-        padding: 50px 6%;
-    }
-
-    .features h3 {
-        font-size: 1.7rem;
-    }
-
-    .section-desc {
-        font-size: 0.85rem;
-        margin: 10px 0 35px;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .feature-card {
-        padding: 28px 22px;
-    }
-
-    .feature-card h4 {
-        font-size: 1rem;
-    }
-
-    .feature-card p {
-        font-size: 0.82rem;
-    }
-
-    .topics {
-        padding: 50px 6%;
-    }
-
-    .topics h2 {
-        font-size: 1.7rem;
-    }
-
-    .subtitle {
-        font-size: 0.85rem;
-    }
-
-    .topics-grid {
-        gap: 18px;
-        margin-top: 35px;
-    }
-
-    .topic-card {
-        width: 100%;
-        max-width: 320px;
-        padding: 32px 20px;
-    }
-
-    .footer {
-        padding: 30px 6%;
-    }
-}
-
-/* Small Mobile (480px and below) */
-@media (max-width: 480px) {
-    .hero {
-        padding: 50px 15px;
-    }
-
-    .hero-content h1 {
-        font-size: 1.9rem;
-    }
-
-    .hero-content h2 {
-        font-size: 1rem;
-    }
-
-    .hero-content p {
-        font-size: 0.85rem;
-        margin-bottom: 22px;
-    }
-
-    .btn {
-        width: 100%;
-        max-width: 280px;
-        padding: 13px 20px;
-        font-size: 0.9rem;
-        justify-content: center;
-    }
-
-    .features {
-        padding: 40px 5%;
-    }
-
-    .features h3 {
-        font-size: 1.5rem;
-    }
-
-    .section-desc {
-        font-size: 0.8rem;
-        margin: 8px 0 30px;
-    }
-
-    .feature-card {
-        padding: 24px 18px;
-    }
-
-    .feature-card i {
-        font-size: 1.4rem;
-        margin-bottom: 14px;
-    }
-
-    .feature-card h4 {
-        font-size: 0.95rem;
-    }
-
-    .feature-card p {
-        font-size: 0.78rem;
-    }
-
-    .topics {
-        padding: 40px 5%;
-    }
-
-    .topics h2 {
-        font-size: 1.5rem;
-    }
-
-    .subtitle {
-        font-size: 0.8rem;
-    }
-
-    .topics-grid {
-        margin-top: 30px;
-    }
-
-    .topic-card {
-        padding: 28px 18px;
-    }
-
-    .topic-card span {
-        width: 42px;
-        height: 42px;
-        font-size: 1rem;
-    }
-
-    .topic-card p {
-        font-size: 0.9rem;
-    }
-
-    .footer {
-        padding: 25px 5%;
-    }
-
-    .footer p {
-        font-size: 0.8rem;
-    }
-}
-
-/* Extra Small Mobile (360px and below) */
-@media (max-width: 360px) {
-    .hero-content h1 {
-        font-size: 1.7rem;
-    }
-
-    .hero-content h2 {
-        font-size: 0.95rem;
-    }
-
-    .btn {
-        font-size: 0.85rem;
-        padding: 12px 18px;
-    }
-
-    .features h3,
-    .topics h2 {
-        font-size: 1.3rem;
-    }
-
-    .feature-card,
-    .topic-card {
-        padding: 20px 16px;
-    }
-}
-
-/* Landscape Mobile (up to 667px height) */
+/* Short landscape phones: don't force a tall hero. */
 @media (max-height: 667px) and (orientation: landscape) {
     .hero {
         min-height: auto;
-        height: auto;
         padding: 40px 20px;
     }
 
@@ -767,22 +721,22 @@ html.js .reveal.show {
     }
 
     .hero-content p {
-        font-size: 0.85rem;
         margin-bottom: 18px;
     }
 
     .hero-actions {
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 10px;
     }
 
     .btn {
-        padding: 10px 20px;
-        font-size: 0.85rem;
+        width: auto;
+        padding: 12px 22px;
     }
 }
 
-/* Touch device optimization */
+/* Touch devices: swap hover lift for a lighter press response. */
 @media (hover: none) and (pointer: coarse) {
     .btn:active {
         transform: scale(0.97);

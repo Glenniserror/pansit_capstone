@@ -68,6 +68,67 @@ it('marks the document as js-capable so reveal sections degrade gracefully', fun
     expect(get('/')->getContent())->toContain("classList.add('js')");
 });
 
+it('is written mobile-first with min-width breakpoints only', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    expect($css)->not->toMatch('/@media\s*\(\s*max-width/');
+
+    foreach (['640px', '768px', '1024px', '1280px'] as $breakpoint) {
+        expect($css)->toMatch('/@media\s*\(min-width:\s*'.preg_quote($breakpoint, '/').'\)/');
+    }
+});
+
+it('constrains section content with a shared max-width container', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    preg_match('/\.feature-grid\s*\{[^}]*\}/', $css, $featureGrid);
+    preg_match('/\.topics-grid\s*\{[^}]*\}/', $css, $topicsGrid);
+
+    expect($featureGrid[0] ?? '')->toContain('max-width')->toContain('margin: 0 auto');
+    expect($topicsGrid[0] ?? '')->toContain('max-width');
+});
+
+it('never sizes body copy below 16px', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    $bodySelectors = [
+        '.hero-content p',
+        '.section-desc',
+        '.feature-card p',
+        '.topic-card p',
+        '.subtitle',
+        '.footer p',
+    ];
+
+    foreach ($bodySelectors as $selector) {
+        preg_match('/'.preg_quote($selector, '/').'\s*\{[^}]*\}/', $css, $rule);
+
+        expect($rule[0] ?? '')->toMatch('/font-size:\s*1(\.[0-9]+)?rem/');
+    }
+});
+
+it('gives the hero call-to-action buttons a 44px+ touch target', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    preg_match('/\.btn\s*\{[^}]*\}/', $css, $btn);
+
+    expect($btn[0] ?? '')->toMatch('/min-height:\s*4[4-9]px|min-height:\s*[5-9][0-9]px/');
+});
+
+it('stacks the hero buttons full-width on mobile and inline from sm up', function () {
+    $css = file_get_contents(resource_path('css/homepage.css'));
+
+    preg_match('/\.btn\s*\{[^}]*\}/', $css, $btn);
+    preg_match_all('/@media\s*\(min-width:\s*640px\)\s*\{(?:[^{}]|\{[^{}]*\})*\}/', $css, $smBlocks);
+
+    $btnGoesAutoAtSm = collect($smBlocks[0])->contains(
+        fn (string $block): bool => str_contains($block, '.btn') && str_contains($block, 'width: auto'),
+    );
+
+    expect($btn[0] ?? '')->toContain('width: 100%');
+    expect($btnGoesAutoAtSm)->toBeTrue();
+});
+
 it('inlines the homepage stylesheet instead of a render-blocking link', function () {
     $html = get('/')->getContent();
 
