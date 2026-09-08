@@ -25,7 +25,7 @@ class StudentAnswersController extends Controller
         'div' => 'Division of Polynomials',
         'rem' => 'Remainder & Factor Theorem',
         'poly' => 'Polynomial Equations',
-        'rat' => 'Rational Equations',
+        'rat' => 'Rational Functions',
         'rad' => 'Radical Equations',
         'exp' => 'Exponential Functions',
         'log' => 'Logarithmic Functions',

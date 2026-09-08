@@ -577,7 +577,7 @@
                             <option value="Module 2: Polynomials">Division of Polynomials</option>
                             <option value="Module 2: Polynomials">The Remainder Theorem and Factor Theorem</option>
                             <option value="Module 2: Polynomials">Polynomial Equations</option>
-                            <option value="Module 3: Advanced Equations">Rational Equations</option>
+                            <option value="Module 3: Advanced Equations">Rational Functions</option>
                             <option value="Module 3: Advanced Equations">Radical Equations</option>
                             <option value="Module 3: Advanced Equations">Exponential Functions</option>
                             <option value="Module 3: Advanced Equations">Logarithmic Functions</option>

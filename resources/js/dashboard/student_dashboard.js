@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
             { name: 'Polynomial Equations',                       file: 'Polynomial Equation.pdf',             size: '661 KB' },
         ],
         'Module 3: Advanced Equations': [
-            { name: 'Rational Equations',    file: 'Rational Functions.pdf',      size: '1.1 MB' },
+            { name: 'Rational Functions',    file: 'Rational Functions.pdf',      size: '1.1 MB' },
             { name: 'Radical Equations',     file: 'Radical Equations.pdf',       size: '3.9 MB' },
             { name: 'Exponential Functions', file: 'Exponential Functions.pdf',   size: '1.5 MB' },
             { name: 'Logarithmic Functions', file: 'Logarithmic Functions.pdf',   size: '1.3 MB' },
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function () {
         div:  'Division of Polynomials',
         rem:  'Remainder & Factor Theorem',
         poly: 'Polynomial Equations',
-        rat:  'Rational Equations',
+        rat:  'Rational Functions',
         rad:  'Radical Equations',
         exp:  'Exponential Functions',
         log:  'Logarithmic Functions',
